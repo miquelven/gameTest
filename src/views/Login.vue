@@ -1,13 +1,16 @@
 <script>
-import { library } from "@fortawesome/fontawesome-svg-core";
-// import { faCoffee as fasCoffee } from "@fortawesome/pro-solid-svg-icons";
+import InputForm from "./icons/InputForm.vue";
 
-// library.add(fasCoffee);
+export default {
+  components: {
+    InputForm,
+  },
+};
 </script>
 
 <template>
   <div
-    id="main"
+    id="container"
     class="w-screen h-screen flex flex-col justify-center items-center"
   >
     <div class="relative z-10 mb-28">
@@ -15,18 +18,9 @@ import { library } from "@fortawesome/fontawesome-svg-core";
         <img src="@/assets/svgs/logo.svg" alt="" class="w-56 brightness-125" />
 
         <form action="" class="flex flex-col gap-4 w-full p-2">
-          <input
-            type="text"
-            placeholder="Nome"
-            class="w-full bg-transparent placeholder:text-white/30 bg-white/10 rounded-md py-2 px-2 outline-none shadow-md opacity-60 shadow-white/15 focus:shadow-white/30 focus:bg-white/15 focus:opacity-100"
-            autofocus
-          />
+          <InputForm type="text" text="Nome" focus="true" />
           <div class="flex items-center relative">
-            <input
-              type="password"
-              placeholder="Senha"
-              class="w-full bg-transparent placeholder:text-white/30 bg-white/10 rounded-md py-2 px-2 outline-none shadow-md opacity-60 shadow-white/15 focus:shadow-white/30 focus:bg-white/15 focus:opacity-100"
-            />
+            <InputForm type="password" text="Senha" focus="false" />
             <!-- Add Icons using String format -->
             <font-awesome-icon
               :icon="['fas', 'eye']"
@@ -56,16 +50,36 @@ import { library } from "@fortawesome/fontawesome-svg-core";
         </div>
 
         <!-- AREA DE LOGIN DE OUTRAS MANEIRAS -->
-        <div class="w-full flex items-center mt-3">
+        <div class="w-full flex items-center mt-7">
           <div
-            class="flex-1 border border-red-400 flex items-center justify-center"
+            class="flex-1 flex items-center justify-center cursor-pointer opacity-70 hover:opacity-100"
           >
-            google
+            <div
+              class="rounded-full bg-[#FF3E30] w-9 h-9w-10 h-10 flex items-center justify-center shadow-md hover:shadow-black"
+            >
+              <font-awesome-icon :icon="['fab', 'google']" class="w-5 h-5" />
+            </div>
           </div>
           <div
-            class="flex-1 border border-blue-400 flex items-center justify-center"
+            class="flex-1 flex items-center justify-center cursor-pointer opacity-70 hover:opacity-100"
           >
-            facebook
+            <div
+              class="rounded-full bg-[#3b5998] w-9 h-9 flex items-center justify-center shadow-md hover:shadow-black"
+            >
+              <font-awesome-icon
+                :icon="['fab', 'facebook-f']"
+                class="w-5 h-5"
+              />
+            </div>
+          </div>
+          <div
+            class="flex-1 flex items-center justify-center cursor-pointer opacity-70 hover:opacity-100"
+          >
+            <div
+              class="rounded-full bg-[#E1306C] w-9 h-9 flex items-center justify-center shadow-md hover:shadow-black"
+            >
+              <font-awesome-icon :icon="['fab', 'instagram']" class="h-5 w-5" />
+            </div>
           </div>
         </div>
 
@@ -76,20 +90,13 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 </template>
 
 <style scoped>
-#main {
-  background: rgb(0, 0, 0);
-  background: linear-gradient(
-    165deg,
-    rgba(0, 0, 0, 1) 35%,
-    rgba(255, 243, 0, 0.756827731092437) 100%
-  );
-
+#container {
   background: url("@/assets/images/backgroundLogin.png");
   background-position: center;
   background-size: cover;
   position: relative;
 }
-#main::before {
+#container::before {
   content: "";
   width: 100vw;
   height: 100vh;

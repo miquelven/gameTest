@@ -1,9 +1,11 @@
 <script>
 import Login from "@/views/Login.vue";
+import Register from "@/views/Register.vue";
 
 export default {
   components: {
     Login,
+    Register,
   },
   mounted() {
     //cadastrar
@@ -24,7 +26,9 @@ export default {
   <!-- <template v-if="verifyRegister">
     <Login />
   </template> -->
-  <Login />
+
+  <!-- <Login /> -->
+  <Register />
 
   <!-- <header>
     <router-link to="/about">About</router-link>
