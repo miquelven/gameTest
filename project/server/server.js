@@ -37,7 +37,6 @@ app.post("/register", async (req, res) => {
       token: resp.session_token,
     });
   } catch (err) {
-    console.log(err);
     res.json({
       success: false,
       message: err.error_message,
@@ -62,7 +61,6 @@ app.post("/login", async (req, res) => {
       token: resp.session_token,
     });
   } catch (err) {
-    console.log(err);
     res.json({
       success: false,
       message: err.error_message,
@@ -82,7 +80,6 @@ app.post("/authenticate", async (req, res) => {
       message: "logged",
     });
   } catch (err) {
-    console.log(err);
     res.json({
       success: false,
       message: err.error_message,
@@ -96,13 +93,11 @@ app.post("/logout", async (req, res) => {
 
   try {
     await client.sessions.revoke({ session_token });
-
     res.json({
       success: true,
       message: "logged",
     });
   } catch (err) {
-    console.log(err);
     res.json({
       success: false,
       message: err.error_message,
@@ -110,5 +105,43 @@ app.post("/logout", async (req, res) => {
     });
   }
 });
+
+app.post("/reset-password", async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    await client.passwords.email
+      .resetStart({
+        email,
+        reset_password_expiration_minutes: 5,
+        locale: "pt-br",
+      })
+      .then((resp) => {
+        console.log(resp);
+      });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// app.post("/toggle-password", async (req, res) => {
+//   console.log("oi");
+//   const { token, password } = req.body;
+//   console.log("oisoidf");
+//   try {
+//     await client.passwords
+//       .resetByEmail({
+//         token,
+//         password,
+//         session_duration_minutes: 60,
+//       })
+
+//       .then((resp) => {
+//         console.log(resp);
+//       });
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 
 app.listen(port, () => console.log(`Server started on port ${port}`));

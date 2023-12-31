@@ -1,6 +1,8 @@
 <script>
 import InputForm from "./icons/InputForm.vue";
+import validateForm from "@/mixins/validateForm.js";
 export default {
+  mixins: [validateForm],
   components: {
     InputForm,
   },
@@ -10,16 +12,19 @@ export default {
       email: "miquelven.silva@gmail.com",
       password: "@miquelven2121",
       C_password: "@miquelven2121",
+
+      warningName: "",
+      warningEmail: "",
+      warningPassword: "",
+      warningC_password: "",
     };
   },
+  mounted() {
+    this.$refs.InputForm.$refs.input.focus();
+  },
   methods: {
-    async register() {
-      if (!this.email || !this.password || !this.C_password) {
-        return alert("Please fill in all fields");
-      }
-      if (this.password !== this.C_password) {
-        return alert("Passwords do not match");
-      }
+    async register(e) {
+      this.inputCheck(e.target.getElementsByTagName("input"));
 
       const res = await fetch("http://localhost:3333/register", {
         method: "POST",
@@ -33,12 +38,20 @@ export default {
         }),
       }).then((res) => res.json());
 
+      if (!this.warningsCheck()) {
+        return;
+      }
+
       if (res.success) {
         localStorage.setItem("token", res.token);
-        console.log("logou");
+
         this.$router.push("/");
       } else {
-        alert(res.message);
+        if (
+          res.message ==
+          "A user with the specified email already exists for this project."
+        )
+          alert("Esse usuário já está cadastrado!");
       }
     },
     showIconPassword(e) {
@@ -59,6 +72,24 @@ export default {
         ? input.setAttribute("type", "password")
         : input.setAttribute("type", "text");
     },
+    inputCheck(inputs) {
+      this.warningName = this.validateName(inputs[0]);
+      this.warningEmail = this.validateEmail(inputs[1]);
+      this.warningPassword = this.validatePassword(inputs[2]);
+
+      this.warningC_password = this.validateConfirmPassword(
+        inputs[3],
+        inputs[2]
+      );
+    },
+    warningsCheck() {
+      return this.warningName == "" &&
+        this.warningEmail == "" &&
+        this.warningPassword == "" &&
+        this.warningC_password == ""
+        ? true
+        : false;
+    },
   },
 };
 </script>
@@ -69,28 +100,32 @@ export default {
     id="container"
   >
     <form
-      class="relative z-10 w-72 flex flex-col justify-center items-center gap-5"
+      class="relative z-10 w-72 flex flex-col justify-center items-center gap-9"
       @submit.prevent="register"
     >
-      <InputForm
-        type="text"
-        text="Digite seu nome"
-        focus="true"
-        @valueInput="(nameValue) => (userName = nameValue)"
-      />
-      <InputForm
-        type="text"
-        text="Digite o email"
-        focus="false"
-        @valueInput="(emailValue) => (email = emailValue)"
-      />
-
+      <div class="w-full flex items-center relative">
+        <InputForm
+          type="text"
+          text="Digite seu nome"
+          ref="InputForm"
+          @valueInput="(nameValue) => (userName = nameValue)"
+          :warning="warningName"
+        />
+      </div>
+      <div class="w-full flex items-center relative">
+        <InputForm
+          type="text"
+          text="Digite o email"
+          @valueInput="(emailValue) => (email = emailValue)"
+          :warning="warningEmail"
+        />
+      </div>
       <div class="w-full flex items-center relative">
         <InputForm
           type="password"
           text="Crie uma senha"
-          focus="false"
           @valueInput="(passwordValue) => (password = passwordValue)"
+          :warning="warningPassword"
         />
         <font-awesome-icon
           :icon="['fas', 'eye']"
@@ -103,8 +138,8 @@ export default {
         <InputForm
           type="password"
           text="Repita a senha"
-          focus="false"
           @valueInput="(C_passwordValue) => (C_password = C_passwordValue)"
+          :warning="warningC_password"
         />
         <font-awesome-icon
           :icon="['fas', 'eye']"
@@ -115,17 +150,10 @@ export default {
 
       <button
         type="submit"
-        class="mt-2 w-full shadow-lg shadow-black/40 border-2 border-gray-300/20 bg-black p-2 rounded-md hover:shadow-gray-200/20 text-white/80 hover:cursor-pointer hover:bg-black/70"
+        class="mt-2 w-full outline-none shadow-lg shadow-black/40 border-2 border-gray-300/20 bg-black p-2 rounded-md hover:shadow-gray-200/20 text-white/80 hover:cursor-pointer hover:bg-black/70"
       >
         Registrar
       </button>
-
-      <!-- <input
-        type="submit"
-        value="Cadastrar"
-        @click.prevent=""
-        class="mt-2 w-full shadow-lg shadow-black/40 border-2 border-gray-300/20 bg-black p-2 rounded-md hover:shadow-gray-200/20 text-white/80 hover:cursor-pointer hover:bg-black/70"
-      /> -->
 
       <span
         >Já tem uma conta?

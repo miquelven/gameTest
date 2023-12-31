@@ -1,24 +1,29 @@
 <script>
 import InputForm from "./icons/InputForm.vue";
+import validateForm from "@/mixins/validateForm.js";
 
 export default {
+  mixins: [validateForm],
   data() {
     return {
       email: "",
       password: "",
+
+      warningEmail: "",
+      warningPassword: "",
     };
   },
   mounted() {
     if (localStorage.getItem("token")) localStorage.removeItem("token");
+    this.$refs.InputForm.$refs.input.focus();
   },
   components: {
     InputForm,
   },
   methods: {
-    async login() {
-      if (!this.email || !this.password) {
-        return alert("Please fill an all fields");
-      }
+    async login(e) {
+      this.inputCheck(e.target.getElementsByTagName("input"));
+
       const res = await fetch("http://localhost:3333/login", {
         method: "POST",
         headers: {
@@ -30,12 +35,23 @@ export default {
         }),
       }).then((res) => res.json());
 
+      if (!this.warningsCheck()) {
+        return;
+      }
+
       if (res.success) {
         localStorage.setItem("token", res.token);
 
         this.$router.push("/");
       } else {
-        alert(res.message);
+        switch (res.message) {
+          case "Email could not be found.":
+            alert("Email não cadastrado!");
+            break;
+          case "Unauthorized credentials.":
+            alert("Senha inválida!");
+            break;
+        }
       }
     },
     showIconPassword(e) {
@@ -56,6 +72,30 @@ export default {
         ? input.setAttribute("type", "password")
         : input.setAttribute("type", "text");
     },
+    inputCheck(inputs) {
+      this.warningEmail = this.validateEmail(inputs[0]);
+      this.warningPassword = this.validatePassword(inputs[1]);
+    },
+    warningsCheck() {
+      return this.warningEmail == "" && this.warningPassword == ""
+        ? true
+        : false;
+    },
+    async resetPassword(e) {
+      // e.preventDefault();
+      // console.log("um email foi enviado para: ", this.email);
+      // if (this.validateEmail(this.$refs.InputForm.$refs.input) == "") {
+      //   const res = await fetch("http://localhost:3333/reset-password", {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify({
+      //       email: this.email,
+      //     }),
+      //   }).then((res) => res.json());
+      // }
+    },
   },
 };
 </script>
@@ -67,21 +107,24 @@ export default {
   >
     <div class="relative z-10 mb-28">
       <div class="flex justify-center items-center flex-col">
-        <img src="@/assets/svgs/logo.svg" alt="" class="w-56 brightness-125" />
+        <img src="@/assets/svgs/logo.svg" alt="" class="w-48 brightness-125" />
 
-        <form action="" class="flex flex-col gap-4 w-full p-2">
-          <InputForm
-            type="email"
-            text="Email"
-            focus="true"
-            @valueInput="(emailValue) => (email = emailValue)"
-          />
+        <form class="flex flex-col gap-9 w-full p-2" @submit.prevent="login">
+          <div class="flex items-center relative">
+            <InputForm
+              ref="InputForm"
+              type="email"
+              text="Email"
+              @valueInput="(emailValue) => (email = emailValue)"
+              :warning="warningEmail"
+            />
+          </div>
           <div class="flex items-center relative">
             <InputForm
               type="password"
               text="Senha"
-              focus="false"
               @valueInput="(passwordValue) => (password = passwordValue)"
+              :warning="warningPassword"
             />
             <!-- Add Icons using String format -->
             <font-awesome-icon
@@ -94,12 +137,11 @@ export default {
           <input
             type="submit"
             value="Entrar"
-            @click.prevent="login"
-            class="mt-2 w-full shadow-lg shadow-black/40 border-2 border-gray-300/20 bg-black p-2 rounded-md hover:shadow-gray-200/20 text-white/80 hover:cursor-pointer hover:bg-black/70"
+            class="mt-2 w-full outline-none shadow-lg shadow-black/40 border-2 border-gray-300/20 bg-black p-2 rounded-md hover:shadow-gray-200/20 text-white/80 hover:cursor-pointer hover:bg-black/70"
           />
         </form>
         <div class="flex flex-col justify-center items-center mt-6">
-          <span>
+          <span @click.prevent="resetPassword">
             <a href="" class="text-gray-200/80 hover:underline"
               >Esqueceu sua senha?</a
             >
@@ -145,8 +187,6 @@ export default {
             </div>
           </div>
         </div>
-
-        <div></div>
       </div>
     </div>
   </div>
