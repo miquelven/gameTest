@@ -1,11 +1,18 @@
 <script>
-import Login from "@/views/Login.vue";
-import Register from "@/views/Register.vue";
+import GameList from "./icons/GameList.vue";
 
 export default {
   components: {
-    Login,
-    Register,
+    GameList,
+  },
+  data() {
+    return {
+      name: "",
+    };
+  },
+  mounted() {
+    const nameUser = localStorage.getItem("name");
+    this.name = nameUser[0].toUpperCase() + nameUser.substring(1);
   },
   methods: {
     async logout() {
@@ -36,26 +43,37 @@ export default {
 </script>
 
 <template>
-  <h1 @click="logout">logout</h1>
-  <header class="w-full">
+  <!-- <h1 @click="logout">logout</h1> -->
+  <header class="w-full text-gray-400 bg-neutral-900/40 shadow shadow-white/10">
     <div class="max-w-screen-2xl m-auto flex justify-between items-center">
-      <img src="../assets/svgs/logo.svg" alt="logo" width="100" />
+      <img src="../assets/svgs/logo.svg" alt="logo" width="70" />
 
-      <nav class="flex gap-8 text-lg">
-        <a href="" class="hover:font-bold">Pontuações</a>
-        <a href="" class="hover:font-bold">Melhores</a>
-        <a href="" class="hover:font-bold">Contato</a>
-        <a href="" class="hover:font-bold">Sobre</a>
+      <nav class="flex gap-12 text-lg">
+        <a href="" class="hover:text-white hover:scale-105 transition-all"
+          >Pontuações</a
+        >
+        <a href="" class="hover:text-white hover:scale-105 transition-all"
+          >Melhores</a
+        >
+        <a href="" class="hover:text-white hover:scale-105 transition-all"
+          >Contato</a
+        >
+        <a href="" class="hover:text-white hover:scale-105 transition-all"
+          >Sobre</a
+        >
       </nav>
 
-      <h5 class="text-lg">Miquelven</h5>
+      <h5 class="text-lg text-white flex flex-col items-end">
+        <span class="text-sm text-gray-400">Seja bem-vindo: </span>
+        {{ name }}
+      </h5>
     </div>
   </header>
 
   <main class="w-full my-19">
     <!-- container -->
     <div class="max-w-screen-2xl m-auto">
-      <div id="welcomeArea" class="flex">
+      <div id="welcomeArea" class="flex mb-20">
         <!-- left-size -->
         <div class="flex-1 flex flex-col gap-36 justify-center">
           <!-- title -->
@@ -78,22 +96,38 @@ export default {
           >
         </div>
         <!-- right-size -->
-        <div class="flex-1 flex flex-col justify-center items-end gap-14">
+        <div
+          class="flex-1 flex flex-col justify-center items-end gap-14 relative"
+        >
           <h2 class="text-5xl">Irá encarar esse desafio?</h2>
 
           <div
-            class="shadow-lg shadow-yellow-900 flex rounded-full transition-all ease-in bg-gradient-to-tr from-yellow-500 to-white/50 p-1 hover:shadow-none"
+            class="shadow-lg shadow-yellow-900 flex rounded-full transition-all ease-in bg-gradient-to-tr from-yellow-500 to-white/50 p-1 hover:scale-95 hover:shadow-none"
           >
             <button
-              class="flex-1 shadow font-bold md:text-xl bg-black px-6 py-3 rounded-full hover:bg-black/30"
+              class="flex-1 font-bold md:text-xl bg-black px-6 py-3 rounded-full"
             >
               Iniciar desafio
             </button>
           </div>
+          <div
+            class="absolute bottom-24 rotate-[-45deg] flex flex-col items-center gap-7"
+          >
+            <div
+              class="bg-yellow-400 w-4 h-1 shadow-md shadow-yellow-100/40 rounded-full"
+            ></div>
+            <div
+              class="bg-yellow-400 w-12 h-1 shadow-md shadow-yellow-100/40 rounded-full"
+            ></div>
+            <div
+              class="bg-yellow-400 w-20 h-1 shadow-md shadow-yellow-100/40 rounded-full"
+            ></div>
+          </div>
         </div>
       </div>
+      <!-- ListGames -->
       <div>
-        <h4>ListGames - Area</h4>
+        <GameList />
       </div>
     </div>
   </main>
@@ -126,6 +160,6 @@ export default {
   opacity: 0;
 }
 #welcomeArea {
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 70px);
 }
 </style>

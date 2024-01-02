@@ -82,19 +82,18 @@ export default {
         : false;
     },
     async resetPassword(e) {
-      // e.preventDefault();
-      // console.log("um email foi enviado para: ", this.email);
-      // if (this.validateEmail(this.$refs.InputForm.$refs.input) == "") {
-      //   const res = await fetch("http://localhost:3333/reset-password", {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify({
-      //       email: this.email,
-      //     }),
-      //   }).then((res) => res.json());
-      // }
+      e.preventDefault();
+      if (this.validateEmail(this.$refs.InputForm.$refs.input) == "") {
+        const res = await fetch("http://localhost:3333/reset-password", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: this.email,
+          }),
+        }).then((res) => res.json());
+      }
     },
   },
 };

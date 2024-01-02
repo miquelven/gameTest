@@ -34,6 +34,8 @@ app.post("/register", async (req, res) => {
     res.json({
       success: true,
       message: "success",
+      user_id: resp.user.user_id,
+      name: resp.user.name.first_name,
       token: resp.session_token,
     });
   } catch (err) {
@@ -124,24 +126,28 @@ app.post("/reset-password", async (req, res) => {
   }
 });
 
-// app.post("/toggle-password", async (req, res) => {
-//   console.log("oi");
-//   const { token, password } = req.body;
-//   console.log("oisoidf");
-//   try {
-//     await client.passwords
-//       .resetByEmail({
-//         token,
-//         password,
-//         session_duration_minutes: 60,
-//       })
+app.post("/togglepassword", async (req, res) => {
+  const { token, password } = req.body;
+  try {
+    await client.passwords.email
+      .reset({
+        token,
+        password,
+      })
 
-//       .then((resp) => {
-//         console.log(resp);
-//       });
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
+      .then((resp) => {
+        resp.json({
+          success: true,
+          message: "logged",
+        });
+      });
+  } catch (err) {
+    res.json({
+      success: false,
+      message: err.error_message,
+      err: err,
+    });
+  }
+});
 
 app.listen(port, () => console.log(`Server started on port ${port}`));

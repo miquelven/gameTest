@@ -43,8 +43,10 @@ export default {
       }
 
       if (res.success) {
-        localStorage.setItem("token", res.token);
+        const { name, token } = res;
 
+        localStorage.setItem("name", name);
+        localStorage.setItem("token", token);
         this.$router.push("/");
       } else {
         if (
