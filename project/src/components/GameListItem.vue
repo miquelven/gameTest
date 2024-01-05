@@ -1,8 +1,12 @@
 <template>
   <div
-    class="w-48 h-60 m-auto rounded-2xl flex flex-col justify-center items-center hover:scale-150 hover:bg-yellow-400 hover:shadow-lg hover:shadow-yellow-400 hover:text-black hover:font-bold"
+    class="max-w-48 h-60 p-5 m-auto rounded-xl flex flex-col justify-center items-center gap-5 hover:scale-150 hover:bg-yellow-400 hover:shadow-lg hover:shadow-yellow-400 hover:font-bold"
   >
-    <img src="" alt="img do jogo" />
+    <img
+      src="../assets/images/backgroundLogin.png"
+      alt="img do jogo"
+      class="rounded-xl"
+    />
     <h4>Nome do Jogo</h4>
   </div>
 </template>

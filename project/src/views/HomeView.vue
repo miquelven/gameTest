@@ -131,7 +131,7 @@ export default {
       </div>
     </div>
   </main>
-  <footer class="m-auto my-10 text-sm text-gray-300">
+  <footer class="m-auto mt-20 mb-10 text-sm text-gray-300">
     <div class="max-w-screen-2xl m-auto">
       <span class="flex items-center">Games in a Game.</span>
 
