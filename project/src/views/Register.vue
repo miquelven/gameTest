@@ -45,8 +45,9 @@ export default {
       if (res.success) {
         const { name, token } = res;
 
-        localStorage.setItem("name", name);
         localStorage.setItem("token", token);
+        const formattedName = name.charAt(0).toUpperCase() + name.substring(1);
+        localStorage.setItem("name", formattedName);
         this.$router.push("/");
       } else {
         if (

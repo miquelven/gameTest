@@ -6,6 +6,7 @@ import Register from "@/views/Register.vue";
 import AboutView from "@/views/AboutView.vue";
 import Contact from "@/views/Contact.vue";
 import Auth from "@/views/Auth.vue";
+import GamesPage from "@/views/GamesPage.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -47,6 +48,11 @@ const router = createRouter({
       path: "/resetpassword/:params*",
       name: "resetpassword",
       component: Auth,
+    },
+    {
+      path: "/gamesPage",
+      name: "gamesPage",
+      component: GamesPage,
     },
   ],
 });

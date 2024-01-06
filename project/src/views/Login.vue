@@ -6,16 +6,18 @@ export default {
   mixins: [validateForm],
   data() {
     return {
+      name: "",
       email: "",
       password: "",
 
+      warningName: "",
       warningEmail: "",
       warningPassword: "",
     };
   },
   mounted() {
     if (localStorage.getItem("token")) localStorage.removeItem("token");
-    this.$refs.InputForm.$refs.input.focus();
+    this.$refs.InputName.$refs.input.focus();
   },
   components: {
     InputForm,
@@ -41,7 +43,9 @@ export default {
 
       if (res.success) {
         localStorage.setItem("token", res.token);
-
+        const formattedName =
+          this.name.charAt(0).toUpperCase() + this.name.substring(1);
+        localStorage.setItem("name", formattedName);
         this.$router.push("/");
       } else {
         switch (res.message) {
@@ -73,8 +77,9 @@ export default {
         : input.setAttribute("type", "text");
     },
     inputCheck(inputs) {
-      this.warningEmail = this.validateEmail(inputs[0]);
-      this.warningPassword = this.validatePassword(inputs[1]);
+      this.warningName = this.validateName(inputs[0]);
+      this.warningEmail = this.validateEmail(inputs[1]);
+      this.warningPassword = this.validatePassword(inputs[2]);
     },
     warningsCheck() {
       return this.warningEmail == "" && this.warningPassword == ""
@@ -83,7 +88,7 @@ export default {
     },
     async resetPassword(e) {
       e.preventDefault();
-      if (this.validateEmail(this.$refs.InputForm.$refs.input) == "") {
+      if (this.validateEmail(this.$refs.InputEmail.$refs.input) == "") {
         const res = await fetch("http://localhost:3333/reset-password", {
           method: "POST",
           headers: {
@@ -111,7 +116,16 @@ export default {
         <form class="flex flex-col gap-9 w-full p-2" @submit.prevent="login">
           <div class="flex items-center relative">
             <InputForm
-              ref="InputForm"
+              ref="InputName"
+              type="text"
+              text="Nome"
+              @valueInput="(nameValue) => (name = nameValue)"
+              :warning="warningName"
+            />
+          </div>
+          <div class="flex items-center relative">
+            <InputForm
+              ref="InputEmail"
               type="email"
               text="Email"
               @valueInput="(emailValue) => (email = emailValue)"

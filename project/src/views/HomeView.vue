@@ -43,7 +43,7 @@ export default {
 </script>
 
 <template>
-  <!-- <h1 @click="logout">logout</h1> -->
+  <h1 @click="logout">logout</h1>
   <header class="w-full text-gray-400 bg-neutral-900/40 shadow shadow-white/10">
     <div class="max-w-screen-2xl m-auto flex justify-between items-center">
       <img src="../assets/svgs/logo.svg" alt="logo" width="70" />
@@ -104,11 +104,12 @@ export default {
           <div
             class="shadow-lg shadow-yellow-900 flex rounded-full transition-all ease-in bg-gradient-to-tr from-yellow-500 to-white/50 p-1 hover:scale-95 hover:shadow-none"
           >
-            <button
+            <router-link
+              to="/gamesPage"
               class="flex-1 font-bold md:text-xl bg-black px-6 py-3 rounded-full"
             >
               Iniciar desafio
-            </button>
+            </router-link>
           </div>
           <div
             class="absolute bottom-24 rotate-[-45deg] flex flex-col items-center gap-7"
