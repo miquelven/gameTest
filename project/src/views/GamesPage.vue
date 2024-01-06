@@ -32,8 +32,11 @@ export default {
 </script>
 
 <template>
-  <div class="h-screen w-full bg-red-500 flex justify-center items-center">
-    <div class="border-4 border-white size-2/3">
+  <div class="h-screen w-full flex flex-col gap-10 justify-center items-center">
+    <div class="text-4xl">00:00</div>
+    <div
+      class="rounded-xl flex justify-center items-center border-8 border-double border-yellow-500 shadow-lg shadow-orange-200/30 size-2/3"
+    >
       <template v-if="counter == 0"> <TicTacToe /> </template>
 
       <template> </template>
