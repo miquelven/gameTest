@@ -46,6 +46,9 @@ export default {
           this.square[lines[i][2]] == this.player
         ) {
           this.winner = true;
+          this.player == "O"
+            ? this.$emit("tictactoe", "tictactoe", true)
+            : this.$emit("tictactoe", "tictactoe", false);
           return;
         }
       }
@@ -60,7 +63,6 @@ export default {
         } while (this.square[pos] !== "");
       } else {
         pos = machineMove(this.square);
-        console.log(pos);
       }
       setTimeout(() => {
         this.square[pos] = this.player;
@@ -71,6 +73,16 @@ export default {
     },
     verifyGameTied() {
       return this.square.every((squareValue) => squareValue !== "");
+    },
+  },
+  watch: {
+    // winner: false,
+    //   gameTied: false
+    winner(current, oldValue) {
+      this.$emit("addCounter");
+    },
+    gameTied(current, oldValue) {
+      this.$emit("addCounter");
     },
   },
 };
