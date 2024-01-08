@@ -58,7 +58,7 @@ export default {
       }
     },
     showIconPassword(e) {
-      let passwordIconEl = e.target;
+      let passwordIconEl = e.currentTarget;
 
       let opacity = passwordIconEl.style.opacity;
       if (opacity == 0) opacity = "0.5";

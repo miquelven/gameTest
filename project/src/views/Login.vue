@@ -59,7 +59,7 @@ export default {
       }
     },
     showIconPassword(e) {
-      let passwordIconEl = e.target;
+      let passwordIconEl = e.currentTarget;
 
       let opacity = passwordIconEl.style.opacity;
       if (opacity == 0) opacity = "0.5";
@@ -142,7 +142,7 @@ export default {
             <!-- Add Icons using String format -->
             <font-awesome-icon
               :icon="['fas', 'eye']"
-              class="absolute opacity-60 right-0 cursor-pointer p-4"
+              class="absolute opacity-60 right-0 cursor-pointer p-4 z-0"
               @click="showIconPassword"
             />
           </div>

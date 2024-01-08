@@ -76,8 +76,6 @@ export default {
     },
   },
   watch: {
-    // winner: false,
-    //   gameTied: false
     winner(current, oldValue) {
       this.$emit("addCounter");
     },

@@ -11,10 +11,18 @@ import SpaceInvaders from "./icons/games/SpaceInvaders.vue";
 export default {
   components: {
     TicTacToe,
+    Memory,
+    Pong,
+    Breakout,
+    FlappyBird,
+    Simon,
+    Snake,
+    SpaceInvaders,
   },
   data() {
     return {
       showModal: true,
+      // serve para ajudar a fazer  a contagem dos pontos depois
       data: [],
       counter: 0,
       intervalCounter: null,
@@ -63,20 +71,23 @@ export default {
   <div class="h-screen w-full flex flex-col gap-10 justify-center items-center">
     <!-- area do modal -->
     <template v-if="showModal">
-      <div class="absolute inset-0 bg-black/90"></div>
       <div
-        class="bg-white text-black flex flex-col gap-8 p-5 h-96 w-96 absolute rounded-xl border-8 border-gray-800 font-bold"
+        class="absolute inset-0 bg-black/90 flex justify-center items-center"
       >
-        <h2>Há um contador em todos os jogos</h2>
-        <p>Termine todos no menor tempo possível</p>
-        <p>Poderá ver sua pontuação assim que terminar os jogos.</p>
-        <p>O contador iniciará assim que fechar essa janela</p>
-        <button
-          @click="startCounter"
-          class="bg-black/50 rounded-md text-white py-2 hover:bg-black/70"
+        <div
+          class="bg-white text-black flex flex-col gap-8 p-5 h-96 w-96 absolute rounded-xl border-8 border-gray-800 font-bold"
         >
-          Continuar
-        </button>
+          <h2>Há um contador em todos os jogos</h2>
+          <p>Termine todos no menor tempo possível</p>
+          <p>Poderá ver sua pontuação assim que terminar os jogos.</p>
+          <p>O contador iniciará assim que fechar essa janela</p>
+          <button
+            @click="startCounter"
+            class="bg-black/50 rounded-md text-white py-2 hover:bg-black/70"
+          >
+            Continuar
+          </button>
+        </div>
       </div>
     </template>
 
@@ -96,19 +107,21 @@ export default {
         <TicTacToe @addCounter="() => counter++" @tictactoe="addData" />
       </template>
 
-      <template v-else-if="counter == 1"> <h1>Outro template</h1> </template>
+      <template v-else-if="counter == 1">
+        <Memory @addCounter="() => counter++" />
+      </template>
 
-      <template> </template>
+      <template v-else-if="counter == 2"> <Pong /> </template>
 
-      <template> </template>
+      <template v-else-if="counter == 3"> <Breakout /> </template>
 
-      <template> </template>
+      <template v-else-if="counter == 4"> <FlappyBird /> </template>
 
-      <template> </template>
+      <template v-else-if="counter == 5"> <Simon /> </template>
 
-      <template> </template>
+      <template v-else-if="counter == 6"> <Snake /> </template>
 
-      <template> </template>
+      <template v-else-if="counter == 7"> <SpaceInvaders /> </template>
     </div>
   </div>
 </template>
