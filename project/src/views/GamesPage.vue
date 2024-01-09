@@ -111,7 +111,9 @@ export default {
         <Memory @addCounter="() => counter++" />
       </template>
 
-      <template v-else-if="counter == 2"> <Pong /> </template>
+      <template v-else-if="counter == 2">
+        <Pong @addCounter="() => counter++" />
+      </template>
 
       <template v-else-if="counter == 3"> <Breakout /> </template>
 
