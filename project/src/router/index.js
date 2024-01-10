@@ -7,6 +7,8 @@ import AboutView from "@/views/AboutView.vue";
 import Contact from "@/views/Contact.vue";
 import Auth from "@/views/Auth.vue";
 import GamesPage from "@/views/GamesPage.vue";
+import ScoreView from "@/views/ScoreView.vue";
+import BestView from "@/views/BestView.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -25,14 +27,14 @@ const router = createRouter({
       component: NotFound,
     },
     {
-      path: "/login",
-      name: "login",
-      component: Login,
-    },
-    {
       path: "/about",
       name: "about",
       component: AboutView,
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: Login,
     },
     {
       path: "/contact",
@@ -48,6 +50,16 @@ const router = createRouter({
       path: "/resetpassword/:params*",
       name: "resetpassword",
       component: Auth,
+    },
+    {
+      path: "/scores",
+      name: "scores",
+      component: ScoreView,
+    },
+    {
+      path: "/best",
+      name: "best",
+      component: BestView,
     },
     {
       path: "/gamesPage",

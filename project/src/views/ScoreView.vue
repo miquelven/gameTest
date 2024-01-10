@@ -12,17 +12,17 @@ export default {
 
 <template>
   <Header />
-  <main class="w-full my-19" id="best">
+  <main class="w-full my-19" id="score">
     <!-- container -->
     <div class="max-w-screen-2xl m-auto flex justify-center">
-      Create contact
+      Create a table
     </div>
   </main>
   <Footer />
 </template>
 
 <style scoped>
-#best {
+#score {
   min-height: calc(100vh - 250px);
 }
 </style>

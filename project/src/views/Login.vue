@@ -106,7 +106,7 @@ export default {
 
 <template>
   <div
-    id="container"
+    id="login"
     class="w-screen h-screen flex flex-col justify-center items-center"
   >
     <div class="relative z-10 mb-28">
@@ -160,9 +160,11 @@ export default {
             >
           </span>
           <span>
-            <p class="text-gray-400/80 hover:underline">
+            <p class="text-gray-400/80">
               Não tem uma conta?
-              <router-link to="/register">Crie uma conta.</router-link>
+              <router-link to="/register" class="underline"
+                >Crie uma conta.</router-link
+              >
             </p>
           </span>
         </div>
@@ -206,13 +208,13 @@ export default {
 </template>
 
 <style scoped>
-#container {
+#login {
   background: url("@/assets/images/backgroundLogin.png");
   background-position: center;
   background-size: cover;
   position: relative;
 }
-#container::before {
+#login::before {
   content: "";
   width: 100vw;
   height: 100vh;

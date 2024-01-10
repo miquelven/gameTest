@@ -15,7 +15,7 @@ export default {
   <main class="w-full my-19" id="best">
     <!-- container -->
     <div class="max-w-screen-2xl m-auto flex justify-center">
-      Create contact
+      Create a table
     </div>
   </main>
   <Footer />

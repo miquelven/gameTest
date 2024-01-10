@@ -1,79 +1,24 @@
 <script>
 import GameList from "./icons/GameList.vue";
+import Header from "./icons/Header.vue";
+import Footer from "./icons/Footer.vue";
 
 export default {
   components: {
     GameList,
-  },
-  data() {
-    return {
-      name: "",
-    };
-  },
-  mounted() {
-    const nameUser = localStorage.getItem("name");
-    this.name = nameUser[0].toUpperCase() + nameUser.substring(1);
-  },
-  methods: {
-    async logout() {
-      const res = await fetch("http://localhost:3333/logout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          session_token: localStorage.getItem("token"),
-        }),
-      }).then((res) => res.json());
-
-      if (res.success) {
-        localStorage.removeItem("token");
-        this.$router.push("/login");
-      } else {
-        if (res.message == "Session could not be found.") {
-          if (localStorage.getItem("token")) {
-            localStorage.removeItem("token");
-          }
-          this.$router.push("/login");
-        }
-      }
-    },
+    Header,
+    Footer,
   },
 };
 </script>
 
 <template>
-  <h1 @click="logout">logout</h1>
-  <header class="w-full text-gray-400 bg-neutral-900/40 shadow shadow-white/10">
-    <div class="max-w-screen-2xl m-auto flex justify-between items-center">
-      <img src="../assets/svgs/logo.svg" alt="logo" width="70" />
-
-      <nav class="flex gap-12 text-lg">
-        <a href="" class="hover:text-white hover:scale-105 transition-all"
-          >Pontuações</a
-        >
-        <a href="" class="hover:text-white hover:scale-105 transition-all"
-          >Melhores</a
-        >
-        <a href="" class="hover:text-white hover:scale-105 transition-all"
-          >Contato</a
-        >
-        <a href="" class="hover:text-white hover:scale-105 transition-all"
-          >Sobre</a
-        >
-      </nav>
-
-      <h5 class="text-lg text-white flex flex-col items-end">
-        <span class="text-sm text-gray-400">Seja bem-vindo: </span>
-        {{ name }}
-      </h5>
-    </div>
-  </header>
+  <Header />
 
   <main class="w-full my-19">
     <!-- container -->
     <div class="max-w-screen-2xl m-auto">
-      <div id="welcomeArea" class="flex mb-20">
+      <div class="flex mb-20" id="container">
         <!-- left-size -->
         <div class="flex-1 flex flex-col gap-36 justify-center">
           <!-- title -->
@@ -127,40 +72,16 @@ export default {
         </div>
       </div>
       <!-- ListGames -->
-      <div>
+      <div class="my-56">
         <GameList />
       </div>
     </div>
   </main>
-  <footer class="m-auto mt-20 mb-10 text-sm text-gray-300">
-    <div class="max-w-screen-2xl m-auto">
-      <span class="flex items-center">Games in a Game.</span>
-
-      <!-- line -->
-      <div class="w-full h-1 bg-gray-500 my-6"></div>
-
-      <div class="flex justify-between items-center">
-        <p>@2023 GG. Todos os direitos reservados</p>
-
-        <nav class="flex gap-16">
-          <a href="">Termos de Serviços</a>
-          <a href="">Politica de privacidade</a>
-        </nav>
-      </div>
-    </div>
-  </footer>
+  <Footer />
 </template>
 
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-#welcomeArea {
-  min-height: calc(100vh - 70px);
+#container {
+  min-height: calc(100vh - 250px);
 }
 </style>
