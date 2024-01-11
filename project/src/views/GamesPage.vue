@@ -53,8 +53,8 @@ export default {
     stopCounter() {
       clearInterval(this.intervalCounter);
     },
-    addData(name, value) {
-      this.data.push({ name, value });
+    addData(value) {
+      this.data.push({ value });
     },
   },
   computed: {
@@ -115,9 +115,11 @@ export default {
         <Pong @addCounter="() => counter++" />
       </template>
 
-      <template v-else-if="counter == 3"> <Breakout /> </template>
+      <template v-else-if="counter == 3">
+        <Breakout @addCounter="() => counter++" @winner="addData" />
+      </template>
 
-      <template v-else-if="counter == 4"> <FlappyBird /> </template>
+      <template v-else-if="counter == 0"> <FlappyBird /> </template>
 
       <template v-else-if="counter == 5"> <Simon /> </template>
 
