@@ -123,9 +123,13 @@ export default {
         <FlappyBird @addCounter="() => counter++" @score="addData" />
       </template>
 
-      <template v-else-if="counter == 0"> <Simon /> </template>
+      <template v-else-if="counter == 5">
+        <Simon @addCounter="() => counter++" @winner="addData" />
+      </template>
 
-      <template v-else-if="counter == 6"> <Snake /> </template>
+      <template v-else-if="counter == 0">
+        <Snake @addCounter="() => counter++" />
+      </template>
 
       <template v-else-if="counter == 7"> <SpaceInvaders /> </template>
     </div>

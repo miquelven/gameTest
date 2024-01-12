@@ -65,3 +65,4 @@ diminuir a fonte do menu do home
 FAZER A TRANSIÇÃO PARA CADA JOGO
 arrumar o container das views
 mudar todo o gamelist, fazer uma div com o background image
+vue-toastification no login
