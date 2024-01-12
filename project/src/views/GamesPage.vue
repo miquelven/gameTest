@@ -70,7 +70,7 @@ export default {
 <template>
   <div class="h-screen w-full flex flex-col gap-10 justify-center items-center">
     <!-- area do modal -->
-    <template v-if="showModal">
+    <!-- <template v-if="showModal">
       <div
         class="absolute inset-0 bg-black/90 flex justify-center items-center"
       >
@@ -89,7 +89,7 @@ export default {
           </button>
         </div>
       </div>
-    </template>
+    </template> -->
 
     <!-- temporizador -->
     <input
