@@ -13,7 +13,7 @@ export default {
       class="shadow-lg shadow-white/80 border border-white rounded-3xl min-w-96 p-7 bg-neutral-950"
     >
       <ul class="grid gap-16 grid-cols-4 items-center">
-        <GameListItem img="" name="Jogo da Velha" />
+        <GameListItem img="TicTacToe.png" name="Jogo da Velha" />
         <GameListItem img="" name="Jogo da Memória" />
         <GameListItem img="" name="Pong" />
         <GameListItem img="" name="Breakout" />

@@ -103,7 +103,7 @@ export default {
     <div
       class="rounded-xl flex justify-center items-center border-8 border-double border-yellow-500 shadow-lg shadow-orange-200/30 size-2/3"
     >
-      <template v-if="counter == 0 && !showModal">
+      <template v-if="counter == 10 && !showModal">
         <TicTacToe @addCounter="() => counter++" @tictactoe="addData" />
       </template>
 
@@ -119,9 +119,11 @@ export default {
         <Breakout @addCounter="() => counter++" @winner="addData" />
       </template>
 
-      <template v-else-if="counter == 0"> <FlappyBird /> </template>
+      <template v-else-if="counter == 4">
+        <FlappyBird @addCounter="() => counter++" @score="addData" />
+      </template>
 
-      <template v-else-if="counter == 5"> <Simon /> </template>
+      <template v-else-if="counter == 0"> <Simon /> </template>
 
       <template v-else-if="counter == 6"> <Snake /> </template>
 

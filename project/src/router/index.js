@@ -5,6 +5,7 @@ import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
 import AboutView from "@/views/AboutView.vue";
 import Contact from "@/views/Contact.vue";
+import PerfilView from "@/views/PerfilView.vue";
 import Auth from "@/views/Auth.vue";
 import GamesPage from "@/views/GamesPage.vue";
 import ScoreView from "@/views/ScoreView.vue";
@@ -60,6 +61,11 @@ const router = createRouter({
       path: "/best",
       name: "best",
       component: BestView,
+    },
+    {
+      path: "/perfil",
+      name: "perfil",
+      component: PerfilView,
     },
     {
       path: "/gamesPage",

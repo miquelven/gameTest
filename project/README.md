@@ -61,4 +61,7 @@ ETAPAS:
 
 FAZER HOJE: DEIXAR RESPONSIVO.COMEÇAR A CRIAR OS JOGOS (FAZER PELO MENOS 1).  
 ( TODOS ELES SEGUIRÃO UM LAYOUT PADRÃO )
+diminuir a fonte do menu do home
 FAZER A TRANSIÇÃO PARA CADA JOGO
+arrumar o container das views
+mudar todo o gamelist, fazer uma div com o background image

@@ -81,13 +81,18 @@ export default {
         </button>
         <template v-if="showItem">
           <div
-            class="relative transition-all self-start text-white/80 cursor-pointer hover:opacity-70"
+            class="relative transition-all self-start text-white cursor-pointer"
           >
+            <router-link
+              to="/perfil"
+              class="absolute mt-5 bg-neutral-900/40 w-40 border-2 border-yellow-500/50 border-y-transparent text-center hover:opacity-70"
+              >Meu perfil</router-link
+            >
             <button
               @click="logout"
-              class="absolute mt-5 bg-neutral-900/40 w-40 border-2 border-yellow-500/50 border-y-transparent"
+              class="absolute mt-14 bg-neutral-900/40 w-40 border-2 border-yellow-500/50 border-y-transparent hover:opacity-70"
             >
-              Logout
+              Sair
             </button>
           </div>
         </template>
