@@ -37,9 +37,6 @@ export default {
       if (time < 10) return `0${time}`;
       return `${time}`;
     },
-    addCounter() {
-      this.counter++;
-    },
     startCounter() {
       this.showModal = false;
       this.intervalCounter = setInterval(() => {
@@ -52,6 +49,9 @@ export default {
     },
     stopCounter() {
       clearInterval(this.intervalCounter);
+    },
+    addCounter() {
+      this.counter++;
     },
     addData(value) {
       this.data.push({ value });
@@ -104,34 +104,36 @@ export default {
       class="rounded-xl flex justify-center items-center border-8 border-double border-yellow-500 shadow-lg shadow-orange-200/30 size-2/3"
     >
       <template v-if="counter == 10 && !showModal">
-        <TicTacToe @addCounter="() => counter++" @tictactoe="addData" />
+        <TicTacToe @addCounter="addCounter" @tictactoe="addData" />
       </template>
 
       <template v-else-if="counter == 1">
-        <Memory @addCounter="() => counter++" />
+        <Memory @addCounter="addCounter" />
       </template>
 
       <template v-else-if="counter == 2">
-        <Pong @addCounter="() => counter++" />
+        <Pong @addCounter="addCounter" />
       </template>
 
       <template v-else-if="counter == 3">
-        <Breakout @addCounter="() => counter++" @winner="addData" />
+        <Breakout @addCounter="addCounter" @winner="addData" />
       </template>
 
       <template v-else-if="counter == 4">
-        <FlappyBird @addCounter="() => counter++" @score="addData" />
+        <FlappyBird @addCounter="addCounter" @score="addData" />
       </template>
 
       <template v-else-if="counter == 5">
-        <Simon @addCounter="() => counter++" @winner="addData" />
+        <Simon @addCounter="addCounter" @winner="addData" />
+      </template>
+
+      <template v-else-if="counter == 6">
+        <Snake @addCounter="addCounter" @snake="addData" />
       </template>
 
       <template v-else-if="counter == 0">
-        <Snake @addCounter="() => counter++" />
+        <SpaceInvaders @addCounter="addCounter" />
       </template>
-
-      <template v-else-if="counter == 7"> <SpaceInvaders /> </template>
     </div>
   </div>
 </template>

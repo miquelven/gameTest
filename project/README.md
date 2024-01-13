@@ -66,3 +66,4 @@ FAZER A TRANSIÇÃO PARA CADA JOGO
 arrumar o container das views
 mudar todo o gamelist, fazer uma div com o background image
 vue-toastification no login
+criar o detectcollision como um mixins

@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import birdImage from "@/assets/images/bird.png";
-import pipeImg from "@/assets/images/pipe.png";
+import birdImage from "@/assets/images/FlappyGame/bird.png";
+import pipeImg from "@/assets/images/FlappyGame/pipe.png";
 
 export default {
   data() {
@@ -173,6 +173,6 @@ export default {
 
 <style>
 #canvas {
-  background-image: url("@/assets/images/backgroundFlappyBird2.jpg");
+  background-image: url("@/assets/images/FlappyGame/backgroundFlappyBird.jpg");
 }
 </style>
