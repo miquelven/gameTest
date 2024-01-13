@@ -37,7 +37,7 @@ export default {
     this.scorePlayer2 = this.$refs.scorePlayer2;
 
     this.ball = new this.Ball(
-      this.vec2(250, 200),
+      this.vec2(120, 120),
       this.vec2(4, 4),
       7,
       this.ctx
@@ -45,7 +45,7 @@ export default {
 
     this.paddle = new this.Paddle(
       this.vec2(10, 160),
-      this.vec2(9, 9),
+      this.vec2(10, 10),
       20,
       70,
       this.ctx,
@@ -53,7 +53,7 @@ export default {
     );
     this.paddle2 = new this.Paddle(
       this.vec2(this.canvas.width - 29, 160),
-      this.vec2(4, 4),
+      this.vec2(3, 3),
       20,
       70,
       this.ctx,

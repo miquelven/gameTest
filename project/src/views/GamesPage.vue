@@ -70,7 +70,7 @@ export default {
 <template>
   <div class="h-screen w-full flex flex-col gap-10 justify-center items-center">
     <!-- area do modal -->
-    <!-- <template v-if="showModal">
+    <template v-if="showModal">
       <div
         class="absolute inset-0 bg-black/90 flex justify-center items-center"
       >
@@ -89,7 +89,7 @@ export default {
           </button>
         </div>
       </div>
-    </template> -->
+    </template>
 
     <!-- temporizador -->
     <input
@@ -103,7 +103,7 @@ export default {
     <div
       class="rounded-xl flex justify-center items-center border-8 border-double border-yellow-500 shadow-lg shadow-orange-200/30 size-2/3"
     >
-      <template v-if="counter == 10 && !showModal">
+      <template v-if="counter == 0 && !showModal">
         <TicTacToe @addCounter="addCounter" @tictactoe="addData" />
       </template>
 
@@ -131,9 +131,12 @@ export default {
         <Snake @addCounter="addCounter" @snake="addData" />
       </template>
 
-      <template v-else-if="counter == 0">
-        <SpaceInvaders @addCounter="addCounter" />
+      <template v-else-if="counter == 7">
+        <SpaceInvaders @addCounter="addCounter" @invaders="addData" />
       </template>
     </div>
+    <template v-if="counter == 8">
+      <h1>fim dos jogos</h1>
+    </template>
   </div>
 </template>

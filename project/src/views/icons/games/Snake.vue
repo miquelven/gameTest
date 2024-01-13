@@ -88,6 +88,11 @@ export default {
         this.snake.push(head);
         this.score += 100;
 
+        if (this.score == 2400) {
+          this.$emit("addCounter");
+          this.$emit("snake", this.score.innerHTML);
+        }
+
         let x = this.randomPosition();
         let y = this.randomPosition();
 
@@ -174,8 +179,11 @@ export default {
       this.checkEat();
       this.checkCollision();
 
-      this.loop = setTimeout(() => this.update(), 150);
+      this.loop = setTimeout(() => this.update(), 125);
     },
+  },
+  unmounted() {
+    this.loop = 0;
   },
 };
 </script>

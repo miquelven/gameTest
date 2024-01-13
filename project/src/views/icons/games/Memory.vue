@@ -1,6 +1,5 @@
 <script>
 import MemoryItem from "@/components/MemoryItem.vue";
-import { faThemeisle } from "@fortawesome/free-brands-svg-icons";
 export default {
   components: {
     MemoryItem,
@@ -13,6 +12,8 @@ export default {
       firstSquareClicked: null,
       moves: 0,
       correct: 0,
+
+      show: true,
     };
   },
   mounted() {
@@ -31,16 +32,23 @@ export default {
         this.squares.push(colors[randomColor]);
       }
     }
+
+    //mostrar 3s
+    setTimeout(() => {
+      this.show = false;
+    }, 3000);
   },
   methods: {
     async clickedSquare(square) {
+      if (this.show || this.moves == 2 || this.firstSquareClicked == square)
+        return;
       // controle de squares virados para cima
       if (
-        this.moves == 2 ||
-        square.getAttribute("style") !== null ||
-        this.firstSquareClicked == square
+        square.getAttribute("style") !== null &&
+        square.getAttribute("style").length > 0
       )
         return;
+
       this.moves++;
       square.setAttribute(
         "style",
@@ -64,13 +72,13 @@ export default {
         this.correct++;
         this.firstSquareClicked.setAttribute(
           "style",
-          `background: ${this.firstColorSelected}; transform: scale(1.15)`
+          `background: ${this.firstColorSelected}; transform: scale(1.10)`
         );
         square.setAttribute(
           "style",
           `background: ${square.getAttribute(
             "data-color"
-          )}; transform: scale(1.15)`
+          )}; transform: scale(1.10)`
         );
         this.resetValues();
       }
@@ -83,7 +91,9 @@ export default {
   },
   watch: {
     correct(current, oldValue) {
-      if (this.correct == 6) this.$emit("addCounter");
+      if (this.correct == 6) {
+        setTimeout(() => this.$emit("addCounter"), 1000);
+      }
     },
   },
 };
@@ -91,8 +101,8 @@ export default {
 
 <template>
   <div class="grid grid-cols-4 gap-5">
-    <div v-for="(square, index) in squares" :key="index">
-      <MemoryItem :color="square" @clickedSquare="clickedSquare" />
+    <div v-for="(square, index) in squares" :key="index" id="itemArea">
+      <MemoryItem :color="square" @clickedSquare="clickedSquare" :show="show" />
     </div>
   </div>
 </template>

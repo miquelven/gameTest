@@ -10,7 +10,6 @@
 <script>
 import playerImg from "@/assets/images/InvadersGame/player.png";
 import enemyImg from "@/assets/images/InvadersGame/enemy.png";
-import { faPersonThroughWindow } from "@fortawesome/free-solid-svg-icons";
 export default {
   data() {
     return {

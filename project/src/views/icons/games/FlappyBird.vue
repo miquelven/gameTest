@@ -37,6 +37,8 @@ export default {
       gameOver: false,
 
       score: 0,
+
+      interval: null,
     };
   },
   mounted() {
@@ -64,7 +66,7 @@ export default {
     this.bottomPipeImg.src = pipeImg;
 
     requestAnimationFrame(this.update);
-    setInterval(this.placePipes, 1500);
+    this.interval = setInterval(this.placePipes, 1500);
   },
   methods: {
     draw() {
@@ -88,6 +90,10 @@ export default {
         if (!pipe.passed && this.bird.x > pipe.x + pipe.width) {
           this.score += 0.5;
           pipe.passed = true;
+          if (this.score == 20) {
+            this.$emit("addCounter");
+            this.$emit("score", this.score);
+          }
         }
 
         if (this.detectCollision(this.bird, pipe)) {
@@ -102,9 +108,9 @@ export default {
         this.pipeArray.shift();
 
       // score
-      this.ctx.fillStyle = "white";
+      this.ctx.fillStyle = "#333";
       this.ctx.font = "45px sans-serif";
-      this.ctx.fillText(this.score, 5, 45);
+      this.ctx.fillText(this.score, this.canvasWidth - 60, 65);
     },
     placePipes() {
       this.gravity = 0.4;
@@ -167,6 +173,9 @@ export default {
 
       document.addEventListener("keydown", this.moveBird);
     },
+  },
+  unmounted() {
+    clearInterval(this.interval);
   },
 };
 </script>

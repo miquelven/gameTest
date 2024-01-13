@@ -85,16 +85,17 @@ export default {
         this.player.height
       );
 
-      // ball
-      this.ctx.fillStyle = "#ffff33";
       this.ball.x += this.ball.velocityX;
       this.ball.y += this.ball.velocityY;
-      this.ctx.fillRect(
-        this.ball.x,
-        this.ball.y,
-        this.ball.width,
-        this.ball.height
-      );
+      this.ctx.shadowColor = "#eeeeee";
+      this.ctx.shadowBlur = 24;
+      this.ctx.fillStyle = "#ccccff";
+      this.ctx.strokeStyle = "#ccccff";
+      this.ctx.beginPath();
+      this.ctx.arc(this.ball.x, this.ball.y, 10, 0, Math.PI * 2);
+      this.ctx.fill();
+      this.ctx.stroke();
+      this.ctx.shadowBlur = 0;
 
       // bounce ball off walls
       if (this.ball.y <= 0) {
@@ -120,8 +121,6 @@ export default {
       ) {
         this.ball.velocityX *= -1;
       }
-
-      this.ctx.fillStyle = "white";
       for (let i = 0; i < this.blockArray.length; i++) {
         let block = this.blockArray[i];
         if (!block.break) {
@@ -142,18 +141,29 @@ export default {
             this.blockCount -= 1;
             this.score += 100;
           }
+          let color = this.generateRandomColor();
+          this.ctx.fillStyle = color;
           this.ctx.fillRect(block.x, block.y, block.width, block.height);
         }
       }
-
+      this.ctx.fillStyle = "white";
       this.ctx.font = "20px sans-serif";
       this.ctx.fillText(this.score, 10, 25);
+    },
+    randomColor() {
+      return Math.floor(Math.random() * 250);
+    },
+    generateRandomColor() {
+      let red = this.randomColor();
+      let green = this.randomColor();
+      let blue = this.randomColor();
+
+      return `rgb(${red},${green},${blue})`;
     },
     outOfBounds(xPosition) {
       return xPosition < 0 || xPosition + this.playerWidth > this.canvasWidth;
     },
     movePlayer(e) {
-      console.log(e.code);
       if (e.code == "ArrowLeft") {
         let newPlayerX = this.player.x - this.player.velocityX;
         if (!this.outOfBounds(newPlayerX)) {

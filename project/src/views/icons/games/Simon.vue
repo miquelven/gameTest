@@ -27,15 +27,9 @@
         id="switches"
         class="absolute ml-[50%] mt-[50%] -translate-y-1/2 -translate-x-1/2 flex flex-col items-center"
       >
-        <button
-          ref="startButton"
-          class="rounded-full bg-[lightgray]/50 p-5 text-2xl font-bold"
-        >
-          Start
-        </button>
         <span
           ref="counter"
-          class="mt-10 text-2xl text-white/90 font-bold bg-[#444] px-5 border-4 border-white/50"
+          class="text-3xl text-white/90 font-bold bg-[#111] px-7 border-4 border-white/80"
           >0</span
         >
       </div>
@@ -63,7 +57,6 @@ export default {
       topRight: null,
       bottomLeft: null,
       bottomRight: null,
-      startButton: null,
       counter: null,
     };
   },
@@ -72,12 +65,9 @@ export default {
     this.topRight = this.$refs.topRight;
     this.bottomLeft = this.$refs.bottomLeft;
     this.bottomRight = this.$refs.bottomRight;
-    this.startButton = this.$refs.startButton;
     this.counter = this.$refs.counter;
 
-    this.startButton.addEventListener("click", () => {
-      this.play();
-    });
+    this.play();
 
     this.topLeft.addEventListener("click", () => {
       if (this.on) {
@@ -202,7 +192,7 @@ export default {
       )
         this.good = false;
 
-      if (this.playerOrder.length == 2 && this.good) this.winGame();
+      if (this.playerOrder.length == 7 && this.good) this.winGame();
 
       // O JOGO ACABA
       if (!this.good) {
