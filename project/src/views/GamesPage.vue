@@ -134,9 +134,12 @@ export default {
       <template v-else-if="counter == 7">
         <SpaceInvaders @addCounter="addCounter" @invaders="addData" />
       </template>
+
+      <!-- fazer a área dos pontos. Ex: 'sua pontuação foi: 000<br />tempo
+      necessário' -->
+      <template v-if="counter == 8">
+        <h1>fim dos jogos</h1>
+      </template>
     </div>
-    <template v-if="counter == 8">
-      <h1>fim dos jogos</h1>
-    </template>
   </div>
 </template>

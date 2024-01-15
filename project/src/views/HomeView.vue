@@ -32,12 +32,12 @@ export default {
           </div>
           <p class="text-xl">
             Aqui você encontrará vários desafios, terá que superar todos eles no
-            menor tempo possível, em caso de derrota você terá que recomeçar o
-            desafio.
+            menor tempo possível, dê o seu máximo para conseguir a melhor
+            pontuação.
           </p>
 
           <span class="text-xl"
-            >Consiga o melhor tempo e fique entre os melhores! 🏆🏆🏆</span
+            >Alcance a pontuação máxima e fique entre os melhores! 🏆🏆🏆</span
           >
         </div>
         <!-- right-size -->

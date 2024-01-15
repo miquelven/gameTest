@@ -40,7 +40,7 @@ export default {
 
 <template>
   <header
-    class="w-full text-gray-400 bg-neutral-900/40 shadow shadow-white/10 p-2 mb-24"
+    class="w-full text-gray-400 bg-neutral-900/80 shadow shadow-white/20 p-2 mb-24"
   >
     <div class="max-w-screen-2xl m-auto flex justify-between items-center">
       <router-link to="/">
