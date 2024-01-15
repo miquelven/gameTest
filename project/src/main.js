@@ -10,12 +10,13 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import {
+  faGithub,
   faGoogle,
   faFacebookF,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
 
-library.add(faEye, faGoogle, faFacebookF, faInstagram);
+library.add(faEye, faGoogle, faFacebookF, faInstagram, faGithub);
 
 import router from "./router";
 

@@ -1,5 +1,5 @@
 <template>
-  <footer class="m-auto mt-24 mb-10 text-sm text-gray-300">
+  <footer class="m-auto mt-36 mb-10 text-sm text-gray-300">
     <div class="max-w-screen-2xl m-auto">
       <span class="flex items-center">Games in a Game.</span>
 
