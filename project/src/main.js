@@ -8,7 +8,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faLightbulb } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
   faGoogle,
@@ -16,7 +16,7 @@ import {
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
 
-library.add(faEye, faGoogle, faFacebookF, faInstagram, faGithub);
+library.add(faEye, faLightbulb, faGoogle, faFacebookF, faInstagram, faGithub);
 
 import router from "./router";
 

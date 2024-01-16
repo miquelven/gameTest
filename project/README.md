@@ -1,3 +1,9 @@
+FAZER:
+
+GAMELIST: Quando ouver o hover, mostrar a imagem e um icone de balao
+que se clicar deixar a imagem com sombra e mostrar uma dica sobre
+aquele jogo
+
 O QUE FALTA FAZER:
 
 LOGIN: Refazer a parte do login com backend
