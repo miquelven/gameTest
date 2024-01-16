@@ -14,7 +14,7 @@ export default {
 
 <template>
   <Header />
-  <main class="w-full my-19" id="best">
+  <main class="w-full mt-20" id="best">
     <!-- container -->
     <div class="max-w-screen-2xl m-auto flex justify-center">
       <div class="flex flex-col gap-16 items-center mt-52">

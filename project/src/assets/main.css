@@ -2,12 +2,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Rubik+Doodle+Shadow&display=swap");
 
 * {
-  padding: 0;
+  padding: 0px;
   margin: 0;
   box-sizing: border-box;
 }
 
 body {
+  padding: 80px;
   font-family: "Roboto", sans-serif;
   background-image: linear-gradient(
     to left top,

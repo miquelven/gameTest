@@ -68,11 +68,13 @@ export default {
 </script>
 
 <template>
-  <div class="h-screen w-full flex flex-col gap-10 justify-center items-center">
+  <div
+    class="h-[calc(83.5vh)] w-full flex flex-col gap-10 justify-center items-center"
+  >
     <!-- area do modal -->
     <template v-if="showModal">
       <div
-        class="absolute inset-0 bg-black/90 flex justify-center items-center"
+        class="absolute inset-0 z-30 bg-black/90 flex justify-center items-center"
       >
         <div
           class="bg-white text-black flex flex-col gap-8 p-5 h-96 w-96 absolute rounded-xl border-8 border-gray-800 font-bold"
@@ -93,7 +95,7 @@ export default {
 
     <!-- temporizador -->
     <input
-      class="text-4xl bg-transparent text-center font-bold"
+      class="text-4xl bg-transparent text-center font-bold absolute top-20"
       type="text"
       placeholder="00:00"
       v-model="timerController"
@@ -101,7 +103,7 @@ export default {
     />
     <!-- area dos jogos -->
     <div
-      class="rounded-xl flex justify-center items-center border-8 border-double border-yellow-500 shadow-lg shadow-orange-200/30 size-2/3"
+      class="absolute rounded-xl flex justify-center items-center border-8 border-double border-yellow-500 shadow-lg shadow-orange-200/30 size-2/3"
     >
       <template v-if="counter == 0 && !showModal">
         <TicTacToe @addCounter="addCounter" @tictactoe="addData" />

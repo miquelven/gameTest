@@ -22,7 +22,7 @@ export default {
 
 <template>
   <Header />
-  <main class="w-full my-19" id="best">
+  <main class="w-full mt-20" id="best">
     <!-- container -->
     <div class="max-w-screen-2xl m-auto">
       <table class="grid grid-cols-1 gap-7">
@@ -50,6 +50,6 @@ export default {
 
 <style scoped>
 #best {
-  min-height: calc(100vh - 250px);
+  min-height: calc(100vh);
 }
 </style>

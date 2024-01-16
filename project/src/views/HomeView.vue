@@ -15,10 +15,10 @@ export default {
 <template>
   <Header />
 
-  <main class="w-full my-19">
+  <main class="w-full mt-20 mb-19">
     <!-- container -->
     <div class="max-w-screen-2xl m-auto">
-      <div class="flex mb-20" id="container">
+      <section class="flex mb-20" id="container">
         <!-- left-size -->
         <div class="flex-1 flex flex-col gap-36 justify-center">
           <!-- title -->
@@ -70,11 +70,11 @@ export default {
             ></div>
           </div>
         </div>
-      </div>
+      </section>
       <!-- ListGames -->
-      <div class="my-56">
+      <section class="my-56">
         <GameList />
-      </div>
+      </section>
     </div>
   </main>
   <Footer />

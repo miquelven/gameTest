@@ -1,7 +1,3 @@
-MUDANÇAS:
-
-LOGO: Mudar a logo e o nome
-FUNDO: Criar um background
 O QUE FALTA FAZER:
 
 LOGIN: Refazer a parte do login com backend

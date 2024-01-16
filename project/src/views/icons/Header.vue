@@ -4,6 +4,7 @@ export default {
     return {
       name: "",
       showItem: false,
+      header: null,
     };
   },
   mounted() {
@@ -39,7 +40,10 @@ export default {
 </script>
 
 <template>
-  <header class="w-full text-gray-400 mb-24">
+  <header
+    ref="header"
+    class="fixed z-50 w-full top-0 left-0 text-gray-400 bg-transparent backdrop-blur-lg border-b-[2px] border-[rgba(255,255,255,.2)]"
+  >
     <div
       class="max-w-screen-2xl m-auto flex justify-between items-center max-h-20"
     >

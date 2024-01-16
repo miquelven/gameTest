@@ -32,7 +32,7 @@ export default {
 
 <template>
   <Header />
-  <main class="w-full my-19" id="score">
+  <main class="w-full mt-20" id="score">
     <!-- container -->
     <div class="max-w-screen-2xl m-auto flex justify-center">
       <table
