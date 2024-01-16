@@ -99,9 +99,10 @@ export default {
 
 <template>
   <div
-    class="h-screen w-screen flex justify-center items-center relative z-0"
+    class="w-full h-[calc(83.5vh)] flex flex-col justify-center items-center relative z-0"
     id="container"
   >
+    <h1 class="text-5xl mb-20">Registre-se</h1>
     <form
       class="relative z-10 w-72 flex flex-col justify-center items-center gap-9"
       @submit.prevent="register"
@@ -167,21 +168,3 @@ export default {
     </form>
   </div>
 </template>
-
-<style scoped>
-#container {
-  background: url("@/assets/images/backgroundRegister.png");
-  background-position: center;
-  background-size: cover;
-  position: relative;
-}
-#container::before {
-  content: "";
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 2;
-}
-</style>

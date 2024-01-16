@@ -106,8 +106,7 @@ export default {
 
 <template>
   <div
-    id="login"
-    class="w-screen h-screen flex flex-col justify-center items-center"
+    class="w-full h-[calc(83.5vh)] flex flex-col justify-center items-center"
   >
     <div class="relative z-10 mb-28">
       <div class="flex justify-center items-center flex-col">
@@ -210,19 +209,3 @@ export default {
     </div>
   </div>
 </template>
-
-<style scoped>
-#login {
-  background: linear-gradient(to bottom left, #fff, #c8c8c8, #d5db64);
-  position: relative;
-}
-#login::before {
-  content: "";
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 2;
-}
-</style>
