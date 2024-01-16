@@ -12,7 +12,7 @@ export default {
 <template>
   <div
     data-img
-    class="transition bg-black duration-300 ease-in-out relative size-60 p-5 m-auto rounded-xl flex flex-col justify-center border-4 border-transparent items-center gap-5 hover:cursor-pointer hover:scale-150 hover:border-yellow-300 hover:shadow-lg overflow-hidden hover:shadow-yellow-400 hover:font-bold bg-no-repeat bg-cover bg-center shadow-[1px_4px_10px_rgba(255,255,255,.2)]"
+    class="transition bg-black duration-300 ease-in-out relative size-60 p-5 m-auto rounded-xl flex flex-col justify-center border-4 border-transparent items-center gap-5 hover:scale-150 hover:border-yellow-300 hover:shadow-lg overflow-hidden hover:shadow-yellow-400 hover:font-bold bg-no-repeat bg-cover bg-center shadow-[1px_4px_10px_rgba(255,255,255,.2)]"
   >
     <img :src="getImageUrl()" class="max-h-48" :alt="alt" />
     <h4 class="relative z-20">

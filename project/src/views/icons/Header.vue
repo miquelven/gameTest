@@ -40,11 +40,13 @@ export default {
 
 <template>
   <header
-    class="w-full text-gray-400 bg-gray-400/10 shadow shadow-white/20 p-2 mb-24"
+    class="w-full text-gray-400 bg-gray-400/10 shadow shadow-white/20 mb-24"
   >
-    <div class="max-w-screen-2xl m-auto flex justify-between items-center">
+    <div
+      class="max-w-screen-2xl m-auto flex justify-between items-center max-h-20"
+    >
       <router-link to="/">
-        <img src="../../assets/svgs/logo.svg" alt="logo" width="70" />
+        <img src="../../assets/images/logo.png" alt="logo" width="100" />
       </router-link>
       <nav class="flex gap-12 text-lg">
         <router-link
@@ -83,14 +85,9 @@ export default {
           <div
             class="relative transition-all self-start text-white cursor-pointer"
           >
-            <router-link
-              to="/perfil"
-              class="absolute mt-5 bg-neutral-900/40 w-40 border-2 border-yellow-500/50 border-y-transparent text-center hover:opacity-70"
-              >Meu perfil</router-link
-            >
             <button
               @click="logout"
-              class="absolute mt-14 bg-neutral-900/40 w-40 border-2 border-yellow-500/50 border-y-transparent hover:opacity-70"
+              class="absolute mt-5 bg-gray-400/10 w-40 border-2 border-white border-y-transparent hover:opacity-70"
             >
               Sair
             </button>

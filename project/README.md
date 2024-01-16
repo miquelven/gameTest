@@ -1,18 +1,7 @@
-PLANEJAR AS PÁGINAS:
-
-PONTUAÇÕES: Mostrar o historico de pontuações do jogador logado, só os 10 melhores
-MELHORES: Mostrar o ranking de jogadores com as melhores pontuações. Nomes e a ponutação
-CONTATO: Mostrar informações para entrar em contato, como email, etc
-SOBRE: Mostrar um texto explicado a ideia do site, para quem ele é e porque foi criado
-MEU PERFIL: Tirar o 'MEU PERFIL'
-TERMOS E CONDIÇÕES: Tirar o 'Termos e condições'
-POLITICA DE PRIVACIDADE: Tirar o 'Politica de privacidade'
-
 MUDANÇAS:
 
 LOGO: Mudar a logo e o nome
-GAME LIST: Refazer essa parte
-
+FUNDO: Criar um background
 O QUE FALTA FAZER:
 
 LOGIN: Refazer a parte do login com backend

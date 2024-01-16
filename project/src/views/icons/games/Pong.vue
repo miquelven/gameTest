@@ -132,7 +132,7 @@ export default {
     respawnBall(ball) {
       if (ball.velocity.x > 0) {
         ball.pos.x = this.canvas.width - 150;
-        ball.pos.y = Math.random() * (this.canvas.height - 200) - 100;
+        ball.pos.y = Math.random() * (this.canvas.height - 200);
       }
 
       if (ball.velocity.x < 0) {
@@ -153,8 +153,8 @@ export default {
 
       if (ball.pos.x >= this.canvas.width + ball.radius) {
         paddle.score += 1;
-        if (paddle2.score < 0) paddle2.score = 0;
-        paddle2.score -= 1;
+        // if (paddle2.score < 0) paddle2.score = 0;
+        // paddle2.score -= 1;
         this.scorePlayer.innerHTML = paddle.score;
         this.respawnBall(this.ball);
       }
@@ -275,7 +275,7 @@ export default {
       this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
       window.requestAnimationFrame(this.gameLoop);
       this.gameDraw();
-      if (this.paddle.score == 5 || this.paddle2.score == 5)
+      if (this.paddle.score == 3 || this.paddle2.score == 3)
         this.$emit("addCounter");
       if (this.firstShow) {
         setTimeout(() => {

@@ -111,7 +111,11 @@ export default {
   >
     <div class="relative z-10 mb-28">
       <div class="flex justify-center items-center flex-col">
-        <img src="@/assets/svgs/logo.svg" alt="" class="w-48 brightness-125" />
+        <img
+          src="@/assets/images/logo.png"
+          alt=""
+          class="w-48 brightness-125"
+        />
 
         <form class="flex flex-col gap-9 w-full p-2" @submit.prevent="login">
           <div class="flex items-center relative">
@@ -209,9 +213,7 @@ export default {
 
 <style scoped>
 #login {
-  background: url("@/assets/images/backgroundLogin.png");
-  background-position: center;
-  background-size: cover;
+  background: linear-gradient(to bottom left, #fff, #c8c8c8, #d5db64);
   position: relative;
 }
 #login::before {
