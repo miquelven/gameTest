@@ -39,9 +39,7 @@ export default {
 </script>
 
 <template>
-  <header
-    class="w-full text-gray-400 bg-gray-400/10 shadow shadow-white/20 mb-24"
-  >
+  <header class="w-full text-gray-400 mb-24">
     <div
       class="max-w-screen-2xl m-auto flex justify-between items-center max-h-20"
     >
@@ -49,26 +47,38 @@ export default {
         <img src="../../assets/images/logo.png" alt="logo" width="100" />
       </router-link>
       <nav class="flex gap-12 text-lg">
-        <router-link
-          to="/scores"
-          class="hover:text-white hover:scale-105 transition-all"
-          >Pontuações</router-link
-        >
-        <router-link
-          to="/best"
-          class="hover:text-white hover:scale-105 transition-all"
-          >Melhores</router-link
-        >
-        <router-link
-          to="/contact"
-          class="hover:text-white hover:scale-105 transition-all"
-          >Contato</router-link
-        >
-        <router-link
-          class="hover:text-white hover:scale-105 transition-all"
-          to="/about"
-          >Sobre</router-link
-        >
+        <router-link to="/scores"
+          ><span
+            class="transition duration-300 ease-in py-2 relative hover:text-white hover:font-bold"
+            data-link
+          >
+            Pontuações
+          </span>
+        </router-link>
+        <router-link to="/best"
+          ><span
+            class="transition duration-300 ease-in py-2 relative hover:text-white hover:font-bold"
+            data-link
+          >
+            Melhores
+          </span>
+        </router-link>
+        <router-link to="/contact"
+          ><span
+            class="transition duration-300 ease-in py-2 relative hover:text-white hover:font-bold"
+            data-link
+          >
+            Contato
+          </span>
+        </router-link>
+        <router-link to="/about"
+          ><span
+            class="transition duration-300 ease-in py-2 relative hover:text-white hover:font-bold"
+            data-link
+          >
+            Sobre
+          </span>
+        </router-link>
       </nav>
 
       <div class="text-lg text-white flex flex-col items-end">
@@ -97,3 +107,22 @@ export default {
     </div>
   </header>
 </template>
+
+<style scoped>
+span[data-link]::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 3px;
+  width: 0%;
+  overflow: hidden;
+  border-bottom: 4px solid transparent;
+  transition: 300ms ease-in;
+}
+
+span[data-link]:hover::before {
+  width: 50%;
+  border-color: yellow;
+  filter: drop-shadow(0, 0, 25px, yellow);
+}
+</style>
