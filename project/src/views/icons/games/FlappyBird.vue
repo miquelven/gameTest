@@ -108,7 +108,7 @@ export default {
         this.pipeArray.shift();
 
       // score
-      this.ctx.fillStyle = "#333";
+      this.ctx.fillStyle = "#fff";
       this.ctx.font = "45px sans-serif";
       this.ctx.fillText(this.score, this.canvasWidth - 60, 65);
     },
@@ -179,9 +179,3 @@ export default {
   },
 };
 </script>
-
-<style>
-#canvas {
-  background-image: url("@/assets/images/FlappyGame/backgroundFlappyBird.jpg");
-}
-</style>
