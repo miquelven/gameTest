@@ -13,26 +13,25 @@ export default {
   },
   methods: {
     async logout() {
-      const res = await fetch("http://localhost:3333/logout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+      try {
+        // Envie a solicitação de logout para o servidor
+        const response = await this.$axios.post("/logout", {
           session_token: localStorage.getItem("token"),
-        }),
-      }).then((res) => res.json());
+        });
 
-      if (res.success) {
-        localStorage.removeItem("token");
-        this.$router.push("/login");
-      } else {
-        if (res.message == "Session could not be found.") {
-          if (localStorage.getItem("token")) {
-            localStorage.removeItem("token");
-          }
+        if (response.data.success) {
+          // Limpe os dados de autenticação armazenados localmente (ou faça o que for necessário)
+          localStorage.removeItem("token");
+          localStorage.removeItem("name");
+
+          // Redirecione para a página de login ou outra página desejada
           this.$router.push("/login");
+        } else {
+          // Trate falhas no logout
         }
+      } catch (error) {
+        console.error("Erro durante a solicitação de logout:", error);
+        // Trate erros de solicitação
       }
     },
   },
@@ -42,7 +41,7 @@ export default {
 <template>
   <header
     ref="header"
-    class="fixed z-50 w-full top-0 left-0 text-gray-400 bg-transparent backdrop-blur-lg border-b-[2px] border-[rgba(255,255,255,.2)]"
+    class="fixed z-50 w-full top-0 left-0 text-white bg-transparent backdrop-blur-xl border-b-[2px] border-[rgba(255,255,255,.2)]"
   >
     <div
       class="max-w-screen-2xl m-auto flex justify-between items-center max-h-20"

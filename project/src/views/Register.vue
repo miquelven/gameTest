@@ -26,35 +26,27 @@ export default {
     async register(e) {
       this.inputCheck(e.target.getElementsByTagName("input"));
 
-      const res = await fetch("http://localhost:3333/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+      try {
+        const response = await this.$axios.post("/register", {
+          username: this.userName,
           email: this.email,
           password: this.password,
-          first_name: this.userName,
-        }),
-      }).then((res) => res.json());
+        });
 
-      if (!this.warningsCheck()) {
-        return;
-      }
-
-      if (res.success) {
-        const { name, token } = res;
-
-        localStorage.setItem("token", token);
-        const formattedName = name.charAt(0).toUpperCase() + name.substring(1);
-        localStorage.setItem("name", formattedName);
-        this.$router.push("/");
-      } else {
-        if (
-          res.message ==
-          "A user with the specified email already exists for this project."
-        )
-          alert("Esse usuário já está cadastrado!");
+        if (response.data.success) {
+          const { name, token } = response.data;
+          localStorage.setItem("token", token);
+          const formattedName = "miquelven";
+          // const formattedName =
+          //   name.charAt(0).toUpperCase() + name.substring(1);
+          localStorage.setItem("name", formattedName);
+          this.$router.push("/");
+        } else {
+          // Trate falhas de registro
+        }
+      } catch (error) {
+        console.error("Erro durante a solicitação de registro:", error);
+        // Trate erros de solicitação
       }
     },
     showIconPassword(e) {

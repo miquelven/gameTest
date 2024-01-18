@@ -18,9 +18,13 @@ import {
 
 library.add(faEye, faLightbulb, faGoogle, faFacebookF, faInstagram, faGithub);
 
+import axios from "axios";
 import router from "./router";
 
 const app = createApp(App);
+app.config.globalProperties.$axios = axios.create({
+  baseURL: "http://localhost:3000",
+});
 
 app.use(router).component("font-awesome-icon", FontAwesomeIcon);
 

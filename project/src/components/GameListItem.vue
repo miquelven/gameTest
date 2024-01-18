@@ -14,6 +14,13 @@ export default {
       this.showTip = !this.showTip;
     },
   },
+  watch: {
+    showTip(current, old) {
+      if (this.showTip) {
+        setTimeout(() => (this.showTip = false), 3500);
+      }
+    },
+  },
 };
 </script>
 

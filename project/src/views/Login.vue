@@ -26,36 +26,24 @@ export default {
     async login(e) {
       this.inputCheck(e.target.getElementsByTagName("input"));
 
-      const res = await fetch("http://localhost:3333/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+      try {
+        const response = await this.$axios.post("/login", {
           email: this.email,
           password: this.password,
-        }),
-      }).then((res) => res.json());
+        });
 
-      if (!this.warningsCheck()) {
-        return;
-      }
-
-      if (res.success) {
-        localStorage.setItem("token", res.token);
-        const formattedName =
-          this.name.charAt(0).toUpperCase() + this.name.substring(1);
-        localStorage.setItem("name", formattedName);
-        this.$router.push("/");
-      } else {
-        switch (res.message) {
-          case "Email could not be found.":
-            alert("Email não cadastrado!");
-            break;
-          case "Unauthorized credentials.":
-            alert("Senha inválida!");
-            break;
+        if (response.data.success) {
+          localStorage.setItem("token", response.data.token);
+          const formattedName =
+            this.name.charAt(0).toUpperCase() + this.name.substring(1);
+          localStorage.setItem("name", formattedName);
+          this.$router.push("/");
+        } else {
+          // Trate falhas de login
         }
+      } catch (error) {
+        console.error("Erro durante a solicitação de login:", error);
+        // Trate erros de solicitação
       }
     },
     showIconPassword(e) {
@@ -88,16 +76,25 @@ export default {
     },
     async resetPassword(e) {
       e.preventDefault();
-      if (this.validateEmail(this.$refs.InputEmail.$refs.input) == "") {
-        const res = await fetch("http://localhost:3333/reset-password", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
+
+      if (this.validateEmail(this.$refs.InputEmail.$refs.input) === "") {
+        try {
+          const response = await this.$axios.post("/reset-password", {
             email: this.email,
-          }),
-        }).then((res) => res.json());
+          });
+
+          if (response.data.success) {
+            // Trate o sucesso no envio do e-mail de recuperação de senha
+          } else {
+            // Trate falhas no envio do e-mail
+          }
+        } catch (error) {
+          console.error(
+            "Erro durante a solicitação de recuperação de senha:",
+            error
+          );
+          // Trate erros de solicitação
+        }
       }
     },
   },
