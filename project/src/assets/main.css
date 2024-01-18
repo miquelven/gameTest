@@ -8,6 +8,7 @@
 }
 
 body {
+  overflow-x: hidden;
   padding: 80px;
   font-family: "Roboto", sans-serif;
   background-image: linear-gradient(

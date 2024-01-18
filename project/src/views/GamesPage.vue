@@ -89,6 +89,13 @@ export default {
   <div
     class="h-[calc(83.5vh)] w-full flex flex-col gap-10 justify-center items-center"
   >
+    <router-link
+      to="/"
+      class="transition-all absolute top-20 left-20 px-3 py-1 shadow-md shadow-white/10 text-2xl hover:text-3xl hover:shadow-lg hover:shadow-white/30"
+    >
+      <font-awesome-icon :icon="['fas', 'arrow-left']" />
+    </router-link>
+
     <!-- area do modal -->
     <template v-if="showModal">
       <div
