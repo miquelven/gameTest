@@ -60,7 +60,7 @@ export default {
     <font-awesome-icon
       data-icon
       :icon="['fas', 'lightbulb']"
-      class="transition duration-300 ease-in-out absolute z-10 top-0 left-0 p-3 cursor-pointer opacity-70"
+      class="transition duration-300 ease-in-out absolute z-10 top-[2px] left-[2px] p-3 cursor-pointer opacity-70 hover:shadow-[-5px_40px_10px_rgba(255,255,255,.2)_inset] rounded-full"
       @click="changeShowTip"
     />
     <template v-if="showTip">
