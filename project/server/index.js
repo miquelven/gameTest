@@ -125,18 +125,18 @@ app.post("/reset-password", async (req, res) => {
 
     // Lógica para enviar e-mail com o link contendo o token
     const resetLink = `http://localhost:5173/resetpassword/${token}`;
-    console.log(process.env.EMAIL_PASSWORD);
+    console.log(process.env.SECRET_PASSWORD);
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "gamestestsup@gmail.com",
-        pass: "ophb tnfy efou szzu",
+        user: process.env.SECRET_EMAIL,
+        pass: process.env.SECRET_PASSWORD,
       },
     });
 
     const mailOptions = {
-      from: "gamestestsup@gmail.com",
+      from: process.env.SECRET_EMAIL,
       to: email,
       subject: "Recuperação de Senha",
       text: `Clique no link para redefinir sua senha: ${resetLink}`,
