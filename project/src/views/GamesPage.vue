@@ -22,8 +22,7 @@ export default {
   data() {
     return {
       showModal: true,
-      // serve para ajudar a fazer  a contagem dos pontos depois
-      data: [],
+      score: [],
       counter: 0,
       intervalCounter: null,
       minutes: 0,
@@ -50,11 +49,30 @@ export default {
     stopCounter() {
       clearInterval(this.intervalCounter);
     },
+    addScore(score) {
+      this.score += score;
+    },
     addCounter() {
       this.counter++;
+      if (this.counter >= 8) {
+        this.setScore();
+      }
     },
-    addData(value) {
-      this.data.push({ value });
+    async setScore() {
+      this.stopCounter();
+      this.score = this.score * 10 - 100 * this.seconds - 1000 * this.minutes;
+
+      try {
+        const userEmail = this.$store.state.user
+          ? this.$store.state.user.email
+          : null;
+        await this.$axios.post("http://localhost:3000/update-score", {
+          email: userEmail,
+          newScore: this.score,
+        });
+      } catch (error) {
+        console.error("Erro ao atualizar a pontuação:", error);
+      }
     },
   },
   computed: {
@@ -103,10 +121,10 @@ export default {
     />
     <!-- area dos jogos -->
     <div
-      class="absolute rounded-xl flex justify-center items-center border-8 border-double border-yellow-500 shadow-lg shadow-orange-200/30 size-2/3"
+      class="absolute rounded-xl flex justify-center items-center border-8 border-double border-yellow-500 shadow-lg shadow-orange-200/30 size-2/3 max-h-[67%]"
     >
       <template v-if="counter == 0 && !showModal">
-        <TicTacToe @addCounter="addCounter" @tictactoe="addData" />
+        <TicTacToe @addCounter="addCounter" @addScore="addScore" />
       </template>
 
       <template v-else-if="counter == 1">
@@ -114,33 +132,52 @@ export default {
       </template>
 
       <template v-else-if="counter == 2">
-        <Pong @addCounter="addCounter" />
+        <Pong @addCounter="addCounter" @addScore="addScore" />
       </template>
 
       <template v-else-if="counter == 3">
-        <Breakout @addCounter="addCounter" @winner="addData" />
+        <Breakout @addCounter="addCounter" @addScore="addScore" />
       </template>
 
       <template v-else-if="counter == 4">
-        <FlappyBird @addCounter="addCounter" @score="addData" />
+        <FlappyBird @addCounter="addCounter" @addScore="addScore" />
       </template>
 
       <template v-else-if="counter == 5">
-        <Simon @addCounter="addCounter" @winner="addData" />
+        <Simon @addCounter="addCounter" @addScore="addScore" />
       </template>
 
       <template v-else-if="counter == 6">
-        <Snake @addCounter="addCounter" @snake="addData" />
+        <Snake @addCounter="addCounter" @addScore="addScore" />
       </template>
 
       <template v-else-if="counter == 7">
-        <SpaceInvaders @addCounter="addCounter" @invaders="addData" />
+        <SpaceInvaders @addCounter="addCounter" @addScore="addScore" />
       </template>
 
-      <!-- fazer a área dos pontos. Ex: 'sua pontuação foi: 000<br />tempo
-      necessário' -->
-      <template v-if="counter == 8">
-        <h1>fim dos jogos</h1>
+      <template v-if="counter >= 8">
+        <div
+          class="bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-yellow-500 via-red-600 to-fuchsia-500 shadow-[5px_7px_10px_#666] flex flex-col gap-8 pt-14 px-5 h-96 w-96 absolute rounded-xl font-bold"
+        >
+          <h2 class="text-4xl text-center mb-4">Fim dos jogos</h2>
+          <div class="flex justify-around">
+            <p class="text-lg text-black/70">Seu tempo:</p>
+            <span class="text-white font-bold text-2xl">{{
+              timerController
+            }}</span>
+          </div>
+          <div class="flex justify-around">
+            <p class="text-lg text-black/70">Sua pontuação:</p>
+            <span class="text-white font-bold text-2xl">{{ score }}</span>
+          </div>
+          <router-link
+            to="/"
+            @click="startCounter"
+            class="bg-black/50 rounded-md text-white py-2 hover:bg-black/70 mt-10 text-center"
+          >
+            Voltar
+          </router-link>
+        </div>
       </template>
     </div>
   </div>

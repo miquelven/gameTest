@@ -35,7 +35,6 @@ db.connect((err) => {
 
 // Rotas
 app.post("/register", async (req, res) => {
-  console.log(req.body);
   const { username, email, password } = req.body;
 
   // Hash da senha usando bcrypt
@@ -53,7 +52,6 @@ app.post("/register", async (req, res) => {
         .status(500)
         .json({ success: false, message: "Erro ao registrar usuário." });
     } else {
-      // Gere um token de autenticação para o novo usuário
       const token = jwt.sign(
         { id: results.insertId, email },
         "jsdfnkjouittms",
@@ -228,6 +226,149 @@ app.post("/logout", (req, res) => {
   } catch (error) {
     console.error("Erro durante o logout:", error);
     res.status(500).json({ success: false, message: "Erro interno" });
+  }
+});
+
+// ... Código anterior do backend ...
+app.post("/update-score", async (req, res) => {
+  try {
+    const { email, newScore } = req.body;
+
+    // Busque o ID do usuário usando o email
+    const getUserIdSql = "SELECT id FROM users WHERE email = ?";
+    const getUserIdValues = [email];
+
+    db.query(getUserIdSql, getUserIdValues, (getIdError, getIdResults) => {
+      if (getIdError) {
+        console.error("Erro ao obter o ID do usuário:", getIdError);
+        return res.status(500).json({ status: 500, message: "Erro interno" });
+      }
+
+      const userId = getIdResults[0].id;
+
+      // Verifique se há scores existentes para o usuário
+      const getTopScoresSql =
+        "SELECT score FROM user_scores WHERE user_id = ? ORDER BY score DESC LIMIT 10";
+      const getTopScoresValues = [userId];
+
+      db.query(
+        getTopScoresSql,
+        getTopScoresValues,
+        (getScoresError, getScoresResults) => {
+          if (getScoresError) {
+            console.error("Erro ao obter os melhores scores:", getScoresError);
+            return res
+              .status(500)
+              .json({ status: 500, message: "Erro interno" });
+          }
+
+          const topScores = getScoresResults.map((row) => row.score);
+
+          // Verifique se o novo score está entre os 10 melhores
+          if (newScore >= Math.min(...topScores) || topScores.length === 0) {
+            // Adicione o novo score à tabela
+            const addScoreSql =
+              "INSERT INTO user_scores (user_id, score) VALUES (?, ?)";
+            const addScoreValues = [userId, newScore];
+
+            db.query(addScoreSql, addScoreValues, (addError, addResults) => {
+              if (addError) {
+                console.error("Erro ao adicionar o novo score:", addError);
+                return res
+                  .status(500)
+                  .json({ status: 500, message: "Erro interno" });
+              }
+
+              res
+                .status(200)
+                .json({ status: 200, message: "Score atualizado com sucesso" });
+            });
+          } else {
+            res
+              .status(200)
+              .json({ status: 200, message: "Score não é um dos 10 melhores" });
+          }
+        }
+      );
+    });
+  } catch (error) {
+    console.error("Erro durante a atualização do score:", error);
+    res.status(500).json({ status: 500, message: "Erro interno" });
+  }
+});
+
+// ... Outros imports e configurações ...
+
+app.get("/api/scores", async (req, res) => {
+  try {
+    const { email } = req.query;
+
+    // Busque o ID do usuário usando o email
+    const getUserIdSql = "SELECT id FROM users WHERE email = ?";
+    const getUserIdValues = [email];
+
+    db.query(getUserIdSql, getUserIdValues, (getIdError, getIdResults) => {
+      if (getIdError) {
+        console.error("Erro ao obter o ID do usuário:", getIdError);
+        return res.status(500).json({ status: 500, message: "Erro interno" });
+      }
+
+      const userId = getIdResults[0].id;
+
+      // Busque os scores do usuário
+      const getUserScoresSql =
+        "SELECT score FROM user_scores WHERE user_id = ?";
+      const getUserScoresValues = [userId];
+
+      db.query(
+        getUserScoresSql,
+        getUserScoresValues,
+        (getScoresError, getScoresResults) => {
+          if (getScoresError) {
+            console.error(
+              "Erro ao obter os scores do usuário:",
+              getScoresError
+            );
+            return res
+              .status(500)
+              .json({ status: 500, message: "Erro interno" });
+          }
+
+          const userScores = getScoresResults.map((row) => row.score);
+
+          res.status(200).json({ status: 200, userScores });
+        }
+      );
+    });
+  } catch (error) {
+    console.error("Erro ao obter scores do usuário:", error);
+    res.status(500).json({ status: 500, message: "Erro interno" });
+  }
+});
+
+// Rota para obter os melhores scores de todos os usuários
+app.get("/api/top-scores", async (req, res) => {
+  try {
+    // Consulta os 10 melhores scores de todos os usuários
+    const getTopScoresSql =
+      "SELECT u.username, us.score FROM users u JOIN user_scores us ON u.id = us.user_id ORDER BY us.score DESC LIMIT 10";
+
+    db.query(getTopScoresSql, (getTopScoresError, getTopScoresResults) => {
+      if (getTopScoresError) {
+        console.error("Erro ao obter os melhores scores:", getTopScoresError);
+        return res.status(500).json({ status: 500, message: "Erro interno" });
+      }
+
+      const topScores = getTopScoresResults.map((row) => ({
+        name: row.username,
+        score: row.score,
+      }));
+
+      res.status(200).json({ status: 200, topScores });
+    });
+  } catch (error) {
+    console.error("Erro ao obter os melhores scores:", error);
+    res.status(500).json({ status: 500, message: "Erro interno" });
   }
 });
 

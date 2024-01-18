@@ -71,7 +71,7 @@ export default {
       requestAnimationFrame(this.update);
       if (this.score == 2400) {
         this.$emit("addCounter");
-        this.$emit("winner", true);
+        this.$emit("addScore", 1000);
       }
 
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -107,7 +107,7 @@ export default {
         this.ball.velocityX *= -1;
       } else if (this.ball.y + this.ball.height >= this.canvasHeight) {
         this.$emit("addCounter");
-        this.$emit("winner", false);
+        this.$emit("addScore", 0);
       }
 
       if (

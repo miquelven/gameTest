@@ -92,14 +92,14 @@ export default {
           pipe.passed = true;
           if (this.score == 20) {
             this.$emit("addCounter");
-            this.$emit("score", this.score);
+            this.$emit("addScore", 1000);
           }
         }
 
         if (this.detectCollision(this.bird, pipe)) {
           this.gameOver = true;
           this.$emit("addCounter");
-          this.$emit("score", this.score);
+          this.$emit("addScore", 0);
         }
       }
 
@@ -168,7 +168,7 @@ export default {
       if (this.bird.y > this.canvas.height) {
         this.gameOver = true;
         this.$emit("addCounter");
-        this.$emit("score", this.score);
+        this.$emit("addScore", 0);
       }
 
       document.addEventListener("keydown", this.moveBird);

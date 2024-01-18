@@ -46,6 +46,7 @@ export default {
       bulletVelocityY: -10,
 
       score: 0,
+      gameover: false,
     };
   },
   mounted() {
@@ -71,9 +72,15 @@ export default {
   },
   methods: {
     gameOver(collision) {
-      if (this.enemyCount == 0 || collision) {
+      this.gameover = true;
+      if (this.enemyCount == 0) {
         this.$emit("addCounter");
-        this.$emit("invaders", this.score);
+        this.$emit("addScore", 1000);
+      }
+
+      if (collision) {
+        this.$emit("addCounter");
+        this.$emit("addScore", 0);
       }
     },
     detectCollision(a, b) {
@@ -147,6 +154,7 @@ export default {
           for (let a = 0; a < this.enemyArray.length; a++) {
             let enemy = this.enemyArray[a];
             if (enemy.alive && this.detectCollision(this.player, enemy)) {
+              if (this.gameover) return;
               this.gameOver(true);
             }
           }

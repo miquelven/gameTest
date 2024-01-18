@@ -153,8 +153,6 @@ export default {
 
       if (ball.pos.x >= this.canvas.width + ball.radius) {
         paddle.score += 1;
-        // if (paddle2.score < 0) paddle2.score = 0;
-        // paddle2.score -= 1;
         this.scorePlayer.innerHTML = paddle.score;
         this.respawnBall(this.ball);
       }
@@ -275,8 +273,13 @@ export default {
       this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
       window.requestAnimationFrame(this.gameLoop);
       this.gameDraw();
-      if (this.paddle.score == 3 || this.paddle2.score == 3)
+      if (this.paddle.score == 3) {
         this.$emit("addCounter");
+        this.$emit("addScore", 1000);
+      } else if (this.paddle2.score == 3) {
+        this.$emit("addCounter");
+        this.$emit("addScore", 0);
+      }
       if (this.firstShow) {
         setTimeout(() => {
           this.gameUpdate();

@@ -1,7 +1,7 @@
 <script>
 import Header from "./icons/Header.vue";
 import Footer from "./icons/Footer.vue";
-import BestInfoItem from "@/components/BestInfoITem.vue";
+import BestInfoItem from "@/components/BestInfoItem.vue";
 
 export default {
   components: {
@@ -11,11 +11,31 @@ export default {
   },
   data() {
     return {
-      scores: ["00", "00", "00", "00", "00", "00", "00", "00", "00", "00"],
+      scores: [],
     };
   },
   mounted() {
-    // faz a request do historico e armazena na variavel para fazer o 'for'
+    this.fetchUserScores();
+  },
+  methods: {
+    async fetchUserScores() {
+      try {
+        const userEmail = this.$store.state.user
+          ? this.$store.state.user.email
+          : null;
+
+        const response = await this.$axios.get("/api/scores", {
+          params: { email: userEmail },
+        });
+
+        // Atualize a variável 'scores' com os scores obtidos
+        this.scores = response.data.userScores.sort((a, b) => b - a);
+        console.log(this.scores);
+      } catch (error) {
+        console.error("Erro ao obter scores do usuário:", error);
+        // Trate o erro conforme necessário
+      }
+    },
   },
 };
 </script>

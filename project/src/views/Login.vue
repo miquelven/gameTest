@@ -34,6 +34,13 @@ export default {
 
         if (response.data.success) {
           localStorage.setItem("token", response.data.token);
+
+          const user = {
+            name: this.name,
+            email: this.email,
+          };
+          this.$store.commit("setUser", user);
+
           const formattedName =
             this.name.charAt(0).toUpperCase() + this.name.substring(1);
           localStorage.setItem("name", formattedName);

@@ -200,7 +200,7 @@ export default {
         this.flashColor();
         setTimeout(() => {
           this.$emit("addCounter");
-          this.$emit("winner", false);
+          this.$emit("addScore", 0);
         }, 1000);
       }
 
@@ -218,7 +218,7 @@ export default {
       this.flashColor();
       setTimeout(() => {
         this.$emit("addCounter");
-        this.$emit("winner", true);
+        this.$emit("addScore", 1000);
       }, 1000);
     },
   },

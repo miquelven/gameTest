@@ -11,21 +11,31 @@ export default {
   },
   data() {
     return {
-      data: [
-        { name: "Jair", score: 1100 },
-        { name: "Maria", score: 1500 },
-        { name: "Maria", score: 1500 },
-        { name: "Maria", score: 1500 },
-        { name: "Maria", score: 1500 },
-        { name: "Maria", score: 1500 },
-        { name: "Maria", score: 1500 },
-        { name: "Maria", score: 1500 },
-        { name: "Maria", score: 1500 },
-      ],
+      topScores: [],
     };
   },
   mounted() {
-    // faz a request
+    this.fetchTopScores();
+  },
+  methods: {
+    async fetchTopScores() {
+      try {
+        const response = await this.$axios.get("/api/top-scores");
+
+        // Atualize a variável 'topScores' com os melhores scores obtidos
+        this.topScores = response.data.topScores.map((item) => ({
+          ...item,
+          name: this.capitalizeFirstLetter(item.name),
+        }));
+        console.log(this.topScores);
+      } catch (error) {
+        console.error("Erro ao obter os melhores scores:", error);
+        // Trate o erro conforme necessário
+      }
+    },
+    capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    },
   },
 };
 </script>
@@ -48,7 +58,7 @@ export default {
           </th>
         </tr>
         <tr
-          v-for="(item, index) in data"
+          v-for="(item, index) in topScores"
           :key="index"
           class="flex justify-between items-center text-xl"
         >
