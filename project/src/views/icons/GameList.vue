@@ -7,11 +7,23 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-col justify-center items-center gap-16">
+  <div
+    class="flex flex-col justify-center items-center gap-16"
+    v-motion
+    :initial="{ opacity: 0, y: 100, x: 100 }"
+    :visible="{
+      x: 0,
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 900,
+        type: 'keyframes',
+        ease: 'easein,',
+      },
+    }"
+  >
     <h3 class="text-4xl font-bold">Lista dos jogos disponíveis:</h3>
-    <div
-      class="py-24 px-14 shadow-lg shadow-white/80 border border-white rounded-3xl min-w-96 bg-neutral-950"
-    >
+    <div class="py-24 px-14 shadow-md shadow-white/30 rounded-3xl min-w-96">
       <ul class="grid gap-16 grid-cols-4 items-center">
         <GameListItem
           img="TicTacToe.png"

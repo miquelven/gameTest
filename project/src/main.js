@@ -21,12 +21,17 @@ library.add(faEye, faLightbulb, faGoogle, faFacebookF, faInstagram, faGithub);
 import axios from "axios";
 import router from "./router";
 import store from "./store";
+import { MotionPlugin } from "@vueuse/motion";
 
 const app = createApp(App);
 app.config.globalProperties.$axios = axios.create({
   baseURL: "http://localhost:3000",
 });
 
-app.use(router).use(store).component("font-awesome-icon", FontAwesomeIcon);
+app
+  .use(router)
+  .use(store)
+  .use(MotionPlugin)
+  .component("font-awesome-icon", FontAwesomeIcon);
 
 app.mount("#app");

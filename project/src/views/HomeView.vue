@@ -13,7 +13,6 @@ export default {
     const userEmail = this.$store.state.user
       ? this.$store.state.user.email
       : null;
-    console.log(userEmail);
   },
 };
 </script>
@@ -26,7 +25,23 @@ export default {
     <div class="max-w-screen-2xl m-auto">
       <section class="flex mb-20" id="container">
         <!-- left-size -->
-        <div class="flex-1 flex flex-col gap-36 justify-center">
+        <div
+          class="flex-1 flex flex-col gap-36 justify-center"
+          v-motion
+          :initial="{
+            x: -200,
+            opacity: 0,
+          }"
+          :enter="{
+            x: 0,
+            opacity: 1,
+            transition: {
+              duration: 700,
+              type: 'keyframes',
+              ease: 'easein,',
+            },
+          }"
+        >
           <!-- title -->
           <div>
             <h1 class="text-center text-7xl gap-16 flex flex-col">
@@ -49,6 +64,21 @@ export default {
         <!-- right-size -->
         <div
           class="flex-1 flex flex-col justify-center items-end gap-14 relative"
+          v-motion
+          :initial="{
+            x: 200,
+            opacity: 0,
+          }"
+          :enter="{
+            x: 0,
+            opacity: 1,
+            transition: {
+              duration: 700,
+              type: 'keyframes',
+              ease: 'easein,',
+              delay: 700,
+            },
+          }"
         >
           <h2 class="text-5xl">Irá encarar esse desafio?</h2>
 
@@ -63,7 +93,28 @@ export default {
             </router-link>
           </div>
           <div
-            class="absolute bottom-24 rotate-[-45deg] flex flex-col items-center gap-7"
+            class="absolute rotate-12 bottom-24 flex flex-col items-center gap-7"
+            v-motion
+            :initial="{
+              x: 200,
+              y: 200,
+              opacity: 0,
+              rotateY: 180,
+              rotateX: 360,
+            }"
+            :enter="{
+              x: 0,
+              y: 0,
+              opacity: 1,
+              rotateY: 340,
+              rotateX: 140,
+              transition: {
+                duration: 500,
+                type: 'keyframes',
+                ease: 'easein,',
+                delay: 1000,
+              },
+            }"
           >
             <div
               class="bg-yellow-400 w-4 h-1 shadow-md shadow-yellow-100/40 rounded-full"
