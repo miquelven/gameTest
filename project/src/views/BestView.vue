@@ -90,14 +90,14 @@ export default {
         }"
         v-motion
         :initial="{
-          x: -200,
+          x: -500,
           opacity: 0,
         }"
         :enter="{
           x: 0,
           opacity: 1,
           transition: {
-            duration: 700,
+            duration: 1000,
             type: 'keyframes',
             ease: 'easein,',
           },
