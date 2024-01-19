@@ -97,7 +97,7 @@ export default {
           x: 0,
           opacity: 1,
           transition: {
-            duration: 1000,
+            duration: 700,
             type: 'keyframes',
             ease: 'easein,',
           },

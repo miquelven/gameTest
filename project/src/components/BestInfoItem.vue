@@ -10,6 +10,20 @@ export default {
     :style="{
       borderColor: position == 1 ? '#ff0' : '',
     }"
+    v-motion
+    :initial="{
+      x: 500,
+      opacity: 0,
+    }"
+    :enter="{
+      x: 0,
+      opacity: 1,
+      transition: {
+        duration: 400,
+        type: 'keyframes',
+        ease: 'easein,',
+      },
+    }"
   >
     <span class="">{{ position }} </span>
     <p>{{ score }}</p>
