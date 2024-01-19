@@ -52,7 +52,7 @@ export default {
       <nav class="flex gap-12 text-lg">
         <router-link to="/scores"
           ><span
-            class="transition duration-300 ease-in py-2 relative hover:text-white hover:font-bold"
+            class="transition duration-300 ease-in py-8 relative hover:text-white hover:font-bold"
             data-link
           >
             Pontuações
@@ -60,7 +60,7 @@ export default {
         </router-link>
         <router-link to="/best"
           ><span
-            class="transition duration-300 ease-in py-2 relative hover:text-white hover:font-bold"
+            class="transition duration-300 ease-in py-8 relative hover:text-white hover:font-bold"
             data-link
           >
             Melhores
@@ -68,7 +68,7 @@ export default {
         </router-link>
         <router-link to="/contact"
           ><span
-            class="transition duration-300 ease-in py-2 relative hover:text-white hover:font-bold"
+            class="transition duration-300 ease-in py-8 relative hover:text-white hover:font-bold"
             data-link
           >
             Contato
@@ -76,7 +76,7 @@ export default {
         </router-link>
         <router-link to="/about"
           ><span
-            class="transition duration-300 ease-in py-2 relative hover:text-white hover:font-bold"
+            class="transition duration-300 ease-in py-8 relative hover:text-white hover:font-bold"
             data-link
           >
             Sobre
@@ -116,7 +116,7 @@ span[data-link]::before {
   content: "";
   position: absolute;
   right: 0;
-  bottom: 3px;
+  bottom: 20px;
   width: 0%;
   overflow: hidden;
   border-bottom: 4px solid transparent;
@@ -125,6 +125,7 @@ span[data-link]::before {
 
 span[data-link]:hover::before {
   width: 50%;
+
   border-color: yellow;
   filter: drop-shadow(0, 0, 25px, yellow);
 }

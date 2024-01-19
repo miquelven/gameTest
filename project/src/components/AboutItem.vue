@@ -11,10 +11,10 @@ export default {
 
 <template>
   <div :class="formatStyllingClass">
-    <h3 id="title" class="text-4xl font-bold relative inline mb-4">
+    <h3 id="title" class="text-5xl font-bold relative inline mb-4">
       {{ title }}
     </h3>
-    <p class="text-lg text-white/90">{{ content }}</p>
+    <p class="text-xl text-gray-200/90">{{ content }}</p>
   </div>
 </template>
 
