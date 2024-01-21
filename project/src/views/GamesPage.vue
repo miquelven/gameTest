@@ -91,7 +91,7 @@ export default {
   >
     <router-link
       to="/"
-      class="transition-all absolute top-20 left-20 px-3 py-1 shadow-md shadow-white/10 text-2xl hover:text-3xl hover:shadow-lg hover:shadow-white/30"
+      class="transition-all absolute top-20 left-20 px-3 py-1 shadow-md shadow-yellow-300 text-2xl hover:text-3xl hover:shadow-lg hover:shadow-white/30"
     >
       <font-awesome-icon :icon="['fas', 'arrow-left']" />
     </router-link>
@@ -100,6 +100,18 @@ export default {
     <template v-if="showModal">
       <div
         class="absolute inset-0 z-30 bg-black/90 flex justify-center items-center"
+        v-motion
+        :initial="{
+          opacity: 0,
+        }"
+        :enter="{
+          opacity: 1,
+          transition: {
+            duration: 700,
+            type: 'keyframes',
+            ease: 'easein,',
+          },
+        }"
       >
         <div
           class="bg-white text-black flex flex-col gap-8 p-5 h-96 w-96 absolute rounded-xl border-8 border-gray-800 font-bold"
