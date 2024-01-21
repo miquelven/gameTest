@@ -38,7 +38,7 @@ export default {
             transition: {
               duration: 700,
               type: 'keyframes',
-              ease: 'easein,',
+              ease: 'easein',
             },
           }"
         >

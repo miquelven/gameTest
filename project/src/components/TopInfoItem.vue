@@ -1,18 +1,63 @@
 <script>
 export default {
-  props: ["data"],
+  props: ["data", "position"],
 };
 </script>
 
 <template>
-  <td>
+  <td
+    v-motion
+    :initial="{
+      opacity: 0,
+    }"
+    :enter="{
+      opacity: 1,
+      transition: {
+        duration: 700,
+        type: 'keyframes',
+        ease: 'easein',
+        delay: 800,
+      },
+    }"
+  >
+    <span class="">{{ position + 1 }}</span>
+  </td>
+  <td
+    v-motion
+    :initial="{
+      opacity: 0,
+    }"
+    :enter="{
+      opacity: 1,
+      transition: {
+        duration: 700,
+        type: 'keyframes',
+        ease: 'easein',
+        delay: 800,
+      },
+    }"
+  >
     <p
-      class="font-bold text-2xl bg-clip-text bg-gradient-to-l from-stone-800 via-orange-700 to-red-600 text-transparent"
+      class="text-white text-2xl bg-clip-text bg-gradient-to-l from-stone-800 via-orange-700 to-red-600 text-transparent"
     >
       {{ data.name }}
     </p>
   </td>
-  <td>
-    <p class="font-bold">{{ data.score }}</p>
+  <td
+    v-motion
+    :initial="{
+      opacity: 0,
+    }"
+    :enter="{
+      opacity: 1,
+      transition: {
+        duration: 700,
+        type: 'keyframes',
+        ease: 'easein',
+        delay: 800,
+      },
+    }"
+  >
+    <p class="  ">{{ data.score }}</p>
   </td>
 </template>
