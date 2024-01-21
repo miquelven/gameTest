@@ -1,45 +1,60 @@
 <template>
-  <div>
-    <h2>Redefinir Senha</h2>
-    <label for="newPassword">Nova Senha:</label>
-    <input
-      type="password"
-      id="newPassword"
-      v-model="newPassword"
-      class="text-black"
-    />
-    <button @click="togglePassword">Salvar Senha</button>
+  <div class="w-full h-screen text-center">
+    <div class="m-auto w-96">
+      <h2 class="text-5xl font-bold mb-10">Redefinir Senha</h2>
+      <form class="relative flex flex-col gap-10">
+        <InputForm
+          ref="newPassword"
+          text="Senha"
+          type="password"
+          :warning="warningPassword"
+        />
+
+        <button
+          @click.prevent="togglePassword"
+          class="mt-2 mx-auto w-1/2 outline-none shadow-lg shadow-black/40 border-2 border-gray-300/20 bg-black p-2 rounded-md hover:shadow-gray-200/20 text-white/80 hover:cursor-pointer hover:bg-black/70"
+        >
+          Salvar
+        </button>
+      </form>
+    </div>
   </div>
 </template>
 
 <script>
+import validateForm from "@/mixins/validateForm.js";
+import InputForm from "./icons/InputForm.vue";
+
 export default {
+  mixins: [validateForm],
+  components: { InputForm },
   data() {
     return {
       newPassword: "",
+      warningPassword: "",
     };
   },
+  mounted() {
+    this.newPassword = this.$refs.newPassword;
+  },
   methods: {
-    async togglePassword() {
-      try {
-        // const token = new URLSearchParams(window.location.search).get("token");
+    async togglePassword(e) {
+      this.warningPassword = this.validatePassword(
+        e.target.closest("form").getElementsByTagName("input")[0]
+      );
 
+      if (this.warningPassword) return;
+
+      try {
         const path = window.location.pathname;
 
-        // Divida o caminho em partes usando '/'
         const pathParts = path.split("/");
 
-        // Encontre a parte que segue "resetpassword/"
         const tokenIndex = pathParts.indexOf("resetpassword") + 1;
 
-        // Verifique se há um token presente
         const token =
           tokenIndex < pathParts.length ? pathParts[tokenIndex] : null;
 
-        // Agora, 'token' conterá o valor do token ou será nulo se não for encontrado
-        console.log("Token:", token);
-
-        console.log(token);
         const res = await fetch("http://localhost:3000/togglepassword", {
           method: "POST",
           headers: {
@@ -55,7 +70,6 @@ export default {
 
         if (res.status === 200) {
           alert("Senha alterada com sucesso!");
-          // Redirecionar para a página de login ou qualquer outra página desejada
           window.location.href = "/login";
         } else {
           alert("Erro ao alterar a senha. Por favor, tente novamente.");
@@ -69,6 +83,8 @@ export default {
 };
 </script>
 
-<style scoped>
-/* Adicione estilos conforme necessário */
+<style>
+body {
+  overflow: hidden;
+}
 </style>
