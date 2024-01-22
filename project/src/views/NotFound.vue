@@ -1,5 +1,7 @@
 <template>
-  <div class="w-full h-screen flex flex-col justify-center items-center">
+  <div
+    class="w-full h-[calc(100vh-80px)] m-auto flex flex-col justify-center items-center max-sm:scale-75"
+  >
     <div
       class="bg-gradient-to-r from-red-800 via-yellow-600 to-yellow-500 py-8 px-16 rounded-xl shadow-[55px_35px_40px_rgba(75,75,75,.5)] text-lg"
     >

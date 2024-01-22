@@ -19,7 +19,7 @@ export default {
     <div class="max-w-screen-2xl m-auto flex justify-center">
       <div class="flex flex-col gap-20 items-center mt-52">
         <h1
-          class="text-7xl font-bold"
+          class="text-7xl font-bold max-sm:text-5xl"
           v-motion
           :initial="{
             y: -200,

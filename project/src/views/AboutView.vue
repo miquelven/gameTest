@@ -16,8 +16,8 @@ export default {
   <Header />
   <main class="w-full mt-20" id="best">
     <!-- container -->
-    <div class="max-w-screen-2xl m-auto flex justify-center">
-      <div class="m-auto mb-10 max-w-4xl  border-x-2 border-white/50 px-5 py-10 flex flex-col  gap-24">
+    <div class="flex  ">
+      <div class="m-auto mb-10 max-w-4xl  border-x-2 border-white/50 px-5 py-10 flex flex-col  gap-24 max-sm:border-0">
         <AboutItem
           title="Bem-vindo:"
           content="Bem vindo ao nosso universo de desafios de jogos, onde a diversão
@@ -173,4 +173,5 @@ transition: {
   height: 4px;
   width: 100%;
 }
+
 </style>

@@ -5,11 +5,17 @@ export default {
       name: "",
       showItem: false,
       header: null,
+      showMenu: false,
     };
   },
   mounted() {
     const nameUser = localStorage.getItem("name");
     this.name = nameUser[0].toUpperCase() + nameUser.substring(1);
+  },
+  watch: {
+    showMenu(value, old) {
+      console.log(value);
+    },
   },
   methods: {
     async logout() {
@@ -44,12 +50,17 @@ export default {
     class="fixed z-50 w-full top-0 left-0 text-white bg-transparent backdrop-blur-xl border-b-[2px] border-[rgba(255,255,255,.2)]"
   >
     <div
-      class="max-w-screen-2xl m-auto flex justify-between items-center max-h-20"
+      class="max-w-screen-2xl m-auto flex justify-between items-center max-h-20 p-10"
     >
       <router-link to="/">
-        <img src="../../assets/images/logo.png" alt="logo" width="100" />
+        <img
+          src="../../assets/images/logo.png"
+          alt="logo"
+          width="100"
+          class="max-lg:w-20"
+        />
       </router-link>
-      <nav class="flex gap-12 text-lg">
+      <nav class="flex gap-12 text-lg max-lg:text-sm max-md:hidden">
         <router-link to="/scores"
           ><span
             class="transition duration-300 ease-in py-8 relative hover:text-white hover:font-bold"
@@ -83,8 +94,48 @@ export default {
           </span>
         </router-link>
       </nav>
+      <font-awesome-icon
+        :icon="['fas', 'bars']"
+        class="hidden h-5 cursor-pointer max-md:block"
+        @click="() => (showMenu = !showMenu)"
+      />
+      <template v-if="showMenu">
+        <nav
+          class="absolute left-0 top-[80px] flex flex-col bg-black/95 border-b-[2px] border-[rgba(255,255,255,.2)] w-full gap-10 py-5 font-bold"
+          v-motion
+          :initial="{
+            opacity: 0,
+          }"
+          :enter="{
+            opacity: 1,
+            transition: {
+              ease: 'easein',
+              duration: 500,
+              type: 'spring',
+            },
+          }"
+        >
+          <router-link to="/scores" class="w-full text-center"
+            ><span class="py-8 relative"> Pontuações </span>
+          </router-link>
+          <router-link to="/best" class="w-full text-center"
+            ><span class="py-8 relative"> Melhores </span>
+          </router-link>
+          <router-link to="/contact" class="w-full text-center"
+            ><span class="py-8 relative"> Contato </span>
+          </router-link>
+          <router-link to="/about" class="w-full text-center"
+            ><span class="py-8 relative"> Sobre </span>
+          </router-link>
+          <button @click="logout" class="w-full text-center">
+            <span class="py-8 relative"> Sair </span>
+          </button>
+        </nav>
+      </template>
 
-      <div class="text-lg text-white flex flex-col items-end">
+      <div
+        class="text-lg text-white flex flex-col items-end max-lg:text-base max-md:hidden"
+      >
         <span class="text-sm text-gray-400">Usuário: </span>
         <button class="flex" @click="() => (showItem = !showItem)">
           <span>{{ name }} </span>

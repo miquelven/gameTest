@@ -1,4 +1,5 @@
 <script>
+import axios from "axios";
 import InputForm from "./icons/InputForm.vue";
 import validateForm from "@/mixins/validateForm.js";
 
@@ -27,7 +28,7 @@ export default {
       this.inputCheck(e.target.getElementsByTagName("input"));
 
       try {
-        const response = await this.$axios.post("/login", {
+        const response = await axios.post("http://localhost:3000/login", {
           email: this.email,
           password: this.password,
         });
@@ -46,7 +47,7 @@ export default {
           localStorage.setItem("name", formattedName);
           this.$router.push("/");
         } else {
-          // Trate falhas de login
+          console.log("deu ruim");
         }
       } catch (error) {
         console.error("Erro durante a solicitação de login:", error);
@@ -110,7 +111,7 @@ export default {
 
 <template>
   <div
-    class="w-full h-[calc(83.5vh)] flex flex-col justify-center items-center"
+    class="w-full h-[calc(100vh-80px)] flex flex-col justify-center items-center"
   >
     <div class="relative z-10 mb-28">
       <div class="flex justify-center items-center flex-col">
@@ -169,7 +170,9 @@ export default {
           <span>
             <p class="text-gray-400/80">
               Não tem uma conta?
-              <router-link to="/register" class="underline"
+              <router-link
+                to="/register"
+                class="text-yellow-400 hover:underline"
                 >Crie uma conta.</router-link
               >
             </p>

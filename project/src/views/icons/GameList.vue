@@ -22,9 +22,15 @@ export default {
       },
     }"
   >
-    <h3 class="text-4xl font-bold">Lista dos jogos disponíveis:</h3>
-    <div class="py-24 px-14 shadow-md shadow-white/30 rounded-3xl min-w-96">
-      <ul class="grid gap-16 grid-cols-4 items-center">
+    <h3 class="text-4xl font-bold max-md:text-3xl">
+      Lista dos jogos disponíveis:
+    </h3>
+    <div
+      class="py-24 px-14 shadow-md shadow-white/30 rounded-3xl min-w-96 max-md:py-14 max-md:px-6"
+    >
+      <ul
+        class="grid gap-16 grid-cols-4 items-center max-lg:grid-cols-2 max-md:grid-cols-1 max-md:gap-11"
+      >
         <GameListItem
           img="TicTacToe.png"
           name="Jogo da Velha"

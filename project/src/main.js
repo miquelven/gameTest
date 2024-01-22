@@ -12,6 +12,7 @@ import {
   faEye,
   faLightbulb,
   faArrowLeft,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -24,6 +25,7 @@ library.add(
   faEye,
   faLightbulb,
   faArrowLeft,
+  faBars,
   faGoogle,
   faFacebookF,
   faInstagram,

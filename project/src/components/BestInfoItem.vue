@@ -6,7 +6,7 @@ export default {
 
 <template>
   <td
-    class="transition duration-150 ease-in text-4xl w-96 m-auto flex justify-between gap-16 border-2 rounded-md py-3 px-16 font-bold shadow-[0px_15px_10px_rgba(0,0,0,.7)] hover:shadow-xl hover:shadow-black hover:scale-110"
+    class="transition duration-150 ease-in text-4xl w-96 m-auto flex justify-between gap-16 border-2 rounded-md py-3 px-16 font-bold shadow-[0px_15px_10px_rgba(0,0,0,.7)] hover:shadow-xl hover:shadow-black hover:scale-110 max-2xl:w-72 max-2xl:px-6 max-2xl:text-3xl max-lg:w-52 max-lg:text-2xl max-sm:text-lg max-md:text-xl"
     :style="{
       borderColor: position == 1 ? '#ff0' : '',
     }"

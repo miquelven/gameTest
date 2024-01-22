@@ -59,6 +59,8 @@ export default {
       passwordIconEl.style.opacity = opacity;
 
       this.changeInputType(passwordIconEl);
+      // dar o foco no input depois de clicar no icone
+      e.target.parentElement.querySelector("input").focus();
     },
     changeInputType(element) {
       const input = element.parentElement.children[0];
@@ -91,10 +93,10 @@ export default {
 
 <template>
   <div
-    class="w-full h-[calc(83.5vh)] flex flex-col justify-center items-center relative z-0"
+    class="w-full h-[calc(100vh-80px)] flex flex-col justify-center items-center relative z-0"
     id="container"
   >
-    <h1 class="text-5xl mb-20">Registre-se</h1>
+    <h1 class="text-5xl mb-20 max-[400px]:text-4xl">Registre-se</h1>
     <form
       class="relative z-10 w-72 flex flex-col justify-center items-center gap-9"
       @submit.prevent="register"
@@ -125,7 +127,7 @@ export default {
         />
         <font-awesome-icon
           :icon="['fas', 'eye']"
-          class="absolute right-0 cursor-pointer p-4 opacity-50"
+          class="absolute right-0 cursor-pointer p-4 opacity-50 max-sm:right-5"
           @click="showIconPassword"
         />
       </div>
@@ -139,7 +141,7 @@ export default {
         />
         <font-awesome-icon
           :icon="['fas', 'eye']"
-          class="absolute right-0 cursor-pointer p-4 opacity-50"
+          class="absolute right-0 cursor-pointer p-4 opacity-50 max-sm:right-5"
           @click="showIconPassword"
         />
       </div>

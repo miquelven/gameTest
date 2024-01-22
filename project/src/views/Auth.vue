@@ -1,7 +1,9 @@
 <template>
-  <div class="w-full h-screen text-center">
+  <div
+    class="w-full h-[calc(100vh-80px)] text-center flex flex-col justify-center"
+  >
     <div class="m-auto w-96">
-      <h2 class="text-5xl font-bold mb-10">Redefinir Senha</h2>
+      <h2 class="text-5xl font-bold mb-10 max-sm:text-4xl">Redefinir Senha</h2>
       <form class="relative flex flex-col gap-10">
         <InputForm
           ref="newPassword"
@@ -12,7 +14,7 @@
 
         <button
           @click.prevent="togglePassword"
-          class="mt-2 mx-auto w-1/2 outline-none shadow-lg shadow-black/40 border-2 border-gray-300/20 bg-black p-2 rounded-md hover:shadow-gray-200/20 text-white/80 hover:cursor-pointer hover:bg-black/70"
+          class="mt-2 mx-auto w-1/2 outline-none shadow-lg shadow-black/40 border-2 border-gray-300/20 bg-black p-2 rounded-md hover:shadow-gray-200/20 text-white/80 hover:cursor-pointer hover:bg-black/70 max-sm:w-28"
         >
           Salvar
         </button>
@@ -82,9 +84,3 @@ export default {
   },
 };
 </script>
-
-<style>
-body {
-  overflow: hidden;
-}
-</style>

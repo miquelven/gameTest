@@ -80,9 +80,11 @@ export default {
   <Header />
   <main class="w-full mt-32" id="best">
     <!-- container -->
-    <div class="max-w-screen-2xl m-auto h-screen">
+    <div
+      class="max-w-screen-2xl m-auto h-screen max-2xl:max-w-screen-xl max-xl:max-w-screen-lg max-lg:max-w-screen-md max-md:max-w-96"
+    >
       <table
-        class="grid grid-cols-3 grid-rows-5 gap-16 bg-gradient-to-r from-white/10 from-10% via-yellow-200/30 via-30% to-yellow-100/10 to-90% p-10 shadow-2xl shadow-black/80"
+        class="grid grid-cols-3 grid-rows-5 gap-16 bg-gradient-to-r from-white/10 from-10% via-yellow-200/30 via-30% to-yellow-100/10 to-90% p-10 shadow-2xl shadow-black/80 max-xl:grid-cols-2 max-xl:grid-rows-6 max-xl:gap-14 max-md:flex max-md:flex-col max-md:gap-8"
         ref="infoItems"
         :style="{
           transform: cardTransform,
@@ -103,10 +105,12 @@ export default {
           },
         }"
       >
-        <tr class="row-start-1 row-end-6 m-auto">
+        <tr
+          class="row-start-1 row-end-6 m-auto max-xl:row-end-2 max-xl:col-start-1 max-xl:col-end-3"
+        >
           <th>
             <h1
-              class="text-6xl bg-clip-text bg-gradient-to-r from-yellow-400 from-10% via-yellow-100 via-30% to-yellow-400 to-90% text-transparent mb-10"
+              class="text-6xl bg-clip-text bg-gradient-to-r from-yellow-400 from-10% via-yellow-100 via-30% to-yellow-400 to-90% text-transparent mb-10 max-2xl:text-5xl max-md:text-3xl"
             >
               Suas melhores pontuações:
             </h1>
@@ -115,7 +119,7 @@ export default {
         <tr
           v-for="(score, index) in scores"
           :key="index"
-          class="even:col-start-2 even:col-end-3"
+          class="min-2xl:even:col-start-2 min-2xl:even:col-end-3"
         >
           <BestInfoItem :score="score" :position="index + 1" />
         </tr>
