@@ -78,10 +78,10 @@ export default {
 
 <template>
   <Header />
-  <main class="w-full mt-32 min-w-[calc(100vh)]" id="best">
+  <main class="w-full mt-32 min-h-[calc(100vh)]">
     <!-- container -->
     <div
-      class="max-w-screen-2xl m-auto h-screen max-2xl:max-w-screen-xl max-xl:max-w-screen-lg max-lg:max-w-screen-md max-md:max-w-96"
+      class="max-w-screen-2xl h-screen max-2xl:max-w-screen-xl max-xl:max-w-screen-lg m-auto max-lg:max-w-screen-md max-md:max-w-96"
     >
       <table
         class="grid grid-cols-3 grid-rows-5 gap-16 bg-gradient-to-r from-white/10 from-10% via-yellow-200/30 via-30% to-yellow-100/10 to-90% p-10 shadow-2xl shadow-black/80 max-xl:grid-cols-2 max-xl:grid-rows-6 max-xl:gap-14 max-md:flex max-md:flex-col max-md:gap-8"

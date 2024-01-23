@@ -54,7 +54,7 @@ export default {
           this.toast.error("Erro ao logar. Verifique os campos");
         }
       } catch (error) {
-        console.error("Erro durante a solicitação de login:", error);
+        this.toast.error("Informações inválidas");
       }
     },
     showIconPassword(e) {
@@ -110,6 +110,8 @@ export default {
             error
           );
         }
+      } else {
+        this.toast.error("Preencha o campo de email");
       }
     },
   },
