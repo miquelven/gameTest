@@ -52,10 +52,12 @@ export default {
           localStorage.setItem("name", name);
           this.$router.push("/");
         } else {
-          this.toast.error("Não foi possível realizar o registro");
+          this.toast.error(response.data.error);
+          console.log(response.data.error);
         }
       } catch (error) {
         this.toast.error("Não foi possível realizar o registro");
+        console.log(error.message);
       }
     },
     showIconPassword(e) {
