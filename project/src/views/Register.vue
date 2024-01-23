@@ -9,10 +9,10 @@ export default {
   },
   data() {
     return {
-      userName: "miquelven",
-      email: "miquelven.silva@gmail.com",
-      password: "@miquelven2121",
-      C_password: "@miquelven2121",
+      userName: "",
+      email: "",
+      password: "",
+      C_password: "",
 
       warningName: "",
       warningEmail: "",
