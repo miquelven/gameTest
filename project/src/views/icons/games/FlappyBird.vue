@@ -5,8 +5,10 @@
 <script>
 import birdImage from "@/assets/images/FlappyGame/bird.png";
 import pipeImg from "@/assets/images/FlappyGame/pipe.png";
+import collision from "@/mixins/collision";
 
 export default {
+  mixins: [collision],
   data() {
     return {
       canvas: null,
@@ -147,14 +149,6 @@ export default {
       if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX") {
         this.velocityY = -6;
       }
-    },
-    detectCollision(a, b) {
-      return (
-        a.x < b.x + b.width &&
-        a.x + a.width > b.x &&
-        a.y < b.y + b.height &&
-        a.y + a.height > b.y
-      );
     },
     update() {
       if (this.gameOver) return;

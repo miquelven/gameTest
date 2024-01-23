@@ -13,7 +13,7 @@ export default {
   <div :class="formatStyllingClass">
     <h3
       id="title"
-      class="text-5xl font-bold relative inline mb-4 max-md:text-4xl max-sm:text-3xl"
+      class="text-5xl font-bold relative inline mb-4 max-md:text-4xl max-sm:text-3xl before:content-[''] before:absolute before:bg-gradient-to-r before:from-[rgb(201,201,10)] before:to-[#000000ca] before:-bottom-[6px] before:h-1 before:w-full"
     >
       {{ title }}
     </h3>
@@ -22,14 +22,3 @@ export default {
     </p>
   </div>
 </template>
-
-<style scoped>
-#title::before {
-  content: "";
-  position: absolute;
-  background: linear-gradient(to right, rgb(201, 201, 10) 10%, #000000ca);
-  bottom: -6px;
-  height: 4px;
-  width: 100%;
-}
-</style>

@@ -11,15 +11,7 @@ export default {
   },
   data() {
     return {
-      topScores: [
-        { name: "miquelven", score: 1000 },
-        { name: "miquelven", score: 1000 },
-        { name: "miquelven", score: 1000 },
-        { name: "miquelven", score: 1000 },
-        { name: "miquelven", score: 1000 },
-        { name: "miquelven", score: 1000 },
-        { name: "miquelven", score: 1000 },
-      ],
+      topScores: [],
     };
   },
   mounted() {
@@ -43,7 +35,7 @@ export default {
 
 <template>
   <Header />
-  <main class="w-full mt-20" id="score">
+  <main class="w-full mt-20 min-h-[calc(100vh-250px)]">
     <!-- container -->
     <div class="min-w-screen-2xl m-auto flex justify-center">
       <table
@@ -107,9 +99,3 @@ export default {
   </main>
   <Footer />
 </template>
-
-<style scoped>
-#score {
-  min-height: calc(100vh - 250px);
-}
-</style>

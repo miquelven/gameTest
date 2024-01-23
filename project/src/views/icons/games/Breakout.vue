@@ -6,7 +6,10 @@
 </template>
 
 <script>
+import collision from "@/mixins/collision";
+
 export default {
+  mixins: [collision],
   data() {
     return {
       canvas: null,
@@ -21,15 +24,15 @@ export default {
 
       ballWidth: 10,
       ballHeight: 10,
-      ballVelocityX: 3,
-      ballVelocityY: 2,
+      ballVelocityX: 5,
+      ballVelocityY: 3,
       ball: {},
 
       blockArray: [],
-      blockWidth: 50,
+      blockWidth: 70,
       blockHeight: 10,
-      blockColumns: 8,
-      blockRows: 3,
+      blockColumns: 6,
+      blockRows: 2,
       blockMaxRows: 10,
       blockCount: 0,
       blockX: 15,
@@ -54,7 +57,7 @@ export default {
 
     this.ball = {
       x: this.canvasWidth / 2,
-      y: this.canvasHeight / 2,
+      y: this.canvasHeight / 2 - 100,
       width: this.ballWidth,
       height: this.ballHeight,
       velocityX: this.ballVelocityX,
@@ -69,7 +72,7 @@ export default {
   methods: {
     update() {
       requestAnimationFrame(this.update);
-      if (this.score == 2400) {
+      if (this.score == 1200) {
         this.$emit("addCounter");
         this.$emit("addScore", 1000);
       }
@@ -175,14 +178,6 @@ export default {
           this.player.x = newPlayerX;
         }
       }
-    },
-    detectCollision(a, b) {
-      return (
-        a.x < b.x + b.width &&
-        a.x + a.width > b.x &&
-        a.y < b.y + b.height &&
-        a.y + a.height > b.y
-      );
     },
     topCollision(ball, block) {
       return (

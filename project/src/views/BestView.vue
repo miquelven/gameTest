@@ -78,7 +78,7 @@ export default {
 
 <template>
   <Header />
-  <main class="w-full mt-32" id="best">
+  <main class="w-full mt-32 min-w-[calc(100vh)]" id="best">
     <!-- container -->
     <div
       class="max-w-screen-2xl m-auto h-screen max-2xl:max-w-screen-xl max-xl:max-w-screen-lg max-lg:max-w-screen-md max-md:max-w-96"
@@ -128,9 +128,3 @@ export default {
   </main>
   <Footer />
 </template>
-
-<style scoped>
-#best {
-  min-height: calc(100vh);
-}
-</style>

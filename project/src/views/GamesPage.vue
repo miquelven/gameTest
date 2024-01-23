@@ -87,7 +87,7 @@ export default {
 
 <template>
   <div
-    class="h-[calc(83.5vh)] w-full flex flex-col gap-10 justify-center items-center"
+    class="h-[calc(100vh-80px)] w-full flex flex-col gap-10 justify-center items-center"
   >
     <router-link
       to="/"
@@ -174,6 +174,7 @@ export default {
         <SpaceInvaders @addCounter="addCounter" @addScore="addScore" />
       </template>
 
+      <!-- RESULTADO -->
       <template v-if="counter >= 8">
         <div
           class="bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-yellow-500 via-red-600 to-fuchsia-500 shadow-[5px_7px_10px_#666] flex flex-col gap-8 pt-14 px-5 h-96 w-96 absolute rounded-xl font-bold"

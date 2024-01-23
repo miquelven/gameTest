@@ -36,6 +36,9 @@ import axios from "axios";
 import router from "./router";
 import store from "./store";
 import { MotionPlugin } from "@vueuse/motion";
+import Toast from "vue-toastification";
+
+import "vue-toastification/dist/index.css";
 
 const app = createApp(App);
 app.config.globalProperties.$axios = axios.create({
@@ -46,6 +49,7 @@ app
   .use(router)
   .use(store)
   .use(MotionPlugin)
+  .use(Toast)
   .component("font-awesome-icon", FontAwesomeIcon);
 
 app.mount("#app");

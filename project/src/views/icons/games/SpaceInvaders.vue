@@ -10,7 +10,10 @@
 <script>
 import playerImg from "@/assets/images/InvadersGame/player.png";
 import enemyImg from "@/assets/images/InvadersGame/enemy.png";
+import collision from "@/mixins/collision";
+
 export default {
+  mixins: [collision],
   data() {
     return {
       canvas: null,
@@ -82,14 +85,6 @@ export default {
         this.$emit("addCounter");
         this.$emit("addScore", 0);
       }
-    },
-    detectCollision(a, b) {
-      return (
-        a.x < b.x + b.width &&
-        a.x + a.width > b.x &&
-        a.y < b.y + b.height &&
-        a.y + a.height > b.y
-      );
     },
     shoot(e) {
       if (e.code == "Space") {

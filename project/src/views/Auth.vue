@@ -26,6 +26,7 @@
 <script>
 import validateForm from "@/mixins/validateForm.js";
 import InputForm from "./icons/InputForm.vue";
+import { useToast } from "vue-toastification";
 
 export default {
   mixins: [validateForm],
@@ -34,9 +35,12 @@ export default {
     return {
       newPassword: "",
       warningPassword: "",
+
+      toast: null,
     };
   },
   mounted() {
+    this.toast = useToast();
     this.newPassword = this.$refs.newPassword;
   },
   methods: {
@@ -71,14 +75,16 @@ export default {
         const data = await res.json();
 
         if (res.status === 200) {
-          alert("Senha alterada com sucesso!");
-          window.location.href = "/login";
+          this.toast.success("Senha Alterada!");
+          setTimeout(() => (window.location.href = "/login"), 1000);
         } else {
-          alert("Erro ao alterar a senha. Por favor, tente novamente.");
+          this.toast.error("Senha não alterada");
         }
       } catch (error) {
         console.error("Erro durante a alteração da senha:", error);
-        alert("Erro interno. Por favor, tente novamente mais tarde.");
+        this.toast.error(
+          "Erro interno. Por favor, tente novamente mais tarde."
+        );
       }
     },
   },

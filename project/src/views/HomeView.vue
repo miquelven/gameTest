@@ -22,7 +22,7 @@ export default {
 
   <main class="w-full mt-20 mb-19">
     <!-- container -->
-    <div class="max-w-screen-2xl m-auto px-10">
+    <div class="max-w-screen-2xl min-h-[calc(100vh-250px)] m-auto px-10">
       <section
         class="flex mb-20 max-xl:flex-col max-xl:gap-32 max-lg:gap-14"
         id="container"
@@ -148,9 +148,3 @@ export default {
   </main>
   <Footer />
 </template>
-
-<style scoped>
-#container {
-  min-height: calc(100vh - 250px);
-}
-</style>

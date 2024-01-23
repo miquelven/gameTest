@@ -1,6 +1,7 @@
 <script>
 import InputForm from "./icons/InputForm.vue";
 import validateForm from "@/mixins/validateForm.js";
+import { useToast } from "vue-toastification";
 export default {
   mixins: [validateForm],
   components: {
@@ -17,9 +18,13 @@ export default {
       warningEmail: "",
       warningPassword: "",
       warningC_password: "",
+
+      toast: null,
     };
   },
   mounted() {
+    this.toast = useToast();
+
     this.$refs.InputForm.$refs.input.focus();
   },
   methods: {
@@ -36,17 +41,13 @@ export default {
         if (response.data.success) {
           const { name, token } = response.data;
           localStorage.setItem("token", token);
-          const formattedName = "miquelven";
-          // const formattedName =
-          //   name.charAt(0).toUpperCase() + name.substring(1);
-          localStorage.setItem("name", formattedName);
+          localStorage.setItem("name", name);
           this.$router.push("/");
         } else {
-          // Trate falhas de registro
+          this.toast.error("Não foi possível realizar o registro");
         }
       } catch (error) {
-        console.error("Erro durante a solicitação de registro:", error);
-        // Trate erros de solicitação
+        this.toast.error("Não foi possível realizar o registro");
       }
     },
     showIconPassword(e) {
@@ -60,7 +61,7 @@ export default {
 
       this.changeInputType(passwordIconEl);
       // dar o foco no input depois de clicar no icone
-      e.target.parentElement.querySelector("input").focus();
+      e.currentTarget.parentElement.querySelector("input").focus();
     },
     changeInputType(element) {
       const input = element.parentElement.children[0];

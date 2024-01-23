@@ -1,7 +1,14 @@
 <script>
+import { useToast } from "vue-toastification";
+import HeaderMenuMobile from "./HeaderMenuMobile.vue";
+import HeaderLink from "./HeaderLink.vue";
+
 export default {
+  components: { HeaderMenuMobile, HeaderLink },
   data() {
     return {
+      toast: null,
+
       name: "",
       showItem: false,
       header: null,
@@ -9,13 +16,10 @@ export default {
     };
   },
   mounted() {
+    this.toast = useToast();
+
     const nameUser = localStorage.getItem("name");
     this.name = nameUser[0].toUpperCase() + nameUser.substring(1);
-  },
-  watch: {
-    showMenu(value, old) {
-      console.log(value);
-    },
   },
   methods: {
     async logout() {
@@ -26,18 +30,15 @@ export default {
         });
 
         if (response.data.success) {
-          // Limpe os dados de autenticação armazenados localmente (ou faça o que for necessário)
           localStorage.removeItem("token");
           localStorage.removeItem("name");
 
-          // Redirecione para a página de login ou outra página desejada
           this.$router.push("/login");
         } else {
-          // Trate falhas no logout
+          this.toast.error("Não foi possível fazer o logout");
         }
       } catch (error) {
         console.error("Erro durante a solicitação de logout:", error);
-        // Trate erros de solicitação
       }
     },
   },
@@ -61,77 +62,13 @@ export default {
         />
       </router-link>
       <nav class="flex gap-12 text-lg max-lg:text-sm max-md:hidden">
-        <router-link to="/scores"
-          ><span
-            class="transition duration-300 ease-in py-8 relative hover:text-white hover:font-bold"
-            data-link
-          >
-            Pontuações
-          </span>
-        </router-link>
-        <router-link to="/best"
-          ><span
-            class="transition duration-300 ease-in py-8 relative hover:text-white hover:font-bold"
-            data-link
-          >
-            Melhores
-          </span>
-        </router-link>
-        <router-link to="/contact"
-          ><span
-            class="transition duration-300 ease-in py-8 relative hover:text-white hover:font-bold"
-            data-link
-          >
-            Contato
-          </span>
-        </router-link>
-        <router-link to="/about"
-          ><span
-            class="transition duration-300 ease-in py-8 relative hover:text-white hover:font-bold"
-            data-link
-          >
-            Sobre
-          </span>
-        </router-link>
+        <HeaderLink text="Pontuações" to="/scores" />
+        <HeaderLink text="Melhores" to="/best" />
+        <HeaderLink text="Contato" to="/contact" />
+        <HeaderLink text="Sobre" to="/about" />
       </nav>
-      <font-awesome-icon
-        :icon="['fas', 'bars']"
-        class="hidden h-5 cursor-pointer max-md:block"
-        @click="() => (showMenu = !showMenu)"
-      />
-      <template v-if="showMenu">
-        <nav
-          class="absolute left-0 top-[80px] flex flex-col bg-black/95 border-b-[2px] border-[rgba(255,255,255,.2)] w-full gap-10 py-5 font-bold"
-          v-motion
-          :initial="{
-            opacity: 0,
-          }"
-          :enter="{
-            opacity: 1,
-            transition: {
-              ease: 'easein',
-              duration: 500,
-              type: 'spring',
-            },
-          }"
-        >
-          <router-link to="/scores" class="w-full text-center"
-            ><span class="py-8 relative"> Pontuações </span>
-          </router-link>
-          <router-link to="/best" class="w-full text-center"
-            ><span class="py-8 relative"> Melhores </span>
-          </router-link>
-          <router-link to="/contact" class="w-full text-center"
-            ><span class="py-8 relative"> Contato </span>
-          </router-link>
-          <router-link to="/about" class="w-full text-center"
-            ><span class="py-8 relative"> Sobre </span>
-          </router-link>
-          <button @click="logout" class="w-full text-center">
-            <span class="py-8 relative"> Sair </span>
-          </button>
-        </nav>
-      </template>
+
+      <HeaderMenuMobile @logout="logout" />
 
       <div
         class="text-lg text-white flex flex-col items-end max-lg:text-base max-md:hidden"
@@ -161,23 +98,3 @@ export default {
     </div>
   </header>
 </template>
-
-<style scoped>
-span[data-link]::before {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: 20px;
-  width: 0%;
-  overflow: hidden;
-  border-bottom: 4px solid transparent;
-  transition: 300ms ease-in;
-}
-
-span[data-link]:hover::before {
-  width: 50%;
-
-  border-color: yellow;
-  filter: drop-shadow(0, 0, 25px, yellow);
-}
-</style>

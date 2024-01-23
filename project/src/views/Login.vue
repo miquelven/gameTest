@@ -2,6 +2,7 @@
 import axios from "axios";
 import InputForm from "./icons/InputForm.vue";
 import validateForm from "@/mixins/validateForm.js";
+import { useToast } from "vue-toastification";
 
 export default {
   mixins: [validateForm],
@@ -14,9 +15,12 @@ export default {
       warningName: "",
       warningEmail: "",
       warningPassword: "",
+
+      toast: null,
     };
   },
   mounted() {
+    this.toast = useToast();
     if (localStorage.getItem("token")) localStorage.removeItem("token");
     this.$refs.InputName.$refs.input.focus();
   },
@@ -47,11 +51,10 @@ export default {
           localStorage.setItem("name", formattedName);
           this.$router.push("/");
         } else {
-          console.log("deu ruim");
+          this.toast.error("Erro ao logar. Verifique os campos");
         }
       } catch (error) {
         console.error("Erro durante a solicitação de login:", error);
-        // Trate erros de solicitação
       }
     },
     showIconPassword(e) {
@@ -64,6 +67,9 @@ export default {
       passwordIconEl.style.opacity = opacity;
 
       this.changeInputType(passwordIconEl);
+
+      // DAR O FOCO NO INPUT QUANDO CLICAR NO ICONE
+      e.currentTarget.parentElement.querySelector("input").focus();
     },
     changeInputType(element) {
       const input = element.parentElement.children[0];
@@ -92,16 +98,17 @@ export default {
           });
 
           if (response.data.success) {
-            // Trate o sucesso no envio do e-mail de recuperação de senha
+            this.toast.success("Email enviado!");
           } else {
-            // Trate falhas no envio do e-mail
+            if (this.email == "")
+              this.toast.error("Email não enviado. Preencha o campo de email");
+            this.toast.error("Email não enviado");
           }
         } catch (error) {
           console.error(
             "Erro durante a solicitação de recuperação de senha:",
             error
           );
-          // Trate erros de solicitação
         }
       }
     },
