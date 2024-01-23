@@ -19,7 +19,8 @@ export default {
     this.toast = useToast();
 
     const nameUser = localStorage.getItem("name");
-    this.name = nameUser[0].toUpperCase() + nameUser.substring(1);
+    // this.name = nameUser[0].toUpperCase() + nameUser.substring(1);
+    this.name = nameUser;
   },
   methods: {
     async logout() {

@@ -9,11 +9,6 @@ export default {
     Header,
     Footer,
   },
-  mounted() {
-    const userEmail = this.$store.state.user
-      ? this.$store.state.user.email
-      : null;
-  },
 };
 </script>
 

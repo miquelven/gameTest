@@ -57,10 +57,12 @@ app.post("/register", async (req, res) => {
         "jsdfnkjouittms",
         { expiresIn: "1h" }
       );
+      const name = username;
 
       res.status(200).json({
         success: true,
         message: "Usuário registrado com sucesso.",
+        name,
         token,
       });
     }

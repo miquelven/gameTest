@@ -10,7 +10,7 @@ export default {
   data() {
     return {
       userName: "",
-      email: "",
+      email: ".",
       password: "",
       C_password: "",
 
@@ -28,9 +28,17 @@ export default {
     this.$refs.InputForm.$refs.input.focus();
   },
   methods: {
-    async register(e) {
+    verifyInputs(e) {
       this.inputCheck(e.target.getElementsByTagName("input"));
-
+      if (
+        this.warningName == "" &&
+        this.warningEmail == "" &&
+        this.warningPassword == "" &&
+        this.warningC_password == ""
+      )
+        this.register();
+    },
+    async register() {
       try {
         const response = await this.$axios.post("/register", {
           username: this.userName,
@@ -80,14 +88,6 @@ export default {
         inputs[2]
       );
     },
-    warningsCheck() {
-      return this.warningName == "" &&
-        this.warningEmail == "" &&
-        this.warningPassword == "" &&
-        this.warningC_password == ""
-        ? true
-        : false;
-    },
   },
 };
 </script>
@@ -100,7 +100,7 @@ export default {
     <h1 class="text-5xl mb-20 max-[400px]:text-4xl">Registre-se</h1>
     <form
       class="relative z-10 w-72 flex flex-col justify-center items-center gap-9"
-      @submit.prevent="register"
+      @submit.prevent="verifyInputs"
     >
       <div class="w-full flex items-center relative">
         <InputForm
