@@ -44,7 +44,7 @@ import "vue-toastification/dist/index.css";
 
 const app = createApp(App);
 app.config.globalProperties.$axios = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: process.env.GAME_TEST_API_URL,
 });
 
 app

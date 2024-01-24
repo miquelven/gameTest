@@ -27,7 +27,6 @@
 import validateForm from "@/mixins/validateForm.js";
 import InputForm from "./icons/InputForm.vue";
 import { useToast } from "vue-toastification";
-import axios from "axios";
 
 export default {
   mixins: [validateForm],
@@ -63,7 +62,7 @@ export default {
         const token =
           tokenIndex < pathParts.length ? pathParts[tokenIndex] : null;
 
-        const res = await axios.post("http://localhost:3000/togglepassword", {
+        const res = await this.$axios.post("/togglepassword", {
           token: token,
           password: this.newPassword,
         });

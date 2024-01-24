@@ -66,7 +66,7 @@ export default {
         const userEmail = this.$store.state.user
           ? this.$store.state.user.email
           : null;
-        await this.$axios.post("http://localhost:3000/update-score", {
+        await this.$axios.post("/update-score", {
           email: userEmail,
           newScore: this.score,
         });

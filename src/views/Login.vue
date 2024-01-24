@@ -1,5 +1,4 @@
 <script>
-import axios from "axios";
 import InputForm from "./icons/InputForm.vue";
 import validateForm from "@/mixins/validateForm.js";
 import { useToast } from "vue-toastification";
@@ -32,7 +31,7 @@ export default {
       this.inputCheck(e.target.getElementsByTagName("input"));
 
       try {
-        const response = await axios.post("http://localhost:3000/login", {
+        const response = await this.$axios.post("/login", {
           email: this.email,
           password: this.password,
         });
