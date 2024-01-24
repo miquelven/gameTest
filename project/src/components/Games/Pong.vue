@@ -27,6 +27,7 @@ export default {
       scorePlayer2: null,
 
       firstShow: true,
+      gameover: false,
     };
   },
   mounted() {
@@ -271,12 +272,15 @@ export default {
     gameLoop() {
       this.ctx.fillStyle = "rgba(0,0,0,0.2)";
       this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+      if (this.gameover) return;
       window.requestAnimationFrame(this.gameLoop);
       this.gameDraw();
       if (this.paddle.score == 3) {
+        this.gameover = true;
         this.$emit("addCounter");
         this.$emit("addScore", 1000);
       } else if (this.paddle2.score == 3) {
+        this.gameover = true;
         this.$emit("addCounter");
         this.$emit("addScore", 0);
       }

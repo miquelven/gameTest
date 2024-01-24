@@ -10,9 +10,7 @@
 <script>
 import playerImg from "@/assets/images/InvadersGame/player.png";
 import enemyImg from "@/assets/images/InvadersGame/enemy.png";
-import collision from "@/mixins/collision";
 export default {
-  mixins: [collision],
   data() {
     return {
       canvas: null,
@@ -48,6 +46,7 @@ export default {
       bulletVelocityY: -10,
 
       score: 0,
+      bool: false,
     };
   },
   mounted() {
@@ -74,18 +73,20 @@ export default {
   methods: {
     gameOver(collision) {
       if (this.enemyCount == 0 || collision) {
+        console.log("addCounter");
+        this.bool = true;
         this.$emit("addCounter");
-        this.$emit("invaders", this.score);
+        this.$emit("addScore", 1000);
       }
     },
-    // detectCollision(a, b) {
-    //   return (
-    //     a.x < b.x + b.width &&
-    //     a.x + a.width > b.x &&
-    //     a.y < b.y + b.height &&
-    //     a.y + a.height > b.y
-    //   );
-    // },
+    detectCollision(a, b) {
+      return (
+        a.x < b.x + b.width &&
+        a.x + a.width > b.x &&
+        a.y < b.y + b.height &&
+        a.y + a.height > b.y
+      );
+    },
     shoot(e) {
       if (e.code == "Space") {
         let bullet = {
@@ -115,7 +116,7 @@ export default {
       this.enemyCount = this.enemyArray.length;
     },
     update() {
-      requestAnimationFrame(this.update);
+      if (this.bool) return;
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       // draw player
       this.ctx.drawImage(
@@ -146,9 +147,12 @@ export default {
           }
 
           //detect collision of enemy in player
+          if (this.bool) return;
           for (let a = 0; a < this.enemyArray.length; a++) {
             let enemy = this.enemyArray[a];
             if (enemy.alive && this.detectCollision(this.player, enemy)) {
+              if (this.bool) return;
+              this.bool = true;
               this.gameOver(true);
             }
           }
@@ -202,6 +206,8 @@ export default {
 
       document.addEventListener("keydown", this.moveplayer);
       document.addEventListener("keyup", this.shoot);
+
+      requestAnimationFrame(this.update);
     },
     moveplayer(e) {
       if (e.code == "ArrowLeft" && this.player.x - this.playerVelocityX >= 0) {

@@ -81,6 +81,13 @@ export default {
         this.seconds
       )}`;
     },
+    formatScore() {
+      if (this.score >= 1000) {
+        const newScore = (this.score -= 1000);
+        return `${newScore}`;
+      }
+      return `${this.score}`;
+    },
   },
 };
 </script>
@@ -188,7 +195,7 @@ export default {
           </div>
           <div class="flex justify-around">
             <p class="text-lg text-black/70">Sua pontuação:</p>
-            <span class="text-white font-bold text-2xl">{{ score }}</span>
+            <span class="text-white font-bold text-2xl">{{ formatScore }}</span>
           </div>
           <router-link
             to="/"
