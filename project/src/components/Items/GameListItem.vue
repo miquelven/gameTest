@@ -8,7 +8,7 @@ export default {
   },
   methods: {
     getImageUrl() {
-      return new URL(`../assets/images/${this.img}`, import.meta.url);
+      return new URL(`../../assets/images/${this.img}`, import.meta.url);
     },
     changeShowTip() {
       this.showTip = !this.showTip;

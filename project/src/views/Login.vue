@@ -46,9 +46,7 @@ export default {
           };
           this.$store.commit("setUser", user);
 
-          const formattedName =
-            this.name.charAt(0).toUpperCase() + this.name.substring(1);
-          localStorage.setItem("name", formattedName);
+          localStorage.setItem("name", this.name);
           this.$router.push("/");
         } else {
           this.toast.error("Erro ao logar. Verifique os campos");

@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
   faEye,
   faLightbulb,
+  faCopyright,
   faArrowLeft,
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
@@ -25,6 +26,7 @@ library.add(
   faEye,
   faLightbulb,
   faArrowLeft,
+  faCopyright,
   faBars,
   faGoogle,
   faFacebookF,

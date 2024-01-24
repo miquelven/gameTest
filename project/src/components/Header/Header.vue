@@ -19,8 +19,7 @@ export default {
     this.toast = useToast();
 
     const nameUser = localStorage.getItem("name");
-    // this.name = nameUser[0].toUpperCase() + nameUser.substring(1);
-    this.name = nameUser;
+    this.name = nameUser[0].toUpperCase() + nameUser.substring(1);
   },
   methods: {
     async logout() {
@@ -33,6 +32,7 @@ export default {
         if (response.data.success) {
           localStorage.removeItem("token");
           localStorage.removeItem("name");
+          localStorage.removeItem("vuex");
 
           this.$router.push("/login");
         } else {

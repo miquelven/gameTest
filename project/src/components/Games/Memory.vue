@@ -1,5 +1,6 @@
 <script>
-import MemoryItem from "@/components/MemoryItem.vue";
+import MemoryItem from "../Items/MemoryItem.vue";
+MemoryItem;
 export default {
   components: {
     MemoryItem,

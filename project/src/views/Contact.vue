@@ -1,7 +1,7 @@
 <script>
-import Header from "./icons/Header.vue";
-import Footer from "./icons/Footer.vue";
-import ContactIconItem from "@/components/ContactIconItem.vue";
+import ContactIconItem from "@/components/Items/ContactIconItem.vue";
+import Footer from "@/components/Footer/Footer.vue";
+import Header from "@/components/Header/Header.vue";
 
 export default {
   components: {

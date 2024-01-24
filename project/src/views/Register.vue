@@ -2,10 +2,12 @@
 import InputForm from "./icons/InputForm.vue";
 import validateForm from "@/mixins/validateForm.js";
 import { useToast } from "vue-toastification";
+import Modal from "@/components/Modal/Modal.vue";
 export default {
   mixins: [validateForm],
   components: {
     InputForm,
+    Modal,
   },
   data() {
     return {
@@ -20,6 +22,8 @@ export default {
       warningC_password: "",
 
       toast: null,
+      modal: false,
+      textModal: "",
     };
   },
   mounted() {
@@ -28,6 +32,16 @@ export default {
     this.$refs.InputForm.$refs.input.focus();
   },
   methods: {
+    showModal(type) {
+      if (type == "") {
+        this.textModal = "";
+        this.modal = false;
+        return;
+      }
+
+      this.modal = true;
+      this.textModal = type;
+    },
     verifyInputs(e) {
       this.inputCheck(e.target.getElementsByTagName("input"));
       if (
@@ -49,7 +63,15 @@ export default {
         if (response.data.success) {
           const { name, token } = response.data;
           localStorage.setItem("token", token);
+
           localStorage.setItem("name", name);
+
+          const user = {
+            name: this.userName,
+            email: this.email,
+          };
+          this.$store.commit("setUser", user);
+
           this.$router.push("/");
         } else {
           this.toast.error(response.data.error);
@@ -162,6 +184,25 @@ export default {
           >Entrar.</router-link
         >
       </span>
+      <span class="text-sm text-white/60"
+        >Ao criar uma conta, você concorda com os
+        <button
+          @click="showModal('terms')"
+          class="text-yellow-400/80 hover:underline"
+        >
+          Termos de Serviço
+        </button>
+        e
+        <button
+          @click="showModal('privacity')"
+          class="text-yellow-400/80 hover:underline"
+        >
+          Políticas de Privacidade.
+        </button>
+      </span>
     </form>
+    <template v-if="modal">
+      <Modal :text="textModal" @closeModal="showModal('')" />
+    </template>
   </div>
 </template>

@@ -11,7 +11,6 @@
 import playerImg from "@/assets/images/InvadersGame/player.png";
 import enemyImg from "@/assets/images/InvadersGame/enemy.png";
 import collision from "@/mixins/collision";
-
 export default {
   mixins: [collision],
   data() {
@@ -49,7 +48,6 @@ export default {
       bulletVelocityY: -10,
 
       score: 0,
-      gameover: false,
     };
   },
   mounted() {
@@ -75,17 +73,19 @@ export default {
   },
   methods: {
     gameOver(collision) {
-      this.gameover = true;
-      if (this.enemyCount == 0) {
+      if (this.enemyCount == 0 || collision) {
         this.$emit("addCounter");
-        this.$emit("addScore", 1000);
-      }
-
-      if (collision) {
-        this.$emit("addCounter");
-        this.$emit("addScore", 0);
+        this.$emit("invaders", this.score);
       }
     },
+    // detectCollision(a, b) {
+    //   return (
+    //     a.x < b.x + b.width &&
+    //     a.x + a.width > b.x &&
+    //     a.y < b.y + b.height &&
+    //     a.y + a.height > b.y
+    //   );
+    // },
     shoot(e) {
       if (e.code == "Space") {
         let bullet = {
@@ -149,7 +149,6 @@ export default {
           for (let a = 0; a < this.enemyArray.length; a++) {
             let enemy = this.enemyArray[a];
             if (enemy.alive && this.detectCollision(this.player, enemy)) {
-              if (this.gameover) return;
               this.gameOver(true);
             }
           }

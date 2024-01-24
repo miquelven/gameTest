@@ -27,6 +27,7 @@
 import validateForm from "@/mixins/validateForm.js";
 import InputForm from "./icons/InputForm.vue";
 import { useToast } from "vue-toastification";
+import axios from "axios";
 
 export default {
   mixins: [validateForm],
@@ -41,7 +42,6 @@ export default {
   },
   mounted() {
     this.toast = useToast();
-    this.newPassword = this.$refs.newPassword;
   },
   methods: {
     async togglePassword(e) {
@@ -50,6 +50,8 @@ export default {
       );
 
       if (this.warningPassword) return;
+
+      this.newPassword = this.$refs.newPassword["inputValue"];
 
       try {
         const path = window.location.pathname;
@@ -61,19 +63,12 @@ export default {
         const token =
           tokenIndex < pathParts.length ? pathParts[tokenIndex] : null;
 
-        const res = await fetch("http://localhost:3000/togglepassword", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            token: token,
-            password: this.newPassword,
-          }),
+        const res = await axios.post("http://localhost:3000/togglepassword", {
+          token: token,
+          password: this.newPassword,
         });
 
-        const data = await res.json();
-
+        const data = res.data;
         if (res.status === 200) {
           this.toast.success("Senha Alterada!");
           setTimeout(() => (window.location.href = "/login"), 1000);

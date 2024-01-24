@@ -1,7 +1,7 @@
 <script>
-import GameList from "./icons/GameList.vue";
-import Header from "./icons/Header.vue";
-import Footer from "./icons/Footer.vue";
+import GameList from "@/components/GameList/GameList.vue";
+import Footer from "@/components/Footer/Footer.vue";
+import Header from "@/components/Header/Header.vue";
 
 export default {
   components: {

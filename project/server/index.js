@@ -18,10 +18,10 @@ const temporaryTokens = {};
 
 // Configuração do banco de dados
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "projectUsers",
+  host: process.env.SECRET_HOST,
+  user: process.env.SECRET_USER,
+  password: process.env.SECRET_DBPASSWORD,
+  database: process.env.SECRET_DB,
 });
 
 // Conectar ao banco de dados
@@ -125,7 +125,6 @@ app.post("/reset-password", async (req, res) => {
 
     // Lógica para enviar e-mail com o link contendo o token
     const resetLink = `http://localhost:5173/resetpassword/${token}`;
-    console.log(process.env.SECRET_PASSWORD);
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -164,42 +163,28 @@ app.post("/reset-password", async (req, res) => {
 app.post("/togglepassword", async (req, res) => {
   try {
     const { token, password } = req.body;
-
-    const email = Object.keys(temporaryTokens);
-    const tokenValue = Object.values(temporaryTokens);
-
+    const email = Object.keys(temporaryTokens)[0];
+    const tokenValue = Object.values(temporaryTokens)[0];
     if (!token) {
       console.log("Token ausente:", token);
       return res.status(400).json({ status: 400, message: "Token ausente" });
     }
-
-    if (!tokenValue) {
-      console.log("Token não encontrado em temporaryTokens:", token);
-      return res
-        .status(400)
-        .json({ status: 400, message: "Token não encontrado" });
-    }
-
+    console.log("password: " + password);
     // Lógica para atualizar a senha no banco de dados
     const hashedPassword = await bcrypt.hash(password, 10);
-
     // SQL para atualizar a senha do usuário
     const updateSql = "UPDATE users SET password = ? WHERE email = ?";
     const updateValues = [hashedPassword, email];
-
     db.query(updateSql, updateValues, (error, results, fields) => {
       if (error) {
         console.error("Erro ao atualizar a senha:", error);
         return res.status(500).json({ status: 500, message: "Erro interno" });
       }
-
       if (results) {
         console.log("Result: " + JSON.stringify(results));
       }
-
       // Remova o token temporário após a atualização da senha
       delete temporaryTokens[0];
-
       res
         .status(200)
         .json({ status: 200, message: "Senha alterada com sucesso" });

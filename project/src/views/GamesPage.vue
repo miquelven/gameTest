@@ -1,12 +1,12 @@
 <script>
-import TicTacToe from "./icons/games/TicTacToe.vue";
-import Memory from "./icons/games/Memory.vue";
-import Pong from "./icons/games/Pong.vue";
-import Breakout from "./icons/games/Breakout.vue";
-import FlappyBird from "./icons/games/FlappyBird.vue";
-import Simon from "./icons/games/Simon.vue";
-import Snake from "./icons/games/Snake.vue";
-import SpaceInvaders from "./icons/games/SpaceInvaders.vue";
+import TicTacToe from "@/components/Games/TicTacToe.vue";
+import Memory from "@/components/Games/Memory.vue";
+import Pong from "@/components/Games/Pong.vue";
+import Breakout from "@/components/Games/Breakout.vue";
+import FlappyBird from "@/components/Games/FlappyBird.vue";
+import Simon from "@/components/Games/Simon.vue";
+import Snake from "@/components/Games/Snake.vue";
+import SpaceInvaders from "@/components/Games/SpaceInvaders.vue";
 
 export default {
   components: {

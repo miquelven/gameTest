@@ -1,5 +1,5 @@
 <script>
-import GameListItem from "@/components/GameListItem.vue";
+import GameListItem from "../Items/GameListItem.vue";
 import gameListInfo from "@/data/gameListInfo.js";
 
 export default {

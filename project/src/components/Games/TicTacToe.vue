@@ -1,5 +1,5 @@
 <script>
-import TicTacToeItem from "@/components/TicTacToeItem.vue";
+import TicTacToeItem from "../Items/TicTacToeItem.vue";
 import machineMove from "@/helpers/machineMove.js";
 export default {
   components: {
