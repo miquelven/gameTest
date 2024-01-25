@@ -42,9 +42,11 @@ import Toast from "vue-toastification";
 
 import "vue-toastification/dist/index.css";
 
+const apiUrl = import.meta.env.VUE_APP_GAME_TEST_API_URL;
+
 const app = createApp(App);
 app.config.globalProperties.$axios = axios.create({
-  baseURL: process.env.GAME_TEST_API_URL,
+  baseURL: apiUrl,
 });
 
 app

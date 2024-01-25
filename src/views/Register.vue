@@ -54,11 +54,14 @@ export default {
     },
     async register() {
       try {
-        const response = await this.$axios.post("/register", {
-          username: this.userName,
-          email: this.email,
-          password: this.password,
-        });
+        const response = await this.$axios.post(
+          "https://games-in-game-api.vercel.app/register",
+          {
+            username: this.userName,
+            email: this.email,
+            password: this.password,
+          }
+        );
 
         if (response.data.success) {
           const { name, token } = response.data;

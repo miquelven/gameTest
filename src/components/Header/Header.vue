@@ -25,9 +25,12 @@ export default {
     async logout() {
       try {
         // Envie a solicitação de logout para o servidor
-        const response = await this.$axios.post("/logout", {
-          session_token: localStorage.getItem("token"),
-        });
+        const response = await this.$axios.post(
+          "https://games-in-game-api.vercel.app/logout",
+          {
+            session_token: localStorage.getItem("token"),
+          }
+        );
 
         if (response.data.success) {
           localStorage.removeItem("token");

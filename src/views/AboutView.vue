@@ -1,6 +1,7 @@
 <script>
 import Footer from "@/components/Footer/Footer.vue";
 import Header from "@/components/Header/Header.vue";
+import Main from "@/components/Main/Main.vue";
 import AboutItem from "@/components/Items/AboutItem.vue";
 import aboutItemInfo from "@/data/aboutItemInfo";
 
@@ -8,6 +9,7 @@ export default {
   components: {
     Header,
     Footer,
+    Main,
     AboutItem,
   },
   data() {
@@ -23,8 +25,7 @@ export default {
 
 <template>
   <Header />
-  <main class="w-full mt-20 min-h-[100vh-250px]" id="best">
-    <!-- container -->
+  <Main minHeight="calc(100vh-250px)">
     <div class="flex">
       <div
         class="m-auto mb-10 max-w-4xl border-x-2 border-white/50 px-5 py-10 flex flex-col gap-24 max-sm:border-0"
@@ -51,6 +52,6 @@ export default {
         />
       </div>
     </div>
-  </main>
+  </Main>
   <Footer />
 </template>
