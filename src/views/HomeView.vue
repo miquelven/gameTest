@@ -15,7 +15,20 @@ export default {
 <template>
   <Header />
 
-  <main class="w-full mt-20 mb-19">
+  <main
+    class="w-full mt-20 mb-19"
+    v-motion
+    :initial="{
+      opacity: 0,
+    }"
+    :enter="{
+      opacity: 1,
+      transition: {
+        type: 'keyframes',
+        duration: 700,
+      },
+    }"
+  >
     <!-- container -->
     <div class="max-w-screen-2xl min-h-[calc(100vh-250px)] m-auto px-10">
       <section

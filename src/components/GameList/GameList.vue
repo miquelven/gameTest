@@ -16,7 +16,22 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-col justify-center items-center gap-16">
+  <div
+    class="flex flex-col justify-center items-center gap-16"
+    v-motion
+    :initial="{
+      opacity: 0,
+      x: -200,
+    }"
+    :visible="{
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: 'keyframes',
+        duration: 700,
+      },
+    }"
+  >
     <h3 class="text-4xl font-bold max-md:text-3xl">
       Lista dos jogos disponíveis:
     </h3>
