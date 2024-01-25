@@ -12,11 +12,9 @@ export default {
     }"
     v-motion
     :initial="{
-      x: 500,
       opacity: 0,
     }"
     :enter="{
-      x: 0,
       opacity: 1,
       transition: {
         duration: 400,

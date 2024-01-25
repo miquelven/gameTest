@@ -37,7 +37,6 @@ export default {
       transition: {
         type: 'keyframes',
         duration: 700,
-        delay: 700,
       },
     }"
   >
