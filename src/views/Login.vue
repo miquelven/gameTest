@@ -1,6 +1,7 @@
 <script>
 import InputForm from "./icons/InputForm.vue";
 import validateForm from "@/mixins/validateForm.js";
+import axios from "axios";
 import { useToast } from "vue-toastification";
 
 export default {
@@ -31,7 +32,7 @@ export default {
       this.inputCheck(e.target.getElementsByTagName("input"));
 
       try {
-        const response = await this.$axios.post("/login", {
+        const response = await axios.post("/login", {
           email: this.email,
           password: this.password,
         });
@@ -90,7 +91,7 @@ export default {
 
       if (this.validateEmail(this.$refs.InputEmail.$refs.input) === "") {
         try {
-          const response = await this.$axios.post("/reset-password", {
+          const response = await axios.post("/reset-password", {
             email: this.email,
           });
 

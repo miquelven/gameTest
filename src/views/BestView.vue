@@ -3,6 +3,7 @@ import Footer from "@/components/Footer/Footer.vue";
 import Header from "@/components/Header/Header.vue";
 import BestInfoItem from "@/components/Items/BestInfoItem.vue";
 import { useMouseInElement } from "@vueuse/core";
+import axios from "axios";
 
 export default {
   components: {
@@ -44,7 +45,7 @@ export default {
           ? this.$store.state.user.email
           : null;
         this.loading = true;
-        const response = await this.$axios.get("/api/scores", {
+        const response = await axios("/api/scores", {
           params: { email: userEmail },
         });
 

@@ -2,6 +2,7 @@
 import Header from "@/components/Header/Header.vue";
 import Footer from "@/components/Footer/Footer.vue";
 import TopInfoItem from "@/components/Items/TopInfoItem.vue";
+import axios from "axios";
 
 export default {
   components: {
@@ -19,7 +20,7 @@ export default {
   },
   methods: {
     async fetchTopScores() {
-      const response = await this.$axios.get("/api/top-scores");
+      const response = await axios("/api/top-scores");
 
       this.topScores = response.data.topScores.map((item) => ({
         ...item,

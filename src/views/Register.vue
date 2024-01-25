@@ -3,6 +3,7 @@ import InputForm from "./icons/InputForm.vue";
 import validateForm from "@/mixins/validateForm.js";
 import { useToast } from "vue-toastification";
 import Modal from "@/components/Modal/Modal.vue";
+import axios from "axios";
 export default {
   mixins: [validateForm],
   components: {
@@ -54,14 +55,11 @@ export default {
     },
     async register() {
       try {
-        const response = await this.$axios.post(
-          "https://games-in-game-api.vercel.app/register",
-          {
-            username: this.userName,
-            email: this.email,
-            password: this.password,
-          }
-        );
+        const response = await axios.post("/register", {
+          username: this.userName,
+          email: this.email,
+          password: this.password,
+        });
 
         if (response.data.success) {
           const { name, token } = response.data;

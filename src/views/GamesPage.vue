@@ -7,6 +7,7 @@ import FlappyBird from "@/components/Games/FlappyBird.vue";
 import Simon from "@/components/Games/Simon.vue";
 import Snake from "@/components/Games/Snake.vue";
 import SpaceInvaders from "@/components/Games/SpaceInvaders.vue";
+import axios from "axios";
 
 export default {
   components: {
@@ -66,7 +67,7 @@ export default {
         const userEmail = this.$store.state.user
           ? this.$store.state.user.email
           : null;
-        await this.$axios.post("/update-score", {
+        await axios.post("/update-score", {
           email: userEmail,
           newScore: this.score,
         });
