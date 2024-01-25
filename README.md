@@ -3,7 +3,7 @@
 Bem-vindo ao repositório do projeto GameTest! Aqui, mergulhamos em um universo emocionante de desafios de jogos, onde a diversão encontra a competição de uma forma inovadora. Se você é apaixonado por jogos e procura uma experiência única, você está no lugar certo. </br>  </br> </br> 
 
 <p align='center'>
-  <img width='670' src='src/assets/to_readme/gameTest.gif'></img>
+  <img width='670' src='./src/assets/to_readme/gameTest.gif'></img>
 </p>
 
  </br> </br> </br>
