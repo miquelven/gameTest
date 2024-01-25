@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": "16.x",
+    "npm": ">=6.0.0"
+  },
   "scripts": {
     "tw": "npx tailwindcss -i ./src/assets/tailwind.css -o ./src/assets/dist/build.css --watch",
     "dev": "vite",
