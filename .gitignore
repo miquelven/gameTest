@@ -28,6 +28,7 @@ coverage
 *.sln
 *.sw?
 .env
+
 node_modules
 
 *.tsbuildinfo
