@@ -23,23 +23,7 @@ export default {
         id="container"
       >
         <!-- left-size -->
-        <div
-          class="flex-1 flex flex-col gap-36 justify-center max-xl:gap-16"
-          v-motion
-          :initial="{
-            x: -200,
-            opacity: 0,
-          }"
-          :enter="{
-            x: 0,
-            opacity: 1,
-            transition: {
-              duration: 700,
-              type: 'keyframes',
-              ease: 'easein',
-            },
-          }"
-        >
+        <div class="flex-1 flex flex-col gap-36 justify-center max-xl:gap-16">
           <!-- title -->
           <div>
             <h1
@@ -67,21 +51,6 @@ export default {
         <!-- right-size -->
         <div
           class="flex-1 flex flex-col justify-center items-end gap-14 relative max-xl:items-center"
-          v-motion
-          :initial="{
-            x: 200,
-            opacity: 0,
-          }"
-          :enter="{
-            x: 0,
-            opacity: 1,
-            transition: {
-              duration: 700,
-              type: 'keyframes',
-              ease: 'easein,',
-              delay: 700,
-            },
-          }"
         >
           <h2
             class="text-5xl max-xl:text-4xl max-md:text-3xl max-[440px]:text-center"
@@ -101,27 +70,6 @@ export default {
           </div>
           <div
             class="absolute rotate-12 bottom-24 flex flex-col items-center gap-7 max-xl:right-0 max-xl:bottom-0 max-sm:-right-8"
-            v-motion
-            :initial="{
-              x: 200,
-              y: 200,
-              opacity: 0,
-              rotateY: 180,
-              rotateX: 360,
-            }"
-            :enter="{
-              x: 0,
-              y: 0,
-              opacity: 1,
-              rotateY: 340,
-              rotateX: 140,
-              transition: {
-                duration: 500,
-                type: 'keyframes',
-                ease: 'easein,',
-                delay: 1000,
-              },
-            }"
           >
             <div
               class="bg-yellow-400 w-4 h-1 shadow-md shadow-yellow-100/40 rounded-full max-sm:w-2"
