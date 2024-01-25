@@ -2,9 +2,7 @@
 
 Bem-vindo ao repositório do projeto GameTest! Aqui, mergulhamos em um universo emocionante de desafios de jogos, onde a diversão encontra a competição de uma forma inovadora. Se você é apaixonado por jogos e procura uma experiência única, você está no lugar certo. </br>  </br> </br> 
 
-<p align='center'>
-  <img width='670' src='./src/assets/to_readme/gameTest.gif'></img>
-</p>
+![ezgif com-animated-gif-maker](https://github.com/miquelven/games_in_a_game/assets/67767211/a2385784-81ae-4a24-a0c6-b8cb53479410)
 
  </br> </br> </br>
 
