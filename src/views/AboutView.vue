@@ -33,11 +33,9 @@ export default {
       :content="content"
       v-motion
       :initial="{
-        y: -200,
         opacity: 0,
       }"
       :enter="{
-        y: 0,
         opacity: 1,
         transition: {
           duration: 500,

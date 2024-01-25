@@ -13,10 +13,10 @@ export default {
     :enter="{
       opacity: 1,
       transition: {
-        duration: 700,
+        duration: 300,
         type: 'keyframes',
         ease: 'easein',
-        delay: 800,
+        delay: 500,
       },
     }"
   >
@@ -30,10 +30,10 @@ export default {
     :enter="{
       opacity: 1,
       transition: {
-        duration: 700,
+        duration: 300,
         type: 'keyframes',
         ease: 'easein',
-        delay: 800,
+        delay: 500,
       },
     }"
   >
@@ -51,10 +51,10 @@ export default {
     :enter="{
       opacity: 1,
       transition: {
-        duration: 700,
+        duration: 300,
         type: 'keyframes',
         ease: 'easein',
-        delay: 800,
+        delay: 500,
       },
     }"
   >

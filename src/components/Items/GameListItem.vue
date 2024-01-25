@@ -31,11 +31,9 @@ export default {
     v-motion
     :initial="{
       opacity: 0,
-      x: 200,
     }"
     :visible="{
       opacity: 1,
-      x: 0,
       transition: {
         type: 'keyframes',
         duration: 700,

@@ -22,11 +22,9 @@ export default {
           class="text-7xl font-bold max-sm:text-5xl"
           v-motion
           :initial="{
-            y: -200,
             opacity: 0,
           }"
           :enter="{
-            y: 0,
             opacity: 1,
             transition: {
               duration: 700,
@@ -44,19 +42,15 @@ export default {
             styling="#4267B2"
             v-motion
             :initial="{
-              x: -100,
               opacity: 0,
-              scale: 2,
             }"
             :enter="{
-              x: 0,
               opacity: 1,
               transition: {
                 duration: 400,
                 type: 'keyframes',
                 ease: 'easein,',
               },
-              scale: 1,
             }"
           />
           <ContactIconItem
@@ -65,19 +59,15 @@ export default {
             styling="#E1306C"
             v-motion
             :initial="{
-              y: 100,
               opacity: 0,
-              scale: 2,
             }"
             :enter="{
-              y: 0,
               opacity: 1,
               transition: {
                 duration: 400,
                 type: 'keyframes',
                 ease: 'easein,',
               },
-              scale: 1,
             }"
           />
           <ContactIconItem
@@ -86,19 +76,15 @@ export default {
             styling="#333"
             v-motion
             :initial="{
-              x: 100,
               opacity: 0,
-              scale: 2,
             }"
             :enter="{
-              x: 0,
               opacity: 1,
               transition: {
                 duration: 400,
                 type: 'keyframes',
                 ease: 'easein,',
               },
-              scale: 1,
             }"
           />
         </div>

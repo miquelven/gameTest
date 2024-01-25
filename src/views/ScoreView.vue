@@ -43,11 +43,9 @@ export default {
         class="grid grid-cols-1 gap-10 p-20 bg-[rgba(0,0,0,.9)] shadow-2xl shadow-white/50 rounded-xl max-sm:p-10"
         v-motion
         :initial="{
-          x: 200,
           opacity: 0,
         }"
         :enter="{
-          x: 0,
           opacity: 1,
           transition: {
             duration: 700,
@@ -79,11 +77,9 @@ export default {
           }"
           v-motion
           :initial="{
-            x: -200,
             opacity: 0,
           }"
           :enter="{
-            x: 0,
             opacity: 1,
             transition: {
               duration: 700,

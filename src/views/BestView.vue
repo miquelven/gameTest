@@ -27,18 +27,19 @@ export default {
   },
   mounted() {
     this.fetchUserScores();
-
-    this.infoItems = this.$refs.infoItems;
-
-    const { elementX, elementY, isOutSide, elementHeight, elementWidth } =
-      useMouseInElement(this.infoItems);
-    this.elementX = elementX;
-    this.elementY = elementY;
-    this.isOutSide = isOutSide;
-    this.elementHeight = elementHeight;
-    this.elementWidth = elementWidth;
   },
   methods: {
+    activeEffectHover() {
+      this.infoItems = this.$refs.infoItems;
+
+      const { elementX, elementY, isOutSide, elementHeight, elementWidth } =
+        useMouseInElement(this.infoItems);
+      this.elementX = elementX;
+      this.elementY = elementY;
+      this.isOutSide = isOutSide;
+      this.elementHeight = elementHeight;
+      this.elementWidth = elementWidth;
+    },
     async fetchUserScores() {
       try {
         const userEmail = this.$store.state.user
@@ -55,6 +56,8 @@ export default {
         console.error("Erro ao obter scores do usuário:", error);
       } finally {
         this.loading = false;
+
+        this.activeEffectHover();
       }
     },
   },
