@@ -31,18 +31,9 @@ export default {
       :key="index"
       :title="title"
       :content="content"
-      v-motion
-      :initial="{
-        opacity: 0,
-      }"
-      :enter="{
-        opacity: 1,
-        transition: {
-          duration: 500,
-          type: 'keyframes',
-          ease: 'easein',
-        },
-      }"
+      data-aos="fade-up"
+      data-aos-delay="300"
+      data-aos-duration="400"
     />
   </div>
   <Footer />

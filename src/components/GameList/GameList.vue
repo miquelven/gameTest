@@ -18,17 +18,9 @@ export default {
 <template>
   <div
     class="flex flex-col justify-center items-center gap-16"
-    v-motion
-    :initial="{
-      opacity: 0,
-    }"
-    :visible="{
-      opacity: 1,
-      transition: {
-        type: 'keyframes',
-        duration: 700,
-      },
-    }"
+    data-aos="zoom-out-down"
+    data-aos-duration="400"
+    data-aos-delay="150"
   >
     <h3 class="text-4xl font-bold max-md:text-3xl">
       Lista dos jogos disponíveis:

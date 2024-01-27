@@ -41,8 +41,12 @@ import { MotionPlugin } from "@vueuse/motion";
 import Toast from "vue-toastification";
 
 import "vue-toastification/dist/index.css";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 axios.defaults.baseURL = import.meta.env.VITE_GAME_TEST_API_URL;
+
+Aos.init();
 
 const app = createApp(App);
 

@@ -36,7 +36,11 @@ export default {
         id="container"
       >
         <!-- left-size -->
-        <div class="flex-1 flex flex-col gap-36 justify-center max-xl:gap-16">
+        <div
+          class="flex-1 flex flex-col gap-36 justify-center max-xl:gap-16"
+          data-aos="fade-right"
+          data-aos-duration="250"
+        >
           <!-- title -->
           <div>
             <h1
@@ -64,6 +68,8 @@ export default {
         <!-- right-size -->
         <div
           class="flex-1 flex flex-col justify-center items-end gap-14 relative max-xl:items-center"
+          data-aos="fade-left"
+          data-aos-duration="250"
         >
           <h2
             class="text-5xl max-xl:text-4xl max-md:text-3xl max-[440px]:text-center"
@@ -72,6 +78,9 @@ export default {
           </h2>
 
           <div
+            data-aos="fade-left"
+            data-aos-delay="500"
+            data-aos-duration="150"
             class="shadow-lg shadow-yellow-900 flex rounded-full transition-all ease-in bg-gradient-to-tr from-yellow-500 to-white/50 p-1 hover:scale-95 hover:shadow-none"
           >
             <router-link
@@ -82,6 +91,9 @@ export default {
             </router-link>
           </div>
           <div
+            data-aos="fade-left"
+            data-aos-delay="500"
+            data-aos-duration="150"
             class="absolute rotate-12 bottom-24 flex flex-col items-center gap-7 max-xl:right-0 max-xl:bottom-0 max-sm:-right-8"
           >
             <div

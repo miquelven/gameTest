@@ -28,17 +28,9 @@ export default {
   <div
     data-img
     class="transition bg-black duration-300 ease-in-out relative size-60 p-7 m-auto z-10 rounded-xl flex flex-col justify-center border-4 border-transparent items-center gap-5 hover:border-yellow-300 hover:shadow-lg overflow-hidden hover:shadow-yellow-400 hover:font-bold bg-no-repeat bg-cover bg-center shadow-[1px_4px_10px_rgba(255,255,255,.2)] max-xl:size-52"
-    v-motion
-    :initial="{
-      opacity: 0,
-    }"
-    :visible="{
-      opacity: 1,
-      transition: {
-        type: 'keyframes',
-        duration: 700,
-      },
-    }"
+    data-aos="flip-right"
+    data-aos-delay="300"
+    data-aos-duration="500"
   >
     <img :src="getImageUrl()" class="max-h-48" :alt="alt" />
     <h4 class="relative z-20">
