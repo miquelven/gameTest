@@ -29,6 +29,6 @@ Nosso foco principal está na prática empolgante da "Speed Run". Desafiamos os 
 
 ## ✉️ Contato
 
-Se tiver alguma dúvida, sugestão ou apenas quiser dizer oi, não hesite em nos contatar em [contato@gametest.com](mailto:miquelven.silva@gmail.com).
+Se tiver alguma dúvida, sugestão ou apenas quiser dizer oi, não hesite em me contatar em [contato@gametest.com](mailto:miquelven.silva@gmail.com).
 
 </br> </br>
