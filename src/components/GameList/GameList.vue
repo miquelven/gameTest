@@ -16,12 +16,7 @@ export default {
 </script>
 
 <template>
-  <div
-    class="flex flex-col justify-center items-center gap-16"
-    data-aos="zoom-out-down"
-    data-aos-duration="400"
-    data-aos-delay="150"
-  >
+  <div class="flex flex-col justify-center items-center gap-16">
     <h3 class="text-4xl font-bold max-md:text-3xl">
       Lista dos jogos disponíveis:
     </h3>
