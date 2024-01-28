@@ -15,20 +15,7 @@ export default {
 <template>
   <Header />
 
-  <main
-    class="w-full mt-20 mb-19"
-    v-motion
-    :initial="{
-      opacity: 0,
-    }"
-    :enter="{
-      opacity: 1,
-      transition: {
-        type: 'keyframes',
-        duration: 700,
-      },
-    }"
-  >
+  <main class="w-full mt-20 mb-19">
     <!-- container -->
     <div class="max-w-screen-2xl min-h-[calc(100vh-250px)] m-auto px-10">
       <section
@@ -38,7 +25,7 @@ export default {
         <!-- left-size -->
         <div
           class="flex-1 flex flex-col gap-36 justify-center max-xl:gap-16"
-          data-aos="fade-right"
+          data-aos="fade-up"
           data-aos-duration="250"
         >
           <!-- title -->
@@ -68,7 +55,7 @@ export default {
         <!-- right-size -->
         <div
           class="flex-1 flex flex-col justify-center items-end gap-14 relative max-xl:items-center"
-          data-aos="fade-left"
+          data-aos="fade-up"
           data-aos-duration="250"
         >
           <h2
@@ -78,7 +65,7 @@ export default {
           </h2>
 
           <div
-            data-aos="fade-left"
+            data-aos="fade-bottom"
             data-aos-delay="500"
             data-aos-duration="150"
             class="shadow-lg shadow-yellow-900 flex rounded-full transition-all ease-in bg-gradient-to-tr from-yellow-500 to-white/50 p-1 hover:scale-95 hover:shadow-none"
@@ -91,7 +78,7 @@ export default {
             </router-link>
           </div>
           <div
-            data-aos="fade-left"
+            data-aos="fade-up"
             data-aos-delay="500"
             data-aos-duration="150"
             class="absolute rotate-12 bottom-24 flex flex-col items-center gap-7 max-xl:right-0 max-xl:bottom-0 max-sm:-right-8"
