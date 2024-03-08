@@ -50,7 +50,7 @@ export default {
 <template>
   <header
     ref="header"
-    class="fixed z-50 w-full top-0 left-0 text-white bg-transparent backdrop-blur-xl border-b-[2px] border-[rgba(255,255,255,.2)]"
+    class="fixed z-50 w-full top-0 left-0 text-white bg-transparent backdrop-blur-xl border-b-[2px] border-[#2bb478]"
   >
     <div
       class="max-w-screen-2xl m-auto flex justify-between items-center max-h-20 p-10"
@@ -79,7 +79,7 @@ export default {
         <button class="flex" @click="() => (showItem = !showItem)">
           <span>{{ name }} </span>
           <div
-            class="rotate-90 text-yellow-400 text-2xl -mt-1 px-2 hover:cursor-pointer"
+            class="rotate-90 text-[#40d292] text-2xl -mt-1 px-2 hover:cursor-pointer"
           >
             <span>></span>
           </div>
@@ -88,7 +88,7 @@ export default {
           <div class="relative transition-all self-start cursor-pointer">
             <button
               @click="logout"
-              class="absolute transition-all duration-300 mt-4 bg-gray-400/10 w-40 border-2 border-zinc-700 border-y-transparent hover:opacity-60 hover:border-b-zinc-700"
+              class="absolute transition-all duration-300 mt-4 bg-gray-400/10 w-40 border-2 border-[#2bb478] border-y-transparent hover:opacity-60 hover:border-b-[#2bb478]"
             >
               Sair
             </button>
