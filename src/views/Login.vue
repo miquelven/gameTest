@@ -128,7 +128,7 @@ export default {
           class="w-48 brightness-125"
         />
 
-        <form class="flex flex-col gap-12 w-full p-2" @submit.prevent="login">
+        <form class="flex flex-col gap-16 w-full p-2" @submit.prevent="login">
           <div class="flex items-center relative">
             <InputForm
               ref="InputName"
