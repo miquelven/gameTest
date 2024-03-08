@@ -33,7 +33,9 @@ export default {
 </script>
 
 <template>
-  <footer class="m-auto mt-36 mb-10 text-sm text-white max-sm:text-xs relative">
+  <footer
+    class="m-auto mt-36 mb-10 text-sm text-zin-400 max-sm:text-xs relative"
+  >
     <div class="w-full h-1 bg-[rgba(255,255,255,.2)] mb-4 relative"></div>
     <div class="max-w-screen-2xl m-auto">
       <div class="flex flex-col items-center gap-5 justify-center">
@@ -44,14 +46,14 @@ export default {
         <div>
           <button
             @click="showModal('terms')"
-            class="text-yellow-400/80 hover:underline"
+            class="text-[#2bb478] hover:underline"
           >
             Termos de Serviço
           </button>
           e
           <button
             @click="showModal('privacity')"
-            class="text-yellow-400/80 hover:underline"
+            class="text-[#2bb478] hover:underline"
           >
             Políticas de Privacidade.
           </button>

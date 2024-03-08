@@ -11,6 +11,7 @@ export default {
       return new URL(`../../assets/images/${this.img}`, import.meta.url);
     },
     changeShowTip() {
+      console.log("oi");
       this.showTip = !this.showTip;
     },
   },
@@ -27,21 +28,15 @@ export default {
 <template>
   <div
     data-img
-    class="transition bg-black duration-300 ease-in-out relative size-60 p-7 m-auto z-10 rounded-xl flex flex-col justify-center border-4 border-transparent items-center gap-5 hover:border-yellow-300 hover:shadow-lg overflow-hidden hover:shadow-yellow-400 hover:font-bold bg-no-repeat bg-cover bg-center shadow-[1px_4px_10px_rgba(255,255,255,.2)] max-xl:size-52"
+    class="bg-black ease-in-out relative z-10 size-60 p-7 m-auto rounded-xl flex flex-col justify-center border-2 border-transparent items-center gap-5 hover:shadow-lg hover:border-[#2bb478] overflow-hidden hover:font-bold bg-no-repeat bg-cover bg-center max-xl:size-52"
     data-aos="flip-right"
     data-aos-delay="300"
     data-aos-duration="500"
   >
     <img :src="getImageUrl()" class="max-h-48" :alt="alt" />
-    <h4 class="relative z-20">
+    <h4 class="relative z-20 font-medium">
       {{ name }}
     </h4>
-    <font-awesome-icon
-      data-icon
-      :icon="['fas', 'lightbulb']"
-      class="transition duration-300 ease-in-out absolute z-10 top-[2px] left-[2px] p-3 cursor-pointer opacity-70 hover:shadow-[-5px_40px_10px_rgba(255,255,255,.2)_inset] rounded-full"
-      @click="changeShowTip"
-    />
     <template v-if="showTip">
       <div class="absolute inset-0 bg-[rgba(0,0,0,.3)]"></div>
       <p class="absolute inset-0 p-10 text-xs font-normal">
