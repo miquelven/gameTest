@@ -124,7 +124,7 @@ export default {
   >
     <h1 class="text-5xl mb-20 max-[400px]:text-4xl">Registre-se</h1>
     <form
-      class="relative z-10 w-72 flex flex-col justify-center items-center gap-9"
+      class="relative z-10 w-72 flex flex-col justify-center items-center gap-10"
       @submit.prevent="verifyInputs"
     >
       <div class="w-full flex items-center relative">
@@ -174,29 +174,29 @@ export default {
 
       <button
         type="submit"
-        class="mt-2 w-full outline-none shadow-lg shadow-black/40 border-2 border-gray-300/20 bg-black p-2 rounded-md hover:shadow-gray-200/20 text-white/80 hover:cursor-pointer hover:bg-black/70"
+        class="mt-2 w-full outline-none shadow-lg shadow-black/40 border-2 border-gray-300/20 bg-black p-2 rounded-md hover:border-[#40d292] text-zinc-200 hover:cursor-pointer hover:bg-black/50"
       >
         Registrar
       </button>
 
       <span
         >Já tem uma conta?
-        <router-link to="/login" class="text-yellow-400 hover:underline"
+        <router-link to="/login" class="text-[#40d292] hover:underline"
           >Entrar.</router-link
         >
       </span>
-      <span class="text-sm text-white/60"
+      <span class="text-sm text-center text-zinc-200"
         >Ao criar uma conta, você concorda com os
         <button
           @click="showModal('terms')"
-          class="text-yellow-400/80 hover:underline"
+          class="text-[#40d292] hover:underline"
         >
           Termos de Serviço
         </button>
         e
         <button
           @click="showModal('privacity')"
-          class="text-yellow-400/80 hover:underline"
+          class="text-[#40d292] hover:underline"
         >
           Políticas de Privacidade.
         </button>

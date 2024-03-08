@@ -118,7 +118,7 @@ export default {
 
 <template>
   <div
-    class="w-full h-[calc(100vh-80px)] flex flex-col justify-center items-center"
+    class="w-full min-h-[calc(100vh-80px)] flex flex-col justify-center items-center"
   >
     <div class="relative z-10 mb-28">
       <div class="flex justify-center items-center flex-col">
@@ -128,7 +128,7 @@ export default {
           class="w-48 brightness-125"
         />
 
-        <form class="flex flex-col gap-9 w-full p-2" @submit.prevent="login">
+        <form class="flex flex-col gap-10 w-full p-2" @submit.prevent="login">
           <div class="flex items-center relative">
             <InputForm
               ref="InputName"
@@ -165,7 +165,7 @@ export default {
           <input
             type="submit"
             value="Entrar"
-            class="mt-2 w-full outline-none shadow-lg shadow-black/40 border-2 border-gray-300/20 bg-black p-2 rounded-md hover:shadow-gray-200/20 text-white/80 hover:cursor-pointer hover:bg-black/70"
+            class="mt-2 w-full outline-none border-2 border-gray-300/20 bg-black p-2 rounded-md hover:border-[#f1f1ef] text-zinc-200 hover:cursor-pointer hover:bg-black/50"
           />
         </form>
         <div class="flex flex-col justify-center items-center mt-6">
@@ -177,9 +177,7 @@ export default {
           <span>
             <p class="text-gray-400/80">
               Não tem uma conta?
-              <router-link
-                to="/register"
-                class="text-yellow-400 hover:underline"
+              <router-link to="/register" class="text-[#40d292] hover:underline"
                 >Crie uma conta.</router-link
               >
             </p>
