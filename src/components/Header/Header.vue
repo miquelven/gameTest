@@ -73,7 +73,7 @@ export default {
       <HeaderMenuMobile @logout="logout" />
 
       <div
-        class="text-lg text-white flex flex-col items-end max-lg:text-base max-md:hidden"
+        class="text-lg text-zinc-300 flex flex-col items-end max-lg:text-base max-md:hidden"
       >
         <span class="text-sm text-gray-400">Usuário: </span>
         <button class="flex" @click="() => (showItem = !showItem)">
@@ -85,12 +85,10 @@ export default {
           </div>
         </button>
         <template v-if="showItem">
-          <div
-            class="relative transition-all self-start text-white cursor-pointer"
-          >
+          <div class="relative transition-all self-start cursor-pointer">
             <button
               @click="logout"
-              class="absolute mt-5 bg-gray-400/10 w-40 border-2 border-white border-y-transparent hover:opacity-70"
+              class="absolute transition-all duration-300 mt-4 bg-gray-400/10 w-40 border-2 border-zinc-700 border-y-transparent hover:opacity-60 hover:border-b-zinc-700"
             >
               Sair
             </button>
