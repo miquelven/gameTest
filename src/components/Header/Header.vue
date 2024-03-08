@@ -50,7 +50,7 @@ export default {
 <template>
   <header
     ref="header"
-    class="fixed z-50 w-full top-0 left-0 bg-transparent backdrop-blur-xl border-b-[2px] border-[rgba(255,255,255,.2)]"
+    class="fixed z-50 w-full top-0 left-0 text-white bg-transparent backdrop-blur-xl border-b-[2px] border-[rgba(255,255,255,.2)]"
   >
     <div
       class="max-w-screen-2xl m-auto flex justify-between items-center max-h-20 p-10"
@@ -73,9 +73,9 @@ export default {
       <HeaderMenuMobile @logout="logout" />
 
       <div
-        class="text-lg flex flex-col items-end max-lg:text-base max-md:hidden"
+        class="text-lg text-white flex flex-col items-end max-lg:text-base max-md:hidden"
       >
-        <span class="text-sm">Usuário: </span>
+        <span class="text-sm text-gray-400">Usuário: </span>
         <button class="flex" @click="() => (showItem = !showItem)">
           <span>{{ name }} </span>
           <div

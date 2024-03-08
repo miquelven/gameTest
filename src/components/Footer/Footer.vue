@@ -13,6 +13,7 @@ export default {
   },
   methods: {
     showModal(type) {
+      console.log(type);
       if (type == "") {
         this.textModal = "";
         this.modal = false;
