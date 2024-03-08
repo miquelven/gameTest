@@ -18,9 +18,9 @@ export default {
     <!-- container -->
     <div class="max-w-screen-2xl m-auto flex justify-center">
       <div class="flex flex-col gap-20 items-center mt-52">
-        <h1 class="text-7xl font-bold max-sm:text-5xl" data-aos="zoom-in">
+        <h2 class="text-7xl font-semibold max-sm:text-5xl" data-aos="zoom-in">
           Contatos:
-        </h1>
+        </h2>
         <div class="flex items-center">
           <ContactIconItem
             :icon="['fab', 'facebook-f']"

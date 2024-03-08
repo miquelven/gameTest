@@ -102,7 +102,7 @@ export default {
 
       <template v-else>
         <table
-          class="grid grid-cols-3 grid-rows-5 gap-16 bg-gradient-to-r from-white/10 from-10% via-yellow-200/30 via-30% to-yellow-100/10 to-90% p-10 shadow-2xl shadow-black/80 max-xl:grid-cols-2 max-xl:grid-rows-6 max-xl:gap-14 max-md:flex max-md:flex-col max-md:gap-8"
+          class="grid grid-cols-3 grid-rows-5 gap-16 bg-gradient-to-br from-white/10 from-90% to-[#69dcaa] p-10 max-xl:grid-cols-2 max-xl:grid-rows-6 max-xl:gap-14 max-md:flex max-md:flex-col max-md:gap-8"
           ref="infoItems"
           :style="{
             transform: cardTransform,
@@ -125,11 +125,11 @@ export default {
             class="row-start-1 row-end-6 m-auto max-xl:row-end-2 max-xl:col-start-1 max-xl:col-end-3"
           >
             <th>
-              <h1
-                class="text-6xl bg-clip-text bg-gradient-to-r from-yellow-400 from-10% via-yellow-100 via-30% to-yellow-400 to-90% text-transparent mb-10 max-2xl:text-5xl max-md:text-3xl"
+              <h3
+                class="text-6xl font-semibold bg-clip-text bg-gradient-to-r from-[#2bb478] from-10% via-[#69dcaa] via-30% to-[#40d292] to-90% text-transparent mb-10 max-2xl:text-5xl max-md:text-3xl"
               >
                 Suas melhores pontuações:
-              </h1>
+              </h3>
             </th>
           </tr>
           <tr

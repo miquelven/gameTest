@@ -40,7 +40,7 @@ export default {
     <!-- container -->
     <div class="min-w-screen-2xl m-auto flex justify-center">
       <table
-        class="grid grid-cols-1 gap-10 p-20 bg-[rgba(0,0,0,.9)] shadow-2xl shadow-white/50 rounded-xl max-sm:p-10"
+        class="grid grid-cols-1 gap-10 p-20 bg-[rgba(0,0,0,.9)] shadow-sm shadow-zinc-700 rounded-xl max-sm:p-10"
         v-motion
         :initial="{
           opacity: 0,
@@ -56,11 +56,11 @@ export default {
       >
         <tr class="flex justify-center">
           <th>
-            <h1
-              class="text-4xl bg-clip-text bg-gradient-to-r from-yellow-100 from-10% via-yellow-300 via-30% to-white to-90% text-transparent mb-7 max-[550px]:text-3xl"
+            <h3
+              class="text-4xl bg-clip-text bg-gradient-to-r from-[#40d292] from-10% via-[#69dcaa] via-30% to-[#2bb478] to-90% text-transparent mb-7 max-[550px]:text-3xl"
             >
               Top Pontuações:
-            </h1>
+            </h3>
           </th>
         </tr>
         <tr
@@ -68,12 +68,7 @@ export default {
           :key="index"
           class="flex font-bold justify-between items-center text-xl gap-20 px-7 py-2 rounded-md border-2 max-[550px]:text-lg max-[550px]:gap-12 max-[375px]:text-sm"
           :style="{
-            borderColor:
-              index < 3 ? 'rgba(255,255,0,.7)' : 'rgba(255,30,30,.7 )',
-            boxShadow:
-              index < 3
-                ? '4px 5px 10px rgba(255,255,0,.3)'
-                : '4px 5px 10px rgba(0,0,255,.2)',
+            borderColor: index < 3 ? '#40d292' : '#f1f1ef',
           }"
           v-motion
           :initial="{
