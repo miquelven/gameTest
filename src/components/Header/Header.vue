@@ -78,10 +78,12 @@ export default {
         <span class="text-sm text-gray-400">Usuário: </span>
         <button class="flex" @click="() => (showItem = !showItem)">
           <span>{{ name }} </span>
+
           <div
-            class="rotate-90 text-[#40d292] text-2xl -mt-1 px-2 hover:cursor-pointer"
+            class="text-[#40d292] rotate-90 text-2xl -mt-1 px-2 hover:cursor-pointer"
           >
-            <span>></span>
+            <span v-if="!showItem"> > </span>
+            <span v-else><</span>
           </div>
         </button>
         <template v-if="showItem">
