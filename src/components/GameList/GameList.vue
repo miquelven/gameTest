@@ -27,26 +27,11 @@ export default {
       <ul
         class="grid gap-16 grid-cols-4 items-center max-lg:grid-cols-2 max-md:grid-cols-1 max-md:gap-11"
       >
-        <!-- <GameListItem
-          v-for="({ img, name, alt, tip }, index) in listInfo"
+        <GameListItem
+          v-for="(item, index) in listInfo"
+          :item="item"
           :key="index"
-          :img="img"
-          :name="name"
-          :alt="alt"
-          :tip="tip"
-        /> -->
-
-        <v-card class="mx-auto my-8" elevation="16" max-width="344">
-          <v-card-item>
-            <v-card-title> Card title </v-card-title>
-            <v-card-subtitle> Card subtitle secondary text </v-card-subtitle>
-          </v-card-item>
-
-          <v-card-text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </v-card-text>
-        </v-card>
+        />
       </ul>
     </div>
   </div>
