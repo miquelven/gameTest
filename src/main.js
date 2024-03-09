@@ -2,6 +2,17 @@ import "./assets/main.css";
 import "./assets/css/build.css";
 
 import { createApp } from "vue";
+
+import "vuetify/styles";
+import { createVuetify } from "vuetify";
+import * as components from "vuetify/components";
+import * as directives from "vuetify/directives";
+
+const vuetify = createVuetify({
+  components,
+  directives,
+});
+
 import App from "./App.vue";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -55,6 +66,7 @@ app
   .use(store)
   .use(MotionPlugin)
   .use(Toast)
+  .use(vuetify)
   .component("font-awesome-icon", FontAwesomeIcon);
 
 app.mount("#app");
