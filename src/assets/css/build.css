@@ -1046,6 +1046,10 @@ video {
   max-width: 1536px;
 }
 
+.max-w-5xl {
+  max-width: 64rem;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1746,6 +1750,14 @@ video {
 
 .leading-\[60px\] {
   line-height: 60px;
+}
+
+.leading-8 {
+  line-height: 2rem;
+}
+
+.leading-7 {
+  line-height: 1.75rem;
 }
 
 .text-\[\#2bb478\] {
@@ -2496,6 +2508,11 @@ video {
   .max-sm\:text-xs {
     font-size: 0.75rem;
     line-height: 1rem;
+  }
+
+  .max-sm\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .max-sm\:leading-\[45px\] {
