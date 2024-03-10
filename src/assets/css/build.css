@@ -2011,6 +2011,10 @@ video {
   font-weight: 700;
 }
 
+.hover\:font-medium:hover {
+  font-weight: 500;
+}
+
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
