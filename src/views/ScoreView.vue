@@ -57,7 +57,7 @@ export default {
         <tr class="flex justify-center">
           <th>
             <h3
-              class="text-4xl bg-clip-text bg-gradient-to-r from-[#40d292] from-10% via-[#69dcaa] via-30% to-[#2bb478] to-90% text-transparent mb-7 max-[550px]:text-3xl"
+              class="text-4xl font-medium bg-clip-text bg-gradient-to-r from-[#40d292] from-10% via-[#69dcaa] via-30% to-[#2bb478] to-90% text-transparent mb-7 max-[550px]:text-3xl"
             >
               Top Pontuações:
             </h3>
