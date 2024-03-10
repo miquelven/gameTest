@@ -14,13 +14,13 @@ export default {
 
 <template>
   <Header />
-  <main class="w-full mt-20 min-h-[calc(100vh-250px)]" id="best">
+  <main class="w-full mt-10 min-h-[calc(100vh-250px)]" id="best">
     <!-- container -->
     <div class="max-w-screen-2xl m-auto flex justify-center">
       <div class="flex flex-col gap-20 items-center mt-52">
-        <h2 class="text-7xl font-semibold max-sm:text-5xl" data-aos="zoom-in">
+        <h3 class="text-5xl font-medium max-sm:text-4xl" data-aos="zoom-in">
           Contatos:
-        </h2>
+        </h3>
         <div class="flex items-center">
           <ContactIconItem
             :icon="['fab', 'facebook-f']"
