@@ -15,39 +15,43 @@ export default {
 <template>
   <Header />
 
-  <main class="w-full mt-20 mb-19">
+  <main class="w-full mb-19">
     <!-- container -->
-    <div class="max-w-screen-2xl min-h-[calc(100vh-250px)] mx-auto px-10">
+    <div class="max-w-screen-2xl min-h-[calc(100vh-350px)] mx-auto px-10">
       <section
-        class="flex my-40 max-xl:flex-col max-xl:gap-32 max-lg:gap-14"
+        class="flex my-28 max-xl:flex-col max-xl:gap-32 max-lg:gap-14 max-sm:my-16"
         id="container"
         data-aos="fade-up"
         data-aos-duration="250"
       >
         <!-- left-size -->
-        <div class="flex-1 flex flex-col gap-36 justify-center max-xl:gap-16">
+        <div class="flex-1 flex flex-col gap-28 justify-center max-xl:gap-16">
           <!-- title -->
           <div className="flex flex-col gap-7 justify-center ">
             <h1
-              class="text-6xl font-bold gap-16 flex flex-col max-xl:text-5xl max-md:text-5xl max-md:gap-12 max-[440px]:text-3xl"
+              class="text-5xl font-bold gap-16 flex flex-col max-xl:text-4xl max-md:text-3xl max-md:gap-12"
             >
               Venha explorar os jogos
             </h1>
+          </div>
+          <div class="flex flex-col gap-10">
             <p
-              class="text-xl font-light max-md:text-xl max-sm:text-lg max-[440px]:text-base"
+              class="text-lg font-light max-md:text-xl max-sm:text-lg max-[440px]:text-base"
             >
-              você será capaz de encarar todos eles?
+              Você será capaz de encarar todos eles?
+            </p>
+            <p
+              class="text-lg leading-9 max-md:text-lg max-sm:text-base max-[440px]:text-sm"
+            >
+              Aqui você encontrará
+              <span class="text-[#2bb478]">vários desafios,</span> terá que
+              superar todos eles no
+              <span class="text-[#2bb478]"> menor tempo possível,</span> dê o
+              seu máximo para conseguir a melhor pontuação.
             </p>
           </div>
-          <p
-            class="text-xl leading-9 max-md:text-lg max-sm:text-base max-[440px]:text-sm"
-          >
-            Aqui você encontrará vários desafios, terá que superar todos eles no
-            menor tempo possível, dê o seu máximo para conseguir a melhor
-            pontuação.
-          </p>
 
-          <span class="text-xl max-md:text-lg max-[440px]:text-base"
+          <span class="text-base max-md:text-lg max-[440px]:text-base"
             >Alcance a pontuação máxima e fique entre os melhores! 🏆🏆🏆</span
           >
         </div>
@@ -56,25 +60,34 @@ export default {
           class="flex-1 flex flex-col justify-center items-end gap-14 relative max-xl:items-center"
         >
           <h2
-            class="text-4xl font-semibold max-xl:text-3xl max-md:text-2xl max-[440px]:text-center"
+            class="text-4xl font-semibold max-xl:text-3xl max-md:text-2xl max-[440px]:text-center max-[440px]:text-xl"
           >
             Irá encarar esse desafio?
           </h2>
 
-          <div
-            class="shadow-md font-semibold shadow-zinc-900 flex rounded-full transition-all ease-in bg-gradient-to-tr to-[#2bb478] from-zinc-400 p-1 hover:scale-95 hover:shadow-zinc-700"
+          <v-hover
+            v-slot="{ isHovering, props }"
+            close-delay="200"
+            open-delay="0"
           >
-            <router-link
-              to="/gamesPage"
-              class="flex-1 font-medium md:text-xl bg-black px-6 py-3 rounded-full"
-            >
-              Iniciar desafio
+            <router-link to="/gamesPage">
+              <v-btn
+                color="#2bb478"
+                size="large"
+                rounded="lg"
+                elevation="8"
+                :variant="isHovering ? 'flat' : 'outlined'"
+                v-bind="props"
+                :style="isHovering ? 'color: black' : ''"
+              >
+                Iniciar desafio
+              </v-btn>
             </router-link>
-          </div>
+          </v-hover>
         </div>
       </section>
       <!-- ListGames -->
-      <section class="my-56">
+      <section class="my-56 max-[440px]:mt-40 max-[440px]:mb-0">
         <GameList />
       </section>
     </div>
