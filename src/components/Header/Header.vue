@@ -63,7 +63,7 @@ export default {
           class="max-lg:w-20"
         />
       </router-link>
-      <nav class="flex gap-12 text-lg max-lg:text-sm max-md:hidden">
+      <nav class="flex gap-12 font-light max-lg:text-sm max-md:hidden">
         <HeaderLink text="Pontuações" to="/scores" />
         <HeaderLink text="Melhores" to="/best" />
         <HeaderLink text="Contato" to="/contact" />
