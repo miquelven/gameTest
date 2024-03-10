@@ -164,7 +164,7 @@ export default {
             />
           </div>
 
-          <Button type="submit" label="Entrar" />
+          <Button label="Entrar" />
         </form>
         <div class="flex flex-col justify-center items-center mt-6">
           <span @click.prevent="resetPassword">
