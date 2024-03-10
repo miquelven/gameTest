@@ -6,7 +6,6 @@ import axios from "axios";
 import { useToast } from "vue-toastification";
 
 export default {
-  components: { Button },
   mixins: [validateForm],
   data() {
     return {
@@ -28,6 +27,7 @@ export default {
   },
   components: {
     InputForm,
+    Button,
   },
   methods: {
     async login(e) {
