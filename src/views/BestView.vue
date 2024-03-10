@@ -92,11 +92,11 @@ export default {
     >
       <template v-if="loading">
         <div class="absolute inset-0">
-          <div
-            class="absolute top-[200px] left-[calc(50%-110px)] font-bold text-5xl max-lg:text-4xl max-sm:text-3xl max-sm:left-[calc(50%-80px)]"
+          <p
+            class="absolute top-[200px] left-[calc(50vw-200px)] font-medium text-5xl max-lg:text-4xl max-sm:text-3xl max-sm:left-[calc(50%-95px)] max-sm:top-[100px]"
           >
             Carregando...
-          </div>
+          </p>
         </div>
       </template>
 

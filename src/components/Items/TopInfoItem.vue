@@ -37,9 +37,7 @@ export default {
       },
     }"
   >
-    <p
-      class="text-zinc-200 text-2xl bg-clip-text bg-gradient-to-l from-stone-800 via-orange-700 to-red-600 text-transparent max-[550px]:text-lg max-[375px]:text-base"
-    >
+    <p class="text-zinc-200 text-2xl max-[550px]:text-lg max-[375px]:text-base">
       {{ data.name }}
     </p>
   </td>
