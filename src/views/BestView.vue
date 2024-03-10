@@ -126,7 +126,7 @@ export default {
           >
             <th>
               <h3
-                class="text-6xl font-semibold bg-clip-text bg-gradient-to-r from-[#2bb478] from-10% via-[#69dcaa] via-30% to-[#40d292] to-90% text-transparent mb-10 max-2xl:text-5xl max-md:text-3xl"
+                class="text-5xl font-semibold bg-clip-text bg-gradient-to-r from-[#2bb478] from-10% via-[#69dcaa] via-30% to-[#40d292] to-90% text-transparent mb-10 max-2xl:text-4xl max-md:text-3xl"
               >
                 Suas melhores pontuações:
               </h3>
