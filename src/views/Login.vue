@@ -1,10 +1,12 @@
 <script>
 import InputForm from "./icons/InputForm.vue";
+import Button from "./icons/Button.vue";
 import validateForm from "@/mixins/validateForm.js";
 import axios from "axios";
 import { useToast } from "vue-toastification";
 
 export default {
+  components: [Button],
   mixins: [validateForm],
   data() {
     return {
@@ -162,11 +164,7 @@ export default {
             />
           </div>
 
-          <input
-            type="submit"
-            value="Entrar"
-            class="mt-2 w-full outline-none border-2 border-gray-300/20 bg-black p-2 rounded-md hover:border-[#f1f1ef] text-zinc-200 hover:cursor-pointer hover:bg-black/50"
-          />
+          <Button type="submit" label="Entrar" />
         </form>
         <div class="flex flex-col justify-center items-center mt-6">
           <span @click.prevent="resetPassword">

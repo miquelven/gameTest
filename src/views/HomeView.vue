@@ -2,12 +2,14 @@
 import GameList from "@/components/GameList/GameList.vue";
 import Footer from "@/components/Footer/Footer.vue";
 import Header from "@/components/Header/Header.vue";
+import Button from "./icons/Button.vue";
 
 export default {
   components: {
     GameList,
     Header,
     Footer,
+    Button,
   },
 };
 </script>
@@ -65,25 +67,9 @@ export default {
             Irá encarar esse desafio?
           </h2>
 
-          <v-hover
-            v-slot="{ isHovering, props }"
-            close-delay="200"
-            open-delay="0"
-          >
-            <router-link to="/gamesPage">
-              <v-btn
-                color="#2bb478"
-                size="large"
-                rounded="lg"
-                elevation="8"
-                :variant="isHovering ? 'flat' : 'outlined'"
-                v-bind="props"
-                :style="isHovering ? 'color: black' : ''"
-              >
-                Iniciar desafio
-              </v-btn>
-            </router-link>
-          </v-hover>
+          <router-link to="/gamesPage">
+            <Button label="INICIAR DESAFIO" />
+          </router-link>
         </div>
       </section>
       <!-- ListGames -->
