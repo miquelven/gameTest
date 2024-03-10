@@ -34,10 +34,10 @@ export default {
 
 <template>
   <footer
-    class="m-auto mt-36 mb-10 text-sm text-zin-400 max-sm:text-xs relative"
+    class="m-auto mt-36 mb-5 text-sm text-zin-400 max-sm:text-xs relative"
   >
-    <div class="w-full h-1 bg-[rgba(255,255,255,.2)] mb-4 relative"></div>
-    <div class="max-w-screen-2xl m-auto">
+    <v-divider></v-divider>
+    <div class="max-w-screen-2xl mt-4 m-auto">
       <div class="flex flex-col items-center gap-5 justify-center">
         <p>
           <font-awesome-icon :icon="['fas', 'copyright']" />
