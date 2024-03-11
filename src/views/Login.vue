@@ -1,5 +1,4 @@
 <script>
-import InputForm from "./icons/InputForm.vue";
 import Button from "./icons/Button.vue";
 import validateForm from "@/mixins/validateForm.js";
 import axios from "axios";
@@ -12,27 +11,19 @@ export default {
       name: "",
       email: "",
       password: "",
-
-      warningName: "",
-      warningEmail: "",
-      warningPassword: "",
-
+      showPassword: false,
       toast: null,
     };
   },
   mounted() {
     this.toast = useToast();
     if (localStorage.getItem("token")) localStorage.removeItem("token");
-    this.$refs.InputName.$refs.input.focus();
   },
   components: {
-    InputForm,
     Button,
   },
   methods: {
-    async login(e) {
-      this.inputCheck(e.target.getElementsByTagName("input"));
-
+    async login() {
       try {
         const response = await axios.post("/login", {
           email: this.email,
@@ -57,41 +48,13 @@ export default {
         this.toast.error("Informações inválidas");
       }
     },
-    showIconPassword(e) {
-      let passwordIconEl = e.currentTarget;
-
-      let opacity = passwordIconEl.style.opacity;
-      if (opacity == 0) opacity = "0.5";
-      opacity = opacity == "0.5" ? "1" : "0.5";
-
-      passwordIconEl.style.opacity = opacity;
-
-      this.changeInputType(passwordIconEl);
-
-      // DAR O FOCO NO INPUT QUANDO CLICAR NO ICONE
-      e.currentTarget.parentElement.querySelector("input").focus();
-    },
-    changeInputType(element) {
-      const input = element.parentElement.children[0];
-
-      input.getAttribute("type") == "text"
-        ? input.setAttribute("type", "password")
-        : input.setAttribute("type", "text");
-    },
-    inputCheck(inputs) {
-      this.warningName = this.validateName(inputs[0]);
-      this.warningEmail = this.validateEmail(inputs[1]);
-      this.warningPassword = this.validatePassword(inputs[2]);
-    },
-    warningsCheck() {
-      return this.warningEmail == "" && this.warningPassword == ""
-        ? true
-        : false;
-    },
     async resetPassword(e) {
       e.preventDefault();
 
-      if (this.validateEmail(this.$refs.InputEmail.$refs.input) === "") {
+      const pattern =
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+      if (this.email && this.email.length <= 20 && pattern.test(this.email)) {
         try {
           const response = await axios.post("/reset-password", {
             email: this.email,
@@ -130,38 +93,47 @@ export default {
           class="w-48 brightness-125"
         />
 
-        <form class="flex flex-col gap-16 w-full p-2" @submit.prevent="login">
+        <form
+          class="flex flex-col gap-8 w-full p-2 max-w-72"
+          @submit.prevent="login"
+        >
           <div class="flex items-center relative">
-            <InputForm
-              ref="InputName"
-              type="text"
-              text="Nome"
-              @valueInput="(nameValue) => (name = nameValue)"
-              :warning="warningName"
-            />
+            <v-text-field
+              v-model="name"
+              :rules="nameRules"
+              label="nome"
+            ></v-text-field>
           </div>
           <div class="flex items-center relative">
-            <InputForm
-              ref="InputEmail"
-              type="email"
-              text="Email"
-              @valueInput="(emailValue) => (email = emailValue)"
-              :warning="warningEmail"
-            />
+            <v-text-field
+              label="email"
+              v-model="email"
+              :rules="emailRules"
+            ></v-text-field>
           </div>
-          <div class="flex items-center relative">
-            <InputForm
-              type="password"
-              text="Senha"
-              @valueInput="(passwordValue) => (password = passwordValue)"
-              :warning="warningPassword"
-            />
-            <!-- Add Icons using String format -->
-            <font-awesome-icon
-              :icon="['fas', 'eye']"
-              class="absolute opacity-60 right-0 cursor-pointer p-4 z-0"
-              @click="showIconPassword"
-            />
+          <div class="relative">
+            <v-text-field
+              label="senha"
+              v-model="password"
+              :type="showPassword ? 'text' : 'password'"
+              :rules="passwordRules"
+            >
+              <div
+                class="absolute right-0 top-0 py-5 px-3 hover:cursor-pointer"
+                @click="() => (showPassword = !showPassword)"
+              >
+                <font-awesome-icon
+                  :icon="['fas', 'eye']"
+                  class="hover:cursor-pointer opacity-50"
+                  v-if="showPassword"
+                />
+                <font-awesome-icon
+                  :icon="['fas', 'eye']"
+                  class="hover:cursor-pointer"
+                  v-else
+                />
+              </div>
+            </v-text-field>
           </div>
 
           <Button type="submit" label="Entrar" />
@@ -180,40 +152,6 @@ export default {
               >
             </p>
           </span>
-        </div>
-
-        <!-- AREA DE LOGIN DE OUTRAS MANEIRAS -->
-        <div class="w-full flex items-center mt-7">
-          <div
-            class="flex-1 flex items-center justify-center cursor-pointer opacity-70 hover:opacity-100"
-          >
-            <div
-              class="rounded-full bg-[#FF3E30] w-9 h-9w-10 h-10 flex items-center justify-center shadow-md hover:shadow-black"
-            >
-              <font-awesome-icon :icon="['fab', 'google']" class="w-5 h-5" />
-            </div>
-          </div>
-          <div
-            class="flex-1 flex items-center justify-center cursor-pointer opacity-70 hover:opacity-100"
-          >
-            <div
-              class="rounded-full bg-[#3b5998] w-9 h-9 flex items-center justify-center shadow-md hover:shadow-black"
-            >
-              <font-awesome-icon
-                :icon="['fab', 'facebook-f']"
-                class="w-5 h-5"
-              />
-            </div>
-          </div>
-          <div
-            class="flex-1 flex items-center justify-center cursor-pointer opacity-70 hover:opacity-100"
-          >
-            <div
-              class="rounded-full bg-[#E1306C] w-9 h-9 flex items-center justify-center shadow-md hover:shadow-black"
-            >
-              <font-awesome-icon :icon="['fab', 'instagram']" class="h-5 w-5" />
-            </div>
-          </div>
         </div>
       </div>
     </div>
