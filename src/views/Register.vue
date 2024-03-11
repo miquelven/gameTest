@@ -1,36 +1,40 @@
 <script>
-import InputForm from "./icons/InputForm.vue";
 import validateForm from "@/mixins/validateForm.js";
 import { useToast } from "vue-toastification";
 import Modal from "@/components/Modal/Modal.vue";
+import Button from "@/views/icons/Button.vue";
 import axios from "axios";
 export default {
   mixins: [validateForm],
   components: {
-    InputForm,
     Modal,
+    Button,
   },
   data() {
     return {
       userName: "",
-      email: ".",
+      email: "",
       password: "",
       C_password: "",
-
-      warningName: "",
-      warningEmail: "",
-      warningPassword: "",
-      warningC_password: "",
+      showPassword: false,
+      showIconPassword: false,
 
       toast: null,
       modal: false,
       textModal: "",
+
+      pwdConfirm: [
+        (v) => !!v || "Confirm password",
+        (v) => v === this.password || "Passwords do not match",
+      ],
     };
+  },
+
+  mounted() {
+    this.toast = useToast();
   },
   mounted() {
     this.toast = useToast();
-
-    this.$refs.InputForm.$refs.input.focus();
   },
   methods: {
     showModal(type) {
@@ -43,17 +47,14 @@ export default {
       this.modal = true;
       this.textModal = type;
     },
-    verifyInputs(e) {
-      this.inputCheck(e.target.getElementsByTagName("input"));
-      if (
-        this.warningName == "" &&
-        this.warningEmail == "" &&
-        this.warningPassword == "" &&
-        this.warningC_password == ""
-      )
-        this.register();
+    reset() {
+      this.$refs.form.reset();
     },
     async register() {
+      if (await !this.verifyInputs) {
+        toast.error("Preencha todos os campos!");
+        return;
+      }
       try {
         const response = await axios.post("/register", {
           username: this.userName,
@@ -82,36 +83,19 @@ export default {
         this.toast.error("Não foi possível realizar o registro");
         console.log(error.message);
       }
+      this.reset();
     },
-    showIconPassword(e) {
-      let passwordIconEl = e.currentTarget;
-
-      let opacity = passwordIconEl.style.opacity;
-      if (opacity == 0) opacity = "0.5";
-      opacity = opacity == "0.5" ? "1" : "0.5";
-
-      passwordIconEl.style.opacity = opacity;
-
-      this.changeInputType(passwordIconEl);
-      // dar o foco no input depois de clicar no icone
-      e.currentTarget.parentElement.querySelector("input").focus();
-    },
-    changeInputType(element) {
-      const input = element.parentElement.children[0];
-
-      input.getAttribute("type") == "text"
-        ? input.setAttribute("type", "password")
-        : input.setAttribute("type", "text");
-    },
-    inputCheck(inputs) {
-      this.warningName = this.validateName(inputs[0]);
-      this.warningEmail = this.validateEmail(inputs[1]);
-      this.warningPassword = this.validatePassword(inputs[2]);
-
-      this.warningC_password = this.validateConfirmPassword(
-        inputs[3],
-        inputs[2]
-      );
+  },
+  computed: {
+    async verifyInputs() {
+      if (
+        (await this.$refs.inputName.validate()).length == 0 &&
+        (await this.$refs.inputEmail.validate()).length == 0 &&
+        (await this.$refs.inputPassword.validate()).length == 0 &&
+        (await this.$refs.inputCPassword.validate()).length == 0
+      )
+        return true;
+      else return false;
     },
   },
 };
@@ -124,60 +108,80 @@ export default {
   >
     <h1 class="text-5xl mb-20 max-[400px]:text-4xl">Registre-se</h1>
     <form
-      class="relative z-10 w-72 flex flex-col justify-center items-center gap-10"
-      @submit.prevent="verifyInputs"
+      ref="form"
+      class="relative z-10 w-72 flex flex-col justify-center items-center gap-8"
+      @submit.prevent="register"
     >
       <div class="w-full flex items-center relative">
-        <InputForm
-          type="text"
-          text="Digite seu nome"
-          ref="InputForm"
-          @valueInput="(nameValue) => (userName = nameValue)"
-          :warning="warningName"
-        />
+        <v-text-field
+          ref="inputName"
+          autofocus
+          v-model="userName"
+          :rules="nameRules"
+          label="nome"
+        ></v-text-field>
       </div>
       <div class="w-full flex items-center relative">
-        <InputForm
-          type="text"
-          text="Digite o email"
-          @valueInput="(emailValue) => (email = emailValue)"
-          :warning="warningEmail"
-        />
+        <v-text-field
+          ref="inputEmail"
+          label="email"
+          v-model="email"
+          :rules="emailRules"
+        ></v-text-field>
       </div>
       <div class="w-full flex items-center relative">
-        <InputForm
-          type="password"
-          text="Crie uma senha"
-          @valueInput="(passwordValue) => (password = passwordValue)"
-          :warning="warningPassword"
-        />
-        <font-awesome-icon
-          :icon="['fas', 'eye']"
-          class="absolute right-0 cursor-pointer p-4 opacity-50 max-sm:right-5"
-          @click="showIconPassword"
-        />
+        <v-text-field
+          ref="inputPassword"
+          label="senha"
+          v-model="password"
+          :type="showPassword ? 'text' : 'password'"
+          :rules="passwordRules"
+        >
+          <div
+            class="absolute right-0 top-0 py-5 px-3 hover:cursor-pointer"
+            @click="() => (showPassword = !showPassword)"
+          >
+            <font-awesome-icon
+              :icon="['fas', 'eye']"
+              class="hover:cursor-pointer opacity-50"
+              v-if="showPassword"
+            />
+            <font-awesome-icon
+              :icon="['fas', 'eye']"
+              class="hover:cursor-pointer"
+              v-else
+            />
+          </div>
+        </v-text-field>
       </div>
 
       <div class="w-full flex items-center relative">
-        <InputForm
-          type="password"
-          text="Repita a senha"
-          @valueInput="(C_passwordValue) => (C_password = C_passwordValue)"
-          :warning="warningC_password"
-        />
-        <font-awesome-icon
-          :icon="['fas', 'eye']"
-          class="absolute right-0 cursor-pointer p-4 opacity-50 max-sm:right-5"
-          @click="showIconPassword"
-        />
+        <v-text-field
+          ref="inputCPassword"
+          label="confirme sua senha"
+          v-model="C_password"
+          :type="showIconPassword ? 'text' : 'password'"
+          :rules="pwdConfirm"
+        >
+          <div
+            class="absolute right-0 top-0 py-5 px-3 hover:cursor-pointer"
+            @click="() => (showIconPassword = !showIconPassword)"
+          >
+            <font-awesome-icon
+              :icon="['fas', 'eye']"
+              class="hover:cursor-pointer opacity-50"
+              v-if="showIconPassword"
+            />
+            <font-awesome-icon
+              :icon="['fas', 'eye']"
+              class="hover:cursor-pointer"
+              v-else
+            />
+          </div>
+        </v-text-field>
       </div>
 
-      <button
-        type="submit"
-        class="mt-2 w-full outline-none shadow-lg shadow-black/40 border-2 border-gray-300/20 bg-black p-2 rounded-md hover:border-[#40d292] text-zinc-200 hover:cursor-pointer hover:bg-black/50"
-      >
-        Registrar
-      </button>
+      <Button type="submit" label="Registrar" />
 
       <span
         >Já tem uma conta?
