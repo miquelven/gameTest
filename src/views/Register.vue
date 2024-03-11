@@ -33,9 +33,6 @@ export default {
   mounted() {
     this.toast = useToast();
   },
-  mounted() {
-    this.toast = useToast();
-  },
   methods: {
     showModal(type) {
       if (type == "") {
@@ -52,7 +49,7 @@ export default {
     },
     async register() {
       if ((await this.verifyInputs) == false) {
-        toast.error("Preencha todos os campos!");
+        this.toast.error("Preencha todos os campos!");
         return;
       }
       try {
