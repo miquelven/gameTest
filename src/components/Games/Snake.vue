@@ -18,7 +18,7 @@ export default {
       food: {
         x: 0,
         y: 0,
-        color: "yellow",
+        color: "#2bb478",
       },
 
       score: 0,

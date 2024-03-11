@@ -1,6 +1,7 @@
 <template>
   <v-hover v-slot="{ isHovering, props }" close-delay="200" open-delay="0">
     <v-btn
+      @click="click"
       color="#2bb478"
       size="large"
       rounded="lg"
@@ -17,6 +18,6 @@
 
 <script>
 export default {
-  props: ["label", "type"],
+  props: ["label", "type", "click"],
 };
 </script>

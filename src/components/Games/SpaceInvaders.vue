@@ -171,7 +171,7 @@ export default {
       for (let i = 0; i < this.bulletArray.length; i++) {
         let bullet = this.bulletArray[i];
         bullet.y += this.bulletVelocityY;
-        this.ctx.fillStyle = "yellow";
+        this.ctx.fillStyle = "#2bb478";
         this.ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
 
         // collision

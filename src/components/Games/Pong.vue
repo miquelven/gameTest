@@ -79,8 +79,8 @@ export default {
       };
 
       this.draw = function () {
-        this.ctx.fillStyle = "#ffff33";
-        this.ctx.strokeStyle = "#ffff33";
+        this.ctx.fillStyle = "#2bb478";
+        this.ctx.strokeStyle = "#2bb478";
         this.ctx.beginPath();
         this.ctx.arc(this.pos.x, this.pos.y, this.radius, 0, Math.PI * 2);
         this.ctx.fill();
@@ -110,7 +110,7 @@ export default {
         });
       };
       this.draw = function () {
-        this.ctx.fillStyle = "#ffff33";
+        this.ctx.fillStyle = "#777";
         this.ctx.fillRect(this.pos.x, this.pos.y, this.width, this.height);
       };
 
@@ -209,7 +209,7 @@ export default {
     },
 
     drawGameScene() {
-      this.ctx.strokeStyle = "#ffff00";
+      this.ctx.strokeStyle = "#777";
 
       this.ctx.beginPath();
       this.ctx.lineWidth = 20;

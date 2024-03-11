@@ -1,7 +1,7 @@
 <template>
   <canvas
     ref="canvas"
-    class="border-4 border-yellow-400/70 border-b-transparent"
+    class="border-4 border-[#2bb478] border-b-transparent"
   ></canvas>
 </template>
 
@@ -80,7 +80,7 @@ export default {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
       // player
-      this.ctx.fillStyle = "#ffff33";
+      this.ctx.fillStyle = "#2bb478";
       this.ctx.fillRect(
         this.player.x,
         this.player.y,
@@ -91,9 +91,9 @@ export default {
       this.ball.x += this.ball.velocityX;
       this.ball.y += this.ball.velocityY;
       this.ctx.shadowColor = "#eeeeee";
-      this.ctx.shadowBlur = 24;
-      this.ctx.fillStyle = "#ccccff";
-      this.ctx.strokeStyle = "#ccccff";
+      this.ctx.shadowBlur = 18;
+      this.ctx.fillStyle = "#ddd";
+      this.ctx.strokeStyle = "#ddd";
       this.ctx.beginPath();
       this.ctx.arc(this.ball.x, this.ball.y, 10, 0, Math.PI * 2);
       this.ctx.fill();
