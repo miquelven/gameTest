@@ -44,15 +44,7 @@ export default {
       this.modal = true;
       this.textModal = type;
     },
-    reset() {
-      this.$refs.form.reset();
-      this.userName = "";
-      this.email = "";
-      this.password = "";
-      this.C_password = "";
-      showPassword = false;
-      showIconPassword = false;
-    },
+
     async verifyInputs() {
       if (
         (await this.$refs.inputName.validate()).length == 0 &&
@@ -96,7 +88,6 @@ export default {
         this.toast.error("Não foi possível realizar o registro");
         console.log(error.message);
       }
-      this.reset();
     },
   },
 };
