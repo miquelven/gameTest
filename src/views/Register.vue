@@ -46,9 +46,25 @@ export default {
     },
     reset() {
       this.$refs.form.reset();
+      this.userName = "";
+      this.email = "";
+      this.password = "";
+      this.C_password = "";
+      showPassword = false;
+      showIconPassword = false;
+    },
+    async verifyInputs() {
+      if (
+        (await this.$refs.inputName.validate()).length == 0 &&
+        (await this.$refs.inputEmail.validate()).length == 0 &&
+        (await this.$refs.inputPassword.validate()).length == 0 &&
+        (await this.$refs.inputCPassword.validate()).length == 0
+      )
+        return true;
+      else return false;
     },
     async register() {
-      if ((await this.verifyInputs) == false) {
+      if ((await this.verifyInputs()) == false) {
         this.toast.error("Preencha todos os campos!");
         return;
       }
@@ -81,18 +97,6 @@ export default {
         console.log(error.message);
       }
       this.reset();
-    },
-  },
-  computed: {
-    async verifyInputs() {
-      if (
-        (await this.$refs.inputName.validate()).length == 0 &&
-        (await this.$refs.inputEmail.validate()).length == 0 &&
-        (await this.$refs.inputPassword.validate()).length == 0 &&
-        (await this.$refs.inputCPassword.validate()).length == 0
-      )
-        return true;
-      else return false;
     },
   },
 };
