@@ -68,7 +68,7 @@ export default {
           </h2>
 
           <router-link to="/gamesPage">
-            <Button label="INICIAR DESAFIO" />
+            <Button type="button" label="INICIAR DESAFIO" />
           </router-link>
         </div>
       </section>

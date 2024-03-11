@@ -8,22 +8,15 @@
       :variant="isHovering ? 'flat' : 'outlined'"
       v-bind="props"
       :style="isHovering ? 'color: black' : ''"
+      :type="this.$props.type"
     >
-      {{ label }}
+      {{ this.$props.label }}
     </v-btn>
   </v-hover>
 </template>
 
 <script>
 export default {
-  props: ["label"],
-  data() {
-    return {
-      label: "",
-    };
-  },
-  mounted() {
-    this.label = this.$props.label;
-  },
+  props: ["label", "type"],
 };
 </script>
