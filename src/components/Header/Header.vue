@@ -78,7 +78,7 @@ export default {
         <span class="text-sm text-gray-400">Usuário: </span>
 
         <div class="text-center">
-          <v-menu open-on-hover transition="scale-transition">
+          <v-menu transition="scale-transition">
             <template v-slot:activator="{ props }">
               <v-btn color="#2bb478" variant="outlined" v-bind="props">
                 {{ name }}
