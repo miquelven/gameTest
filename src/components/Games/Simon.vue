@@ -1,27 +1,27 @@
 <template>
   <div
     id="outer-circle"
-    class="bg-[#385a94] rounded-full h-[500px] w-[500px] relative border-solid border-2 m-auto mt-14 shadow-[´8_8_15_5_#888888]"
+    class="bg-[#385a94] rounded-full h-[500px] w-[500px] relative border-solid border-2 m-auto mt-14 shadow-[´8_8_15_5_#888888] max-[790px]w-[400px] max-[790px]h-[400px]"
   >
     <div
       ref="topLeft"
-      class="absolute w-[250px] h-[250px] rounded-tl-[250px] bg-[darkgreen] top-[50%] left-[50%] -mt-[250px] -ml-[250px] border-solid border-[5px]"
+      class="absolute w-[250px] h-[250px] rounded-tl-[250px] bg-[darkgreen] top-[50%] left-[50%] -mt-[250px] -ml-[250px] border-solid border-[5px] max-[790px]w-[200px] max-[790px]h-[200px] max-[790px]rounded-tl-[200px] max-[790px]-l-[200px] max-[790px]-mt-[200px] max-[790px]-ml-[200px]"
     ></div>
     <div
       ref="topRight"
-      class="absolute w-[250px] h-[250px] rounded-tr-[250px] bg-[darkred] top-[50%] left-[50%] -mt-[250px] border-solid border-[5px]"
+      class="absolute w-[250px] h-[250px] rounded-tr-[250px] bg-[darkred] top-[50%] left-[50%] -mt-[250px] border-solid border-[5px] max-[790px]w-[200px] max-[790px]h-[200px] max-[790px]rounded-tr-[200px] max-[790px]-mt-[200px]"
     ></div>
     <div
       ref="bottomLeft"
-      class="absolute w-[250px] h-[250px] rounded-bl-[250px] bg-[goldenrod] top-[50%] left-[50%] -mr-[250px] -ml-[250px] border-solid border-[5px]"
+      class="absolute w-[250px] h-[250px] rounded-bl-[250px] bg-[goldenrod] top-[50%] left-[50%] -mr-[250px] -ml-[250px] border-solid border-[5px] max-[790px]w-[200px] max-[790px]h-[200px] max-[790px]rounded-bl-[200px] max-[790px]-mr-[200px] max-[790px]-ml-[200px]"
     ></div>
     <div
       ref="bottomRight"
-      class="absolute w-[250px] h-[250px] rounded-br-[250px] bg-[darkblue] top-[50%] left-[50%] -mb-[250px] border-solid border-[5px]"
+      class="absolute w-[250px] h-[250px] rounded-br-[250px] bg-[darkblue] top-[50%] left-[50%] -mb-[250px] border-solid border-[5px] max-[790px]w-[200px] max-[790px]h-[200px] max-[790px]rounded-br-[200px] max-[790px]-md-[200px]"
     ></div>
     <div
       id="inner-circle"
-      class="absolute bg-[grey] rounded-full h-[250px] w-[250px] border-solid border-[10px] top-[50%] left-[50%] -mt-[125px] -ml-[125px]"
+      class="absolute bg-[grey] rounded-full h-[250px] w-[250px] border-solid border-[10px] top-[50%] left-[50%] -mt-[125px] -ml-[125px] max-[790px]w-[200px] max-[790px]h-[200px] max-[790px]-mt-[100px] max-[790px]-ml-[100px]"
     >
       <div
         id="switches"
@@ -29,7 +29,7 @@
       >
         <span
           ref="counter"
-          class="text-3xl text-white/90 font-bold bg-[#111] px-7 border-4 border-white/80"
+          class="text-2xl text-white/90 font-medium bg-[#111] px-7 border-4 border-white/80"
           >0</span
         >
       </div>

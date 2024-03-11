@@ -101,7 +101,7 @@ export default {
 </script>
 
 <template>
-  <div class="grid grid-cols-4 gap-5">
+  <div class="grid grid-cols-4 gap-5 max-[790px]:scale-75">
     <div v-for="(square, index) in squares" :key="index" id="itemArea">
       <MemoryItem :color="square" @clickedSquare="clickedSquare" :show="show" />
     </div>

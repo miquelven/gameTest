@@ -1,5 +1,7 @@
 <template>
-  <canvas ref="canvas" id="canvas"> </canvas>
+  <div class="max-[790px]:scale-75">
+    <canvas height="640" width="360" ref="canvas" id="canvas"> </canvas>
+  </div>
 </template>
 
 <script>

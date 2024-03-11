@@ -26,7 +26,7 @@ export default {
     return {
       showModal: true,
       score: [],
-      counter: 3,
+      counter: 0,
       intervalCounter: null,
       minutes: 0,
       seconds: 0,
@@ -97,7 +97,7 @@ export default {
 
 <template>
   <div
-    class="h-[calc(100vh-80px)] w-full flex flex-col gap-10 justify-center items-center"
+    class="h-[calc(100vh-80px)] w-full flex flex-col gap-10 justify-center items-center max-sm:hidden"
   >
     <router-link
       to="/"
@@ -145,7 +145,7 @@ export default {
     />
     <!-- area dos jogos -->
     <div
-      class="absolute rounded-lg flex justify-center items-center border-4 border-double border-[#777] shadow-sm shadow-[#2bb478] size-2/3 max-h-[67%]"
+      class="absolute rounded-lg flex justify-center overflow-hidden items-center border-4 border-double border-[#777] shadow-sm shadow-[#2bb478] size-2/3 max-h-[67%]"
       v-if="counter <= 10"
     >
       <template v-if="counter == 0 && !showModal">
@@ -203,5 +203,32 @@ export default {
         </router-link>
       </div>
     </template>
+  </div>
+
+  <div
+    class="absolute inset-0 z-30 bg-black/90 flex justify-center items-center sm:hidden"
+    v-motion
+    :initial="{
+      opacity: 0,
+    }"
+    :enter="{
+      opacity: 1,
+      transition: {
+        duration: 700,
+        type: 'keyframes',
+        ease: 'easein,',
+      },
+    }"
+  >
+    <div
+      class="flex flex-col justify-center items-center gap-9 p-5 h-96 w-80 absolute rounded-lg border-2 border-[#777] font-light"
+    >
+      <h2 class="text-xl font-medium mb-10 text-center">
+        Jogos disponíveis apenas no desktop
+      </h2>
+      <router-link to="/" class="self-center">
+        <Button label="Voltar" type="button" />
+      </router-link>
+    </div>
   </div>
 </template>

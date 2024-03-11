@@ -1,7 +1,7 @@
 <template>
   <canvas
     ref="canvas"
-    class="border-4 border-[#2bb478] border-b-transparent"
+    class="border-4 border-[#2bb478] border-b-transparent max-xl:h-96"
   ></canvas>
 </template>
 
@@ -39,7 +39,6 @@ export default {
       blockY: 45,
 
       score: 0,
-      gameOver: false,
     };
   },
   mounted() {

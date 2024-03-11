@@ -87,7 +87,7 @@ export default {
 </script>
 
 <template>
-  <div ref="Squares" class="grid grid-cols-3">
+  <div ref="Squares" class="grid grid-cols-3 max-[790px]:scale-75">
     <TicTacToeItem
       class="border-l-transparent border-t-transparent"
       data-pos="0"

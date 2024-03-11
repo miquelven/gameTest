@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col max-[790px]:scale-75">
     <div class="flex justify-around text-3xl font-bold mb-5">
       <h1 ref="scorePlayer">0</h1>
       <h1 ref="scorePlayer2">0</h1>
