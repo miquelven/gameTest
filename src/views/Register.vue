@@ -51,7 +51,7 @@ export default {
       this.$refs.form.reset();
     },
     async register() {
-      if (await !this.verifyInputs) {
+      if ((await this.verifyInputs) == false) {
         toast.error("Preencha todos os campos!");
         return;
       }
