@@ -1,22 +1,16 @@
 <script>
 import GameList from "@/components/GameList/GameList.vue";
-import Footer from "@/components/Footer/Footer.vue";
-import Header from "@/components/Header/Header.vue";
 import Button from "./icons/Button.vue";
 
 export default {
   components: {
     GameList,
-    Header,
-    Footer,
     Button,
   },
 };
 </script>
 
 <template>
-  <Header />
-
   <main class="w-full mb-19">
     <!-- container -->
     <div class="max-w-screen-2xl min-h-[calc(100vh-350px)] mx-auto px-10">
@@ -78,5 +72,4 @@ export default {
       </section>
     </div>
   </main>
-  <Footer />
 </template>

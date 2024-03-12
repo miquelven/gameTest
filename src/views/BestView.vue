@@ -1,14 +1,10 @@
 <script>
-import Footer from "@/components/Footer/Footer.vue";
-import Header from "@/components/Header/Header.vue";
 import BestInfoItem from "@/components/Items/BestInfoItem.vue";
 import { useMouseInElement } from "@vueuse/core";
 import axios from "axios";
 
 export default {
   components: {
-    Header,
-    Footer,
     BestInfoItem,
   },
   data() {
@@ -84,7 +80,6 @@ export default {
 </script>
 
 <template>
-  <Header />
   <main class="w-full mt-32 min-h-[calc(100vh)]">
     <!-- container -->
     <div
@@ -143,5 +138,4 @@ export default {
       </template>
     </div>
   </main>
-  <Footer />
 </template>

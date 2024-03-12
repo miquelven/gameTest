@@ -1,14 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import NotFound from "../views/NotFound.vue";
-import Login from "@/views/Login.vue";
-import Register from "@/views/Register.vue";
-import AboutView from "@/views/AboutView.vue";
-import Contact from "@/views/Contact.vue";
-import Auth from "@/views/Auth.vue";
-import GamesPage from "@/views/GamesPage.vue";
-import ScoreView from "@/views/ScoreView.vue";
-import BestView from "@/views/BestView.vue";
+
+function lazyLoad(view) {
+  return () => import(`../views/${view}.vue`);
+}
 
 const router = createRouter({
   history: createWebHistory(),
@@ -25,15 +20,16 @@ const router = createRouter({
     {
       path: "/:pathMatch(.*)",
       name: "notFound",
-      component: NotFound,
+      component: lazyLoad("NotFound"),
       meta: {
         title: "Página não encontrada",
+        layout: "empty",
       },
     },
     {
       path: "/about",
       name: "about",
-      component: AboutView,
+      component: lazyLoad("AboutView"),
       meta: {
         title: "Sobre",
       },
@@ -41,15 +37,16 @@ const router = createRouter({
     {
       path: "/login",
       name: "login",
-      component: Login,
+      component: lazyLoad("Login"),
       meta: {
         title: "Login",
+        layout: "empty",
       },
     },
     {
       path: "/contact",
       name: "contact",
-      component: Contact,
+      component: lazyLoad("Contact"),
       meta: {
         title: "Contato",
       },
@@ -57,23 +54,25 @@ const router = createRouter({
     {
       path: "/register",
       name: "register",
-      component: Register,
+      component: lazyLoad("Register"),
       meta: {
         title: "Registro",
+        layout: "empty",
       },
     },
     {
       path: "/resetpassword/:params*",
       name: "resetpassword",
-      component: Auth,
+      component: lazyLoad("Auth"),
       meta: {
         title: "Trocar a senha",
+        layout: "empty",
       },
     },
     {
       path: "/scores",
       name: "scores",
-      component: ScoreView,
+      component: lazyLoad("ScoreView"),
       meta: {
         title: "Pontuações",
       },
@@ -81,7 +80,7 @@ const router = createRouter({
     {
       path: "/best",
       name: "best",
-      component: BestView,
+      component: lazyLoad("BestView"),
       meta: {
         title: "Melhores pontuações",
       },
@@ -90,9 +89,10 @@ const router = createRouter({
     {
       path: "/gamesPage",
       name: "gamesPage",
-      component: GamesPage,
+      component: lazyLoad("GamesPage"),
       meta: {
         title: "Jogos",
+        layout: "empty",
       },
     },
   ],

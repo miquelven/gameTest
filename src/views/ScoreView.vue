@@ -1,13 +1,9 @@
 <script>
-import Header from "@/components/Header/Header.vue";
-import Footer from "@/components/Footer/Footer.vue";
 import TopInfoItem from "@/components/Items/TopInfoItem.vue";
 import axios from "axios";
 
 export default {
   components: {
-    Header,
-    Footer,
     TopInfoItem,
   },
   data() {
@@ -35,7 +31,6 @@ export default {
 </script>
 
 <template>
-  <Header />
   <main class="w-full mt-20 min-h-[calc(100vh-250px)]">
     <!-- container -->
     <div class="min-w-screen-2xl m-auto flex justify-center">
@@ -89,5 +84,4 @@ export default {
       </table>
     </div>
   </main>
-  <Footer />
 </template>

@@ -57,6 +57,9 @@ import "vue-toastification/dist/index.css";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
+import defaultLayout from "./layout/defaultLayout.vue";
+import emptyLayout from "./layout/emptyLayout.vue";
+
 axios.defaults.baseURL = import.meta.env.VITE_GAME_TEST_API_URL;
 
 Aos.init();
@@ -69,6 +72,8 @@ app
   .use(MotionPlugin)
   .use(Toast)
   .use(vuetify)
-  .component("font-awesome-icon", FontAwesomeIcon);
+  .component("font-awesome-icon", FontAwesomeIcon)
+  .component("default-layout", defaultLayout)
+  .component("empty-layout", emptyLayout);
 
 app.mount("#app");

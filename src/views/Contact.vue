@@ -1,19 +1,14 @@
 <script>
 import ContactIconItem from "@/components/Items/ContactIconItem.vue";
-import Footer from "@/components/Footer/Footer.vue";
-import Header from "@/components/Header/Header.vue";
 
 export default {
   components: {
-    Header,
-    Footer,
     ContactIconItem,
   },
 };
 </script>
 
 <template>
-  <Header />
   <main class="w-full mt-10 min-h-[calc(100vh-250px)]" id="best">
     <!-- container -->
     <div class="max-w-screen-2xl m-auto flex justify-center">
@@ -77,5 +72,4 @@ export default {
       </div>
     </div>
   </main>
-  <Footer />
 </template>
