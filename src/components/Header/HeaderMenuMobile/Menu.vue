@@ -1,5 +1,8 @@
 <script>
+import LinksMenu from "./LinksMenu.vue";
+
 export default {
+  components: { LinksMenu },
   emits: ["logout"],
   data() {
     return {
@@ -17,7 +20,7 @@ export default {
   />
   <template v-if="showMenu">
     <nav
-      class="absolute left-0 top-[80px] flex flex-col bg-black/95 border-b-[2px] border-[rgba(255,255,255,.2)] w-full gap-10 py-5 font-bold"
+      class="absolute left-0 top-[80px] flex flex-col bg-black/95 border-b-[2px] border-[rgba(255,255,255,.2)] w-full gap-10 py-5 font-light"
       v-motion
       :initial="{
         opacity: 0,
@@ -31,18 +34,7 @@ export default {
         },
       }"
     >
-      <router-link to="/scores" class="w-full text-center"
-        ><span class="py-8 relative"> Pontuações </span>
-      </router-link>
-      <router-link to="/best" class="w-full text-center"
-        ><span class="py-8 relative"> Melhores </span>
-      </router-link>
-      <router-link to="/contact" class="w-full text-center"
-        ><span class="py-8 relative"> Contato </span>
-      </router-link>
-      <router-link to="/about" class="w-full text-center"
-        ><span class="py-8 relative"> Sobre </span>
-      </router-link>
+      <LinksMenu />
       <button @click="() => $emit('logout')" class="w-full text-center">
         <span class="py-8 relative"> Sair </span>
       </button>
