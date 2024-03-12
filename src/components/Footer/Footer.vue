@@ -7,20 +7,22 @@ export default {
   },
   data() {
     return {
-      modal: false,
       textModal: "",
+      isModalOpen: false,
     };
   },
   methods: {
+    closeModal() {
+      this.isModalOpen = false;
+    },
     showModal(type) {
-      console.log(type);
       if (type == "") {
         this.textModal = "";
-        this.modal = false;
+        this.isModalOpen = false;
         return;
       }
 
-      this.modal = true;
+      this.isModalOpen = true;
       this.textModal = type;
     },
   },
@@ -60,12 +62,13 @@ export default {
         </div>
       </div>
     </div>
-    <template v-if="modal">
-      <Modal
-        :text="textModal"
-        @closeModal="showModal('')"
-        class="-top-[950px]"
-      />
-    </template>
+    <Teleport to="#modal">
+      <div
+        v-if="isModalOpen"
+        class="fixed inset-0 z-50 bg-black/60 flex justify-center items-center"
+      >
+        <Modal @closeModal="closeModal" :text="textModal" />
+      </div>
+    </Teleport>
   </footer>
 </template>
