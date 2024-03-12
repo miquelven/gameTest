@@ -2,15 +2,15 @@ export default {
   data() {
     return {
       nameRules: [
-        (value) => !!value || "Required.",
-        (value) => (value || "").length <= 10 || "Max 10 characters",
+        (value) => !!value || "Preencha o campo.",
+        (value) => (value || "").length <= 10 || "Limite de 10 caracteres",
       ],
       emailRules: [
-        (value) => !!value || "Required.",
+        (value) => !!value || "Preencha o campo.",
         (value) => {
           const pattern =
             /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-          return pattern.test(value) || "Invalid e-mail.";
+          return pattern.test(value) || "Email inválido.";
         },
       ],
       passwordRules: [
