@@ -224,7 +224,7 @@ export default {
       class="flex flex-col justify-center items-center gap-9 p-5 h-96 w-80 absolute rounded-lg border-2 border-[#777] font-light"
     >
       <h2 class="text-xl font-medium mb-10 text-center">
-        Jogos disponíveis apenas no desktop
+        Jogos disponíveis apenas para computador.
       </h2>
       <router-link to="/" class="self-center">
         <Button label="Voltar" type="button" />
