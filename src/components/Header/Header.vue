@@ -1,11 +1,12 @@
 <script>
 import { useToast } from "vue-toastification";
-import HeaderMenuMobile from "./HeaderMenuMobile.vue";
+import Menu from "./HeaderMenuMobile/Menu.vue";
 import HeaderLink from "./HeaderLink.vue";
 import axios from "axios";
+import LinksMenu from "./HeaderMenuMobile/LinksMenu.vue";
 
 export default {
-  components: { HeaderMenuMobile, HeaderLink },
+  components: { Menu, HeaderLink, LinksMenu },
   data() {
     return {
       toast: null,
@@ -64,13 +65,10 @@ export default {
         />
       </router-link>
       <nav class="flex gap-12 font-light max-lg:text-sm max-md:hidden">
-        <HeaderLink text="Pontuações" to="/scores" />
-        <HeaderLink text="Melhores" to="/best" />
-        <HeaderLink text="Contato" to="/contact" />
-        <HeaderLink text="Sobre" to="/about" />
+        <LinksMenu />
       </nav>
 
-      <HeaderMenuMobile @logout="logout" />
+      <Menu @logout="logout" />
 
       <div
         class="text-lg text-zinc-300 flex flex-col items-end max-lg:text-base max-md:hidden"
