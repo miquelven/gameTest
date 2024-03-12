@@ -1,19 +1,20 @@
 <script>
 import GameList from "@/components/GameList/GameList.vue";
 import Button from "./icons/Button.vue";
+import Container from "./icons/Container.vue";
 
 export default {
   components: {
     GameList,
     Button,
+    Container,
   },
 };
 </script>
 
 <template>
   <main class="w-full mb-19">
-    <!-- container -->
-    <div class="max-w-screen-2xl min-h-[calc(100vh-350px)] mx-auto px-10">
+    <Container>
       <section
         class="flex my-28 max-xl:flex-col max-xl:gap-32 max-lg:gap-14 max-sm:my-16"
         id="container"
@@ -66,10 +67,8 @@ export default {
           </router-link>
         </div>
       </section>
-      <!-- ListGames -->
-      <section class="my-56 max-[440px]:mt-40 max-[440px]:mb-0">
-        <GameList />
-      </section>
-    </div>
+      <!-- GameList -->
+      <GameList />
+    </Container>
   </main>
 </template>

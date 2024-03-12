@@ -2,10 +2,12 @@
 import BestInfoItem from "@/components/Items/BestInfoItem.vue";
 import { useMouseInElement } from "@vueuse/core";
 import axios from "axios";
+import Container from "./icons/Container.vue";
 
 export default {
   components: {
     BestInfoItem,
+    Container,
   },
   data() {
     return {
@@ -80,10 +82,9 @@ export default {
 </script>
 
 <template>
-  <main class="w-full mt-32 min-h-[calc(100vh)]">
-    <!-- container -->
-    <div
-      class="relative max-w-screen-2xl h-screen max-2xl:max-w-screen-xl max-xl:max-w-screen-lg m-auto max-lg:max-w-screen-md max-md:max-w-96"
+  <main class="w-full mt-32 min-h-[calc(100vh-350px)]">
+    <Container
+      class="relative max-w-screen-2xl min-h-screen max-2xl:max-w-screen-xl max-xl:max-w-screen-lg m-auto max-lg:max-w-screen-md max-md:max-w-96"
     >
       <template v-if="loading">
         <div class="absolute inset-0">
@@ -136,6 +137,6 @@ export default {
           </tr>
         </table>
       </template>
-    </div>
+    </Container>
   </main>
 </template>

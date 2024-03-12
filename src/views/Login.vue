@@ -82,7 +82,7 @@ export default {
 </script>
 
 <template>
-  <div
+  <section
     class="w-full min-h-[calc(100vh-80px)] flex flex-col justify-center items-center"
   >
     <div class="relative z-10 mb-28">
@@ -155,5 +155,5 @@ export default {
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>

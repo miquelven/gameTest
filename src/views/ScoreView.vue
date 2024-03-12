@@ -31,8 +31,7 @@ export default {
 </script>
 
 <template>
-  <main class="w-full mt-20 min-h-[calc(100vh-250px)]">
-    <!-- container -->
+  <section class="w-full mt-20 min-h-[calc(100vh-250px)]">
     <div class="min-w-screen-2xl m-auto flex justify-center">
       <table
         class="grid grid-cols-1 gap-10 p-20 bg-[rgba(0,0,0,.9)] shadow-sm shadow-zinc-700 rounded-xl max-sm:p-10"
@@ -83,5 +82,5 @@ export default {
         </tr>
       </table>
     </div>
-  </main>
+  </section>
 </template>

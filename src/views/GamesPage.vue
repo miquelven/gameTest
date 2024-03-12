@@ -185,7 +185,7 @@ export default {
       <div
         class="border-2 border-[#2bb478] flex flex-col gap-8 pt-10 px-24 h-96 absolute rounded-xl font-medium max-sm:px-16"
       >
-        <h2 class="text-4xl text-center mb-4 max-sm:text-3xl">Fim dos jogos</h2>
+        <h3 class="text-4xl text-center mb-4 max-sm:text-3xl">Fim dos jogos</h3>
         <div class="flex justify-around">
           <p class="text-lg max-sm:text-base">Seu tempo:</p>
           <span class="text-white text-2xl max-sm:text-xl">{{

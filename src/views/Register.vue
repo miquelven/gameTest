@@ -91,7 +91,7 @@ export default {
 </script>
 
 <template>
-  <div
+  <section
     class="w-full h-[calc(100vh-80px)] flex flex-col justify-center items-center relative z-0"
     id="container"
   >
@@ -198,7 +198,7 @@ export default {
         </span>
       </div>
     </div>
-  </div>
+  </section>
 
   <Teleport to="#modal">
     <div

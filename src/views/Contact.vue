@@ -9,9 +9,10 @@ export default {
 </script>
 
 <template>
-  <main class="w-full mt-10 min-h-[calc(100vh-250px)]" id="best">
-    <!-- container -->
-    <div class="max-w-screen-2xl m-auto flex justify-center">
+  <section class="w-full min-h-[calc(100vh-350px)]" id="best">
+    <Container
+      class="relative max-w-screen-2xl min-h-screen max-2xl:max-w-screen-xl max-xl:max-w-screen-lg m-auto max-lg:max-w-screen-md max-md:max-w-96"
+    >
       <div class="flex flex-col gap-20 items-center mt-52">
         <h3 class="text-5xl font-medium max-sm:text-4xl" data-aos="zoom-in">
           Contatos:
@@ -70,6 +71,6 @@ export default {
           />
         </div>
       </div>
-    </div>
-  </main>
+    </Container>
+  </section>
 </template>
