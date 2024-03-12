@@ -2,24 +2,41 @@
   <div
     class="w-full h-[calc(100vh-80px)] text-center flex flex-col justify-center"
   >
-    <div class="m-auto w-96">
-      <h3 class="text-5xl font-semibold mb-10 max-sm:text-4xl">
+    <div class="m-auto w-80">
+      <h3 class="text-4xl font-medium mb-20 max-sm:text-3xl">
         Redefinir Senha
       </h3>
-      <form class="relative flex flex-col gap-10">
-        <InputForm
-          ref="newPassword"
-          text="Senha"
-          type="password"
-          :warning="warningPassword"
-        />
+      <form
+        class="relative flex flex-col gap-10"
+        @submit.prevent="togglePassword"
+      >
+        <div class="relative">
+          <v-text-field
+            ref="password"
+            label="senha"
+            v-model="newPassword"
+            :type="showPassword ? 'text' : 'password'"
+            :rules="passwordRules"
+          >
+            <div
+              class="absolute right-0 top-0 py-5 px-3 hover:cursor-pointer"
+              @click="() => (showPassword = !showPassword)"
+            >
+              <font-awesome-icon
+                :icon="['fas', 'eye']"
+                class="hover:cursor-pointer opacity-50"
+                v-if="showPassword"
+              />
+              <font-awesome-icon
+                :icon="['fas', 'eye']"
+                class="hover:cursor-pointer"
+                v-else
+              />
+            </div>
+          </v-text-field>
+        </div>
 
-        <button
-          @click.prevent="togglePassword"
-          class="mt-2 mx-auto w-1/2 outline-none shadow-lg shadow-black/40 border-2 border-gray-300/20 bg-black p-2 rounded-md hover:border-[#40d292] text-zinc-200 hover:cursor-pointer hover:bg-black/50 max-sm:w-28"
-        >
-          Salvar
-        </button>
+        <Button label="Salvar" type="submit" />
       </form>
     </div>
   </div>
@@ -30,14 +47,15 @@ import validateForm from "@/mixins/validateForm.js";
 import InputForm from "./icons/InputForm.vue";
 import { useToast } from "vue-toastification";
 import axios from "axios";
+import Button from "./icons/Button.vue";
 
 export default {
   mixins: [validateForm],
-  components: { InputForm },
+  components: { InputForm, Button },
   data() {
     return {
       newPassword: "",
-      warningPassword: "",
+      showPassword: false,
 
       toast: null,
     };
@@ -47,41 +65,35 @@ export default {
   },
   methods: {
     async togglePassword(e) {
-      this.warningPassword = this.validatePassword(
-        e.target.closest("form").getElementsByTagName("input")[0]
-      );
+      if ((await this.$refs.password.validate()).length == 0) {
+        try {
+          const path = window.location.pathname;
 
-      if (this.warningPassword) return;
+          const pathParts = path.split("/");
 
-      this.newPassword = this.$refs.newPassword["inputValue"];
+          const tokenIndex = pathParts.indexOf("resetpassword") + 1;
 
-      try {
-        const path = window.location.pathname;
+          const token =
+            tokenIndex < pathParts.length ? pathParts[tokenIndex] : null;
 
-        const pathParts = path.split("/");
+          const res = await axios.post("/togglepassword", {
+            token: token,
+            password: this.newPassword,
+          });
 
-        const tokenIndex = pathParts.indexOf("resetpassword") + 1;
-
-        const token =
-          tokenIndex < pathParts.length ? pathParts[tokenIndex] : null;
-
-        const res = await axios.post("/togglepassword", {
-          token: token,
-          password: this.newPassword,
-        });
-
-        const data = res.data;
-        if (res.status === 200) {
-          this.toast.success("Senha Alterada!");
-          setTimeout(() => (window.location.href = "/login"), 1000);
-        } else {
-          this.toast.error("Senha não alterada");
+          const data = res.data;
+          if (res.status === 200) {
+            this.toast.success("Senha Alterada!");
+            setTimeout(() => (window.location.href = "/login"), 1000);
+          } else {
+            this.toast.error("Senha não alterada");
+          }
+        } catch (error) {
+          console.error("Erro durante a alteração da senha:", error);
+          this.toast.error(
+            "Erro interno. Por favor, tente novamente mais tarde."
+          );
         }
-      } catch (error) {
-        console.error("Erro durante a alteração da senha:", error);
-        this.toast.error(
-          "Erro interno. Por favor, tente novamente mais tarde."
-        );
       }
     },
   },
