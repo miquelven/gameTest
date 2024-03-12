@@ -195,14 +195,14 @@ export default {
         </button>
       </span>
     </form>
-
-    <Teleport to="#modal">
-      <div
-        v-if="isModalOpen"
-        class="fixed inset-0 z-50 bg-black/60 flex justify-center items-center"
-      >
-        <Modal @closeModal="closeModal" :text="textModal" />
-      </div>
-    </Teleport>
   </div>
+
+  <Teleport to="#modal">
+    <div
+      v-if="isModalOpen"
+      class="fixed inset-0 z-50 bg-black/60 flex justify-center items-center"
+    >
+      <Modal @closeModal="closeModal" :text="textModal" />
+    </div>
+  </Teleport>
 </template>
