@@ -20,6 +20,7 @@ export default {
   />
   <template v-if="showMenu">
     <nav
+      v-click-outside="() => (showMenu = false)"
       class="absolute left-0 top-[80px] flex flex-col bg-black/95 border-b-[2px] border-[rgba(255,255,255,.2)] w-full gap-10 py-5 font-light"
       v-motion
       :initial="{
@@ -33,8 +34,17 @@ export default {
           type: 'spring',
         },
       }"
+      :tapped="{
+        opacity: 0,
+        transition: {
+          ease: 'easein',
+          delay: '200',
+          duration: 500,
+          type: 'spring',
+        },
+      }"
     >
-      <LinksMenu />
+      <LinksMenu @closeMenu="() => (showMenu = false)" />
       <button @click="() => $emit('logout')" class="w-full text-center">
         <span class="py-8 relative"> Sair </span>
       </button>

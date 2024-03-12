@@ -13,6 +13,7 @@ export default {
 
 <template>
   <router-link
+    @click="() => $emit('closeMenu')"
     v-for="(link, linkIndex) in dataLinks.links"
     :key="linkIndex"
     :to="link"
