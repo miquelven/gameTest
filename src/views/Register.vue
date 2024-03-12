@@ -20,12 +20,12 @@ export default {
       showIconPassword: false,
 
       toast: null,
-      modal: false,
+      isModalOpen: false,
       textModal: "",
 
       pwdConfirm: [
-        (v) => !!v || "Confirm password",
-        (v) => v === this.password || "Passwords do not match",
+        (v) => !!v || "Confirme a senha",
+        (v) => v === this.password || "As senhas não são iguais",
       ],
     };
   },
@@ -34,14 +34,11 @@ export default {
     this.toast = useToast();
   },
   methods: {
+    closeModal() {
+      this.isModalOpen = false;
+    },
     showModal(type) {
-      if (type == "") {
-        this.textModal = "";
-        this.modal = false;
-        return;
-      }
-
-      this.modal = true;
+      this.isModalOpen = true;
       this.textModal = type;
     },
 
@@ -198,8 +195,14 @@ export default {
         </button>
       </span>
     </form>
-    <template v-if="modal">
-      <Modal :text="textModal" @closeModal="showModal('')" />
-    </template>
+
+    <Teleport to="#modal">
+      <div
+        v-if="isModalOpen"
+        class="fixed inset-0 z-50 bg-black/60 flex justify-center items-center"
+      >
+        <Modal @closeModal="closeModal" :text="textModal" />
+      </div>
+    </Teleport>
   </div>
 </template>
