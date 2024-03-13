@@ -1,5 +1,5 @@
 <script>
-import GameList from "@/components/GameList/GameList.vue";
+import GameList from "@/components/GameList/index.vue";
 import Button from "./icons/Button.vue";
 import Container from "./icons/Container.vue";
 
