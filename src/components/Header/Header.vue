@@ -58,7 +58,7 @@ export default {
     >
       <router-link to="/">
         <img
-          src="../../assets/images/logo.png"
+          src="../../assets/images/logo.webp"
           alt="logo"
           width="100"
           class="max-lg:w-20"
