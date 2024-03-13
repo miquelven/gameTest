@@ -36,9 +36,6 @@ export default {
     this.toast = useToast();
   },
   methods: {
-    closeModal() {
-      this.isModalOpen = false;
-    },
     showModal(type) {
       this.isModalOpen = true;
       this.textModal = type;
@@ -209,7 +206,7 @@ export default {
       v-if="isModalOpen"
       class="fixed inset-0 z-50 bg-black/60 flex justify-center items-center"
     >
-      <Modal @closeModal="closeModal" :text="textModal" />
+      <Modal @closeModal="() => (isModalOpen = false)" :text="textModal" />
     </div>
   </Teleport>
 </template>
