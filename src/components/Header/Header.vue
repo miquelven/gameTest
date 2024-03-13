@@ -26,7 +26,6 @@ export default {
   methods: {
     async logout() {
       try {
-        // Envie a solicitação de logout para o servidor
         const response = await axios.post("/logout", {
           session_token: localStorage.getItem("token"),
         });
@@ -64,12 +63,15 @@ export default {
           class="max-lg:w-20"
         />
       </router-link>
+      <!-- Menu Desktop -->
       <nav class="flex gap-12 font-light max-lg:text-sm max-md:hidden">
         <LinksMenu />
       </nav>
 
+      <!-- Menu Mobile -->
       <Menu @logout="logout" />
 
+      <!-- Menu de Logout -->
       <div
         class="text-lg text-zinc-300 flex flex-col items-end max-lg:text-base max-md:hidden"
       >

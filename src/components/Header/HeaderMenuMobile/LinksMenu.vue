@@ -1,5 +1,6 @@
 <script>
 export default {
+  props: ["isMobile"],
   data() {
     return {
       dataLinks: {

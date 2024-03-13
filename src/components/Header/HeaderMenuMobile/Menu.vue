@@ -44,7 +44,7 @@ export default {
         },
       }"
     >
-      <LinksMenu @closeMenu="() => (showMenu = false)" />
+      <LinksMenu :isMobile="true" @closeMenu="() => (showMenu = false)" />
       <button @click="() => $emit('logout')" class="w-full text-center">
         <span class="py-8 relative"> Sair </span>
       </button>
