@@ -44,14 +44,13 @@
 
 <script>
 import validateForm from "@/mixins/validateForm.js";
-import InputForm from "./icons/InputForm.vue";
 import { useToast } from "vue-toastification";
 import axios from "axios";
 import Button from "./icons/Button.vue";
 
 export default {
   mixins: [validateForm],
-  components: { InputForm, Button },
+  components: { Button },
   data() {
     return {
       newPassword: "",
