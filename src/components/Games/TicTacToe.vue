@@ -1,6 +1,7 @@
 <script>
 import TicTacToeItem from "../Items/TicTacToeItem.vue";
 import machineMove from "@/helpers/machineMove.js";
+import sound from "@/assets/songs/tictactoe.wav";
 export default {
   components: {
     TicTacToeItem,
@@ -15,8 +16,27 @@ export default {
     };
   },
   methods: {
+    gameOver() {
+      setTimeout(() => {
+        this.player == "O"
+          ? this.$emit("addScore", 3000)
+          : this.$emit("addScore", 1000);
+        this.$emit("addCounter");
+      }, [200]);
+    },
+    playSound() {
+      let audio = new Audio(sound);
+      audio.play();
+    },
     setPlayer(e) {
-      if (this.winner || e.target.innerHTML !== "" || this.gameTied) return;
+      if (
+        this.winner ||
+        e.target.innerHTML !== "" ||
+        this.gameTied ||
+        this.player == "X"
+      )
+        return;
+      this.playSound();
       this.square[e.target.getAttribute("data-pos")] = this.player;
       e.target.innerHTML = this.player;
 
@@ -25,7 +45,6 @@ export default {
     },
     verifyWinner() {
       this.gameTied = this.verifyGameTied();
-      if (this.gameTied) return;
       const lines = [
         [0, 1, 2],
         [3, 4, 5],
@@ -46,9 +65,7 @@ export default {
           this.square[lines[i][2]] == this.player
         ) {
           this.winner = true;
-          this.player == "O"
-            ? this.$emit("addScore", 2000)
-            : this.$emit("tictactoe", 0);
+          this.gameOver();
           return;
         }
       }
@@ -64,23 +81,17 @@ export default {
       } else {
         pos = machineMove(this.square);
       }
+
       setTimeout(() => {
         this.square[pos] = this.player;
         this.$refs.Squares.children[pos].innerHTML = this.player;
+        this.playSound();
         this.verifyWinner();
         this.movesMachine++;
       }, 300);
     },
     verifyGameTied() {
       return this.square.every((squareValue) => squareValue !== "");
-    },
-  },
-  watch: {
-    winner(current, oldValue) {
-      this.$emit("addCounter");
-    },
-    gameTied(current, oldValue) {
-      this.$emit("addCounter");
     },
   },
 };
