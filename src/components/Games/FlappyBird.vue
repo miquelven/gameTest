@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import birdImage from "@/assets/images/FlappyGame/bird.png";
-import pipeImg from "@/assets/images/FlappyGame/pipe.png";
+import birdImage from "@/assets/images/FlappyGame/bird.webp";
+import pipeImg from "@/assets/images/FlappyGame/pipe.webp";
 import collision from "@/mixins/collision";
 
 export default {

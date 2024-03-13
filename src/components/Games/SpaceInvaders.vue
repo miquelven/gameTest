@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import playerImg from "@/assets/images/InvadersGame/player.png";
-import enemyImg from "@/assets/images/InvadersGame/enemy.png";
+import playerImg from "@/assets/images/InvadersGame/player.webp";
+import enemyImg from "@/assets/images/InvadersGame/enemy.webp";
 export default {
   data() {
     return {

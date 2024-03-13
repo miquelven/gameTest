@@ -1,11 +1,11 @@
-import ticTacToe from "@/assets/images/TicTacToe.png";
-import simon from "@/assets/images/Simon.png";
-import memory from "@/assets/images/Memory.png";
-import pong from "@/assets/images/Pong.png";
-import breakout from "@/assets/images/Breakout.png";
-import flappyBird from "@/assets/images/FlappyBird.png";
-import snake from "@/assets/images/Snake.png";
-import spaceInvaders from "@/assets/images/SpaceInvaders.png";
+import ticTacToe from "@/assets/images/TicTacToe.webp";
+import simon from "@/assets/images/Simon.webp";
+import memory from "@/assets/images/Memory.webp";
+import pong from "@/assets/images/Pong.webp";
+import breakout from "@/assets/images/Breakout.webp";
+import flappyBird from "@/assets/images/FlappyBird.webp";
+import snake from "@/assets/images/Snake.webp";
+import spaceInvaders from "@/assets/images/SpaceInvaders.webp";
 
 export default [
   {

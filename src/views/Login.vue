@@ -88,7 +88,7 @@ export default {
     <div class="relative z-10 mb-28">
       <div class="flex justify-center items-center flex-col">
         <img
-          src="@/assets/images/logo.png"
+          src="@/assets/images/logo.webp"
           alt=""
           class="w-48 brightness-125"
         />
