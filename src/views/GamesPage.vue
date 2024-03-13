@@ -149,7 +149,10 @@ export default {
     />
     <!-- area dos jogos -->
     <div
-      class="absolute rounded-lg flex justify-center overflow-hidden items-center border-4 border-double border-[#777] shadow-sm shadow-[#2bb478] size-2/3 max-h-[67%]"
+      class="absolute rounded-lg flex justify-center overflow-hidden items-center border-4 border-double size-2/3 max-h-[67%]"
+      :style="
+        counter >= 8 ? 'border-color: transparent;' : 'border-color: #777'
+      "
       v-if="counter <= 10"
     >
       <template v-if="!showModal && counter < 8">
@@ -165,6 +168,18 @@ export default {
     <template v-if="counter >= 8">
       <div
         class="border-2 border-[#2bb478] flex flex-col gap-8 pt-10 px-24 h-96 absolute rounded-xl font-medium max-sm:px-16"
+        v-motion
+        :initial="{
+          opacity: 0,
+        }"
+        :enter="{
+          opacity: 1,
+          transition: {
+            duration: 700,
+            type: 'keyframes',
+            ease: 'easein,',
+          },
+        }"
       >
         <h3 class="text-4xl text-center mb-4 max-sm:text-3xl">Fim dos jogos</h3>
         <div class="flex justify-around">
