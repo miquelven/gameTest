@@ -1333,9 +1333,9 @@ video {
   background-color: rgb(0 0 0 / 0.95);
 }
 
-.bg-red-300 {
+.bg-red-400 {
   --tw-bg-opacity: 1;
-  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
 }
 
 .bg-transparent {
@@ -2163,11 +2163,6 @@ video {
   .max-sm\:px-16 {
     padding-left: 4rem;
     padding-right: 4rem;
-  }
-
-  .max-sm\:px-3 {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
   }
 
   .max-sm\:text-2xl {
