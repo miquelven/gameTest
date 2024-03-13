@@ -12,20 +12,22 @@ import Button from "@/views/icons/Button.vue";
 
 export default {
   components: {
-    TicTacToe,
-    Memory,
-    Pong,
-    Breakout,
-    FlappyBird,
-    Simon,
-    Snake,
-    SpaceInvaders,
     Button,
   },
   data() {
     return {
       showModal: true,
       score: [],
+      datas: [
+        [{ counter: 0, component: TicTacToe }],
+        [{ counter: 1, component: Memory }],
+        [{ counter: 2, component: Pong }],
+        [{ counter: 3, component: Breakout }],
+        [{ counter: 4, component: FlappyBird }],
+        [{ counter: 5, component: Simon }],
+        [{ counter: 6, component: Snake }],
+        [{ counter: 7, component: SpaceInvaders }],
+      ],
       counter: 0,
       intervalCounter: null,
       minutes: 0,
@@ -64,6 +66,8 @@ export default {
     async setScore() {
       this.stopCounter();
       this.score = this.score * 10 - 100 * this.seconds - 1000 * this.minutes;
+
+      if (this.score < 0) this.score = 0;
 
       try {
         const userEmail = this.$store.state.user
@@ -148,36 +152,12 @@ export default {
       class="absolute rounded-lg flex justify-center overflow-hidden items-center border-4 border-double border-[#777] shadow-sm shadow-[#2bb478] size-2/3 max-h-[67%]"
       v-if="counter <= 10"
     >
-      <template v-if="counter == 0 && !showModal">
-        <TicTacToe @addCounter="addCounter" @addScore="addScore" />
-      </template>
-
-      <template v-else-if="counter == 1">
-        <Memory @addCounter="addCounter" />
-      </template>
-
-      <template v-else-if="counter == 2">
-        <Pong @addCounter="addCounter" @addScore="addScore" />
-      </template>
-
-      <template v-else-if="counter == 3">
-        <Breakout @addCounter="addCounter" @addScore="addScore" />
-      </template>
-
-      <template v-else-if="counter == 4">
-        <FlappyBird @addCounter="addCounter" @addScore="addScore" />
-      </template>
-
-      <template v-else-if="counter == 5">
-        <Simon @addCounter="addCounter" @addScore="addScore" />
-      </template>
-
-      <template v-else-if="counter == 6">
-        <Snake @addCounter="addCounter" @addScore="addScore" />
-      </template>
-
-      <template v-else-if="counter == 7">
-        <SpaceInvaders @addCounter="addCounter" @addScore="addScore" />
+      <template v-if="!showModal && counter < 8">
+        <component
+          :is="datas[counter][0].component"
+          @addCounter="addCounter"
+          @addScore="addScore"
+        />
       </template>
     </div>
     <!-- RESULTADO -->
