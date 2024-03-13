@@ -154,6 +154,7 @@ export default {
     >
       <template v-if="!showModal && counter < 8">
         <component
+          data-aos="zoom-in"
           :is="datas[counter][0].component"
           @addCounter="addCounter"
           @addScore="addScore"
@@ -201,6 +202,18 @@ export default {
     }"
   >
     <div
+      v-motion
+      :initial="{
+        opacity: 0,
+      }"
+      :enter="{
+        opacity: 1,
+        transition: {
+          duration: 700,
+          type: 'keyframes',
+          ease: 'easein,',
+        },
+      }"
       class="flex flex-col justify-center items-center gap-9 p-5 h-96 w-80 absolute rounded-lg border-2 border-[#777] font-light"
     >
       <h2 class="text-xl font-medium mb-10 text-center">
