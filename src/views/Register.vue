@@ -1,7 +1,7 @@
 <script>
 import validateForm from "@/mixins/validateForm.js";
 import { useToast } from "vue-toastification";
-import Modal from "@/components/Modal/Modal.vue";
+import Modal from "@/components/Modal/index.vue";
 import Button from "@/views/icons/Button.vue";
 import axios from "axios";
 export default {
@@ -18,6 +18,8 @@ export default {
       C_password: "",
       showPassword: false,
       showIconPassword: false,
+
+      loadingButton: false,
 
       toast: null,
       isModalOpen: false,
@@ -53,6 +55,7 @@ export default {
       else return false;
     },
     async register() {
+      this.loadingButton = true;
       if ((await this.verifyInputs()) == false) {
         this.toast.error("Preencha todos os campos!");
         return;
@@ -85,6 +88,7 @@ export default {
         this.toast.error("Não foi possível realizar o registro");
         console.log(error.message);
       }
+      this.loadingButton = false;
     },
   },
 };
@@ -170,7 +174,7 @@ export default {
         </v-text-field>
       </div>
 
-      <Button type="submit" label="Registrar" />
+      <Button :loadingProp="loadingButton" type="submit" label="Registrar" />
     </form>
     <div class="flex flex-col justify-center items-center mt-10 gap-5">
       <span

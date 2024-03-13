@@ -1,11 +1,18 @@
+<script>
+export default {
+  props: ["label", "type", "click", "loadingProp"],
+};
+</script>
+
 <template>
   <v-hover v-slot="{ isHovering, props }" close-delay="200" open-delay="0">
     <v-btn
-      @click="click"
+      @click="this.$props.click"
       color="#2bb478"
       size="large"
       rounded="lg"
       elevation="8"
+      :loading="loadingProp"
       :variant="isHovering ? 'flat' : 'outlined'"
       v-bind="props"
       :style="isHovering ? 'color: black' : ''"
@@ -15,9 +22,3 @@
     </v-btn>
   </v-hover>
 </template>
-
-<script>
-export default {
-  props: ["label", "type", "click"],
-};
-</script>

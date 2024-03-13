@@ -12,6 +12,7 @@ export default {
       email: "",
       password: "",
       showPassword: false,
+      loadingButton: false,
       toast: null,
     };
   },
@@ -25,6 +26,7 @@ export default {
   methods: {
     async login() {
       try {
+        this.loadingButton = true;
         const response = await axios.post("/login", {
           email: this.email,
           password: this.password,
@@ -46,6 +48,8 @@ export default {
         }
       } catch (error) {
         this.toast.error("Informações inválidas");
+      } finally {
+        this.loadingButton = false;
       }
     },
     async resetPassword(e) {
@@ -136,7 +140,7 @@ export default {
             </v-text-field>
           </div>
 
-          <Button type="submit" label="Entrar" />
+          <Button :loadingProp="loadingButton" type="submit" label="Entrar" />
         </form>
         <div class="flex flex-col justify-center items-center mt-6">
           <span @click.prevent="resetPassword">
