@@ -1,6 +1,6 @@
 <script>
 export default {
-  props: ["item"],
+  props: ["item", "itemIndex"],
   data() {
     return {
       overlay: false,
@@ -11,26 +11,32 @@ export default {
 
 <template>
   <v-hover v-slot="{ isHovering, props }">
-    <v-card
-      @click="() => (overlay = true)"
-      v-bind="props"
-      :color="isHovering ? '#2bb478' : '#777'"
-      :variant="isHovering ? 'tonal' : 'outlined'"
-      class="mx-auto my-8 py-5"
-      elevation="16"
-      max-width="344"
-      height="400"
-      rounded="lg"
+    <div
+      :data-aos="itemIndex % 2 == 0 ? 'fade-right' : 'fade-left'"
+      :data-aos-delay="itemIndex * 200"
     >
-      <v-img height="200px" :src="item.img" cover></v-img>
-      <v-card-item>
-        <v-card-title> {{ item.name }} </v-card-title>
-      </v-card-item>
+      <v-card
+        :data-aos-delay="itemIndex * 300"
+        @click="() => (overlay = true)"
+        v-bind="props"
+        :color="isHovering ? '#2bb478' : '#777'"
+        :variant="isHovering ? 'tonal' : 'outlined'"
+        class="mx-auto my-8 py-5"
+        elevation="16"
+        max-width="344"
+        height="400"
+        rounded="lg"
+      >
+        <v-img height="200px" :src="item.img" cover></v-img>
+        <v-card-item>
+          <v-card-title> {{ item.name }} </v-card-title>
+        </v-card-item>
 
-      <v-card-text>
-        {{ item.tip }}
-      </v-card-text>
-    </v-card>
+        <v-card-text>
+          {{ item.tip }}
+        </v-card-text>
+      </v-card>
+    </div>
   </v-hover>
 
   <v-overlay

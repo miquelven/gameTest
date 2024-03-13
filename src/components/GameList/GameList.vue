@@ -22,6 +22,8 @@ export default {
       class="flex flex-col justify-center items-center gap-16 max-[440px]:gap-8"
     >
       <h3
+        data-aos="fade-up"
+        data-aos-delay="400"
         class="text-4xl font-semibold text-center max-md:text-3xl max-[440px]:text-2xl"
       >
         Lista dos jogos disponíveis:
@@ -36,6 +38,7 @@ export default {
             v-for="(item, index) in listInfo"
             :item="item"
             :key="index"
+            :itemIndex="index"
           />
         </ul>
       </div>
