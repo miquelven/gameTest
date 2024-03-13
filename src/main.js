@@ -26,6 +26,7 @@ import {
   faArrowLeft,
   faBars,
   faXmark,
+  faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -39,6 +40,7 @@ library.add(
   faLightbulb,
   faArrowLeft,
   faCopyright,
+  faSpinner,
   faXmark,
   faBars,
   faGoogle,

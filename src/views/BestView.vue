@@ -1,5 +1,6 @@
 <script>
 import BestInfoItem from "@/components/Items/BestInfoItem.vue";
+import Loader from "@/components/Loader/index.vue";
 import { useMouseInElement } from "@vueuse/core";
 import axios from "axios";
 import Container from "./icons/Container.vue";
@@ -7,6 +8,7 @@ import Container from "./icons/Container.vue";
 export default {
   components: {
     BestInfoItem,
+    Loader,
     Container,
   },
   data() {
@@ -39,11 +41,11 @@ export default {
       this.elementWidth = elementWidth;
     },
     async fetchUserScores() {
+      this.loading = true;
       try {
         const userEmail = this.$store.state.user
           ? this.$store.state.user.email
           : null;
-        this.loading = true;
         const response = await axios("/api/scores", {
           params: { email: userEmail },
         });
@@ -87,12 +89,12 @@ export default {
       class="relative max-w-screen-2xl min-h-screen max-2xl:max-w-screen-xl max-xl:max-w-screen-lg m-auto max-lg:max-w-screen-md max-md:max-w-96"
     >
       <template v-if="loading">
-        <div class="absolute inset-0">
-          <p
-            class="absolute top-[200px] left-[calc(50vw-200px)] font-medium text-5xl max-lg:text-4xl max-sm:text-3xl max-sm:left-[calc(50%-95px)] max-sm:top-[100px]"
+        <div class="absolute inset-0 flex justify-center">
+          <div
+            class="font-medium h-[calc(100vh-24rem)] flex items-center text-5xl max-lg:text-4xl max-sm:text-3xl max-sm:left-[calc(50%-95px)] max-sm:top-[100px]"
           >
-            Carregando...
-          </p>
+            <Loader />
+          </div>
         </div>
       </template>
 
