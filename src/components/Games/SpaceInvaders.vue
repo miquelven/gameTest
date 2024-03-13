@@ -72,11 +72,13 @@ export default {
   },
   methods: {
     gameOver(collision) {
-      if (this.enemyCount == 0 || collision) {
-        console.log("addCounter");
-        this.bool = true;
+      if (this.bool) {
+        if (collision) {
+          this.$emit("addScore", 2000);
+        } else {
+          this.$emit("addScore", 4000);
+        }
         this.$emit("addCounter");
-        this.$emit("addScore", 1000);
       }
     },
     detectCollision(a, b) {
@@ -186,7 +188,10 @@ export default {
             bullet.used = true;
             enemy.alive = false;
             this.enemyCount--;
-            this.gameOver(false);
+            if (this.enemyCount == 0) {
+              this.bool = true;
+              this.gameOver(false);
+            }
           }
         }
       }

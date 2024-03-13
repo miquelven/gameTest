@@ -93,7 +93,10 @@ export default {
   watch: {
     correct(current, oldValue) {
       if (this.correct == 6) {
-        setTimeout(() => this.$emit("addCounter"), 1000);
+        setTimeout(() => {
+          this.$emit("addScore", 3000);
+          this.$emit("addCounter");
+        }, 1000);
       }
     },
   },

@@ -277,12 +277,12 @@ export default {
       this.gameDraw();
       if (this.paddle.score == 3) {
         this.gameover = true;
+        this.$emit("addScore", 4000);
         this.$emit("addCounter");
-        this.$emit("addScore", 1000);
       } else if (this.paddle2.score == 3) {
         this.gameover = true;
+        this.$emit("addScore", 1000);
         this.$emit("addCounter");
-        this.$emit("addScore", 0);
       }
       if (this.firstShow) {
         setTimeout(() => {

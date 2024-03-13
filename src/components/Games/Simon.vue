@@ -199,8 +199,8 @@ export default {
         this.counter.innerHTML = "Errado";
         this.flashColor();
         setTimeout(() => {
+          this.$emit("addScore", 3000);
           this.$emit("addCounter");
-          this.$emit("addScore", 0);
         }, 1000);
       }
 
@@ -217,8 +217,8 @@ export default {
     winGame() {
       this.flashColor();
       setTimeout(() => {
+        this.$emit("addScore", 7000);
         this.$emit("addCounter");
-        this.$emit("addScore", 1000);
       }, 1000);
     },
   },

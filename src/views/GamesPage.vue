@@ -65,7 +65,7 @@ export default {
     },
     async setScore() {
       this.stopCounter();
-      this.score = this.score * 10 - 100 * this.seconds - 1000 * this.minutes;
+      this.score = this.score * 8 - 100 * this.seconds - 20000 * this.minutes;
 
       if (this.score < 0) this.score = 0;
 

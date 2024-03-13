@@ -47,7 +47,7 @@ export default {
         ) {
           this.winner = true;
           this.player == "O"
-            ? this.$emit("addScore", 1000)
+            ? this.$emit("addScore", 2000)
             : this.$emit("tictactoe", 0);
           return;
         }

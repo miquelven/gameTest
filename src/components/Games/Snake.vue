@@ -77,8 +77,8 @@ export default {
       });
 
       if (wallCollision || selfCollision) {
+        this.$emit("addScore", 3000);
         this.$emit("addCounter");
-        this.$emit("addScore", 0);
       }
     },
     checkEat() {
@@ -89,8 +89,8 @@ export default {
         this.score += 100;
 
         if (this.score == 2400) {
+          this.$emit("addScore", 6000);
           this.$emit("addCounter");
-          this.$emit("addScore", 1000);
         }
 
         let x = this.randomPosition();

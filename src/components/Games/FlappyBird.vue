@@ -95,15 +95,15 @@ export default {
           this.score += 0.5;
           pipe.passed = true;
           if (this.score == 20) {
+            this.$emit("addScore", 10000);
             this.$emit("addCounter");
-            this.$emit("addScore", 1000);
           }
         }
 
         if (this.detectCollision(this.bird, pipe)) {
           this.gameOver = true;
+          this.$emit("addScore", 4000);
           this.$emit("addCounter");
-          this.$emit("addScore", 0);
         }
       }
 
@@ -163,8 +163,8 @@ export default {
       // detect collision bird with ground
       if (this.bird.y > this.canvas.height) {
         this.gameOver = true;
+        this.$emit("addScore", 4000);
         this.$emit("addCounter");
-        this.$emit("addScore", 0);
       }
 
       document.addEventListener("keydown", this.moveBird);

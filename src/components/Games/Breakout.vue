@@ -72,8 +72,8 @@ export default {
     update() {
       requestAnimationFrame(this.update);
       if (this.score == 1200) {
+        this.$emit("addScore", 8000);
         this.$emit("addCounter");
-        this.$emit("addScore", 1000);
       }
 
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -108,8 +108,8 @@ export default {
       ) {
         this.ball.velocityX *= -1;
       } else if (this.ball.y + this.ball.height >= this.canvasHeight) {
+        this.$emit("addScore", 3000);
         this.$emit("addCounter");
-        this.$emit("addScore", 0);
       }
 
       if (
