@@ -38,6 +38,11 @@
 </template>
 
 <script>
+import sound1 from "@/assets/songs/simonSound1.wav";
+import sound2 from "@/assets/songs/simonSound2.wav";
+import sound3 from "@/assets/songs/simonSound3.wav";
+import sound4 from "@/assets/songs/simonSound4.wav";
+
 export default {
   data() {
     return {
@@ -58,6 +63,8 @@ export default {
       bottomLeft: null,
       bottomRight: null,
       counter: null,
+
+      allowPlaysoundExecution: true,
     };
   },
   mounted() {
@@ -71,7 +78,9 @@ export default {
 
     this.topLeft.addEventListener("click", () => {
       if (this.on) {
+        this.playSound(1);
         this.playerOrder.push(1);
+
         this.check();
         this.one();
         if (!this.win) {
@@ -83,6 +92,7 @@ export default {
     });
     this.topRight.addEventListener("click", () => {
       if (this.on) {
+        this.playSound(2);
         this.playerOrder.push(2);
         this.check();
         this.two();
@@ -95,6 +105,7 @@ export default {
     });
     this.bottomLeft.addEventListener("click", () => {
       if (this.on) {
+        this.playSound(3);
         this.playerOrder.push(3);
         this.check();
         this.three();
@@ -107,6 +118,7 @@ export default {
     });
     this.bottomRight.addEventListener("click", () => {
       if (this.on) {
+        this.playSound(4);
         this.playerOrder.push(4);
         this.check();
         this.four();
@@ -119,6 +131,28 @@ export default {
     });
   },
   methods: {
+    playSound(numberSound) {
+      if (!this.allowPlaysoundExecution) return;
+      let audio1 = new Audio(sound1);
+      let audio2 = new Audio(sound2);
+      let audio3 = new Audio(sound3);
+      let audio4 = new Audio(sound4);
+      switch (numberSound) {
+        case 1:
+          audio1.play();
+          break;
+        case 2:
+          audio2.play();
+          break;
+        case 3:
+          audio3.play();
+          break;
+        case 4:
+          audio4.play();
+
+          break;
+      }
+    },
     play() {
       this.win = false;
       this.order = [];
@@ -160,18 +194,22 @@ export default {
     one() {
       this.noise = true;
       this.topLeft.style.backgroundColor = "lightgreen";
+      this.playSound(1);
     },
     two() {
       this.noise = true;
       this.topRight.style.backgroundColor = "tomato";
+      this.playSound(2);
     },
     three() {
       this.noise = true;
       this.bottomLeft.style.backgroundColor = "yellow";
+      this.playSound(3);
     },
     four() {
       this.noise = true;
       this.bottomRight.style.backgroundColor = "lightskyblue";
+      this.playSound(4);
     },
     clearColor() {
       this.topLeft.style.backgroundColor = "darkgreen";
@@ -221,6 +259,9 @@ export default {
         this.$emit("addCounter");
       }, 1000);
     },
+  },
+  unmounted() {
+    this.allowPlaysoundExecution = false;
   },
 };
 </script>

@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import sound from "@/assets/songs/pongSound.wav";
 export default {
   data() {
     return {
@@ -28,6 +29,9 @@ export default {
 
       firstShow: true,
       gameover: false,
+
+      ballCollisionWithPaddle: false,
+      allowPlaysoundExecution: true,
     };
   },
   mounted() {
@@ -64,6 +68,12 @@ export default {
     this.gameLoop();
   },
   methods: {
+    playSound() {
+      if (!this.allowPlaysoundExecution) return;
+      let audio = new Audio(sound);
+      if (this.ballCollisionWithPaddle == false) return;
+      audio.play();
+    },
     vec2(x, y) {
       return { x: x, y: y };
     },
@@ -197,6 +207,7 @@ export default {
     },
 
     ballPaddleCollision(ball, paddle) {
+      this.ballCollisionWithPaddle = true;
       let dx = Math.abs(ball.pos.x - paddle.getCenter().x);
       let dy = Math.abs(ball.pos.y - paddle.getCenter().y);
 
@@ -205,7 +216,9 @@ export default {
         dy <= paddle.getHalfHeight() + ball.radius
       ) {
         ball.velocity.x *= -1;
+        this.playSound();
       }
+      this.ballCollisionWithPaddle = false;
     },
 
     drawGameScene() {
@@ -293,6 +306,9 @@ export default {
         this.gameUpdate();
       }
     },
+  },
+  unmounted() {
+    this.allowPlaysoundExecution = false;
   },
 };
 </script>

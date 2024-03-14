@@ -10,13 +10,15 @@ import SpaceInvaders from "@/components/Games/SpaceInvaders.vue";
 import axios from "axios";
 import Button from "@/views/icons/Button.vue";
 
+import sound from "../assets/songs/backgroundSound.wav";
+
 export default {
   components: {
     Button,
   },
   data() {
     return {
-      showModal: true,
+      showModal: false,
       score: [],
       datas: [
         [{ counter: 0, component: TicTacToe }],
@@ -34,9 +36,24 @@ export default {
       seconds: 0,
       timer: "00:00",
       score: 0,
+
+      soundInterval: null,
+      audio: null,
     };
   },
+  mounted() {
+    this.audio = new Audio(sound);
+    this.playSound();
+  },
   methods: {
+    pauseSound() {
+      this.audio.pause();
+      window.clearInterval(this.soundInterval);
+    },
+    playSound() {
+      this.audio.play();
+      this.soundInterval = setInterval(() => audio.play(), [1200]);
+    },
     formattedTime(time) {
       if (time < 10) return `0${time}`;
       return `${time}`;
@@ -95,6 +112,9 @@ export default {
       }
       return `${this.score}`;
     },
+  },
+  unmounted() {
+    this.pauseSound();
   },
 };
 </script>

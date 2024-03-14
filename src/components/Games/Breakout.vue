@@ -7,6 +7,10 @@
 
 <script>
 import collision from "@/mixins/collision";
+import collisionPaddleSong from "@/assets/songs/pongSound.wav";
+import collisionBlockSong from "@/assets/songs/breakoutSound.wav";
+
+import { useEventListener } from "@vueuse/core";
 
 export default {
   mixins: [collision],
@@ -69,6 +73,15 @@ export default {
     document.addEventListener("keydown", this.movePlayer);
   },
   methods: {
+    playSound(blockBreak) {
+      let paddleSong = new Audio(collisionPaddleSong);
+      let blockSong = new Audio(collisionBlockSong);
+      if (blockBreak) {
+        blockSong.play();
+      } else {
+        paddleSong.play();
+      }
+    },
     update() {
       requestAnimationFrame(this.update);
       if (this.score == 1200) {
@@ -117,11 +130,13 @@ export default {
         this.bottomCollision(this.ball, this.player)
       ) {
         this.ball.velocityY *= -1;
+        this.playSound(false);
       } else if (
         this.leftCollision(this.ball, this.player) ||
         this.rightCollision(this.ball, this.player)
       ) {
         this.ball.velocityX *= -1;
+        this.playSound(false);
       }
       for (let i = 0; i < this.blockArray.length; i++) {
         let block = this.blockArray[i];
@@ -134,6 +149,7 @@ export default {
             this.ball.velocityY *= -1;
             this.blockCount -= 1;
             this.score += 100;
+            this.playSound(true);
           } else if (
             this.leftCollision(this.ball, block) ||
             this.rightCollision(this.ball, block)
@@ -142,6 +158,7 @@ export default {
             this.ball.velocityX *= -1;
             this.blockCount -= 1;
             this.score += 100;
+            this.playSound(true);
           }
           let color = this.generateRandomColor();
           this.ctx.fillStyle = color;

@@ -1,6 +1,7 @@
 <script>
 import MemoryItem from "../Items/MemoryItem.vue";
-MemoryItem;
+import sound from "@/assets/songs/memorySound.wav";
+
 export default {
   components: {
     MemoryItem,
@@ -40,6 +41,10 @@ export default {
     }, 3000);
   },
   methods: {
+    playSound() {
+      let audio = new Audio(sound);
+      audio.play();
+    },
     async clickedSquare(square) {
       if (this.show || this.moves == 2 || this.firstSquareClicked == square)
         return;
@@ -50,6 +55,7 @@ export default {
       )
         return;
 
+      this.playSound();
       this.moves++;
       square.setAttribute(
         "style",

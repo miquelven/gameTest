@@ -10,6 +10,9 @@
 <script>
 import playerImg from "@/assets/images/InvadersGame/player.webp";
 import enemyImg from "@/assets/images/InvadersGame/enemy.webp";
+import destroyEnemySound from "@/assets/songs/destroyEnemySound.wav";
+import attackSound from "@/assets/songs/attackSound.wav";
+
 export default {
   data() {
     return {
@@ -47,6 +50,11 @@ export default {
 
       score: 0,
       bool: false,
+
+      movePlayerEvent: null,
+      shootEvent: null,
+
+      allowPlaysoundExecution: true,
     };
   },
   mounted() {
@@ -71,6 +79,13 @@ export default {
     requestAnimationFrame(this.update);
   },
   methods: {
+    playSound(isAttack) {
+      if (!this.allowPlaysoundExecution) return;
+      const destroyEnemyAudio = new Audio(destroyEnemySound);
+      const attackAudio = new Audio(attackSound);
+
+      isAttack ? attackAudio.play() : destroyEnemyAudio.play();
+    },
     gameOver(collision) {
       if (this.bool) {
         if (collision) {
@@ -98,6 +113,7 @@ export default {
           height: this.tileSize / 2,
           used: false,
         };
+        this.playSound(true);
         this.bulletArray.push(bullet);
       }
     },
@@ -184,6 +200,7 @@ export default {
             enemy.alive &&
             this.detectCollision(bullet, enemy)
           ) {
+            this.playSound(false);
             this.score += 100;
             bullet.used = true;
             enemy.alive = false;
@@ -225,6 +242,9 @@ export default {
         this.player.x += this.playerVelocityX;
       }
     },
+  },
+  unmounted() {
+    this.allowPlaysoundExecution = false;
   },
 };
 </script>

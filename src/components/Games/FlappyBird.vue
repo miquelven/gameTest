@@ -8,6 +8,9 @@
 import birdImage from "@/assets/images/FlappyGame/bird.webp";
 import pipeImg from "@/assets/images/FlappyGame/pipe.webp";
 import collision from "@/mixins/collision";
+import sound from "@/assets/songs/flappyBirdSound.wav";
+
+import { useEventListener } from "@vueuse/core";
 
 export default {
   mixins: [collision],
@@ -43,6 +46,8 @@ export default {
       score: 0,
 
       interval: null,
+
+      allowPlaysoundExecution: true,
     };
   },
   mounted() {
@@ -73,6 +78,11 @@ export default {
     this.interval = setInterval(this.placePipes, 1500);
   },
   methods: {
+    playSound() {
+      if (!this.allowPlaysoundExecution) return;
+      let audio = new Audio(sound);
+      audio.play();
+    },
     draw() {
       // bird
       this.velocityY += this.gravity;
@@ -150,6 +160,7 @@ export default {
     moveBird(e) {
       if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX") {
         this.velocityY = -6;
+        this.playSound();
       }
     },
     update() {
@@ -171,6 +182,7 @@ export default {
     },
   },
   unmounted() {
+    this.allowPlaysoundExecution = false;
     clearInterval(this.interval);
   },
 };

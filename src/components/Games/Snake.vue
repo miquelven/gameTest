@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import sound from "@/assets/songs/snakeSound.wav";
 export default {
   data() {
     return {
@@ -22,6 +23,7 @@ export default {
       },
 
       score: 0,
+      allowPlaysoundExecution: true,
     };
   },
   mounted() {
@@ -61,6 +63,17 @@ export default {
     });
   },
   methods: {
+    checkWin() {
+      if (this.score == 2400) {
+        this.$emit("addScore", 6000);
+        this.$emit("addCounter");
+      }
+    },
+    playSound() {
+      if (!this.allowPlaysoundExecution) return;
+      const audio = new Audio(sound);
+      audio.play();
+    },
     checkCollision() {
       const head = this.snake[this.snake.length - 1];
       const canvasLimit = this.canvas.width - this.size;
@@ -85,13 +98,11 @@ export default {
       const head = this.snake[this.snake.length - 1];
 
       if (head.x == this.food.x && head.y == this.food.y) {
+        this.playSound();
         this.snake.push(head);
         this.score += 100;
 
-        if (this.score == 2400) {
-          this.$emit("addScore", 6000);
-          this.$emit("addCounter");
-        }
+        this.checkWin();
 
         let x = this.randomPosition();
         let y = this.randomPosition();
@@ -184,6 +195,7 @@ export default {
   },
   unmounted() {
     this.loop = 0;
+    this.allowPlaysoundExecution = false;
   },
 };
 </script>
