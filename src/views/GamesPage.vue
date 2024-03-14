@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      showModal: false,
+      showModal: true,
       score: [],
       datas: [
         [{ counter: 0, component: TicTacToe }],
@@ -106,10 +106,6 @@ export default {
       )}`;
     },
     formatScore() {
-      if (this.score >= 1000) {
-        const newScore = (this.score -= 1000);
-        return `${newScore}`;
-      }
       return `${this.score}`;
     },
   },
