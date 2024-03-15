@@ -86,17 +86,17 @@ export default {
 
       if (this.score < 0) this.score = 0;
 
-      try {
-        const userEmail = this.$store.state.user
-          ? this.$store.state.user.email
-          : null;
-        await axios.post("/update-score", {
-          email: userEmail,
-          newScore: this.score,
-        });
-      } catch (error) {
-        console.error("Erro ao atualizar a pontuação:", error);
-      }
+      // try {
+      //   const userEmail = this.$store.state.user
+      //     ? this.$store.state.user.email
+      //     : null;
+      //   await axios.post("/update-score", {
+      //     email: userEmail,
+      //     newScore: this.score,
+      //   });
+      // } catch (error) {
+      //   console.error("Erro ao atualizar a pontuação:", error);
+      // }
     },
   },
   computed: {
