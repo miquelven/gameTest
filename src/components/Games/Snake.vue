@@ -65,7 +65,7 @@ export default {
   methods: {
     checkWin() {
       if (this.score == 2400) {
-        this.$emit("addScore", 6000);
+        this.$emit("addScore", 8000);
         this.$emit("addCounter");
       }
     },
@@ -90,7 +90,7 @@ export default {
       });
 
       if (wallCollision || selfCollision) {
-        this.$emit("addScore", 3000);
+        this.$emit("addScore", 4500);
         this.$emit("addCounter");
       }
     },
