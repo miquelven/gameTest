@@ -52,7 +52,7 @@ export default {
     },
     playSound() {
       this.audio.play();
-      this.soundInterval = setInterval(() => this.audio.play(), [1200]);
+      this.soundInterval = setInterval(() => this.audio.play(), [1100]);
     },
     formattedTime(time) {
       if (time < 10) return `0${time}`;
