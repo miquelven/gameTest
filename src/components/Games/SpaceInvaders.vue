@@ -55,6 +55,10 @@ export default {
       shootEvent: null,
 
       allowPlaysoundExecution: true,
+
+      attackSound: null,
+      destroyEnemySound: null,
+      playExecution: false,
     };
   },
   mounted() {
@@ -80,11 +84,19 @@ export default {
   },
   methods: {
     playSound(isAttack) {
+      this.destroyEnemyAudio = new Audio(destroyEnemySound);
+      this.attackAudio = new Audio(attackSound);
       if (!this.allowPlaysoundExecution) return;
-      const destroyEnemyAudio = new Audio(destroyEnemySound);
-      const attackAudio = new Audio(attackSound);
 
-      isAttack ? attackAudio.play() : destroyEnemyAudio.play();
+      if (this.playExecution) {
+        this.attackAudio.currentTime = 0;
+        this.destroyEnemyAudio.currentTime = 0;
+        this.playExecution = false;
+        return;
+      }
+
+      isAttack ? this.attackAudio.play() : this.destroyEnemyAudio.play();
+      this.playExecution = true;
     },
     gameOver(collision) {
       if (this.bool) {
@@ -114,6 +126,7 @@ export default {
           used: false,
         };
         this.playSound(true);
+        this.playE;
         this.bulletArray.push(bullet);
       }
     },

@@ -30,7 +30,7 @@ export default {
         [{ counter: 6, component: Snake }],
         [{ counter: 7, component: SpaceInvaders }],
       ],
-      counter: 0,
+      counter: 7,
       intervalCounter: null,
       minutes: 0,
       seconds: 0,
