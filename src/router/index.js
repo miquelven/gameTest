@@ -15,6 +15,7 @@ const router = createRouter({
       meta: {
         title: "GameTest",
         requiresAuth: true,
+        layout: "default",
       },
     },
     {
@@ -32,6 +33,7 @@ const router = createRouter({
       component: lazyLoad("AboutView"),
       meta: {
         title: "Sobre",
+        layout: "default",
       },
     },
     {
@@ -49,6 +51,7 @@ const router = createRouter({
       component: lazyLoad("Contact"),
       meta: {
         title: "Contato",
+        layout: "default",
       },
     },
     {
@@ -75,6 +78,7 @@ const router = createRouter({
       component: lazyLoad("ScoreView"),
       meta: {
         title: "Pontuações",
+        layout: "default",
       },
     },
     {
@@ -83,6 +87,7 @@ const router = createRouter({
       component: lazyLoad("BestView"),
       meta: {
         title: "Melhores pontuações",
+        layout: "default",
       },
     },
 

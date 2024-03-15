@@ -10,7 +10,7 @@ import { useRouter } from "vue-router";
 export default {
   data() {
     return {
-      defaultLayout: "default",
+      defaultLayout: "empty",
       currentRoute: {},
     };
   },
