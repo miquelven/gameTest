@@ -95,6 +95,7 @@ export default {
   <section
     class="w-full h-[calc(100vh-80px)] flex flex-col justify-center items-center relative z-0"
     id="container"
+    data-aos="zoom-in"
   >
     <h1 class="text-5xl mb-20 max-[400px]:text-4xl">Registre-se</h1>
     <form

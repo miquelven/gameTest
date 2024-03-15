@@ -89,7 +89,7 @@ export default {
   <section
     class="w-full min-h-[calc(100vh-80px)] flex flex-col justify-center items-center"
   >
-    <div class="relative z-10 mb-28">
+    <div class="relative z-10 mb-28" data-aos="zoom-in">
       <div class="flex justify-center items-center flex-col">
         <img
           src="@/assets/images/logo.webp"
