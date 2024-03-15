@@ -1,5 +1,5 @@
 <template>
-  <div class="max-[790px]:scale-75">
+  <div class="max-2xl:scale-75">
     <canvas height="640" width="360" ref="canvas" id="canvas"> </canvas>
   </div>
 </template>
@@ -9,8 +9,6 @@ import birdImage from "@/assets/images/FlappyGame/bird.webp";
 import pipeImg from "@/assets/images/FlappyGame/pipe.webp";
 import collision from "@/mixins/collision";
 import sound from "@/assets/songs/flappyBirdSound.wav";
-
-import { useEventListener } from "@vueuse/core";
 
 export default {
   mixins: [collision],
@@ -52,7 +50,7 @@ export default {
   },
   mounted() {
     this.canvas = this.$refs.canvas;
-    this.canvas.height = this.canvasHeight;
+    this.canvas.height = this.canvas.offsetHeight;
     this.canvas.width = this.canvasWidth;
     this.ctx = this.canvas.getContext("2d");
 

@@ -1,27 +1,27 @@
 <template>
   <div
     id="outer-circle"
-    class="bg-[#385a94] rounded-full h-[500px] w-[500px] relative border-solid border-2 m-auto mt-14 shadow-[´8_8_15_5_#888888] max-[790px]w-[400px] max-[790px]h-[400px]"
+    class="bg-[#385a94] rounded-full h-[500px] w-[500px] relative border-solid border-2 m-auto shadow-[´8_8_15_5_#888888] max-2xl:w-[400px] max-2xl:h-[400px]"
   >
     <div
       ref="topLeft"
-      class="absolute w-[250px] h-[250px] rounded-tl-[250px] bg-[darkgreen] top-[50%] left-[50%] -mt-[250px] -ml-[250px] border-solid border-[5px] max-[790px]w-[200px] max-[790px]h-[200px] max-[790px]rounded-tl-[200px] max-[790px]-l-[200px] max-[790px]-mt-[200px] max-[790px]-ml-[200px]"
+      class="absolute w-[250px] h-[250px] rounded-tl-[250px] bg-[darkgreen] top-[50%] left-[50%] -mt-[250px] -ml-[250px] border-solid border-[5px] max-2xl:w-[200px] max-2xl:h-[200px] max-2xl:rounded-tl-[200px] max-2xl:-l-[200px] max-2xl:-mt-[200px] max-2xl:-ml-[200px]"
     ></div>
     <div
       ref="topRight"
-      class="absolute w-[250px] h-[250px] rounded-tr-[250px] bg-[darkred] top-[50%] left-[50%] -mt-[250px] border-solid border-[5px] max-[790px]w-[200px] max-[790px]h-[200px] max-[790px]rounded-tr-[200px] max-[790px]-mt-[200px]"
+      class="absolute w-[250px] h-[250px] rounded-tr-[250px] bg-[darkred] top-[50%] left-[50%] -mt-[250px] border-solid border-[5px] max-2xl:w-[200px] max-2xl:h-[200px] max-2xl:rounded-tr-[200px] max-2xl:-mt-[200px]"
     ></div>
     <div
       ref="bottomLeft"
-      class="absolute w-[250px] h-[250px] rounded-bl-[250px] bg-[goldenrod] top-[50%] left-[50%] -mr-[250px] -ml-[250px] border-solid border-[5px] max-[790px]w-[200px] max-[790px]h-[200px] max-[790px]rounded-bl-[200px] max-[790px]-mr-[200px] max-[790px]-ml-[200px]"
+      class="absolute w-[250px] h-[250px] rounded-bl-[250px] bg-[goldenrod] top-[50%] left-[50%] -mr-[250px] -ml-[250px] border-solid border-[5px] max-2xl:w-[200px] max-2xl:h-[200px] max-2xl:rounded-bl-[200px] max-2xl:-mr-[200px] max-2xl:-ml-[200px]"
     ></div>
     <div
       ref="bottomRight"
-      class="absolute w-[250px] h-[250px] rounded-br-[250px] bg-[darkblue] top-[50%] left-[50%] -mb-[250px] border-solid border-[5px] max-[790px]w-[200px] max-[790px]h-[200px] max-[790px]rounded-br-[200px] max-[790px]-md-[200px]"
+      class="absolute w-[250px] h-[250px] rounded-br-[250px] bg-[darkblue] top-[50%] left-[50%] -mb-[250px] border-solid border-[5px] max-2xl:w-[200px] max-2xl:h-[200px] max-2xl:rounded-br-[200px] max-2xl:-md-[200px]"
     ></div>
     <div
       id="inner-circle"
-      class="absolute bg-[grey] rounded-full h-[250px] w-[250px] border-solid border-[10px] top-[50%] left-[50%] -mt-[125px] -ml-[125px] max-[790px]w-[200px] max-[790px]h-[200px] max-[790px]-mt-[100px] max-[790px]-ml-[100px]"
+      class="absolute bg-[grey] rounded-full h-[250px] w-[250px] border-solid border-[10px] top-[50%] left-[50%] -mt-[125px] -ml-[125px] max-2xl:w-[200px] max-2xl:h-[200px] max-2xl:-mt-[100px] max-2xl:-ml-[100px]"
     >
       <div
         id="switches"

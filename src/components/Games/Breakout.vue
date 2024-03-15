@@ -1,7 +1,7 @@
 <template>
   <canvas
     ref="canvas"
-    class="border-4 border-[#2bb478] border-b-transparent max-xl:h-96"
+    class="border-4 border-[#2bb478] border-b-transparent"
   ></canvas>
 </template>
 
@@ -9,8 +9,6 @@
 import collision from "@/mixins/collision";
 import collisionPaddleSong from "@/assets/songs/pongSound.wav";
 import collisionBlockSong from "@/assets/songs/breakoutSound.wav";
-
-import { useEventListener } from "@vueuse/core";
 
 export default {
   mixins: [collision],
