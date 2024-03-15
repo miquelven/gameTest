@@ -27,7 +27,17 @@ export default {
         height="400"
         rounded="lg"
       >
-        <v-img height="200px" :src="item.img" cover></v-img>
+        <div class="h-48 overflow-hidden">
+          <v-img
+            :src="item.img"
+            :class="
+              isHovering
+                ? 'h-full transition duration-700 scale-125'
+                : 'h-full transition duration-700  scale-100'
+            "
+            cover
+          ></v-img>
+        </div>
         <v-card-item>
           <v-card-title> {{ item.name }} </v-card-title>
         </v-card-item>
