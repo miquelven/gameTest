@@ -1,6 +1,6 @@
 <template>
   <div class="max-2xl:scale-75">
-    <canvas height="640" width="360" ref="canvas" id="canvas"> </canvas>
+    <canvas height="540" width="360" ref="canvas" id="canvas"> </canvas>
   </div>
 </template>
 
