@@ -18,7 +18,10 @@ export default {
   methods: {
     gameOver() {
       setTimeout(() => {
-        this.player == "O"
+        if (this.gameTied) {
+          this.$emit("addScore", 2000);
+        }
+        this.player == "O" && this.gameTied == false
           ? this.$emit("addScore", 3000)
           : this.$emit("addScore", 1000);
         this.$emit("addCounter");
@@ -45,6 +48,10 @@ export default {
     },
     verifyWinner() {
       this.gameTied = this.verifyGameTied();
+      if (this.gameTied) {
+        this.gameOver();
+        return;
+      }
       const lines = [
         [0, 1, 2],
         [3, 4, 5],
