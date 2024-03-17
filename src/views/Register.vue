@@ -93,14 +93,14 @@ export default {
 
 <template>
   <section
-    class="w-full h-[calc(100vh-80px)] flex flex-col justify-center items-center relative z-0"
+    class="w-full h-screen flex flex-col justify-center items-center relative z-0"
     id="container"
     data-aos="zoom-in"
   >
-    <h1 class="text-5xl mb-20 max-[400px]:text-4xl">Registre-se</h1>
+    <h4 class="text-4xl mt-20 mb-12 max-[400px]:text-3xl">Registre-se</h4>
     <form
       ref="form"
-      class="relative z-10 w-72 flex flex-col justify-center items-center gap-8"
+      class="relative z-10 w-72 flex flex-col justify-center items-center gap-6"
       @submit.prevent="register"
     >
       <div class="w-full flex items-center relative">

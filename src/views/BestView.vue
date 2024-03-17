@@ -1,9 +1,9 @@
 <script>
 import BestInfoItem from "@/components/Items/BestInfoItem.vue";
 import Loader from "@/components/Loader/index.vue";
+import Container from "@/views/icons/Container.vue";
 import { useMouseInElement } from "@vueuse/core";
 import axios from "axios";
-import Container from "./icons/Container.vue";
 
 export default {
   components: {
@@ -84,10 +84,8 @@ export default {
 </script>
 
 <template>
-  <main class="w-full mt-32 min-h-[calc(100vh-350px)]">
-    <Container
-      class="relative max-w-screen-2xl min-h-screen max-2xl:max-w-screen-xl max-xl:max-w-screen-lg m-auto max-lg:max-w-screen-md max-md:max-w-96"
-    >
+  <section class="w-full mt-32 min-h-[calc(100vh-80px)]">
+    <Container>
       <template v-if="loading">
         <div class="absolute inset-0 flex justify-center">
           <div
@@ -140,5 +138,5 @@ export default {
         </table>
       </template>
     </Container>
-  </main>
+  </section>
 </template>

@@ -7,8 +7,10 @@ import FlappyBird from "@/components/Games/FlappyBird.vue";
 import Simon from "@/components/Games/Simon.vue";
 import Snake from "@/components/Games/Snake.vue";
 import SpaceInvaders from "@/components/Games/SpaceInvaders.vue";
-import axios from "axios";
+
 import Button from "@/views/icons/Button.vue";
+
+import axios from "axios";
 
 import sound from "../assets/songs/backgroundSound.wav";
 
@@ -117,7 +119,7 @@ export default {
 
 <template>
   <div
-    class="h-[calc(100vh-80px)] w-full flex flex-col gap-10 justify-center items-center max-sm:hidden"
+    class="h-screen mt-10 w-full flex flex-col gap-10 justify-center items-center max-sm:hidden"
   >
     <router-link
       to="/"

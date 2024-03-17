@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-  <main class="w-full mb-19">
+  <main class="w-full">
     <Container>
       <section
         class="flex my-28 max-xl:flex-col max-xl:gap-32 max-lg:gap-14 max-sm:my-16"

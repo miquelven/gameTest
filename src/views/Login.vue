@@ -87,9 +87,9 @@ export default {
 
 <template>
   <section
-    class="w-full min-h-[calc(100vh-80px)] flex flex-col justify-center items-center"
+    class="w-full h-screen flex flex-col justify-center items-center max-sm:mb-20"
   >
-    <div class="relative z-10 mb-28" data-aos="zoom-in">
+    <div class="relative z-10" data-aos="zoom-in">
       <div class="flex justify-center items-center flex-col">
         <img
           src="@/assets/images/logo.webp"
@@ -106,6 +106,7 @@ export default {
               v-model="name"
               :rules="nameRules"
               label="nome"
+              autofocus
             ></v-text-field>
           </div>
           <div class="flex items-center relative">
