@@ -6,7 +6,7 @@ export default {
 
 <template>
   <td
-    class="transition duration-150 ease-in text-4xl w-96 m-auto flex justify-between gap-16 border-2 rounded-md py-3 px-16 font-medium shadow-sm hover:shadow-zinc-800 hover:scale-110 max-2xl:w-72 max-2xl:px-6 max-2xl:text-3xl max-lg:w-52 max-lg:text-2xl max-sm:text-lg max-md:text-xl"
+    class="transition duration-150 ease-in text-4xl w-96 m-auto flex justify-between gap-16 border-2 rounded-md py-3 px-7 font-medium shadow-sm hover:shadow-zinc-800 hover:scale-110 max-2xl:w-72 max-2xl:px-6 max-2xl:text-3xl max-lg:w-52 max-lg:text-2xl max-sm:text-lg max-md:text-xl"
     :style="{
       borderColor: position == 1 ? '#40d292' : '',
     }"
