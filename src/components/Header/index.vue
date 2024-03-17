@@ -1,12 +1,11 @@
 <script>
 import { useToast } from "vue-toastification";
 import Menu from "./HeaderMenuMobile/Menu.vue";
-import HeaderLink from "./HeaderLink.vue";
 import axios from "axios";
 import LinksMenu from "./HeaderMenuMobile/LinksMenu.vue";
 
 export default {
-  components: { Menu, HeaderLink, LinksMenu },
+  components: { Menu, LinksMenu },
   data() {
     return {
       toast: null,

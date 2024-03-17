@@ -15,13 +15,13 @@ export default {
 <template>
   <font-awesome-icon
     :icon="['fas', 'bars']"
-    class="hidden h-5 cursor-pointer max-md:block"
+    class="hidden p-5 h-5 cursor-pointer max-md:block"
     @click="() => (showMenu = !showMenu)"
   />
   <template v-if="showMenu">
     <nav
       v-click-outside="() => (showMenu = false)"
-      class="absolute left-0 top-[80px] flex flex-col bg-black/95 border-b-[2px] border-[rgba(255,255,255,.2)] w-full gap-10 py-5 font-light"
+      class="absolute left-0 top-[80px] flex flex-col bg-black/95 border-b-[2px] border-[rgba(255,255,255,.2)] w-full font-light"
       v-motion
       :initial="{
         opacity: 0,
@@ -45,7 +45,7 @@ export default {
       }"
     >
       <LinksMenu :isMobile="true" @closeMenu="() => (showMenu = false)" />
-      <button @click="() => $emit('logout')" class="w-full text-center">
+      <button @click="() => $emit('logout')" class="w-full text-center py-4">
         <span class="py-8 relative"> Sair </span>
       </button>
     </nav>
