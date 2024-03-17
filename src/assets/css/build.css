@@ -795,6 +795,10 @@ video {
   margin-top: 12rem;
 }
 
+.mt-44 {
+  margin-top: 11rem;
+}
+
 .\!block {
   display: block !important;
 }
@@ -1480,6 +1484,16 @@ video {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.px-12 {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .pt-10 {
@@ -2169,6 +2183,12 @@ video {
 
   .max-sm\:leading-\[45px\] {
     line-height: 45px;
+  }
+
+  .max-sm\:shadow-none {
+    --tw-shadow: 0 0 #0000;
+    --tw-shadow-colored: 0 0 #0000;
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
 
   .max-sm\:shadow-transparent {
