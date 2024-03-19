@@ -20,14 +20,14 @@
         <font-awesome-icon
           id="icon"
           :icon="icon"
-          class="text-2xl leading-[60px] max-sm:leading-[45px] max-sm:text-xl"
+          class="text-xl leading-[60px] max-sm:leading-[45px] max-sm:text-xl"
         />
       </a>
     </div>
     <span
       id="name"
       :style="{ color: styling == '#333' ? '#999' : styling }"
-      class="text-lg font-bold ml-[10px] leading-[10px]"
+      class="text-sm font-bold ml-[10px] leading-[10px]"
       >{{ name }}</span
     >
   </div>
