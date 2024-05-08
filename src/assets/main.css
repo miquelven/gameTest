@@ -35,3 +35,24 @@ html ::-webkit-scrollbar-thumb {
   font-size: 1.03rem !important;
   line-height: 1.2rem;
 }
+
+.carousel__slide {
+  padding: 10px;
+}
+.carousel__pagination-button::after {
+  background: #0c0c0c !important;
+  height: 12px !important;
+  border-radius: 100% !important;
+}
+.carousel__pagination-button--active::after {
+  background: #2a2a2a !important;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
