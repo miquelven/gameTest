@@ -13,16 +13,16 @@ export default {
   <v-hover v-slot="{ isHovering, props }">
     <div
       :data-aos="itemIndex % 2 == 0 ? 'fade-right' : 'fade-left'"
-      :data-aos-delay="itemIndex * 200"
+      :data-aos-delay="itemIndex * 100"
     >
       <v-card
         :data-aos-delay="itemIndex * 300"
         @click="() => (overlay = true)"
         v-bind="props"
-        :color="isHovering ? '#2bb478' : '#777'"
-        :variant="isHovering ? 'tonal' : 'outlined'"
-        class="mx-auto my-8 py-5"
-        elevation="16"
+        class="w-full mx-auto my-8 pb-5 overflow-y-auto scrollbar-hide max-md:w-11/12"
+        style="background: #0c0c0c"
+        :variant="isHovering ? 'ghost' : ''"
+        elevation="4"
         max-width="344"
         height="400"
         rounded="lg"
@@ -39,10 +39,12 @@ export default {
           ></v-img>
         </div>
         <v-card-item>
-          <v-card-title> {{ item.name }} </v-card-title>
+          <v-card-title class="text-[#ccc]">
+            {{ item.name }}
+          </v-card-title>
         </v-card-item>
 
-        <v-card-text>
+        <v-card-text class="text-[#bababa] font-light">
           {{ item.tip }}
         </v-card-text>
       </v-card>
