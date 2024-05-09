@@ -119,7 +119,7 @@ export default {
 
 <template>
   <div
-    class="h-screen mt-10 w-full flex flex-col gap-10 justify-center items-center max-sm:hidden"
+    class="h-screen w-full flex flex-col gap-10 justify-center items-center max-sm:hidden"
   >
     <router-link
       to="/"
