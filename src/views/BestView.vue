@@ -98,7 +98,8 @@ export default {
 
       <template v-else>
         <table
-          class="grid grid-cols-3 grid-rows-5 gap-16 bg-gradient-to-br from-white/10 from-90% to-[#69dcaa] p-10 max-xl:grid-cols-2 max-xl:grid-rows-6 max-xl:gap-14 max-md:flex max-md:flex-col max-md:gap-8"
+          v-if="scores.length > 0"
+          class="rounded-lg shadow-md shadow-black/50 grid grid-cols-2 gap-16 bg-[#0c0c0c] p-10 max-xl:gap-14 max-md:mx-5 max-sm:mx-0 max-sm:flex max-sm:flex-col max-sm:gap-8"
           ref="infoItems"
           :style="{
             transform: cardTransform,
@@ -117,12 +118,10 @@ export default {
             },
           }"
         >
-          <tr
-            class="row-start-1 row-end-6 m-auto max-xl:row-end-2 max-xl:col-start-1 max-xl:col-end-3"
-          >
+          <tr class="m-auto col-start-1 col-end-3">
             <th>
               <h3
-                class="text-5xl font-medium bg-clip-text bg-gradient-to-r from-[#2bb478] from-10% via-[#69dcaa] via-30% to-[#40d292] to-90% text-transparent mb-10 max-2xl:text-4xl max-md:text-3xl max-sm:text-2xl"
+                class="text-5xl font-medium mb-10 max-2xl:text-4xl max-md:text-3xl max-sm:text-2xl"
               >
                 Suas melhores pontuações:
               </h3>
@@ -136,6 +135,12 @@ export default {
             <BestInfoItem :score="score" :position="index + 1" />
           </tr>
         </table>
+        <div
+          v-else
+          class="text-center rounded-lg shadow-md shadow-black/50 grid grid-cols-2 gap-16 bg-[#0c0c0c] p-10 max-xl:gap-14 max-md:mx-5 max-sm:mx-0 max-sm:flex max-sm:flex-col max-sm:gap-8"
+        >
+          <p>Consiga pontuações para poder vê-las aqui</p>
+        </div>
       </template>
     </Container>
   </section>
