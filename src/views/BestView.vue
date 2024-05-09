@@ -137,7 +137,7 @@ export default {
         </table>
         <div
           v-else
-          class="rounded-lg text-center shadow-md shadow-black/50 bg-[#0c0c0c] p-10 max-xl:gap-14 max-md:mx-5 max-sm:mx-0 max-sm:flex max-sm:flex-col max-sm:gap-8"
+          class="rounded-lg text-center shadow-md shadow-black/50 bg-[#0c0c0c] p-10 max-md:mx-5 max-sm:mx-0"
         >
           <p class="text-3xl max-sm:text-base">
             Consiga pontuações para poder vê-las aqui
