@@ -7,6 +7,7 @@ function lazyLoad(view) {
 
 const router = createRouter({
   history: createWebHistory(),
+
   routes: [
     {
       path: "/",
@@ -116,6 +117,7 @@ router.beforeEach(async (to, from, next) => {
   }
 
   next();
+  window.scrollTo(0, 0);
 });
 
 export default router;
