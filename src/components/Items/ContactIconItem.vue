@@ -4,7 +4,7 @@
     :style="{
       boxShadow: hover ? `0px 0px 10px ${styling}` : 'none',
     }"
-    class="transition-all overflow-hidden bg-zinc-300 duration-500 ease-in-out inline-block h-[60px] w-[60px] float-left mx-[15px] rounded-full cursor-pointer text-black shadow-[0_10px_10px_rgba(0,0,0,.1)] hover:w-[200px] hover:bg-transparent hover:text-white max-sm:w-[45px] max-sm:h-[45px] max-sm:hover:w-[150px]"
+    class="transition-all overflow-hidden bg-zinc-300 duration-500 ease-in-out inline-block h-[60px] w-[60px] float-left mx-[15px] rounded-full cursor-pointer text-black shadow-[0_10px_10px_rgba(0,0,0,.1)] sm:hover:w-[200px] hover:bg-transparent hover:text-white max-sm:text-white max-sm:h-[45px] max-sm:w-[150px]"
     @mouseover="hover = true"
     @mouseout="hover = false"
   >
