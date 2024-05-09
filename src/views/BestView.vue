@@ -13,7 +13,7 @@ export default {
   },
   data() {
     return {
-      scores: ["kjjnkjk", "kjkj"],
+      scores: [],
 
       infoItems: null,
       elementX: null,
