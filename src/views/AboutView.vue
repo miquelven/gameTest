@@ -21,7 +21,7 @@ export default {
 
 <template>
   <Container>
-    <section class="m-auto mb-5 max-w-5xl px-5 flex flex-col gap-24">
+    <section class="m-auto mb-5 max-w-5xl px-5 flex flex-col gap-40">
       <AboutItem
         v-for="({ title, content }, index) in itemInfo"
         :key="index"
