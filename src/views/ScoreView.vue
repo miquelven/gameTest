@@ -34,7 +34,7 @@ export default {
   <section class="w-full min-h-[calc(100vh-80px)] mt-44">
     <div class="min-w-screen-2xl m-auto flex justify-center">
       <table
-        class="grid grid-cols-1 gap-10 p-20 bg-[rgba(0,0,0,.9)] shadow-sm shadow-zinc-700 rounded-xl max-sm:p-10 max-sm:shadow-none"
+        class="w-1/3 grid grid-cols-1 gap-10 p-10 bg-[#0c0c0c] shadow-md shadow-black/50 rounded-lg max-xl:w-1/2 max-md:w-10/12 max-md:mx-5 max-sm:mx-0 max-sm:w-11/12 max-sm:gap-7"
         v-motion
         :initial="{
           opacity: 0,
@@ -51,19 +51,29 @@ export default {
         <tr class="flex justify-center">
           <th>
             <h3
-              class="text-4xl font-medium bg-clip-text bg-gradient-to-r from-[#40d292] from-10% via-[#69dcaa] via-30% to-[#2bb478] to-90% text-transparent mb-7 max-[550px]:text-3xl"
+              class="text-5xl font-medium mb-5 max-2xl:text-4xl max-sm:text-3xl"
             >
               Top Pontuações:
             </h3>
+
+            <div
+              class="font-medium text-[#bababa] leading-7 max-sm:text-sm max-sm:mb-5"
+            >
+              <p>Listagem dos jogadores com as melhores pontuações .</p>
+              <p>
+                Destaque das
+                <span class="text-[#2bb478]"> pontuações mais altas </span> dos
+                <span class="text-[#2bb478]"> melhores jogadores </span> em
+                nossos jogos
+              </p>
+            </div>
           </th>
         </tr>
         <tr
           v-for="(item, index) in topScores"
           :key="index"
-          class="flex font-bold justify-between items-center text-xl gap-20 px-7 py-2 rounded-md border-2 max-[550px]:text-lg max-[550px]:gap-12 max-[375px]:text-sm"
-          :style="{
-            borderColor: index < 3 ? '#40d292' : '#f1f1ef',
-          }"
+          class="transition-all duration-300 w-10/12 mx-auto flex justify-between hover:bg-[#0a0a0a] hover:scale-105 items-center text-xl gap-20 px-7 py-4 rounded-md max-sm:w-full"
+          :class="[index < 3 ? 'bg-[#040404]' : '']"
           v-motion
           :initial="{
             opacity: 0,
