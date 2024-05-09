@@ -137,9 +137,11 @@ export default {
         </table>
         <div
           v-else
-          class="text-center rounded-lg shadow-md shadow-black/50 grid grid-cols-2 gap-16 bg-[#0c0c0c] p-10 max-xl:gap-14 max-md:mx-5 max-sm:mx-0 max-sm:flex max-sm:flex-col max-sm:gap-8"
+          class="rounded-lg text-center shadow-md shadow-black/50 bg-[#0c0c0c] p-10 max-xl:gap-14 max-md:mx-5 max-sm:mx-0 max-sm:flex max-sm:flex-col max-sm:gap-8"
         >
-          <p>Consiga pontuações para poder vê-las aqui</p>
+          <p class="text-3xl max-sm:text-base">
+            Consiga pontuações para poder vê-las aqui
+          </p>
         </div>
       </template>
     </Container>
