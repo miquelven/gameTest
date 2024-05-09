@@ -13,7 +13,7 @@ export default {
   },
   data() {
     return {
-      scores: [],
+      scores: ["kjjnkjk", "kjkj"],
 
       infoItems: null,
       elementX: null,
@@ -84,7 +84,9 @@ export default {
 </script>
 
 <template>
-  <section class="w-full mt-32 min-h-[calc(100vh-80px)]">
+  <section
+    class="w-1/2 mx-auto mt-32 min-h-[calc(100vh-80px)] max-2xl:w-2/3 max-md:w-9/12 max-[550px]:w-11/12"
+  >
     <Container>
       <template v-if="loading">
         <div class="absolute inset-0 flex justify-center">
@@ -121,10 +123,17 @@ export default {
           <tr class="m-auto col-start-1 col-end-3">
             <th>
               <h3
-                class="text-5xl font-medium mb-10 max-2xl:text-4xl max-md:text-3xl max-sm:text-2xl"
+                class="text-5xl font-medium mb-5 max-2xl:text-4xl max-md:text-3xl max-sm:text-2xl"
               >
                 Suas melhores pontuações:
               </h3>
+              <p
+                class="font-medium text-[#bababa] leading-7 max-sm:text-sm max-sm:mb-5"
+              >
+                Alcance
+                <span class="text-[#2bb478]">melhores pontuações </span> para
+                atualizar o seu histórico.
+              </p>
             </th>
           </tr>
           <tr
