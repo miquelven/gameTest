@@ -4,6 +4,7 @@ import BannerHome from "@/components/BannerHome/index.vue";
 import Button from "./icons/Button.vue";
 import Container from "./icons/Container.vue";
 import TimerArea from "@/components/TimerArea/index.vue";
+import RankingArea from "@/components/RankingArea/index.vue";
 
 export default {
   components: {
@@ -12,6 +13,7 @@ export default {
     Button,
     Container,
     TimerArea,
+    RankingArea,
   },
 };
 </script>
@@ -22,6 +24,7 @@ export default {
       <BannerHome />
       <GameList />
       <TimerArea />
+      <RankingArea />
     </Container>
   </main>
 </template>
