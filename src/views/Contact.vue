@@ -10,10 +10,10 @@ export default {
 
 <template>
   <section
-    class="w-full mt-20 h-[calc(100vh-80px)] flex justify-center items-center max-sm:mt-28"
+    class="w-full mt-20 h-[calc(100vh-80px)] flex justify-center items-center"
     id="best"
   >
-    <div class="px-10 max-sm:px-0">
+    <div class="px-5">
       <div class="flex flex-col gap-20 items-center max-sm:gap-10">
         <h1
           data-aos="fade-up"

@@ -52,7 +52,7 @@ export default {
     class="fixed z-50 w-full top-0 left-0 text-white bg-transparent backdrop-blur-xl border-b-[2px] border-zinc-900"
   >
     <div
-      class="max-w-screen-2xl m-auto flex justify-between items-center max-h-20 p-10"
+      class="max-w-screen-2xl m-auto flex justify-between items-center max-h-20"
     >
       <router-link to="/">
         <img
