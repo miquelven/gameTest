@@ -17,14 +17,6 @@ export default {
   data() {
     return {
       scores: [],
-
-      infoItems: null,
-      elementX: null,
-      elementY: null,
-      isOutSide: null,
-      elementHeight: null,
-      elementWidth: null,
-
       loading: false,
     };
   },
@@ -37,47 +29,6 @@ export default {
     this.loading = isPending;
 
     this.scores = data;
-
-    console.log(this.scores);
-
-    if (!isPending) {
-      console.log(this.scores);
-      console.log(this.scores.userScores);
-    }
-
-    this.activeEffectHover();
-  },
-  methods: {
-    activeEffectHover() {
-      this.infoItems = this.$refs.infoItems;
-
-      const { elementX, elementY, isOutSide, elementHeight, elementWidth } =
-        useMouseInElement(this.infoItems);
-      this.elementX = elementX;
-      this.elementY = elementY;
-      this.isOutSide = isOutSide;
-      this.elementHeight = elementHeight;
-      this.elementWidth = elementWidth;
-    },
-  },
-  computed: {
-    cardTransform() {
-      const MAX_ROTATION = 6;
-
-      const rX = (
-        MAX_ROTATION / 2 -
-        (this.elementY / this.elementHeight) * MAX_ROTATION
-      ).toFixed(2);
-
-      const rY = (
-        MAX_ROTATION / 2 -
-        (this.elementX / this.elementWidth) * MAX_ROTATION
-      ).toFixed(2);
-
-      return this.isOutSide
-        ? ""
-        : `perspective(${this.elementWidth}px) rotateX(${rX}deg) rotateY(${rY}deg)`;
-    },
   },
 };
 </script>
@@ -100,11 +51,6 @@ export default {
         <table
           v-if="scores && scores.length > 0"
           class="rounded-lg shadow-md shadow-black-half grid grid-cols-2 gap-16 bg-black-light p-10 max-xl:gap-14 max-md:mx-5 max-sm:mx-0 max-sm:flex max-sm:flex-col max-sm:gap-8"
-          ref="infoItems"
-          :style="{
-            transform: cardTransform,
-            transition: 'transform 150ms ease-out',
-          }"
           v-motion
           :initial="{
             opacity: 0,
@@ -151,7 +97,6 @@ export default {
           </p>
         </div>
       </template>
-      {{ JSON.stringify(scores) }}
     </Container>
   </section>
 </template>
