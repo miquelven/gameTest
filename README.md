@@ -29,6 +29,7 @@
 - tailwind 🌬️
 - Vuetify 🔷
 - Axios 📡
+- TanstackQuery 📦
 
 
 </br>
