@@ -1714,6 +1714,15 @@ video {
   color: rgb(212 212 216 / var(--tw-text-opacity));
 }
 
+.text-black-bold {
+  --tw-text-opacity: 1;
+  color: rgb(4 4 4 / var(--tw-text-opacity));
+}
+
+.text-black-half {
+  color: #0005;
+}
+
 .opacity-0 {
   opacity: 0;
 }
@@ -2249,6 +2258,11 @@ video {
   .max-md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .max-md\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 }
 

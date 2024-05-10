@@ -1,6 +1,7 @@
 <script>
 import TopInfoItem from "@/components/Items/TopInfoItem.vue";
 import TextHighlight from "@/views/icons/TextHighlight.vue";
+import useGetTopScores from "@/hooks/useGetTopScores.js";
 import axios from "axios";
 
 export default {
@@ -15,22 +16,9 @@ export default {
     };
   },
   mounted() {
-    this.fetchTopScores();
-  },
-  methods: {
-    async fetchTopScores() {
-      this.loading = true;
-      const response = await axios("/api/top-scores");
-
-      this.topScores = response.data.topScores.map((item) => ({
-        ...item,
-        name: this.capitalizeFirstLetter(item.name),
-      }));
-      this.loading = false;
-    },
-    capitalizeFirstLetter(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1);
-    },
+    const { data, loading } = useGetTopScores();
+    this.topScores = data;
+    this.loading = loading;
   },
 };
 </script>
@@ -68,31 +56,8 @@ export default {
             </div>
           </th>
         </tr>
-        <template v-if="!loading && topScores.length > 0">
-          <tr
-            v-for="(item, index) in topScores"
-            :key="index"
-            class="transition-all duration-300 w-10/12 mx-auto flex justify-between hover:bg-black-xlight hover:scale-105 items-center text-xl gap-20 px-7 py-4 rounded-md max-sm:w-full"
-            :class="[index < 3 ? 'bg-black-bold' : '']"
-            v-motion
-            :initial="{
-              opacity: 0,
-            }"
-            :enter="{
-              opacity: 1,
-              transition: {
-                duration: 700,
-                type: 'keyframes',
-                ease: 'easein',
-                delay: 400,
-              },
-            }"
-          >
-            <TopInfoItem :data="item" :position="index" />
-          </tr>
-        </template>
 
-        <template v-else>
+        <template v-if="loading">
           <div
             class="flex justify-center items-center scale-150 h-[calc(40vh)]"
             data-aos="zoom-in"
@@ -118,6 +83,40 @@ export default {
               <span class="sr-only">Loading...</span>
             </div>
           </div>
+        </template>
+
+        <template v-else-if="topScores && topScores.length > 0">
+          <tr
+            v-for="(item, index) in topScores"
+            :key="index"
+            class="transition-all duration-300 w-10/12 mx-auto flex justify-between hover:bg-black-xlight hover:scale-105 items-center text-xl gap-20 px-7 py-4 rounded-md max-sm:w-full"
+            :class="[index < 3 ? 'bg-black-bold' : '']"
+            v-motion
+            :initial="{
+              opacity: 0,
+            }"
+            :enter="{
+              opacity: 1,
+              transition: {
+                duration: 700,
+                type: 'keyframes',
+                ease: 'easein',
+                delay: 400,
+              },
+            }"
+          >
+            <TopInfoItem :data="item" :position="index" />
+          </tr>
+        </template>
+
+        <template v-else>
+          <p
+            data-aos="zoom-in"
+            data-aos-delay="1000"
+            class="text-center text-white-light-shadow max-md:text-sm"
+          >
+            Erro ao obter os dados. Tente novamente mais tarde
+          </p>
         </template>
       </table>
     </div>
