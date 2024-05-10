@@ -16,10 +16,10 @@ export default {
     };
   },
   mounted() {
-    const { data, loading } = useGetTopScores();
+    const { data, isPending } = useGetTopScores();
     this.topScores = data;
 
-    this.loading = loading;
+    this.loading = isPending;
   },
 };
 </script>
