@@ -3,11 +3,14 @@ import { useToast } from "vue-toastification";
 import Menu from "./HeaderMenuMobile/Menu.vue";
 import axios from "axios";
 import LinksMenu from "./HeaderMenuMobile/LinksMenu.vue";
+import logoImg from "@/assets/images/logo.webp";
 
 export default {
   components: { Menu, LinksMenu },
   data() {
     return {
+      logoImg: logoImg,
+
       toast: null,
 
       name: "",
@@ -55,12 +58,7 @@ export default {
       class="max-w-screen-2xl m-auto flex justify-between items-center max-h-20"
     >
       <router-link to="/">
-        <img
-          src="../../assets/images/logo.webp"
-          alt="logo"
-          width="100"
-          class="max-lg:w-20"
-        />
+        <img :src="logoImg" alt="logo" width="72" class="pl-2 max-lg:w-14" />
       </router-link>
       <!-- Menu Desktop -->
       <nav class="flex gap-12 font-light max-lg:text-sm max-md:hidden">
@@ -72,7 +70,7 @@ export default {
 
       <!-- Menu de Logout -->
       <div
-        class="text-lg text-zinc-300 flex flex-col items-end max-lg:text-base max-md:hidden"
+        class="text-lg text-zinc-300 flex flex-col items-end max-lg:text-base pr-3 max-md:hidden"
       >
         <span class="text-sm text-gray-400">Usuário: </span>
 
