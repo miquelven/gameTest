@@ -19,7 +19,6 @@ export default {
     const { data, loading } = useGetTopScores();
     this.topScores = data;
 
-    console.log(data);
     this.loading = loading;
   },
 };

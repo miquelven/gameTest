@@ -27,8 +27,12 @@ export default {
       loading: false,
     };
   },
-  mounted() {
-    this.fetchUserScores();
+  async mounted() {
+    const { data, isPending } = useGetScores();
+
+    this.scores = data;
+    this.loading = isPending;
+    if (!isPending) this.activeEffectHover();
   },
   methods: {
     activeEffectHover() {
@@ -41,26 +45,6 @@ export default {
       this.isOutSide = isOutSide;
       this.elementHeight = elementHeight;
       this.elementWidth = elementWidth;
-    },
-    async fetchUserScores() {
-      this.loading = true;
-      try {
-        const userEmail = this.$store.state.user
-          ? this.$store.state.user.email
-          : null;
-        const response = await axios("/api/scores", {
-          params: { email: userEmail },
-        });
-
-        this.scores = response.data.userScores.sort((a, b) => b - a);
-        this.scores = this.scores.slice(0, 10);
-      } catch (error) {
-        console.error("Erro ao obter scores do usuário:", error);
-      } finally {
-        this.loading = false;
-
-        this.activeEffectHover();
-      }
     },
   },
   computed: {
