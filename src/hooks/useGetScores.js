@@ -15,7 +15,7 @@ const getScore = async (userEmail) => {
 
   console.log(scores);
 
-  return scores;
+  return scores.data.userScores;
 };
 
 const useGetScore = (userEmail) => {
