@@ -29,10 +29,14 @@ export default {
     };
   },
   async mounted() {
-    const { data, isPending } = useGetScores();
+    const userEmail = this.$store.state.user
+      ? this.$store.state.user.email
+      : null;
+
+    const { data, isPending } = useGetScores(userEmail);
 
     this.scores = data;
-    console.log(this.scores);
+    if (isPending) console.log(this.scores);
     this.loading = isPending;
     if (!isPending) this.activeEffectHover();
   },
