@@ -38,11 +38,11 @@ export default {
 
     this.scores = data;
 
-    console.log(scores);
+    console.log(this.scores);
 
     if (!isPending) {
-      console.log(scores);
-      console.log(scores.userScores);
+      console.log(this.scores);
+      console.log(this.scores.userScores);
     }
 
     this.activeEffectHover();
@@ -83,8 +83,6 @@ export default {
 </script>
 
 <template>
-  <p v-if="!loading">{{ JSON.stringify(scores) }}</p>
-
   <section
     class="w-1/2 mx-auto mt-32 min-h-[calc(100vh-80px)] max-2xl:w-2/3 max-md:w-9/12 max-[550px]:w-11/12"
   >
@@ -100,7 +98,7 @@ export default {
       </template>
       <template v-else>
         <table
-          v-if="scores.userScores && scores.userScores.length > 0"
+          v-if="scores && scores.length > 0"
           class="rounded-lg shadow-md shadow-black-half grid grid-cols-2 gap-16 bg-black-light p-10 max-xl:gap-14 max-md:mx-5 max-sm:mx-0 max-sm:flex max-sm:flex-col max-sm:gap-8"
           ref="infoItems"
           :style="{
@@ -137,7 +135,7 @@ export default {
             </th>
           </tr>
           <tr
-            v-for="(score, index) in scores.userScores"
+            v-for="(score, index) in scores"
             :key="index"
             class="min-2xl:even:col-start-2 min-2xl:even:col-end-3"
           >
