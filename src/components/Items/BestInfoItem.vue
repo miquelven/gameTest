@@ -21,8 +21,10 @@ export default {
       },
     }"
   >
-    <span class="font-semibold">{{ position }} -</span>
-    <p class="font-light text-3xl max-xl:text-2xl max-lg:text-xl">
+    <span class="font-semibold text-sm:text-base">{{ position }} -</span>
+    <p
+      class="font-light text-3xl max-xl:text-2xl max-lg:text-xl max-sm:text-sm"
+    >
       {{ score }}
     </p>
   </td>
