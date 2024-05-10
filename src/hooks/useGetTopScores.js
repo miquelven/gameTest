@@ -10,7 +10,7 @@ const getTopScore = async () => {
     name: item.name.charAt(0).toUpperCase() + string.slice(1),
   }));
 
-  return newData;
+  return data;
 };
 
 const useGetTopScore = () => {
