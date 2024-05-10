@@ -33,10 +33,11 @@ export default {
       ? this.$store.state.user.email
       : null;
 
-    const { data, isPending } = useGetScores(userEmail);
-    this.loading = isPending;
+    const value = useGetScores(userEmail);
+    // this.loading = isPending;
 
-    this.scores = data;
+    // this.scores = data;
+    console.log(value);
     this.activeEffectHover();
   },
   methods: {
