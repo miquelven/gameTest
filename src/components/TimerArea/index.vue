@@ -43,7 +43,6 @@ export default {
           <TextHighlight> Vença os jogos para obter mais pontos </TextHighlight>
           , quanto mais o tempo passa menos pontos você terá na pontuação final.
         </p>
-        <p></p>
       </div>
     </div>
   </section>
