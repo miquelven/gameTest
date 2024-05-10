@@ -52,6 +52,7 @@ library.add(
 import axios from "axios";
 import router from "./router";
 import store from "./store";
+import { VueQueryPlugin } from "@tanstack/vue-query";
 import { MotionPlugin } from "@vueuse/motion";
 import Toast from "vue-toastification";
 
@@ -66,6 +67,17 @@ axios.defaults.baseURL = import.meta.env.VITE_GAME_TEST_API_URL;
 
 Aos.init();
 
+const vueQueryPluginOptions = {
+  queryClientConfig: {
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+        staleTime: 1000 * 60 * 30,
+      },
+    },
+  },
+};
+
 const app = createApp(App);
 
 app
@@ -74,6 +86,7 @@ app
   .use(MotionPlugin)
   .use(Toast)
   .use(vuetify)
+  .use(VueQueryPlugin, vueQueryPluginOptions)
   .component("font-awesome-icon", FontAwesomeIcon)
   .component("default-layout", defaultLayout)
   .component("empty-layout", emptyLayout);
