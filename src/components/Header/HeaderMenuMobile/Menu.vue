@@ -13,41 +13,29 @@ export default {
 </script>
 
 <template>
-  <font-awesome-icon
-    :icon="['fas', 'bars']"
-    class="hidden p-5 h-5 cursor-pointer max-md:block"
+  <button
+    class="hidden justify-center items-center cursor-pointer max-md:flex"
     @click="() => (showMenu = !showMenu)"
-  />
-  <template v-if="showMenu">
-    <nav
-      v-click-outside="() => (showMenu = false)"
-      class="absolute left-0 top-[80px] flex flex-col bg-black/95 border-b-[2px] border-[rgba(255,255,255,.2)] w-full font-light"
-      v-motion
-      :initial="{
-        opacity: 0,
-      }"
-      :enter="{
-        opacity: 1,
-        transition: {
-          ease: 'easein',
-          duration: 500,
-          type: 'spring',
-        },
-      }"
-      :tapped="{
-        opacity: 0,
-        transition: {
-          ease: 'easein',
-          delay: '200',
-          duration: 500,
-          type: 'spring',
-        },
-      }"
+  >
+    <font-awesome-icon
+      class="p-5 h-5"
+      :icon="['fas', 'bars']"
+      v-if="!showMenu"
+    />
+    <font-awesome-icon class="p-5 h-5" :icon="['fas', 'xmark']" v-else />
+  </button>
+  <nav
+    v-if="showMenu"
+    v-click-outside="() => (showMenu = false)"
+    class="absolute left-0 top-[80px] flex flex-col bg-[#0a0a0a] border-y-[2px] border-[rgba(255,255,255,.1)] w-full font-light"
+    data-aos="fade-down"
+  >
+    <LinksMenu :isMobile="true" @closeMenu="() => (showMenu = false)" />
+    <button
+      @click="() => $emit('logout')"
+      class="transition-all duration-300 w-full text-center py-4 hover:bg-white/10"
     >
-      <LinksMenu :isMobile="true" @closeMenu="() => (showMenu = false)" />
-      <button @click="() => $emit('logout')" class="w-full text-center py-4">
-        <span class="py-8 relative"> Sair </span>
-      </button>
-    </nav>
-  </template>
+      <span class="py-8 relative"> Sair </span>
+    </button>
+  </nav>
 </template>
