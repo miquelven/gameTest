@@ -8,12 +8,8 @@ const getScore = async (userEmail) => {
     params: { email: userEmail },
   });
 
-  console.log(response);
-
   scores = response.data.userScores.sort((a, b) => b - a);
   scores = scores.slice(0, 10);
-
-  console.log(scores);
 
   return scores;
 };
