@@ -16,11 +16,11 @@ export default {
     };
   },
   mounted() {
-    const data = useGetTopScores();
+    const { data, loading } = useGetTopScores();
     this.topScores = data;
 
     console.log(data);
-    // this.loading = loading;
+    this.loading = loading;
   },
 };
 </script>
@@ -59,7 +59,7 @@ export default {
           </th>
         </tr>
 
-        <!-- <template v-if="loading">
+        <template v-if="loading">
           <div
             class="flex justify-center items-center scale-150 h-[calc(40vh)]"
             data-aos="zoom-in"
@@ -85,9 +85,9 @@ export default {
               <span class="sr-only">Loading...</span>
             </div>
           </div>
-        </template> -->
+        </template>
 
-        <template>
+        <template v-else-if="topScores && topScores.length > 0">
           <tr
             v-for="(item, index) in topScores"
             :key="index"
@@ -111,7 +111,7 @@ export default {
           </tr>
         </template>
 
-        <!-- <template v-else>
+        <template v-else>
           <p
             data-aos="zoom-in"
             data-aos-delay="1000"
@@ -119,7 +119,7 @@ export default {
           >
             Erro ao obter os dados. Tente novamente mais tarde
           </p>
-        </template> -->
+        </template>
       </table>
     </div>
   </section>

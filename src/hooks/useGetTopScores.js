@@ -7,7 +7,7 @@ const getTopScore = async () => {
 
   const newData = data.data.topScores.map((item) => ({
     ...item,
-    name: item.name.charAt(0).toUpperCase() + string.slice(1),
+    name: item.name.charAt(0).toUpperCase() + item.name.slice(1),
   }));
 
   return data;
