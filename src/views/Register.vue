@@ -3,12 +3,14 @@ import validateForm from "@/mixins/validateForm.js";
 import { useToast } from "vue-toastification";
 import Modal from "@/components/Modal/index.vue";
 import Button from "@/views/icons/Button.vue";
+import TextHighlight from "@/views/icons/TextHighlight.vue";
 import axios from "axios";
 export default {
   mixins: [validateForm],
   components: {
     Modal,
     Button,
+    TextHighlight,
   },
   data() {
     return {
@@ -177,25 +179,19 @@ export default {
     <div class="flex flex-col justify-center items-center mt-10 gap-5">
       <span
         >Já tem uma conta?
-        <router-link to="/login" class="text-[#40d292] hover:underline"
-          >Entrar.</router-link
-        >
+        <router-link to="/login" class="hover:underline">
+          <TextHighlight> Entrar. </TextHighlight>
+        </router-link>
       </span>
       <div class="flex flex-col gap-1">
         <span> Ao criar uma conta, você concorda com os </span>
         <span class="text-sm text-center text-zinc-200">
-          <button
-            @click="showModal('terms')"
-            class="text-[#40d292] hover:underline"
-          >
-            Termos de Serviço
+          <button @click="showModal('terms')" class="hover:underline">
+            <TextHighlight> Termos de Serviço </TextHighlight>
           </button>
           e
-          <button
-            @click="showModal('privacity')"
-            class="text-[#40d292] hover:underline"
-          >
-            Políticas de Privacidade.
+          <button @click="showModal('privacity')" class="hover:underline">
+            <TextHighlight> Políticas de Privacidade. </TextHighlight>
           </button>
         </span>
       </div>

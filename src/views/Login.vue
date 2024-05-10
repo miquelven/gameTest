@@ -150,9 +150,9 @@ export default {
           <span>
             <p class="text-gray-400/80">
               Não tem uma conta?
-              <router-link to="/register" class="text-[#40d292] hover:underline"
-                >Crie uma conta.</router-link
-              >
+              <router-link to="/register" class="hover:underline">
+                <TextHighlight> Crie uma conta. </TextHighlight>
+              </router-link>
             </p>
           </span>
         </div>
