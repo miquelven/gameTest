@@ -2,6 +2,7 @@
 import BestInfoItem from "@/components/Items/BestInfoItem.vue";
 import Loader from "@/components/Loader/index.vue";
 import Container from "@/views/icons/Container.vue";
+import TextHighlight from "@/views/icons/TextHighlight.vue";
 import { useMouseInElement } from "@vueuse/core";
 import axios from "axios";
 
@@ -10,6 +11,7 @@ export default {
     BestInfoItem,
     Loader,
     Container,
+    TextHighlight,
   },
   data() {
     return {
@@ -101,7 +103,7 @@ export default {
       <template v-else>
         <table
           v-if="scores.length > 0"
-          class="rounded-lg shadow-md shadow-black/50 grid grid-cols-2 gap-16 bg-[#0c0c0c] p-10 max-xl:gap-14 max-md:mx-5 max-sm:mx-0 max-sm:flex max-sm:flex-col max-sm:gap-8"
+          class="rounded-lg shadow-md shadow-black-half grid grid-cols-2 gap-16 bg-black-light p-10 max-xl:gap-14 max-md:mx-5 max-sm:mx-0 max-sm:flex max-sm:flex-col max-sm:gap-8"
           ref="infoItems"
           :style="{
             transform: cardTransform,
@@ -128,11 +130,11 @@ export default {
                 Suas melhores pontuações:
               </h3>
               <p
-                class="font-medium text-[#bababa] leading-7 max-sm:text-sm max-sm:mb-5"
+                class="font-medium text-white-light leading-7 max-sm:text-sm max-sm:mb-5"
               >
                 Alcance
-                <span class="text-[#2bb478]">melhores pontuações </span> para
-                atualizar o seu histórico.
+                <TextHighlight> melhores pontuações </TextHighlight>
+                para atualizar o seu histórico.
               </p>
             </th>
           </tr>
@@ -146,7 +148,7 @@ export default {
         </table>
         <div
           v-else
-          class="rounded-lg text-center shadow-md shadow-black/50 bg-[#0c0c0c] p-10 max-md:mx-5 max-sm:mx-0"
+          class="rounded-lg text-center shadow-md shadow-black-half bg-black-light p-10 max-md:mx-5 max-sm:mx-0"
         >
           <p class="text-3xl max-sm:text-base">
             Consiga pontuações para poder vê-las aqui

@@ -19,8 +19,7 @@ export default {
         :data-aos-delay="itemIndex * 300"
         @click="() => (overlay = true)"
         v-bind="props"
-        class="w-full mx-auto my-8 pb-5 overflow-y-auto scrollbar-hide max-md:w-11/12"
-        style="background: #0c0c0c"
+        class="w-full mx-auto my-8 pb-5 bg-black-light overflow-y-auto scrollbar-hide max-md:w-11/12"
         :variant="isHovering ? 'ghost' : ''"
         elevation="4"
         max-width="344"
@@ -39,12 +38,12 @@ export default {
           ></v-img>
         </div>
         <v-card-item>
-          <v-card-title class="text-[#ccc]">
+          <v-card-title class="text-white-xlight">
             {{ item.name }}
           </v-card-title>
         </v-card-item>
 
-        <v-card-text class="text-[#bababa] font-light">
+        <v-card-text class="text-white-light font-light">
           {{ item.tip }}
         </v-card-text>
       </v-card>

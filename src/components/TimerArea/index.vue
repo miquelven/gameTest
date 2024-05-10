@@ -36,7 +36,7 @@ export default {
       <div
         data-aos="zoom-in"
         data-aos-delay="600"
-        class="text-[#bababa] text-center text-2xl max-xl:text-lg max-xl:leading-8 max-md:text-base"
+        class="text-white-light text-center text-2xl max-xl:text-lg max-xl:leading-8 max-md:text-base"
       >
         <p>
           Consiga a melhor pontuação para aparecer no ranking dos melhores.

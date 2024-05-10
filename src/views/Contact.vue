@@ -31,7 +31,7 @@ export default {
         <h2
           data-aos="fade-up"
           data-aos-delay="450"
-          class="max-w-7xl mx-auto text-[#bababa] text-center text-3xl max-2xl:text-2xl max-xl:text-xl max-md:text-lg max-sm:text-base"
+          class="max-w-7xl mx-auto text-white-light text-center text-3xl max-2xl:text-2xl max-xl:text-xl max-md:text-lg max-sm:text-base"
         >
           Basta clicar nos ícones abaixo para acessar nossos perfis e ficar por
           dentro de todas as novidades, comunidades e informações relevantes do
@@ -50,7 +50,7 @@ export default {
         <p
           data-aos="fade-up"
           data-aos-delay="850"
-          class="text-[#a9a9a9] text-center text-xl max-xl:text-lg max-md:text-base max-sm:text-sm"
+          class="text-white-light-shadow text-center text-xl max-xl:text-lg max-md:text-base max-sm:text-sm"
         >
           Veja dicas, métodos, guias e acompanhe a trajetória de várias pessoas
         </p>

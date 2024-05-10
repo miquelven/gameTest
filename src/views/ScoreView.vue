@@ -39,7 +39,7 @@ export default {
   <section class="w-full min-h-[calc(100vh-80px)] mt-44">
     <div class="min-w-screen-2xl m-auto flex justify-center">
       <table
-        class="w-1/3 grid grid-cols-1 gap-10 p-10 bg-[#0c0c0c] shadow-md shadow-black/50 rounded-lg max-xl:w-1/2 max-md:w-10/12 max-md:mx-5 max-sm:mx-0 max-sm:w-11/12 max-sm:gap-7"
+        class="w-1/3 grid grid-cols-1 gap-10 p-10 bg-black-light shadow-md shadow-black-half rounded-lg max-xl:w-1/2 max-md:w-10/12 max-md:mx-5 max-sm:mx-0 max-sm:w-11/12 max-sm:gap-7"
         data-aos="zoom-in"
         data-aos-duration="700"
       >
@@ -54,7 +54,7 @@ export default {
             </h3>
 
             <div
-              class="font-medium text-[#bababa] leading-7 max-sm:text-sm max-sm:mb-5"
+              class="font-medium text-white-light leading-7 max-sm:text-sm max-sm:mb-5"
               data-aos="zoom-in"
               data-aos-delay="800"
             >
@@ -72,8 +72,8 @@ export default {
           <tr
             v-for="(item, index) in topScores"
             :key="index"
-            class="transition-all duration-300 w-10/12 mx-auto flex justify-between hover:bg-[#0a0a0a] hover:scale-105 items-center text-xl gap-20 px-7 py-4 rounded-md max-sm:w-full"
-            :class="[index < 3 ? 'bg-[#040404]' : '']"
+            class="transition-all duration-300 w-10/12 mx-auto flex justify-between hover:bg-black-xlight hover:scale-105 items-center text-xl gap-20 px-7 py-4 rounded-md max-sm:w-full"
+            :class="[index < 3 ? 'bg-black-bold' : '']"
             v-motion
             :initial="{
               opacity: 0,

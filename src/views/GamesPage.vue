@@ -146,7 +146,7 @@ export default {
         }"
       >
         <div
-          class="flex flex-col gap-9 p-5 h-96 w-96 absolute rounded-lg border-2 border-[#777] font-light"
+          class="flex flex-col gap-9 p-5 h-96 w-96 absolute rounded-lg border-2 border-gray-light font-light"
         >
           <h2>Há um contador em todos os jogos</h2>
           <p>Termine todos no menor tempo possível</p>
@@ -185,7 +185,7 @@ export default {
     <!-- RESULTADO -->
     <template v-if="counter >= 8">
       <div
-        class="border-2 border-[#2bb478] flex flex-col gap-8 pt-10 px-24 h-96 absolute rounded-xl font-medium max-sm:px-16"
+        class="border-2 border-green-highligh flex flex-col gap-8 pt-10 px-24 h-96 absolute rounded-xl font-medium max-sm:px-16"
         v-motion
         :initial="{
           opacity: 0,
@@ -247,7 +247,7 @@ export default {
           ease: 'easein,',
         },
       }"
-      class="flex flex-col justify-center items-center gap-9 p-5 h-96 w-80 absolute rounded-lg border-2 border-[#777] font-light"
+      class="flex flex-col justify-center items-center gap-9 p-5 h-96 w-80 absolute rounded-lg border-2 border-gray-light font-light"
     >
       <h2 class="text-xl font-medium mb-10 text-center">
         Jogos disponíveis apenas para computador.

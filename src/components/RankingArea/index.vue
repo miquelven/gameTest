@@ -28,7 +28,7 @@ export default {
       <h4
         data-aos="zoom-in"
         data-aos-delay="400"
-        class="text-[#bababa] text-center text-2xl max-xl:text-lg max-xl:leading-8 max-md:text-base"
+        class="text-white-light text-center text-2xl max-xl:text-lg max-xl:leading-8 max-md:text-base"
       >
         Ele é atualizado em tempo real, fornecendo informações detalhadas sobre
         os principais jogadores, incluindo seus
@@ -43,7 +43,7 @@ export default {
     <p
       data-aos="zoom-in"
       data-aos-delay="700"
-      class="max-w-7xl mx-auto text-[#bababa] text-center text-xl max-md:text-lg max-sm:hidden"
+      class="max-w-7xl mx-auto text-white-light text-center text-xl max-md:text-lg max-sm:hidden"
     >
       No ranking, os números falam por si. Representam o esforço dos jogadores
       em alcançar o topo. É simples: os

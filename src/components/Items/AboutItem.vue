@@ -6,7 +6,7 @@ export default {
 
 <template>
   <div
-    class="relative mb-4 flex flex-col gap-4 text-center bg-[#0c0c0c] px-6 py-8 rounded-lg shadow-md shadow-black/70 hover:bg-[#0f0f0f]"
+    class="relative mb-4 flex flex-col gap-4 text-center bg-black-light px-6 py-8 rounded-lg shadow-md shadow-black/70 hover:bg-[#0f0f0f]"
   >
     <h3
       id="title"
@@ -15,7 +15,7 @@ export default {
       {{ title }}
     </h3>
     <p
-      class="mt-24 text-xl font-light text-[#ccc] leading-8 max-[440px]:text-sm"
+      class="mt-24 text-xl font-light text-white-xlight leading-8 max-[440px]:text-sm"
     >
       {{ content }}
     </p>

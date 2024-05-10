@@ -34,7 +34,7 @@ export default {
       <h4
         data-aos="fade-up"
         data-aos-delay="400"
-        class="max-w-7xl mx-auto text-[#bababa] text-center text-xl max-md:text-lg max-sm:text-base max-[440px]:text-base"
+        class="max-w-7xl mx-auto text-white-light text-center text-xl max-md:text-lg max-sm:text-base max-[440px]:text-base"
       >
         Este é o espaço onde você pode explorar todos os jogos disponíveis para
         jogar, acompanhados de algumas dicas úteis sobre cada um deles.

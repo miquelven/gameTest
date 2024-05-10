@@ -1,5 +1,5 @@
 <template>
-  <span class="text-[#2bb478]">
+  <span class="text-green-highligh">
     <slot></slot>
   </span>
 </template>
