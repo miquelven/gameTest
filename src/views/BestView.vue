@@ -40,6 +40,11 @@ export default {
 
     console.log(scores);
 
+    if (!isPending) {
+      console.log(scores);
+      console.log(scores.userScores);
+    }
+
     this.activeEffectHover();
   },
   methods: {
@@ -95,7 +100,7 @@ export default {
       </template>
       <template v-else>
         <table
-          v-if="scores && scores.userScores.length > 0"
+          v-if="scores.userScores && scores.userScores.length > 0"
           class="rounded-lg shadow-md shadow-black-half grid grid-cols-2 gap-16 bg-black-light p-10 max-xl:gap-14 max-md:mx-5 max-sm:mx-0 max-sm:flex max-sm:flex-col max-sm:gap-8"
           ref="infoItems"
           :style="{
