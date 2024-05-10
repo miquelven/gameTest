@@ -2,6 +2,7 @@
 import Button from "./icons/Button.vue";
 import validateForm from "@/mixins/validateForm.js";
 import axios from "axios";
+import logoImg from "@/assets/images/logo.webp";
 import { useToast } from "vue-toastification";
 
 export default {
@@ -14,6 +15,7 @@ export default {
       showPassword: false,
       loadingButton: false,
       toast: null,
+      logoImg: logoImg,
     };
   },
   mounted() {
@@ -91,11 +93,7 @@ export default {
   >
     <div class="relative z-10" data-aos="zoom-in">
       <div class="flex justify-center items-center flex-col">
-        <img
-          src="@/assets/images/logo.webp"
-          alt=""
-          class="w-48 brightness-125"
-        />
+        <img :src="logoImg" alt="" class="w-40 brightness-125 max-sm:w-32" />
 
         <form
           class="flex flex-col gap-8 w-full p-2 max-w-72"
