@@ -11,11 +11,11 @@ const getScore = async (userEmail) => {
   console.log(response);
 
   scores = response.data.userScores.sort((a, b) => b - a);
-  scores = this.scores.slice(0, 10);
+  scores = scores.slice(0, 10);
 
   console.log(scores);
 
-  return scores.data.userScores;
+  return scores;
 };
 
 const useGetScore = (userEmail) => {
