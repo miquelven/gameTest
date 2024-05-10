@@ -21,7 +21,7 @@ export default {
     }"
   >
     <p
-      class="text-zinc-200 text-light text-2xl max-md:text-xl max-[550px]:text-base"
+      class="text-zinc-200 text-light text-2xl max-md:text-xl max-sm:text-base"
     >
       {{ data.name }}
     </p>
@@ -41,6 +41,6 @@ export default {
       },
     }"
   >
-    <p class="text-light max-[550px]:text-sm">{{ data.score }}</p>
+    <p class="text-light max-sm:text-sm">{{ data.score }}</p>
   </td>
 </template>
