@@ -11,13 +11,18 @@ export default {
   },
   data() {
     return {
-      topScores: [],
+      topScores: [
+        { name: "kdfks", score: "kdfmksdm" },
+        { name: "kdfks", score: "kdfmksdm" },
+        { name: "miquelvesdfsdfn", score: "kdfmksdm" },
+        { name: "kdfks", score: "kdfmksdm" },
+      ],
       loading: false,
     };
   },
   mounted() {
     const { data, isPending } = useGetTopScores();
-    this.topScores = data;
+    // this.topScores = data;
 
     this.loading = isPending;
   },
@@ -28,7 +33,7 @@ export default {
   <section class="w-full min-h-[calc(100vh-80px)] mt-44">
     <div class="min-w-screen-2xl m-auto flex justify-center">
       <table
-        class="w-1/3 grid grid-cols-1 gap-10 p-10 bg-black-light shadow-md shadow-black-half rounded-lg max-xl:w-1/2 max-md:w-10/12 max-md:mx-5 max-sm:mx-0 max-sm:w-11/12 max-sm:gap-7"
+        class="w-1/3 grid grid-cols-1 gap-10 p-10 bg-black-light shadow-md shadow-black-half rounded-lg max-xl:w-1/2 max-md:w-10/12 max-md:mx-5 max-sm:w-full max-sm:gap-7 max-sm:px-3 max-sm:py-5"
         data-aos="zoom-in"
         data-aos-duration="700"
       >
@@ -90,7 +95,7 @@ export default {
           <tr
             v-for="(item, index) in topScores"
             :key="index"
-            class="transition-all duration-300 w-10/12 mx-auto flex justify-between hover:bg-black-xlight hover:scale-105 items-center text-xl gap-20 px-7 py-4 rounded-md max-sm:w-full"
+            class="transition-all duration-300 w-10/12 mx-auto flex justify-between hover:bg-black-xlight hover:scale-105 items-center text-xl px-7 py-4 rounded-md max-sm:w-full max-sm:flex-wrap max-sm:gap-4"
             :class="[index < 3 ? 'bg-black-bold' : '']"
             v-motion
             :initial="{
