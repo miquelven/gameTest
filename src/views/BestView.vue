@@ -36,7 +36,10 @@ export default {
     const { data, isPending } = useGetScores(userEmail);
     this.loading = isPending;
 
-    this.scores = data.userScores;
+    this.scores = data;
+
+    console.log(scores);
+
     this.activeEffectHover();
   },
   methods: {
@@ -90,10 +93,9 @@ export default {
           </div>
         </div>
       </template>
-
       <template v-else>
         <table
-          v-if="scores && scores.length > 0"
+          v-if="scores && scores.userScores.length > 0"
           class="rounded-lg shadow-md shadow-black-half grid grid-cols-2 gap-16 bg-black-light p-10 max-xl:gap-14 max-md:mx-5 max-sm:mx-0 max-sm:flex max-sm:flex-col max-sm:gap-8"
           ref="infoItems"
           :style="{
@@ -130,7 +132,7 @@ export default {
             </th>
           </tr>
           <tr
-            v-for="(score, index) in scores"
+            v-for="(score, index) in scores.userScores"
             :key="index"
             class="min-2xl:even:col-start-2 min-2xl:even:col-end-3"
           >
@@ -146,6 +148,7 @@ export default {
           </p>
         </div>
       </template>
+      {{ JSON.stringify(scores) }}
     </Container>
   </section>
 </template>
