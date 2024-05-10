@@ -27,7 +27,7 @@ export default {
   <nav
     v-if="showMenu"
     v-click-outside="() => (showMenu = false)"
-    class="absolute left-0 top-[80px] flex flex-col bg-[#0a0a0a] border-y-[2px] border-[rgba(255,255,255,.1)] w-full font-light"
+    class="absolute left-0 top-[60px] flex flex-col bg-[#0a0a0a] border-y-[2px] border-[rgba(255,255,255,.1)] w-full font-light"
     data-aos="fade-down"
   >
     <LinksMenu :isMobile="true" @closeMenu="() => (showMenu = false)" />
