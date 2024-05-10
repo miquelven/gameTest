@@ -77,6 +77,8 @@ export default {
 </script>
 
 <template>
+  <p v-if="!loading">{{ JSON.stringify(scores) }}</p>
+
   <section
     class="w-1/2 mx-auto mt-32 min-h-[calc(100vh-80px)] max-2xl:w-2/3 max-md:w-9/12 max-[550px]:w-11/12"
   >
