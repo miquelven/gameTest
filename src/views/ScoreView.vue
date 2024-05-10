@@ -17,7 +17,7 @@ export default {
   },
   mounted() {
     const { data, loading } = useGetTopScores();
-    this.topScores = data;
+    this.topScores = data.data.topScores;
 
     console.log(data);
     this.loading = loading;
