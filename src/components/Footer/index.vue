@@ -1,9 +1,11 @@
 <script>
 import Modal from "../Modal/index.vue";
+import TextHighlight from "@/views/icons/TextHighlight.vue";
 
 export default {
   components: {
     Modal,
+    TextHighlight,
   },
   data() {
     return {
@@ -46,18 +48,12 @@ export default {
           {{ currentYear }} GameTest. Todos os direitos reservados
         </p>
         <div>
-          <button
-            @click="showModal('terms')"
-            class="text-[#2bb478] hover:underline"
-          >
-            Termos de Serviço
+          <button @click="showModal('terms')" class="hover:underline">
+            <TextHighlight> Termos de Serviço </TextHighlight>
           </button>
           e
-          <button
-            @click="showModal('privacity')"
-            class="text-[#2bb478] hover:underline"
-          >
-            Políticas de Privacidade.
+          <button @click="showModal('privacity')" class="hover:underline">
+            <TextHighlight> Políticas de Privacidade. </TextHighlight>
           </button>
         </div>
       </div>
@@ -72,4 +68,3 @@ export default {
     </Teleport>
   </footer>
 </template>
-../Modal/index.vue

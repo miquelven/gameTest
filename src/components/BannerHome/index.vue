@@ -1,9 +1,11 @@
 <script>
 import Button from "@/views/icons/Button.vue";
+import TextHighlight from "@/views/icons/TextHighlight.vue";
 
 export default {
   components: {
     Button,
+    TextHighlight,
   },
 };
 </script>
@@ -18,7 +20,9 @@ export default {
         data-aos="fade-up"
         class="text-7xl font-bold max-xl:text-5xl max-sm:text-4xl max-[440px]:text-3xl"
       >
-        Consiga a <span class="text-[#2bb478]"> melhor pontuação</span> e
+        Consiga a
+        <TextHighlight> melhor pontuação </TextHighlight>
+        e
         <span class="block mt-5">Fique em primeiro</span>
       </h1>
     </div>
@@ -29,10 +33,12 @@ export default {
         class="text-2xl font-semibold text-center leading-9 max-xl:text-xl max-md:text-lg max-sm:text-base max-[440px]:text-sm"
       >
         Aqui você encontrará
-        <span class="text-[#2bb478]">vários desafios,</span> terá que superar
-        todos eles no
-        <span class="text-[#2bb478]"> menor tempo possível,</span> dê o seu
-        máximo para conseguir a melhor pontuação.
+        <TextHighlight>vários desafios, </TextHighlight>
+
+        terá que superar todos eles no
+        <TextHighlight> menor tempo possível, </TextHighlight>
+
+        dê o seu máximo para conseguir a melhor pontuação.
       </h2>
       <router-link
         to="/gamesPage"

@@ -1,7 +1,9 @@
 <script>
 import rankingImg from "../../assets/images/Home/ranking.webp";
+import TextHighlight from "@/views/icons/TextHighlight.vue";
 
 export default {
+  components: { TextHighlight },
   data() {
     return {
       rankingImg: rankingImg,
@@ -21,7 +23,7 @@ export default {
         class="mb-14 text-6xl font-bold text-center max-xl:text-4xl max-md:text-4xl"
       >
         No ranking, são exibidas as
-        <span class="text-[#2bb478]"> 10 melhores pontuações </span>
+        <TextHighlight> 10 melhores pontuações </TextHighlight>
       </h3>
       <h4
         data-aos="zoom-in"
@@ -30,9 +32,9 @@ export default {
       >
         Ele é atualizado em tempo real, fornecendo informações detalhadas sobre
         os principais jogadores, incluindo seus
-        <span class="text-[#2bb478]">
-          nomes, pontuações e posições no ranking.</span
-        >
+        <TextHighlight>
+          nomes, pontuações e posições no ranking.
+        </TextHighlight>
       </h4>
     </div>
     <div class="brightness-90" data-aos="zoom-in" data-aos-delay="600">
@@ -45,8 +47,8 @@ export default {
     >
       No ranking, os números falam por si. Representam o esforço dos jogadores
       em alcançar o topo. É simples: os
-      <span class="text-[#2bb478]"> melhores são reconhecidos, </span> e a
-      competição continua.
+      <TextHighlight> melhores são reconhecidos, </TextHighlight>
+      e a competição continua.
     </p>
   </section>
 </template>

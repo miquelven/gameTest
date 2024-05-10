@@ -1,10 +1,12 @@
 <script>
 import TopInfoItem from "@/components/Items/TopInfoItem.vue";
+import TextHighlight from "@/views/icons/TextHighlight.vue";
 import axios from "axios";
 
 export default {
   components: {
     TopInfoItem,
+    TextHighlight,
   },
   data() {
     return {
@@ -59,9 +61,9 @@ export default {
               <p>Listagem dos jogadores com as melhores pontuações .</p>
               <p>
                 Destaque das
-                <span class="text-[#2bb478]"> pontuações mais altas </span> dos
-                <span class="text-[#2bb478]"> melhores jogadores </span> em
-                nossos jogos
+                <TextHighlight> pontuações mais altas </TextHighlight> dos
+                <TextHighlight> melhores jogadores </TextHighlight> em nossos
+                jogos
               </p>
             </div>
           </th>

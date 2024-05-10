@@ -1,10 +1,13 @@
 <script>
 import timerImg from "../../assets/images/Home/timer.webp";
+import TextHighlight from "@/views/icons/TextHighlight.vue";
 
 export default {
+  components: { TextHighlight },
   data() {
     return {
       timerImg: timerImg,
+      TextHighlight,
     };
   },
 };
@@ -26,7 +29,9 @@ export default {
         class="text-6xl font-bold text-center max-xl:text-4xl max-md:text-4xl"
       >
         Ganhe todos os jogos no
-        <span class="text-[#2bb478]"> menor tempo </span> possível
+
+        <TextHighlight> menor tempo </TextHighlight>
+        possível
       </h3>
       <div
         data-aos="zoom-in"
@@ -35,10 +40,8 @@ export default {
       >
         <p>
           Consiga a melhor pontuação para aparecer no ranking dos melhores.
-          <span class="text-[#2bb478]">
-            Vença os jogos para obter mais pontos </span
-          >, quanto mais o tempo passa menos pontos você terá na pontuação
-          final.
+          <TextHighlight> Vença os jogos para obter mais pontos </TextHighlight>
+          , quanto mais o tempo passa menos pontos você terá na pontuação final.
         </p>
         <p></p>
       </div>
