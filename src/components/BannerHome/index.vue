@@ -15,20 +15,17 @@ export default {
   >
     <div class="text-center">
       <h1
+        data-aos="fade-up"
         class="text-7xl font-bold max-xl:text-5xl max-sm:text-4xl max-[440px]:text-3xl"
       >
         Consiga a <span class="text-[#2bb478]"> melhor pontuação</span> e
         <span class="block mt-5">Fique em primeiro</span>
       </h1>
     </div>
-    <div
-      data-aos="fade-left"
-      data-aos-delay="600"
-      class="flex flex-col justify-center items-center gap-12"
-    >
+    <div class="flex flex-col justify-center items-center gap-12">
       <h2
-        data-aos="fade-right"
-        data-aos-delay="200"
+        data-aos="fade-up"
+        data-aos-delay="300"
         class="text-2xl font-semibold text-center leading-9 max-xl:text-xl max-md:text-lg max-sm:text-base max-[440px]:text-sm"
       >
         Aqui você encontrará
@@ -42,7 +39,7 @@ export default {
         data-aos="flip-left"
         data-aos-easing="ease-out-cubic"
         data-aos-duration="500"
-        data-aos-delay="1100"
+        data-aos-delay="600"
       >
         <Button type="button" label="INICIAR DESAFIO" />
       </router-link>

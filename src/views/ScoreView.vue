@@ -38,22 +38,14 @@ export default {
     <div class="min-w-screen-2xl m-auto flex justify-center">
       <table
         class="w-1/3 grid grid-cols-1 gap-10 p-10 bg-[#0c0c0c] shadow-md shadow-black/50 rounded-lg max-xl:w-1/2 max-md:w-10/12 max-md:mx-5 max-sm:mx-0 max-sm:w-11/12 max-sm:gap-7"
-        v-motion
-        :initial="{
-          opacity: 0,
-        }"
-        :enter="{
-          opacity: 1,
-          transition: {
-            duration: 700,
-            type: 'keyframes',
-            ease: 'easein,',
-          },
-        }"
+        data-aos="zoom-in"
+        data-aos-duration="700"
       >
         <tr class="flex justify-center">
           <th>
             <h3
+              data-aos="zoom-in"
+              data-aos-delay="750"
               class="text-5xl font-medium mb-5 max-2xl:text-4xl max-sm:text-3xl"
             >
               Top Pontuações:
@@ -61,6 +53,8 @@ export default {
 
             <div
               class="font-medium text-[#bababa] leading-7 max-sm:text-sm max-sm:mb-5"
+              data-aos="zoom-in"
+              data-aos-delay="800"
             >
               <p>Listagem dos jogadores com as melhores pontuações .</p>
               <p>
@@ -99,6 +93,8 @@ export default {
         <template v-else>
           <div
             class="flex justify-center items-center scale-150 h-[calc(40vh)]"
+            data-aos="zoom-in"
+            data-aos-delay="800"
           >
             <div role="status">
               <svg

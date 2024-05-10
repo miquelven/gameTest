@@ -7,6 +7,8 @@
     class="transition-all overflow-hidden bg-zinc-300 duration-500 ease-in-out inline-block h-[60px] w-[60px] float-left mx-[15px] rounded-full cursor-pointer text-black shadow-[0_10px_10px_rgba(0,0,0,.1)] sm:hover:w-[200px] hover:bg-transparent hover:text-white max-sm:text-white max-sm:h-[45px] max-sm:w-[150px]"
     @mouseover="hover = true"
     @mouseout="hover = false"
+    data-aos="zoom-in"
+    data-aos-delay="600"
   >
     <div
       id="iconArea"
