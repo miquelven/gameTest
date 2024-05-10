@@ -34,11 +34,12 @@ export default {
       : null;
 
     const { data, isPending } = useGetScores(userEmail);
-
-    this.scores = data;
-    if (isPending) console.log(this.scores);
     this.loading = isPending;
-    if (!isPending) this.activeEffectHover();
+
+    if (!isPending) {
+      this.scores = data.data.userScores;
+      this.activeEffectHover();
+    }
   },
   methods: {
     activeEffectHover() {
