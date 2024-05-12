@@ -3,8 +3,6 @@ import BestInfoItem from "@/components/Items/BestInfoItem.vue";
 import Loader from "@/components/Loader/index.vue";
 import Container from "@/views/icons/Container.vue";
 import TextHighlight from "@/views/icons/TextHighlight.vue";
-import { useMouseInElement } from "@vueuse/core";
-import axios from "axios";
 import useGetScores from "@/hooks/useGetScores.js";
 
 export default {
