@@ -2,7 +2,6 @@
 import TopInfoItem from "@/components/Items/TopInfoItem.vue";
 import TextHighlight from "@/views/icons/TextHighlight.vue";
 import useGetTopScores from "@/hooks/useGetTopScores.js";
-import axios from "axios";
 
 export default {
   components: {
@@ -11,18 +10,13 @@ export default {
   },
   data() {
     return {
-      topScores: [
-        { name: "kdfks", score: "kdfmksdm" },
-        { name: "kdfks", score: "kdfmksdm" },
-        { name: "miquelvesdfsdfn", score: "kdfmksdm" },
-        { name: "kdfks", score: "kdfmksdm" },
-      ],
+      topScores: [],
       loading: false,
     };
   },
   mounted() {
     const { data, isPending } = useGetTopScores();
-    // this.topScores = data;
+    this.topScores = data;
 
     this.loading = isPending;
   },
