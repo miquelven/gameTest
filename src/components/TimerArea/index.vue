@@ -14,13 +14,17 @@ export default {
 </script>
 
 <template>
-  <section class="flex justify-center items-center max-sm:mt-40">
+  <section
+    class="flex justify-center items-center max-lg:flex-col-reverse max-lg:gap-14 max-sm:mt-40"
+  >
     <div
       data-aos="zoom-in"
       data-aos-delay="200"
-      class="flex-1 brightness-90 max-sm:hidden"
+      class="flex-1 brightness-90 flex justify-center align-center"
     >
-      <v-img :src="timerImg" class="h-5/6 w-5/6 invert" cover></v-img>
+      <div class="size-[400px] max-lg:size-48">
+        <v-img :src="timerImg" class="size-full invert" cover></v-img>
+      </div>
     </div>
     <div class="flex-1 flex flex-col gap-20 max-sm:gap-14">
       <h3

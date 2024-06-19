@@ -38,7 +38,11 @@ export default {
       </h4>
     </div>
     <div class="brightness-90" data-aos="zoom-in" data-aos-delay="600">
-      <v-img :src="rankingImg" class="w-1/4 h-1/4 invert mx-auto" cover></v-img>
+      <v-img
+        :src="rankingImg"
+        class="w-1/6 h-1/6 invert mx-auto max-sm:w-1/3 max-sm:h-1/3"
+        cover
+      ></v-img>
     </div>
     <p
       data-aos="zoom-in"
