@@ -4,6 +4,7 @@ import validateForm from "@/mixins/validateForm.js";
 import axios from "axios";
 import logoImg from "@/assets/images/logo.webp";
 import { useToast } from "vue-toastification";
+import TextHighlight from "./icons/TextHighlight.vue";
 
 export default {
   mixins: [validateForm],
@@ -23,6 +24,7 @@ export default {
     if (localStorage.getItem("token")) localStorage.removeItem("token");
   },
   components: {
+    TextHighlight,
     Button,
   },
   methods: {
@@ -89,11 +91,19 @@ export default {
 
 <template>
   <section
-    class="w-full h-screen flex flex-col justify-center items-center max-sm:mb-20"
+    class="w-full h-screen flex flex-col justify-center items-center max-sm:mb-0"
   >
-    <div class="relative z-10" data-aos="zoom-in">
+    <div
+      class="relative z-10 p-10 rounded-md"
+      style="background-color: #171717"
+      data-aos="zoom-in"
+    >
       <div class="flex justify-center items-center flex-col">
-        <img :src="logoImg" alt="" class="w-40 brightness-125 max-sm:w-32" />
+        <img
+          :src="logoImg"
+          alt=""
+          class="w-28 mb-10 brightness-125 max-sm:w-24"
+        />
 
         <form
           class="flex flex-col gap-8 w-full p-2 max-w-72"
@@ -147,7 +157,7 @@ export default {
               >Esqueceu sua senha?</a
             >
           </span>
-          <span>
+          <span class="mt-2 text-center">
             <p class="text-gray-400/80">
               Não tem uma conta?
               <router-link to="/register" class="hover:underline">

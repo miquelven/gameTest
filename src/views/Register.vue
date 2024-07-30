@@ -99,101 +99,107 @@ export default {
     id="container"
     data-aos="zoom-in"
   >
-    <h4 class="text-4xl mt-20 mb-12 max-[400px]:text-3xl">Registre-se</h4>
-    <form
-      ref="form"
-      class="relative z-10 w-72 flex flex-col justify-center items-center gap-6"
-      @submit.prevent="register"
+    <div
+      class="p-10 flex justify-center items-center flex-col rounded-md max-sm:p-0"
+      style="background-color: #171717"
     >
-      <div class="w-full flex items-center relative">
-        <v-text-field
-          ref="inputName"
-          autofocus
-          v-model="userName"
-          :rules="nameRules"
-          label="nome"
-        ></v-text-field>
-      </div>
-      <div class="w-full flex items-center relative">
-        <v-text-field
-          ref="inputEmail"
-          label="email"
-          v-model="email"
-          :rules="emailRules"
-        ></v-text-field>
-      </div>
-      <div class="w-full flex items-center relative">
-        <v-text-field
-          ref="inputPassword"
-          label="senha"
-          v-model="password"
-          :type="showPassword ? 'text' : 'password'"
-          :rules="passwordRules"
-        >
-          <div
-            class="absolute right-0 top-0 py-5 px-3 hover:cursor-pointer"
-            @click="() => (showPassword = !showPassword)"
+      <h4 class="text-4xl mt-20 mb-12 max-[400px]:text-3xl">Registre-se</h4>
+      <form
+        ref="form"
+        class="relative z-10 w-72 flex flex-col justify-center items-center gap-6 max-sm:w-full"
+        @submit.prevent="register"
+      >
+        <div class="w-full flex items-center relative">
+          <v-text-field
+            ref="inputName"
+            autofocus
+            v-model="userName"
+            :rules="nameRules"
+            label="nome"
+          ></v-text-field>
+        </div>
+        <div class="w-full flex items-center relative">
+          <v-text-field
+            ref="inputEmail"
+            label="email"
+            v-model="email"
+            :rules="emailRules"
+          ></v-text-field>
+        </div>
+        <div class="w-full flex items-center relative">
+          <v-text-field
+            ref="inputPassword"
+            label="senha"
+            v-model="password"
+            :type="showPassword ? 'text' : 'password'"
+            :rules="passwordRules"
           >
-            <font-awesome-icon
-              :icon="['fas', 'eye']"
-              class="hover:cursor-pointer opacity-50"
-              v-if="showPassword"
-            />
-            <font-awesome-icon
-              :icon="['fas', 'eye']"
-              class="hover:cursor-pointer"
-              v-else
-            />
-          </div>
-        </v-text-field>
-      </div>
+            <div
+              class="absolute right-0 top-0 py-5 px-3 hover:cursor-pointer"
+              @click="() => (showPassword = !showPassword)"
+            >
+              <font-awesome-icon
+                :icon="['fas', 'eye']"
+                class="hover:cursor-pointer opacity-50"
+                v-if="showPassword"
+              />
+              <font-awesome-icon
+                :icon="['fas', 'eye']"
+                class="hover:cursor-pointer"
+                v-else
+              />
+            </div>
+          </v-text-field>
+        </div>
 
-      <div class="w-full flex items-center relative">
-        <v-text-field
-          ref="inputCPassword"
-          label="confirme sua senha"
-          v-model="C_password"
-          :type="showIconPassword ? 'text' : 'password'"
-          :rules="pwdConfirm"
-        >
-          <div
-            class="absolute right-0 top-0 py-5 px-3 hover:cursor-pointer"
-            @click="() => (showIconPassword = !showIconPassword)"
+        <div class="w-full flex items-center relative">
+          <v-text-field
+            ref="inputCPassword"
+            label="confirme sua senha"
+            v-model="C_password"
+            :type="showIconPassword ? 'text' : 'password'"
+            :rules="pwdConfirm"
           >
-            <font-awesome-icon
-              :icon="['fas', 'eye']"
-              class="hover:cursor-pointer opacity-50"
-              v-if="showIconPassword"
-            />
-            <font-awesome-icon
-              :icon="['fas', 'eye']"
-              class="hover:cursor-pointer"
-              v-else
-            />
-          </div>
-        </v-text-field>
-      </div>
+            <div
+              class="absolute right-0 top-0 py-5 px-3 hover:cursor-pointer"
+              @click="() => (showIconPassword = !showIconPassword)"
+            >
+              <font-awesome-icon
+                :icon="['fas', 'eye']"
+                class="hover:cursor-pointer opacity-50"
+                v-if="showIconPassword"
+              />
+              <font-awesome-icon
+                :icon="['fas', 'eye']"
+                class="hover:cursor-pointer"
+                v-else
+              />
+            </div>
+          </v-text-field>
+        </div>
 
-      <Button :loadingProp="loadingButton" type="submit" label="Registrar" />
-    </form>
-    <div class="flex flex-col justify-center items-center mt-10 gap-5">
-      <span
-        >Já tem uma conta?
-        <router-link to="/login" class="hover:underline">
-          <TextHighlight> Entrar. </TextHighlight>
-        </router-link>
-      </span>
-      <div class="flex flex-col gap-1">
-        <span> Ao criar uma conta, você concorda com os </span>
-        <span class="text-sm text-center text-zinc-200">
-          <button @click="showModal('terms')" class="hover:underline">
-            <TextHighlight> Termos de Serviço </TextHighlight>
-          </button>
-          e
-          <button @click="showModal('privacity')" class="hover:underline">
-            <TextHighlight> Políticas de Privacidade. </TextHighlight>
-          </button>
+        <Button :loadingProp="loadingButton" type="submit" label="Registrar" />
+      </form>
+
+      <div class="flex flex-col justify-center items-center mt-10 gap-5">
+        <span
+          >Já tem uma conta?
+          <router-link to="/login" class="hover:underline">
+            <TextHighlight> Entrar. </TextHighlight>
+          </router-link>
         </span>
+        <div class="flex flex-col gap-1">
+          <span> Ao criar uma conta, você concorda com os </span>
+          <span class="text-sm text-center text-zinc-200">
+            <button @click="showModal('terms')" class="hover:underline">
+              <TextHighlight> Termos de Serviço </TextHighlight>
+            </button>
+            e
+            <button @click="showModal('privacity')" class="hover:underline">
+              <TextHighlight> Políticas de Privacidade. </TextHighlight>
+            </button>
+          </span>
+        </div>
       </div>
     </div>
   </section>
