@@ -60,7 +60,7 @@ export default {
       const pattern =
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-      if (this.email && this.email.length <= 20 && pattern.test(this.email)) {
+      if (this.email && pattern.test(this.email)) {
         try {
           const response = await axios.post("/reset-password", {
             email: this.email,
