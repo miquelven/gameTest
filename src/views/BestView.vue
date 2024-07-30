@@ -48,7 +48,7 @@ export default {
       <template v-else>
         <table
           v-if="scores && scores.length > 0"
-          class="rounded-lg shadow-md shadow-black-half grid grid-cols-2 gap-16 bg-black-light p-10 max-xl:gap-14 max-md:mx-5 max-md:flex max-md:flex-col max-sm:mx-0 max-sm:flex max-sm:flex-col max-sm:gap-8"
+          class="rounded-lg shadow-md shadow-black-half grid grid-cols-2 gap-16 bg-[#171717] p-10 max-xl:gap-14 max-md:mx-5 max-md:flex max-md:flex-col max-sm:mx-0 max-sm:flex max-sm:flex-col max-sm:gap-8"
           v-motion
           :initial="{
             opacity: 0,
