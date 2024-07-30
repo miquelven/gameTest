@@ -32,7 +32,7 @@ export default {
           session_token: localStorage.getItem("token"),
         });
 
-        if (response.data.success) {
+        if (response.status == 200) {
           localStorage.removeItem("token");
           localStorage.removeItem("name");
           localStorage.removeItem("vuex");
