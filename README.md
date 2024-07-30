@@ -9,8 +9,7 @@
 
  
 
-
-![ezgif com-animated-gif-maker (7)](https://github.com/miquelven/gameTest/assets/67767211/e5d73fce-3a99-41b8-88e0-f85e3cd3fef8)
+![ezgif com-animated-gif-maker (14)](https://github.com/user-attachments/assets/779150be-51c3-4a1b-9105-310d5cd2383c)
 > Front-End do projeto GameTest, obtenha as melhores pontuações, consiga seu melhor desempenho e apareça no ranking dos melhores.
   ###### [Back-End GameTest](https://github.com/miquelven/games_in_game_api)
 
