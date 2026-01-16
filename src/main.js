@@ -33,12 +33,17 @@ import {
   faTrophy,
   faBrain,
   faArrowRight,
+  faGamepad,
+  faCode,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
   faGoogle,
   faFacebookF,
   faInstagram,
+  faVuejs,
+  faJs,
+  faCss3Alt,
 } from "@fortawesome/free-brands-svg-icons";
 
 library.add(
@@ -58,7 +63,12 @@ library.add(
   faStopwatch,
   faTrophy,
   faBrain,
-  faArrowRight
+  faArrowRight,
+  faGamepad,
+  faCode,
+  faVuejs,
+  faJs,
+  faCss3Alt
 );
 
 import axios from "axios";
