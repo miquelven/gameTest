@@ -27,6 +27,8 @@ import {
   faBars,
   faXmark,
   faSpinner,
+  faUser,
+  faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
