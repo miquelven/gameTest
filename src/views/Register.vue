@@ -26,6 +26,7 @@ export default {
       toast: null,
       isModalOpen: false,
       textModal: "",
+      formValid: true,
 
       pwdConfirm: [
         (v) => !!v || "Confirme a senha",
@@ -37,28 +38,28 @@ export default {
   mounted() {
     this.toast = useToast();
   },
+  computed: {
+    isRegisterPasswordInvalid() {
+      return this.passwordRules.some((rule) => rule(this.password) !== true);
+    },
+    isConfirmPasswordInvalid() {
+      return this.pwdConfirm.some((rule) => rule(this.C_password) !== true);
+    },
+  },
   methods: {
     showModal(type) {
       this.isModalOpen = true;
       this.textModal = type;
     },
-
-    async verifyInputs() {
-      if (
-        (await this.$refs.inputName.validate()).length == 0 &&
-        (await this.$refs.inputEmail.validate()).length == 0 &&
-        (await this.$refs.inputPassword.validate()).length == 0 &&
-        (await this.$refs.inputCPassword.validate()).length == 0
-      )
-        return true;
-      else return false;
-    },
     async register() {
-      this.loadingButton = true;
-      if ((await this.verifyInputs()) == false) {
-        this.toast.error("Preencha todos os campos!");
+      const { valid } = await this.$refs.form.validate();
+
+      if (!valid) {
+        this.toast.error("Preencha todos os campos corretamente!");
         return;
       }
+
+      this.loadingButton = true;
       try {
         const response = await axios.post("/register", {
           username: this.userName,
@@ -86,8 +87,9 @@ export default {
       } catch (error) {
         this.toast.error("Não foi possível realizar o registro");
         console.log(error.message);
+      } finally {
+        this.loadingButton = false;
       }
-      this.loadingButton = false;
     },
   },
 };
@@ -95,110 +97,151 @@ export default {
 
 <template>
   <section
-    class="w-full h-screen flex flex-col justify-center items-center relative z-0"
-    id="container"
-    data-aos="zoom-in"
+    class="w-full min-h-screen flex flex-col justify-center items-center relative bg-neutral-950 pattern-grid"
   >
     <div
-      class="p-10 flex justify-center items-center flex-col rounded-md max-sm:p-0"
-      style="background-color: #171717"
+      class="relative z-10 w-full max-w-md p-8 rounded-xl border border-neutral-800 bg-[#171717] shadow-2xl transition-colors duration-300"
+      data-aos="zoom-in"
     >
-      <h4 class="text-4xl mt-20 mb-12 max-[400px]:text-3xl">Registre-se</h4>
-      <form
-        ref="form"
-        class="relative z-10 w-72 flex flex-col justify-center items-center gap-6 max-sm:w-full"
-        @submit.prevent="register"
-      >
-        <div class="w-full flex items-center relative">
+      <div
+        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-600 to-transparent opacity-50"
+      ></div>
+      <div
+        class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-900 to-transparent opacity-30"
+      ></div>
+
+      <div
+        class="absolute top-[-1px] left-[-1px] w-4 h-4 border-t-2 border-l-2 border-green-600 rounded-tl-lg transition-colors duration-300"
+      ></div>
+      <div
+        class="absolute top-[-1px] right-[-1px] w-4 h-4 border-t-2 border-r-2 border-green-600 rounded-tr-lg transition-colors duration-300"
+      ></div>
+      <div
+        class="absolute bottom-[-1px] left-[-1px] w-4 h-4 border-b-2 border-l-2 border-green-600 rounded-bl-lg transition-colors duration-300"
+      ></div>
+      <div
+        class="absolute bottom-[-1px] right-[-1px] w-4 h-4 border-b-2 border-r-2 border-green-600 rounded-br-lg transition-colors duration-300"
+      ></div>
+
+      <div class="flex justify-center items-center flex-col w-full">
+        <div class="mb-8 flex flex-col items-center relative">
+          <h4 class="text-3xl mb-2 text-white tracking-wider">REGISTRE-SE</h4>
+          <p class="text-neutral-400 text-sm mt-1">
+            Crie sua conta para começar a jogar
+          </p>
+        </div>
+
+        <v-form
+          ref="form"
+          v-model="formValid"
+          class="flex flex-col gap-5 w-full"
+          @submit.prevent="register"
+        >
           <v-text-field
-            ref="inputName"
             autofocus
             v-model="userName"
             :rules="nameRules"
-            label="nome"
+            label="Nome de usuário"
+            variant="outlined"
+            base-color="grey-darken-2"
+            color="green-accent-3"
+            density="comfortable"
+            theme="dark"
           ></v-text-field>
-        </div>
-        <div class="w-full flex items-center relative">
+
           <v-text-field
-            ref="inputEmail"
-            label="email"
+            label="Email"
             v-model="email"
             :rules="emailRules"
+            variant="outlined"
+            base-color="grey-darken-2"
+            color="green-accent-3"
+            density="comfortable"
+            theme="dark"
           ></v-text-field>
-        </div>
-        <div class="w-full flex items-center relative">
+
           <v-text-field
-            ref="inputPassword"
-            label="senha"
+            label="Senha"
             v-model="password"
             :type="showPassword ? 'text' : 'password'"
             :rules="passwordRules"
+            variant="outlined"
+            base-color="grey-darken-2"
+            color="green-accent-3"
+            density="comfortable"
+            theme="dark"
           >
-            <div
-              class="absolute right-0 top-0 py-5 px-3 hover:cursor-pointer"
-              @click="() => (showPassword = !showPassword)"
-            >
+            <template v-slot:append-inner>
               <font-awesome-icon
                 :icon="['fas', 'eye']"
-                class="hover:cursor-pointer opacity-50"
-                v-if="showPassword"
+                class="cursor-pointer hover:text-green-400 transition-colors"
+                :class="
+                  password && isRegisterPasswordInvalid
+                    ? 'text-red-500'
+                    : 'text-green-500'
+                "
+                @click="() => (showPassword = !showPassword)"
               />
-              <font-awesome-icon
-                :icon="['fas', 'eye']"
-                class="hover:cursor-pointer"
-                v-else
-              />
-            </div>
+            </template>
           </v-text-field>
-        </div>
 
-        <div class="w-full flex items-center relative">
           <v-text-field
-            ref="inputCPassword"
-            label="confirme sua senha"
+            label="Confirme sua senha"
             v-model="C_password"
             :type="showIconPassword ? 'text' : 'password'"
             :rules="pwdConfirm"
+            variant="outlined"
+            base-color="grey-darken-2"
+            color="green-accent-3"
+            density="comfortable"
+            theme="dark"
           >
-            <div
-              class="absolute right-0 top-0 py-5 px-3 hover:cursor-pointer"
-              @click="() => (showIconPassword = !showIconPassword)"
-            >
+            <template v-slot:append-inner>
               <font-awesome-icon
                 :icon="['fas', 'eye']"
-                class="hover:cursor-pointer opacity-50"
-                v-if="showIconPassword"
+                class="cursor-pointer hover:text-green-400 transition-colors"
+                :class="
+                  C_password && isConfirmPasswordInvalid
+                    ? 'text-red-500'
+                    : 'text-green-500'
+                "
+                @click="() => (showIconPassword = !showIconPassword)"
               />
-              <font-awesome-icon
-                :icon="['fas', 'eye']"
-                class="hover:cursor-pointer"
-                v-else
-              />
-            </div>
+            </template>
           </v-text-field>
-        </div>
 
-        <Button :loadingProp="loadingButton" type="submit" label="Registrar" />
-      </form>
+          <div class="mt-2 w-full">
+            <Button
+              :loadingProp="loadingButton"
+              type="submit"
+              label="REGISTRAR"
+              class="w-full font-bold tracking-widest"
+            />
+          </div>
+        </v-form>
 
-      <div class="flex flex-col justify-center items-center mt-10 gap-5">
-        <span
-          >Já tem uma conta?
-          <router-link to="/login" class="hover:underline">
-            <TextHighlight> Entrar. </TextHighlight>
-          </router-link>
-        </span>
-        <div class="flex flex-col gap-1">
-          <span> Ao criar uma conta, você concorda com os </span>
-          <span class="text-sm text-center text-zinc-200">
-            <button @click="showModal('terms')" class="hover:underline">
-              <TextHighlight> Termos de Serviço </TextHighlight>
-            </button>
-            e
-            <button @click="showModal('privacity')" class="hover:underline">
-              <TextHighlight> Políticas de Privacidade. </TextHighlight>
-            </button>
+        <div class="flex flex-col justify-center items-center mt-8 gap-5">
+          <span
+            >Já tem uma conta?
+            <router-link
+              to="/login"
+              class="hover:underline text-green-500 font-semibold hover:text-green-400 transition-colors"
+            >
+              <TextHighlight> Entrar </TextHighlight>
+            </router-link>
           </span>
+          <div class="flex flex-col gap-1 text-sm text-center text-zinc-200">
+            <span> Ao criar uma conta, você concorda com os </span>
+            <span>
+              <button @click="showModal('terms')" class="hover:underline">
+                <TextHighlight> Termos de Serviço </TextHighlight>
+              </button>
+              e
+              <button @click="showModal('privacity')" class="hover:underline">
+                <TextHighlight> Políticas de Privacidade. </TextHighlight>
+              </button>
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -213,3 +256,16 @@ export default {
     </div>
   </Teleport>
 </template>
+
+<style scoped>
+.pattern-grid {
+  background-color: #020617;
+  background-image: radial-gradient(
+      circle at top,
+      rgba(34, 197, 94, 0.22),
+      transparent 55%
+    ),
+    radial-gradient(circle at bottom, rgba(16, 185, 129, 0.18), transparent 55%);
+  background-repeat: no-repeat;
+}
+</style>

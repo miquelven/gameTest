@@ -225,7 +225,7 @@ export default {
                 :icon="['fas', 'eye']"
                 class="cursor-pointer hover:text-green-400 transition-colors"
                 :class="
-                  !formValid && hasInteracted && isPasswordInvalid
+                  password && isPasswordInvalid
                     ? 'text-red-500'
                     : 'text-green-500'
                 "
@@ -269,13 +269,14 @@ export default {
 
 <style scoped>
 .pattern-grid {
-  background-color: #0a0a0a;
-  background-image: linear-gradient(
-      rgba(34, 197, 94, 0.05) 1px,
-      transparent 1px
+  background-color: #020617;
+  background-image: radial-gradient(
+      circle at top,
+      rgba(34, 197, 94, 0.22),
+      transparent 55%
     ),
-    linear-gradient(90deg, rgba(34, 197, 94, 0.05) 1px, transparent 1px);
-  background-size: 30px 30px;
+    radial-gradient(circle at bottom, rgba(16, 185, 129, 0.18), transparent 55%);
+  background-repeat: no-repeat;
 }
 
 /* 
