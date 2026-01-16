@@ -11,7 +11,7 @@ export default {
     class="w-full h-[calc(100vh-80px)] m-auto flex flex-col justify-center items-center max-sm:scale-75"
   >
     <div
-      class="bg-gradient-to-tl from-transparent from-20% via-transparent via-40% to-[#2bb478] py-8 px-16 rounded-lg text-lg"
+      class="bg-gradient-to-tl from-transparent from-20% via-transparent via-40% to-[#2bb478] py-8 px-16 rounded-md text-lg"
     >
       <div>
         <h4 class="font-medium text-6xl">Erro: 404</h4>

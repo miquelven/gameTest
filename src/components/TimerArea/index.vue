@@ -18,7 +18,7 @@ export default {
     class="flex justify-center items-center max-lg:flex-col-reverse max-lg:gap-14 max-sm:mt-40"
   >
     <div
-      data-aos="zoom-in"
+      data-aos="fade-up"
       data-aos-delay="200"
       class="flex-1 brightness-90 flex justify-center align-center"
     >
@@ -28,7 +28,7 @@ export default {
     </div>
     <div class="flex-1 flex flex-col gap-20 max-sm:gap-14">
       <h3
-        data-aos="zoom-in"
+        data-aos="fade-up"
         data-aos-delay="400"
         class="text-6xl font-bold text-center max-xl:text-4xl max-md:text-4xl"
       >
@@ -38,7 +38,7 @@ export default {
         possível
       </h3>
       <div
-        data-aos="zoom-in"
+        data-aos="fade-up"
         data-aos-delay="600"
         class="text-white-light text-center text-2xl max-xl:text-lg max-xl:leading-8 max-md:text-base"
       >

@@ -59,7 +59,7 @@ export default {
     >
       <router-link to="/" class="flex items-center gap-3">
         <div
-          class="relative flex items-center justify-center rounded-xl border border-neutral-800 bg-neutral-900 px-3 py-2"
+          class="relative flex items-center justify-center rounded-md border border-neutral-800 bg-neutral-900 px-3 py-2"
         >
           <img
             :src="logoImg"

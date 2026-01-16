@@ -15,9 +15,9 @@ export default {
 </script>
 
 <template>
-  <div v-motion :initial="{ opacity: 0, scale: 0.9 }" :enter="{ opacity: 1, scale: 1 }">
+  <div v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1 }">
     <div
-      class="relative h-[580px] max-h-[80vh] w-[700px] max-w-full overflow-y-auto bg-gradient-to-b from-neutral-950/95 via-neutral-900/95 to-black border border-emerald-500/40 rounded-2xl shadow-2xl shadow-black/80 p-10 max-md:w-[500px] max-[550px]:w-[90vw] max-[550px]:p-4"
+      class="relative h-[580px] max-h-[80vh] w-[700px] max-w-full overflow-y-auto bg-gradient-to-b from-neutral-950/95 via-neutral-900/95 to-black border border-emerald-500/40 rounded-md shadow-2xl shadow-black/80 p-10 max-md:w-[500px] max-[550px]:w-[90vw] max-[550px]:p-4"
       v-click-outside="() => $emit('closeModal')"
       transition="v-expand-transition"
     >
@@ -65,10 +65,13 @@ export default {
         </div>
       </template>
       <button
-        class="transition-all duration-200 absolute top-4 right-4 w-8 h-8 z-50 cursor-pointer hover:scale-110 flex items-center justify-center rounded-full bg-black/60 hover:bg-emerald-500/80"
+        class="transition-colors duration-200 absolute top-4 right-4 w-8 h-8 z-50 cursor-pointer flex items-center justify-center rounded-md bg-black/60 hover:bg-emerald-500/80"
         @click="() => $emit('closeModal')"
       >
-        <font-awesome-icon :icon="['fas', 'xmark']" class="text-lg text-neutral-100" />
+        <font-awesome-icon
+          :icon="['fas', 'xmark']"
+          class="text-lg text-neutral-100"
+        />
       </button>
     </div>
   </div>

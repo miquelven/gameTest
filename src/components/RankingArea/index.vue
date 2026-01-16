@@ -18,7 +18,7 @@ export default {
   >
     <div>
       <h3
-        data-aos="zoom-in"
+        data-aos="fade-up"
         data-aos-delay="200"
         class="mb-14 text-6xl font-bold text-center max-xl:text-4xl max-md:text-4xl"
       >
@@ -26,7 +26,7 @@ export default {
         <TextHighlight> 10 melhores pontuações </TextHighlight>
       </h3>
       <h4
-        data-aos="zoom-in"
+        data-aos="fade-up"
         data-aos-delay="400"
         class="text-white-light text-center text-2xl max-xl:text-lg max-xl:leading-8 max-md:text-base"
       >
@@ -37,7 +37,7 @@ export default {
         </TextHighlight>
       </h4>
     </div>
-    <div class="brightness-90" data-aos="zoom-in" data-aos-delay="600">
+    <div class="brightness-90" data-aos="fade-up" data-aos-delay="600">
       <v-img
         :src="rankingImg"
         class="w-1/6 h-1/6 invert mx-auto max-sm:w-1/3 max-sm:h-1/3"
@@ -45,7 +45,7 @@ export default {
       ></v-img>
     </div>
     <p
-      data-aos="zoom-in"
+      data-aos="fade-up"
       data-aos-delay="700"
       class="max-w-7xl mx-auto text-white-light text-center text-xl max-md:text-lg max-sm:hidden"
     >

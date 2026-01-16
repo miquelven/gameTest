@@ -134,7 +134,7 @@ export default {
     >
       <router-link
         to="/"
-        class="transition-all duration-300 rounded-md absolute top-10 left-10 px-3 py-1 text-2xl hover:text-emerald-400"
+        class="transition-colors duration-200 absolute top-10 left-10 px-3 py-1 text-2xl hover:text-emerald-400"
       >
         <font-awesome-icon :icon="['fas', 'arrow-left']" />
       </router-link>
@@ -158,7 +158,7 @@ export default {
           TEMPO
         </span>
         <div
-          class="px-6 py-2 rounded-full border border-emerald-500/60 bg-black/60 shadow-[0_0_30px_rgba(16,185,129,0.35)]"
+          class="px-6 py-2 rounded-md border border-emerald-500/60 bg-black/60 shadow-[0_0_30px_rgba(16,185,129,0.35)]"
         >
           <span class="text-3xl md:text-4xl font-bold text-emerald-400">
             {{ timerController }}
@@ -183,7 +183,7 @@ export default {
           }"
         >
           <div
-            class="relative flex flex-col gap-5 p-8 w-[420px] max-w-[90vw] rounded-2xl border border-emerald-500/40 bg-neutral-900/95 shadow-2xl"
+            class="relative flex flex-col gap-5 p-8 w-[420px] max-w-[90vw] rounded-md border border-emerald-500/40 bg-neutral-900/95 shadow-2xl"
           >
             <h2 class="text-2xl font-semibold text-white text-center">
               Briefing da missão
@@ -207,7 +207,7 @@ export default {
       </template>
 
       <div
-        class="relative rounded-3xl flex justify-center overflow-hidden items-center border border-neutral-700/80 bg-gradient-to-br from-black via-neutral-950 to-emerald-950/40 shadow-[0_0_60px_rgba(0,0,0,0.75)] size-2/3 max-h-[67%]"
+        class="relative rounded-md flex justify-center overflow-hidden items-center border border-neutral-700/80 bg-gradient-to-br from-black via-neutral-950 to-emerald-950/40 shadow-[0_0_60px_rgba(0,0,0,0.75)] size-2/3 max-h-[67%]"
         :style="
           counter >= 8 ? 'border-color: transparent;' : 'border-color: #777'
         "
@@ -215,7 +215,7 @@ export default {
       >
         <template v-if="!showModal && counter < 8">
           <component
-            data-aos="zoom-in"
+            data-aos="fade-up"
             :is="datas[counter][0].component"
             @addCounter="addCounter"
             @addScore="addScore"
@@ -225,7 +225,7 @@ export default {
 
       <template v-if="counter >= 8">
         <div
-          class="border border-emerald-500/60 bg-neutral-900/95 flex flex-col gap-6 pt-10 px-10 md:px-16 h-96 absolute rounded-2xl font-medium shadow-2xl"
+          class="border border-emerald-500/60 bg-neutral-900/95 flex flex-col gap-6 pt-10 px-10 md:px-16 h-96 absolute rounded-md font-medium shadow-2xl"
           v-motion
           :initial="{
             opacity: 0,
@@ -233,7 +233,7 @@ export default {
           :enter="{
             opacity: 1,
             transition: {
-              duration: 700,
+              duration: 400,
               type: 'keyframes',
               ease: 'easein,',
             },
@@ -290,12 +290,12 @@ export default {
         :enter="{
           opacity: 1,
           transition: {
-            duration: 700,
+            duration: 400,
             type: 'keyframes',
             ease: 'easein,',
           },
         }"
-        class="flex flex-col justify-center items-center gap-9 p-5 h-96 w-80 absolute rounded-lg border-2 border-gray-light font-light"
+        class="flex flex-col justify-center items-center gap-9 p-5 h-96 w-80 absolute rounded-md border-2 border-gray-light font-light"
       >
         <h2 class="text-xl font-medium mb-10 text-center">
           Jogos disponíveis apenas para computador.

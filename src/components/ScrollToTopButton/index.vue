@@ -40,7 +40,7 @@ export default {
   >
     <div class="relative">
       <div
-        class="relative size-11 md:size-12 rounded-full border border-neutral-700 bg-black/80 flex items-center justify-center hover:bg-neutral-900 transition-colors duration-200"
+        class="relative size-11 md:size-12 rounded-md border border-neutral-700 bg-black/80 flex items-center justify-center hover:bg-neutral-900 transition-colors duration-200"
       >
         <font-awesome-icon
           :icon="['fas', 'arrow-up']"

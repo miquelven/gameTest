@@ -110,8 +110,8 @@ export default {
     class="w-full min-h-screen flex flex-col justify-center items-center relative bg-neutral-950 pattern-grid"
   >
     <div
-      class="relative z-10 w-full max-w-md p-8 rounded-xl border border-neutral-800 bg-[#171717] shadow-2xl transition-colors duration-300"
-      data-aos="zoom-in"
+      class="relative z-10 w-full max-w-md p-8 rounded-md border border-neutral-800 bg-[#171717] shadow-2xl transition-colors duration-300"
+      data-aos="fade-up"
     >
       <!-- Decorator lines for HUD look -->
       <div
@@ -138,11 +138,7 @@ export default {
       <div class="flex justify-center items-center flex-col w-full">
         <!-- Logo Area -->
         <div class="mb-8 flex flex-col items-center relative">
-          <img
-            :src="logoImg"
-            alt="Game Logo"
-            class="w-32 mb-4 transition-transform hover:scale-105 duration-300"
-          />
+          <img :src="logoImg" alt="Game Logo" class="w-32 mb-4" />
           <h2 class="text-2xl font-bold text-white tracking-wider">
             BEM-VINDO
           </h2>

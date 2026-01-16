@@ -78,7 +78,7 @@ export default {
         </div>
 
         <div
-          class="relative bg-neutral-900 border border-neutral-800 rounded-2xl p-8 flex flex-col justify-between overflow-hidden"
+          class="relative bg-neutral-900 border border-neutral-800 rounded-md p-8 flex flex-col justify-between overflow-hidden"
         >
           <div class="space-y-6">
             <h2 class="text-2xl md:text-3xl font-semibold text-white">

@@ -57,7 +57,7 @@ export default {
 
       <section class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
         <div
-          class="lg:col-span-1 bg-neutral-900 border border-neutral-800 rounded-2xl p-6 flex flex-col gap-4"
+          class="lg:col-span-1 bg-neutral-900 border border-neutral-800 rounded-md p-6 flex flex-col gap-4"
           data-aos="fade-right"
           data-aos-delay="150"
         >
@@ -80,7 +80,7 @@ export default {
         </div>
 
         <div
-          class="lg:col-span-2 bg-neutral-900 border border-neutral-800 rounded-2xl p-6 md:p-8 relative overflow-hidden"
+          class="lg:col-span-2 bg-neutral-900 border border-neutral-800 rounded-md p-6 md:p-8 relative overflow-hidden"
           data-aos="fade-left"
           data-aos-delay="200"
         >
@@ -97,7 +97,7 @@ export default {
                     Histórico de melhores partidas
                   </h2>
                   <span
-                    class="px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/40"
+                    class="px-3 py-1 rounded-sm text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/40"
                   >
                     {{ scores.length }} registros
                   </span>

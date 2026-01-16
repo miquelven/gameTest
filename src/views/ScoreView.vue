@@ -52,7 +52,7 @@ export default {
 
       <section class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
         <div
-          class="lg:col-span-1 bg-neutral-900 border border-neutral-800 rounded-2xl p-6 flex flex-col gap-4"
+          class="lg:col-span-1 bg-neutral-900 border border-neutral-800 rounded-md p-6 flex flex-col gap-4"
           data-aos="fade-right"
           data-aos-delay="150"
         >
@@ -74,7 +74,7 @@ export default {
         </div>
 
         <div
-          class="lg:col-span-2 bg-neutral-900 border border-neutral-800 rounded-2xl p-6 md:p-8 relative overflow-hidden"
+          class="lg:col-span-2 bg-neutral-900 border border-neutral-800 rounded-md p-6 md:p-8 relative overflow-hidden"
           data-aos="fade-left"
           data-aos-delay="200"
         >
@@ -94,7 +94,7 @@ export default {
               </div>
               <span
                 v-if="topScores && topScores.length > 0"
-                class="px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/40 self-start md:self-auto"
+                class="px-3 py-1 rounded-sm text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/40 self-start md:self-auto"
               >
                 {{ topScores.length }} jogadores no ranking
               </span>
@@ -127,8 +127,8 @@ export default {
             <template v-else-if="topScores && topScores.length > 0">
               <table
                 class="w-full border-separate border-spacing-y-3"
-                data-aos="zoom-in"
-                data-aos-duration="700"
+                data-aos="fade-up"
+                data-aos-duration="400"
               >
                 <tbody>
                   <tr
@@ -159,7 +159,7 @@ export default {
             <template v-else>
               <div
                 class="h-64 flex flex-col items-center justify-center text-center gap-3"
-                data-aos="zoom-in"
+                data-aos="fade-up"
                 data-aos-delay="300"
               >
                 <p class="text-lg md:text-xl text-neutral-200">

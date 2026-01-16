@@ -100,8 +100,8 @@ export default {
     class="w-full min-h-screen flex flex-col justify-center items-center relative bg-neutral-950 pattern-grid"
   >
     <div
-      class="relative z-10 w-full max-w-md p-8 rounded-xl border border-neutral-800 bg-[#171717] shadow-2xl transition-colors duration-300"
-      data-aos="zoom-in"
+      class="relative z-10 w-full max-w-md p-8 rounded-md border border-neutral-800 bg-[#171717] shadow-2xl transition-colors duration-300"
+      data-aos="fade-up"
     >
       <div
         class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-600 to-transparent opacity-50"

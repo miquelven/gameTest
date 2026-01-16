@@ -70,17 +70,17 @@ export default {
       ></div>
     </div>
 
-    <Container class="relative z-10 pb-20 !mt-32">
+    <Container class="relative z-10 pb-20 !mt-60">
       <!-- HERO SECTION -->
       <BannerHome />
 
       <!-- STATS SECTION (Replacing Timer/Ranking areas) -->
-      <section class="mt-32 mb-24">
+      <section class="mt-40 mb-32">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div
             v-for="(stat, index) in stats"
             :key="stat.id"
-            class="group relative p-7 rounded-xl bg-neutral-900 border border-neutral-800/80 hover:border-emerald-500/60 transition-colors duration-200"
+            class="group relative p-7 rounded-md bg-neutral-900 border border-neutral-800/80 hover:border-emerald-500/60 transition-colors duration-200"
             data-aos="fade-up"
             :data-aos-delay="index * 150"
           >
@@ -108,58 +108,100 @@ export default {
       </section>
 
       <!-- GAMES GRID (Mission Select) -->
-      <section class="mb-32">
-        <div class="flex flex-col items-center mb-16 text-center">
-          <h2
-            class="text-4xl md:text-5xl font-bold text-white mb-4"
-            data-aos="fade-up"
-          >
-            SELECIONE SUA MISSÃO
-          </h2>
+      <section class="mb-40">
+        <div
+          class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12"
+        >
+          <div class="space-y-3" data-aos="fade-right">
+            <p
+              class="text-emerald-500 font-mono text-xs tracking-[0.35em] uppercase"
+            >
+              // MISSÕES DISPONÍVEIS
+            </p>
+            <h2 class="text-3xl md:text-4xl font-bold text-white">
+              Selecione sua próxima missão
+            </h2>
+            <p class="text-neutral-400 max-w-xl text-sm md:text-base">
+              Cada modo foi desenhado para testar um tipo de habilidade. Escolha
+              um desafio, estude a dica estratégica e inicie quando estiver
+              pronto.
+            </p>
+          </div>
+
           <div
-            class="h-1 w-24 bg-emerald-500 rounded-full"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          ></div>
+            class="flex flex-wrap items-center gap-3 md:justify-end"
+            data-aos="fade-left"
+          >
+            <span
+              class="px-3 py-1 rounded-sm text-[11px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/40"
+            >
+              {{ games.length }} modos disponíveis
+            </span>
+            <span
+              class="px-3 py-1 rounded-sm text-[11px] font-medium bg-neutral-900 border border-neutral-700 text-neutral-300"
+            >
+              Reflexos
+            </span>
+            <span
+              class="px-3 py-1 rounded-sm text-[11px] font-medium bg-neutral-900 border border-neutral-700 text-neutral-300"
+            >
+              Estratégia
+            </span>
+          </div>
         </div>
 
         <div
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 md:px-0"
+          class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7 px-2 md:px-0"
         >
           <div
             v-for="(game, index) in games"
             :key="index"
-            :class="[
-              'group relative flex flex-col overflow-hidden rounded-xl cursor-pointer border border-neutral-800 bg-neutral-900/80 transition-transform duration-300',
-              index % 5 === 0 ? 'sm:col-span-2' : '',
-              index % 7 === 0 ? 'lg:row-span-2' : '',
-            ]"
-            data-aos="zoom-in"
-            :data-aos-delay="index * 100"
+            class="group relative flex flex-col overflow-hidden rounded-md border border-neutral-800/80 bg-gradient-to-b from-neutral-900 to-neutral-950/80 hover:border-emerald-500/70 transition-all duration-300"
+            data-aos="fade-up"
+            :data-aos-delay="index * 120"
           >
-            <div class="h-40 sm:h-44 lg:h-48 overflow-hidden">
+            <div class="relative h-40 sm:h-44 overflow-hidden">
               <img
                 :src="game.img"
                 :alt="game.alt"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                class="w-full h-full object-cover transition-transform duration-500"
               />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              ></div>
+              <div
+                class="absolute bottom-3 left-4 flex items-center gap-2 text-[11px]"
+              >
+                <span
+                  class="px-2 py-1 rounded-sm bg-black/70 text-emerald-400 font-semibold tracking-widest uppercase"
+                >
+                  Missão {{ index + 1 }}
+                </span>
+              </div>
             </div>
 
-            <div class="flex flex-1 flex-col justify-between p-5">
-              <div>
-                <h3 class="text-lg font-semibold text-white mb-2">
+            <div class="flex flex-1 flex-col justify-between p-5 gap-4">
+              <div class="space-y-2">
+                <h3 class="text-lg font-semibold text-white">
                   {{ game.name }}
                 </h3>
-                <p class="text-neutral-400 text-xs leading-relaxed mb-3">
+                <p class="text-neutral-400 text-xs md:text-sm leading-relaxed">
                   {{ game.tip }}
                 </p>
               </div>
-              <button
-                class="text-emerald-400 text-xs font-semibold tracking-[0.25em] uppercase flex items-center gap-2 hover:text-emerald-300"
-              >
-                Iniciar
-                <font-awesome-icon :icon="['fas', 'arrow-right']" />
-              </button>
+              <div class="flex items-center justify-between">
+                <p
+                  class="text-[11px] uppercase tracking-[0.3em] text-neutral-500"
+                >
+                  Pronto para iniciar
+                </p>
+                <button
+                  class="inline-flex items-center gap-2 text-emerald-400 text-xs font-semibold tracking-[0.25em] uppercase hover:text-emerald-300"
+                >
+                  Iniciar missão
+                  <font-awesome-icon :icon="['fas', 'arrow-right']" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -167,7 +209,7 @@ export default {
 
       <!-- UPDATES / COMMUNITY (New Content) -->
       <section
-        class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20"
+        class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-32"
       >
         <!-- Text Side -->
         <div data-aos="fade-right">
@@ -200,7 +242,7 @@ export default {
 
         <!-- CTA Side -->
         <div
-          class="relative h-full min-h-[280px] rounded-xl bg-neutral-900 border border-neutral-800 p-8 md:p-10 flex flex-col justify-center items-center text-center"
+          class="relative h-full min-h-[280px] rounded-md bg-neutral-900 border border-neutral-800 p-8 md:p-10 flex flex-col justify-center items-center text-center"
           data-aos="fade-left"
         >
           <h3 class="text-2xl font-bold text-white mb-4">Junte-se à Elite</h3>
@@ -215,7 +257,7 @@ export default {
             </router-link>
             <router-link to="/register">
               <button
-                class="px-6 py-3 rounded-lg border border-neutral-700 hover:bg-neutral-800 text-white font-semibold transition-colors"
+                class="px-6 py-3 rounded-md border border-neutral-700 hover:bg-neutral-800 text-white font-semibold transition-colors"
               >
                 Criar Conta
               </button>

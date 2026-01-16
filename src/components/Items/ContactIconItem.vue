@@ -1,13 +1,13 @@
 <template>
-  <div data-aos="zoom-in" data-aos-delay="600" data-aos-once="true">
+  <div data-aos="fade-up" data-aos-delay="600" data-aos-once="true">
     <button
       type="button"
-      class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-neutral-700 bg-neutral-900 text-neutral-200 transition-colors duration-200 hover:bg-neutral-800"
+      class="inline-flex items-center gap-3 px-4 py-2 rounded-md border border-neutral-700 bg-neutral-900 text-neutral-200 transition-colors duration-200 hover:bg-neutral-800"
       @mouseover="hover = true"
       @mouseout="hover = false"
     >
       <span
-        class="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-800"
+        class="flex h-8 w-8 items-center justify-center rounded-md bg-neutral-800"
       >
         <font-awesome-icon
           :icon="icon"

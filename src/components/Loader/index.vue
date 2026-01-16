@@ -1,5 +1,5 @@
 <template>
-  <div data-aos="zoom-in" class="loader"></div>
+  <div data-aos="fade-up" class="loader"></div>
 </template>
 
 <style scoped>
