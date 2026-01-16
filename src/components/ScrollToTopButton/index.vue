@@ -33,11 +33,23 @@ export default {
 </script>
 
 <template>
-  <div
-    @click="() => scrollToTop()"
-    class="transition-all duration-300 fixed bottom-10 right-10 -rotate-90 p-3 border-[1px] text-[#aaa] font-bold rounded-md border-[#2bb478] text-4xl hover:bg-[#2bb478] hover:text-black cursor-pointer max-sm:text-2xl max-sm:p-2"
-    :class="`${showScroll ? 'z-10 opacity-100' : 'z-[-1] opacity-0'}`"
+  <button
+    v-if="showScroll"
+    @click="scrollToTop"
+    class="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-40 group"
   >
-    >
-  </div>
+    <div class="relative">
+      <div
+        class="absolute inset-0 rounded-full bg-emerald-500/30 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      ></div>
+      <div
+        class="relative size-11 md:size-12 rounded-full border border-emerald-500/60 bg-black/80 flex items-center justify-center shadow-[0_0_25px_rgba(16,185,129,0.6)] group-hover:translate-y-[-2px] group-hover:shadow-[0_0_35px_rgba(16,185,129,0.9)] transition-all duration-200"
+      >
+        <font-awesome-icon
+          :icon="['fas', 'arrow-up']"
+          class="text-emerald-400 group-hover:text-emerald-300"
+        />
+      </div>
+    </div>
+  </button>
 </template>
