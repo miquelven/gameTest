@@ -9,6 +9,7 @@ import Snake from "@/components/Games/Snake.vue";
 import SpaceInvaders from "@/components/Games/SpaceInvaders.vue";
 
 import Button from "@/views/icons/Button.vue";
+import TextHighlight from "@/views/icons/TextHighlight.vue";
 
 import axios from "axios";
 
@@ -17,6 +18,7 @@ import sound from "../assets/songs/backgroundSound.wav";
 export default {
   components: {
     Button,
+    TextHighlight,
   },
   data() {
     return {
@@ -118,123 +120,155 @@ export default {
 </script>
 
 <template>
-  <div
-    class="h-screen w-full flex flex-col gap-10 justify-center items-center max-sm:hidden"
+  <main
+    class="w-full min-h-screen bg-neutral-950 relative overflow-hidden flex items-center justify-center"
   >
-    <router-link
-      to="/"
-      class="transition-all duration-300 rounded-md absolute top-20 left-20 px-3 py-1 text-2xl hover:text-3xl"
-    >
-      <font-awesome-icon :icon="['fas', 'arrow-left']" />
-    </router-link>
-
-    <!-- area do modal -->
-    <template v-if="showModal">
+    <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
       <div
-        class="absolute inset-0 z-30 bg-black/90 flex justify-center items-center"
-        v-motion
-        :initial="{
-          opacity: 0,
-        }"
-        :enter="{
-          opacity: 1,
-          transition: {
-            duration: 700,
-            type: 'keyframes',
-            ease: 'easein,',
-          },
-        }"
+        class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"
+      ></div>
+    </div>
+
+    <div
+      class="relative z-10 h-screen w-full flex flex-col gap-10 justify-center items-center max-sm:hidden"
+    >
+      <router-link
+        to="/"
+        class="transition-all duration-300 rounded-md absolute top-10 left-10 px-3 py-1 text-2xl hover:text-emerald-400"
       >
-        <div
-          class="flex flex-col gap-9 p-5 h-96 w-96 absolute rounded-lg border-2 border-gray-light font-light"
+        <font-awesome-icon :icon="['fas', 'arrow-left']" />
+      </router-link>
+
+      <div class="flex flex-col items-center gap-3 mt-10">
+        <h1
+          class="text-3xl md:text-4xl font-bold text-white tracking-widest uppercase"
         >
-          <h2>Há um contador em todos os jogos</h2>
-          <p>Termine todos no menor tempo possível</p>
-          <p>Poderá ver sua pontuação assim que terminar os jogos.</p>
-          <p>O contador iniciará assim que fechar essa janela</p>
-          <Button :click="startCounter" type="button" label="Continuar" />
+          Modo <TextHighlight>Arcade</TextHighlight>
+        </h1>
+        <p class="text-neutral-400 text-sm md:text-base text-center max-w-xl">
+          Enfrente uma sequência de jogos clássicos em ritmo acelerado. Termine
+          todos no menor tempo possível para conquistar a melhor pontuação.
+        </p>
+      </div>
+
+      <div
+        class="absolute top-24 md:top-24 flex flex-col items-center gap-2 pointer-events-none"
+      >
+        <span class="text-xs font-mono tracking-[0.25em] text-neutral-500">
+          TEMPO
+        </span>
+        <div
+          class="px-6 py-2 rounded-full border border-emerald-500/60 bg-black/60 shadow-[0_0_30px_rgba(16,185,129,0.35)]"
+        >
+          <span class="text-3xl md:text-4xl font-bold text-emerald-400">
+            {{ timerController }}
+          </span>
         </div>
       </div>
-    </template>
 
-    <!-- temporizador -->
-    <input
-      class="text-4xl bg-transparent text-center font-bold absolute top-20 max-sm:text-2xl"
-      type="text"
-      placeholder="00:00"
-      v-model="timerController"
-      disabled
-    />
-    <!-- area dos jogos -->
-    <div
-      class="absolute rounded-lg flex justify-center overflow-hidden items-center border-4 border-double size-2/3 max-h-[67%]"
-      :style="
-        counter >= 8 ? 'border-color: transparent;' : 'border-color: #777'
-      "
-      v-if="counter <= 10"
-    >
-      <template v-if="!showModal && counter < 8">
-        <component
-          data-aos="zoom-in"
-          :is="datas[counter][0].component"
-          @addCounter="addCounter"
-          @addScore="addScore"
-        />
+      <template v-if="showModal">
+        <div
+          class="absolute inset-0 z-30 bg-black/80 flex justify-center items-center"
+          v-motion
+          :initial="{
+            opacity: 0,
+          }"
+          :enter="{
+            opacity: 1,
+            transition: {
+              duration: 700,
+              type: 'keyframes',
+              ease: 'easein,',
+            },
+          }"
+        >
+          <div
+            class="relative flex flex-col gap-5 p-8 w-[420px] max-w-[90vw] rounded-2xl border border-emerald-500/40 bg-neutral-900/95 shadow-2xl"
+          >
+            <h2 class="text-2xl font-semibold text-white text-center">
+              Briefing da missão
+            </h2>
+            <p class="text-neutral-300 text-sm leading-relaxed text-center">
+              Você vai encarar uma sequência de jogos. O cronômetro já está
+              preparado para registrar cada segundo.
+            </p>
+            <p class="text-neutral-300 text-sm leading-relaxed text-center">
+              Finalize todos os desafios no menor tempo possível para maximizar
+              sua pontuação final.
+            </p>
+            <p class="text-neutral-400 text-xs text-center">
+              O contador será iniciado assim que você continuar.
+            </p>
+            <div class="mt-2 flex justify-center">
+              <Button :click="startCounter" type="button" label="COMEÇAR" />
+            </div>
+          </div>
+        </div>
+      </template>
+
+      <div
+        class="relative rounded-3xl flex justify-center overflow-hidden items-center border border-neutral-700/80 bg-gradient-to-br from-black via-neutral-950 to-emerald-950/40 shadow-[0_0_60px_rgba(0,0,0,0.75)] size-2/3 max-h-[67%]"
+        :style="
+          counter >= 8 ? 'border-color: transparent;' : 'border-color: #777'
+        "
+        v-if="counter <= 10"
+      >
+        <template v-if="!showModal && counter < 8">
+          <component
+            data-aos="zoom-in"
+            :is="datas[counter][0].component"
+            @addCounter="addCounter"
+            @addScore="addScore"
+          />
+        </template>
+      </div>
+
+      <template v-if="counter >= 8">
+        <div
+          class="border border-emerald-500/60 bg-neutral-900/95 flex flex-col gap-6 pt-10 px-10 md:px-16 h-96 absolute rounded-2xl font-medium shadow-2xl"
+          v-motion
+          :initial="{
+            opacity: 0,
+          }"
+          :enter="{
+            opacity: 1,
+            transition: {
+              duration: 700,
+              type: 'keyframes',
+              ease: 'easein,',
+            },
+          }"
+        >
+          <h3 class="text-3xl md:text-4xl text-center mb-2 text-white">
+            Missão concluída
+          </h3>
+          <div class="flex justify-between gap-6">
+            <div class="flex flex-col gap-1">
+              <p class="text-sm text-neutral-400">Seu tempo total</p>
+              <span class="text-white text-2xl md:text-3xl">{{
+                timerController
+              }}</span>
+            </div>
+            <div class="flex flex-col gap-1 text-right">
+              <p class="text-sm text-neutral-400">Sua pontuação final</p>
+              <span class="text-emerald-400 text-2xl md:text-3xl">{{
+                formatScore
+              }}</span>
+            </div>
+          </div>
+          <p class="text-neutral-400 text-sm text-center">
+            Sua pontuação foi enviada para o sistema. Continue treinando para
+            subir ainda mais no ranking global.
+          </p>
+          <router-link to="/" @click="startCounter" class="self-end mt-4">
+            <Button label="Voltar para o início" type="button" />
+          </router-link>
+        </div>
       </template>
     </div>
-    <!-- RESULTADO -->
-    <template v-if="counter >= 8">
-      <div
-        class="border-2 border-green-highligh flex flex-col gap-8 pt-10 px-24 h-96 absolute rounded-xl font-medium max-sm:px-16"
-        v-motion
-        :initial="{
-          opacity: 0,
-        }"
-        :enter="{
-          opacity: 1,
-          transition: {
-            duration: 700,
-            type: 'keyframes',
-            ease: 'easein,',
-          },
-        }"
-      >
-        <h3 class="text-4xl text-center mb-4 max-sm:text-3xl">Fim dos jogos</h3>
-        <div class="flex justify-around">
-          <p class="text-lg max-sm:text-base">Seu tempo:</p>
-          <span class="text-white text-2xl max-sm:text-xl">{{
-            timerController
-          }}</span>
-        </div>
-        <div class="flex justify-around">
-          <p class="text-lg max-sm:text-base">Sua pontuação:</p>
-          <span class="text-white text-2xl max-sm:text-xl">{{
-            formatScore
-          }}</span>
-        </div>
-        <router-link to="/" @click="startCounter" class="self-end mt-10">
-          <Button label="Voltar" type="button" />
-        </router-link>
-      </div>
-    </template>
-  </div>
 
-  <div
-    class="absolute inset-0 z-30 bg-black/90 flex justify-center items-center sm:hidden"
-    v-motion
-    :initial="{
-      opacity: 0,
-    }"
-    :enter="{
-      opacity: 1,
-      transition: {
-        duration: 700,
-        type: 'keyframes',
-        ease: 'easein,',
-      },
-    }"
-  >
     <div
+      class="absolute inset-0 z-30 bg-black/90 flex justify-center items-center sm:hidden"
       v-motion
       :initial="{
         opacity: 0,
@@ -247,14 +281,29 @@ export default {
           ease: 'easein,',
         },
       }"
-      class="flex flex-col justify-center items-center gap-9 p-5 h-96 w-80 absolute rounded-lg border-2 border-gray-light font-light"
     >
-      <h2 class="text-xl font-medium mb-10 text-center">
-        Jogos disponíveis apenas para computador.
-      </h2>
-      <router-link to="/" class="self-center">
-        <Button label="Voltar" type="button" />
-      </router-link>
+      <div
+        v-motion
+        :initial="{
+          opacity: 0,
+        }"
+        :enter="{
+          opacity: 1,
+          transition: {
+            duration: 700,
+            type: 'keyframes',
+            ease: 'easein,',
+          },
+        }"
+        class="flex flex-col justify-center items-center gap-9 p-5 h-96 w-80 absolute rounded-lg border-2 border-gray-light font-light"
+      >
+        <h2 class="text-xl font-medium mb-10 text-center">
+          Jogos disponíveis apenas para computador.
+        </h2>
+        <router-link to="/" class="self-center">
+          <Button label="Voltar" type="button" />
+        </router-link>
+      </div>
     </div>
-  </div>
+  </main>
 </template>
