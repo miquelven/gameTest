@@ -80,22 +80,26 @@ export default {
           <div
             v-for="(stat, index) in stats"
             :key="stat.id"
-            class="group relative p-8 rounded-2xl bg-neutral-900/50 border border-neutral-800 hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-2"
+            class="group relative p-7 rounded-xl bg-neutral-900 border border-neutral-800/80 hover:border-emerald-500/60 transition-colors duration-200"
             data-aos="fade-up"
             :data-aos-delay="index * 150"
           >
-            <div
-              class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity"
-            >
-              <font-awesome-icon
-                :icon="['fas', stat.icon]"
-                class="text-6xl text-emerald-500"
-              />
-            </div>
             <h4 class="text-emerald-500 font-bold tracking-widest text-xs mb-4">
               // {{ stat.value }}
             </h4>
-            <h3 class="text-2xl font-bold text-white mb-3">{{ stat.title }}</h3>
+            <div class="flex items-center gap-3 mb-3">
+              <div
+                class="flex h-9 w-9 items-center justify-center rounded-md bg-neutral-800 text-emerald-400"
+              >
+                <font-awesome-icon
+                  :icon="['fas', stat.icon]"
+                  class="text-base"
+                />
+              </div>
+              <h3 class="text-lg font-semibold text-white">
+                {{ stat.title }}
+              </h3>
+            </div>
             <p class="text-neutral-400 leading-relaxed text-sm">
               {{ stat.desc }}
             </p>
@@ -125,48 +129,38 @@ export default {
           <div
             v-for="(game, index) in games"
             :key="index"
-            class="group relative h-80 rounded-xl overflow-hidden cursor-pointer border border-neutral-800 hover:border-emerald-500 transition-all duration-500"
+            :class="[
+              'group relative flex flex-col overflow-hidden rounded-xl cursor-pointer border border-neutral-800 bg-neutral-900/80 transition-transform duration-300',
+              index % 5 === 0 ? 'sm:col-span-2' : '',
+              index % 7 === 0 ? 'lg:row-span-2' : '',
+            ]"
             data-aos="zoom-in"
             :data-aos-delay="index * 100"
           >
-            <!-- Game Image -->
-            <img
-              :src="game.img"
-              :alt="game.alt"
-              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40"
-            />
-
-            <!-- Overlay Gradient -->
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 group-hover:opacity-80 transition-opacity"
-            ></div>
-
-            <!-- Content -->
-            <div class="absolute inset-0 p-6 flex flex-col justify-end">
-              <div
-                class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
-              >
-                <h3 class="text-xl font-bold text-white mb-2">
-                  {{ game.name }}
-                </h3>
-                <p
-                  class="text-neutral-400 text-xs line-clamp-2 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100"
-                >
-                  {{ game.tip }}
-                </p>
-                <button
-                  class="text-emerald-400 text-sm font-bold tracking-wide uppercase flex items-center gap-2 hover:text-emerald-300"
-                >
-                  Iniciar
-                  <font-awesome-icon :icon="['fas', 'arrow-right']" />
-                </button>
-              </div>
+            <div class="h-40 sm:h-44 lg:h-48 overflow-hidden">
+              <img
+                :src="game.img"
+                :alt="game.alt"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
             </div>
 
-            <!-- Corner Accents (Decor) -->
-            <div
-              class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-emerald-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
-            ></div>
+            <div class="flex flex-1 flex-col justify-between p-5">
+              <div>
+                <h3 class="text-lg font-semibold text-white mb-2">
+                  {{ game.name }}
+                </h3>
+                <p class="text-neutral-400 text-xs leading-relaxed mb-3">
+                  {{ game.tip }}
+                </p>
+              </div>
+              <button
+                class="text-emerald-400 text-xs font-semibold tracking-[0.25em] uppercase flex items-center gap-2 hover:text-emerald-300"
+              >
+                Iniciar
+                <font-awesome-icon :icon="['fas', 'arrow-right']" />
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -206,28 +200,22 @@ export default {
 
         <!-- CTA Side -->
         <div
-          class="relative h-full min-h-[300px] rounded-2xl bg-gradient-to-br from-emerald-900/20 to-black border border-emerald-500/30 p-10 flex flex-col justify-center items-center text-center overflow-hidden"
+          class="relative h-full min-h-[280px] rounded-xl bg-neutral-900 border border-neutral-800 p-8 md:p-10 flex flex-col justify-center items-center text-center"
           data-aos="fade-left"
         >
-          <div
-            class="absolute inset-0 bg-[url('@/assets/images/Home/ranking.webp')] bg-cover bg-center opacity-10 mix-blend-overlay"
-          ></div>
-
-          <h3 class="text-2xl font-bold text-white mb-4 relative z-10">
-            Junte-se à Elite
-          </h3>
-          <p class="text-neutral-300 mb-8 max-w-md relative z-10">
+          <h3 class="text-2xl font-bold text-white mb-4">Junte-se à Elite</h3>
+          <p class="text-neutral-300 mb-8 max-w-md">
             Crie sua conta, salve suas pontuações e apareça no ranking global.
             Você está pronto?
           </p>
 
-          <div class="flex gap-4 relative z-10 flex-wrap justify-center">
+          <div class="flex gap-4 flex-wrap justify-center">
             <router-link to="/gamesPage">
               <Button label="JOGAR AGORA" class="font-bold" />
             </router-link>
             <router-link to="/register">
               <button
-                class="px-6 py-3 rounded-lg border border-white/20 hover:bg-white/10 text-white font-semibold transition-colors"
+                class="px-6 py-3 rounded-lg border border-neutral-700 hover:bg-neutral-800 text-white font-semibold transition-colors"
               >
                 Criar Conta
               </button>

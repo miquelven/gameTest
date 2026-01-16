@@ -52,14 +52,14 @@ export default {
 <template>
   <header
     ref="header"
-    class="fixed z-50 w-full top-0 left-0 text-white bg-black/40 backdrop-blur-xl border-b border-emerald-500/20 shadow-[0_10px_40px_rgba(0,0,0,0.8)]"
+    class="fixed z-50 w-full top-0 left-0 text-white bg-black/90 border-b border-neutral-800 shadow-[0_8px_24px_rgba(0,0,0,0.7)]"
   >
     <div
       class="max-w-screen-2xl m-auto flex justify-between items-center max-h-20 px-4 md:px-6"
     >
       <router-link to="/" class="flex items-center gap-3">
         <div
-          class="relative flex items-center justify-center rounded-xl border border-emerald-500/40 bg-black/70 px-3 py-2 shadow-[0_0_20px_rgba(16,185,129,0.55)]"
+          class="relative flex items-center justify-center rounded-xl border border-neutral-800 bg-neutral-900 px-3 py-2"
         >
           <img
             :src="logoImg"
@@ -75,12 +75,10 @@ export default {
         </div>
       </router-link>
 
-      <nav
-        class="flex gap-10 font-light max-lg:text-sm max-md:hidden relative"
-      >
+      <nav class="flex gap-10 font-light max-lg:text-sm max-md:hidden relative">
         <LinksMenu />
         <span
-          class="absolute -bottom-3 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/70 to-transparent opacity-60"
+          class="absolute -bottom-3 left-0 w-full h-px bg-neutral-800 opacity-60"
         ></span>
       </nav>
 

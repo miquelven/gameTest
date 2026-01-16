@@ -40,10 +40,7 @@ export default {
   >
     <div class="relative">
       <div
-        class="absolute inset-0 rounded-full bg-emerald-500/30 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-      ></div>
-      <div
-        class="relative size-11 md:size-12 rounded-full border border-emerald-500/60 bg-black/80 flex items-center justify-center shadow-[0_0_25px_rgba(16,185,129,0.6)] group-hover:translate-y-[-2px] group-hover:shadow-[0_0_35px_rgba(16,185,129,0.9)] transition-all duration-200"
+        class="relative size-11 md:size-12 rounded-full border border-neutral-700 bg-black/80 flex items-center justify-center hover:bg-neutral-900 transition-colors duration-200"
       >
         <font-awesome-icon
           :icon="['fas', 'arrow-up']"

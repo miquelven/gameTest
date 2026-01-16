@@ -82,24 +82,16 @@ export default {
 
         <div class="relative group" data-aos="fade-left">
           <div
-            class="absolute inset-0 bg-emerald-500/20 blur-3xl rounded-full group-hover:bg-emerald-500/30 transition-all duration-500"
-          ></div>
-          <div
-            class="relative bg-neutral-900 border border-neutral-800 p-8 rounded-2xl overflow-hidden"
+            class="bg-neutral-900 border border-neutral-800 p-8 rounded-2xl overflow-hidden"
           >
-            <div
-              class="absolute top-0 right-0 p-4 opacity-10 font-mono text-6xl font-bold text-white select-none"
-            >
-              01
-            </div>
             <div class="grid grid-cols-1 gap-6">
               <div
                 v-for="(feature, index) in features"
                 :key="index"
-                class="flex items-start gap-4 p-4 rounded-lg hover:bg-white/5 transition-colors"
+                class="flex items-start gap-4 p-4 rounded-lg hover:bg-neutral-800/60 transition-colors"
               >
                 <div
-                  class="bg-emerald-500/10 p-3 rounded-lg text-emerald-500 min-w-[50px] flex justify-center"
+                  class="bg-neutral-800 p-3 rounded-lg text-emerald-400 min-w-[50px] flex justify-center"
                 >
                   <font-awesome-icon :icon="['fas', feature.icon]" size="lg" />
                 </div>
@@ -115,17 +107,10 @@ export default {
 
       <!-- Origin Story (Full Width) -->
       <section
-        class="relative rounded-3xl bg-neutral-900 border border-neutral-800 p-10 md:p-16 mb-32 overflow-hidden text-center"
+        class="relative rounded-3xl bg-neutral-900 border border-neutral-800 p-10 md:p-16 mb-32 text-center"
         data-aos="fade-up"
       >
-        <div
-          class="absolute inset-0 bg-[url('@/assets/images/Home/timer.webp')] bg-cover bg-center opacity-10 mix-blend-overlay"
-        ></div>
-        <div
-          class="absolute inset-0 bg-gradient-to-b from-transparent via-neutral-900/80 to-neutral-900"
-        ></div>
-
-        <div class="relative z-10 max-w-4xl mx-auto">
+        <div class="max-w-4xl mx-auto">
           <font-awesome-icon
             :icon="['fas', 'code']"
             class="text-5xl text-emerald-500 mb-8"

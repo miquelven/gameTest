@@ -60,8 +60,8 @@ export default {
             Como subir no ranking
           </h2>
           <p class="text-neutral-400 text-sm md:text-base leading-relaxed">
-            Jogue qualquer um dos modos disponíveis, conquiste boas pontuações
-            e volte para ver sua posição atualizada entre os melhores jogadores.
+            Jogue qualquer um dos modos disponíveis, conquiste boas pontuações e
+            volte para ver sua posição atualizada entre os melhores jogadores.
           </p>
           <p class="text-neutral-400 text-sm md:text-base leading-relaxed">
             As primeiras posições são reservadas para quem mantém consistência,
@@ -78,10 +78,7 @@ export default {
           data-aos="fade-left"
           data-aos-delay="200"
         >
-          <div
-            class="absolute inset-0 bg-gradient-to-tr from-emerald-500/5 via-transparent to-emerald-500/15"
-          ></div>
-          <div class="relative z-10">
+          <div>
             <div
               class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-6"
             >

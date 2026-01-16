@@ -38,8 +38,8 @@ export default {
         <p
           class="text-neutral-400 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed"
         >
-          Dúvidas, feedbacks ou ideias de novos desafios? Escolha um dos
-          canais oficiais e faça parte da nossa comunidade.
+          Dúvidas, feedbacks ou ideias de novos desafios? Escolha um dos canais
+          oficiais e faça parte da nossa comunidade.
         </p>
       </section>
 
@@ -80,10 +80,7 @@ export default {
         <div
           class="relative bg-neutral-900 border border-neutral-800 rounded-2xl p-8 flex flex-col justify-between overflow-hidden"
         >
-          <div
-            class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-emerald-500/10"
-          ></div>
-          <div class="relative z-10 space-y-6">
+          <div class="space-y-6">
             <h2 class="text-2xl md:text-3xl font-semibold text-white">
               Quer colaborar com o projeto?
             </h2>
@@ -94,8 +91,7 @@ export default {
             </p>
             <p class="text-neutral-400 text-sm md:text-base">
               Envie uma mensagem pelas redes oficiais e conte um pouco sobre
-              você, sua experiência e como gostaria de contribuir com o
-              projeto.
+              você, sua experiência e como gostaria de contribuir com o projeto.
             </p>
             <div class="mt-6 text-sm text-neutral-500">
               <p>Tempo médio de resposta: até 2 dias úteis.</p>

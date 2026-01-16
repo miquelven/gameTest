@@ -84,10 +84,7 @@ export default {
           data-aos="fade-left"
           data-aos-delay="200"
         >
-          <div
-            class="absolute inset-0 bg-gradient-to-tr from-emerald-500/5 via-transparent to-emerald-500/15"
-          ></div>
-          <div class="relative z-10">
+          <div>
             <template v-if="loading">
               <div class="flex justify-center items-center h-64">
                 <Loader />
@@ -125,8 +122,8 @@ export default {
                     Nenhuma pontuação registrada ainda.
                   </p>
                   <p class="text-neutral-400 text-sm md:text-base max-w-md">
-                    Jogue qualquer um dos modos disponíveis, conclua uma
-                    partida e volte aqui para acompanhar a sua trajetória.
+                    Jogue qualquer um dos modos disponíveis, conclua uma partida
+                    e volte aqui para acompanhar a sua trajetória.
                   </p>
                 </div>
               </template>
