@@ -29,6 +29,10 @@ import {
   faSpinner,
   faUser,
   faEnvelope,
+  faStopwatch,
+  faTrophy,
+  faBrain,
+  faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -48,7 +52,13 @@ library.add(
   faGoogle,
   faFacebookF,
   faInstagram,
-  faGithub
+  faGithub,
+  faUser,
+  faEnvelope,
+  faStopwatch,
+  faTrophy,
+  faBrain,
+  faArrowRight
 );
 
 import axios from "axios";
