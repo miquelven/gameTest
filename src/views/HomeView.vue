@@ -30,10 +30,10 @@ export default {
         },
         {
           id: 3,
-          title: "Foco Total",
-          desc: "Cada erro custa caro. Mantenha a concentração para não perder vidas e recomeçar do zero.",
-          icon: "fa-brain",
-          value: "ESTRATÉGIA",
+          title: "Precisão Cirúrgica",
+          desc: "Em um speedrun, cada clique conta. Otimize seus movimentos para raspar milissegundos preciosos do seu tempo final.",
+          icon: "fa-crosshairs",
+          value: "PRECISÃO",
         },
       ],
       updates: [
