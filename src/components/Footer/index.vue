@@ -38,7 +38,7 @@ export default {
 
 <template>
   <footer
-    class="m-auto mt-36 mb-5 text-sm text-zinc-400 max-sm:text-xs relative"
+    class="m-auto mt-16 mb-5 text-sm text-zinc-400 max-sm:text-xs relative"
   >
     <div
       class="pointer-events-none absolute inset-x-0 -top-10 flex justify-center"
