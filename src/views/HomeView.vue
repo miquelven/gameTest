@@ -3,6 +3,7 @@ import BannerHome from "@/components/BannerHome/index.vue";
 import Button from "./icons/Button.vue";
 import Container from "./icons/Container.vue";
 import gameListInfo from "@/data/gameListInfo.js";
+import gamesVideo from "@/assets/video/games.mov";
 
 export default {
   components: {
@@ -12,6 +13,7 @@ export default {
   },
   data() {
     return {
+      gamesVideo,
       games: gameListInfo,
       stats: [
         {
@@ -177,13 +179,8 @@ export default {
                 </p>
               </div>
               <div
-                class="flex items-center justify-between border-t border-neutral-800 pt-4 mt-2"
+                class="flex items-center justify-end border-t border-neutral-800 pt-4 mt-2"
               >
-                <p
-                  class="text-[11px] uppercase tracking-[0.3em] text-neutral-500"
-                >
-                  Pronto para iniciar
-                </p>
                 <router-link
                   :to="{ name: 'training', params: { id: index } }"
                   class="inline-flex items-center gap-2 text-emerald-400 text-xs font-semibold tracking-[0.25em] uppercase hover:text-emerald-300"
@@ -229,26 +226,65 @@ export default {
         </div>
 
         <div
-          class="relative h-full min-h-[280px] rounded-md bg-neutral-900 border border-neutral-800 p-8 md:p-10 flex flex-col justify-center items-center text-center"
+          class="relative h-full min-h-[280px] rounded-md border border-neutral-800 flex flex-col justify-center items-center text-center overflow-hidden group"
           data-aos="fade-left"
         >
-          <h3 class="text-2xl font-bold text-white mb-4">Junte-se à Elite</h3>
-          <p class="text-neutral-300 mb-8 max-w-md">
-            Crie sua conta, salve suas pontuações e apareça no ranking global.
-            Você está pronto?
-          </p>
+          <!-- Decorator lines for HUD look -->
+          <div
+            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-600 to-transparent opacity-50 z-20"
+          ></div>
+          <div
+            class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-900 to-transparent opacity-30 z-20"
+          ></div>
 
-          <div class="flex gap-4 flex-wrap justify-center">
-            <router-link to="/gamesPage">
-              <Button label="JOGAR AGORA" class="font-bold" />
-            </router-link>
-            <router-link to="/register">
-              <button
-                class="px-6 py-3 rounded-md border border-neutral-700 hover:bg-neutral-800 text-white font-semibold transition-colors"
-              >
-                Criar Conta
-              </button>
-            </router-link>
+          <!-- Corner Accents -->
+          <div
+            class="absolute top-[-1px] left-[-1px] w-4 h-4 border-t-2 border-l-2 border-green-600 rounded-tl-lg transition-colors duration-300 z-20"
+          ></div>
+          <div
+            class="absolute top-[-1px] right-[-1px] w-4 h-4 border-t-2 border-r-2 border-green-600 rounded-tr-lg transition-colors duration-300 z-20"
+          ></div>
+          <div
+            class="absolute bottom-[-1px] left-[-1px] w-4 h-4 border-b-2 border-l-2 border-green-600 rounded-bl-lg transition-colors duration-300 z-20"
+          ></div>
+          <div
+            class="absolute bottom-[-1px] right-[-1px] w-4 h-4 border-b-2 border-r-2 border-green-600 rounded-br-lg transition-colors duration-300 z-20"
+          ></div>
+
+          <!-- Video Background -->
+          <video
+            autoplay
+            loop
+            muted
+            playsinline
+            class="absolute inset-0 opacity-50 w-full h-full object-cover"
+          >
+            <source :src="gamesVideo" type="video/mp4" />
+          </video>
+
+          <!-- Overlay -->
+          <div class="absolute inset-0 bg-neutral-950/90"></div>
+
+          <!-- Content -->
+          <div class="relative z-10 p-8 md:p-10 drop-shadow-md">
+            <h3 class="text-2xl font-bold text-white mb-4">Junte-se à Elite</h3>
+            <p class="text-neutral-300 mb-8 max-w-md mx-auto">
+              Crie sua conta, salve suas pontuações e apareça no ranking global.
+              Você está pronto?
+            </p>
+
+            <div class="flex gap-4 flex-wrap justify-center">
+              <router-link to="/gamesPage">
+                <Button label="JOGAR AGORA" class="font-bold" />
+              </router-link>
+              <router-link to="/register">
+                <button
+                  class="px-6 py-3 rounded-md border border-neutral-700 hover:bg-neutral-800/80 backdrop-blur-sm text-white font-semibold transition-colors"
+                >
+                  Criar Conta
+                </button>
+              </router-link>
+            </div>
           </div>
         </div>
       </section>

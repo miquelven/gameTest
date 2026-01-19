@@ -46,14 +46,6 @@ export default {
         <router-link to="/gamesPage">
           <Button type="button" label="INICIAR DESAFIO" class="font-bold" />
         </router-link>
-
-        <router-link to="/score">
-          <button
-            class="px-6 py-3 rounded-md border border-emerald-500/60 text-sm font-semibold tracking-wide text-emerald-300 hover:bg-emerald-500/10 transition-colors"
-          >
-            Ver ranking em tempo real
-          </button>
-        </router-link>
       </div>
     </div>
   </section>
