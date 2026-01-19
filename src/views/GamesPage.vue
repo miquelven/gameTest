@@ -124,39 +124,65 @@ export default {
     class="w-full min-h-screen relative overflow-hidden flex items-center justify-center pattern-grid"
   >
     <div
-      class="relative z-10 h-screen w-full flex flex-col gap-10 justify-center items-center max-sm:hidden"
+      class="relative z-10 h-screen w-full flex flex-col p-4 md:p-8 max-sm:hidden"
     >
-      <router-link
-        to="/"
-        class="transition-colors duration-200 absolute top-10 left-10 px-3 py-1 text-2xl hover:text-emerald-400"
-      >
-        <font-awesome-icon :icon="['fas', 'arrow-left']" />
-      </router-link>
+      <!-- Compact Header HUD -->
+      <header class="w-full flex justify-between items-end mb-6 shrink-0">
+        <div class="flex flex-col gap-1">
+          <router-link
+            to="/"
+            class="flex items-center gap-2 text-neutral-500 hover:text-emerald-400 transition-colors w-fit group"
+          >
+            <font-awesome-icon
+              :icon="['fas', 'arrow-left']"
+              class="text-xs group-hover:-translate-x-1 transition-transform"
+            />
+            <span class="text-[10px] font-bold tracking-widest uppercase">
+              Voltar
+            </span>
+          </router-link>
+          <h1
+            class="text-xl md:text-2xl font-bold text-white tracking-widest uppercase flex items-center gap-2"
+          >
+            Modo <TextHighlight>Arcade</TextHighlight>
+          </h1>
+        </div>
 
-      <div class="flex flex-col items-center gap-3 mt-10">
-        <h1
-          class="text-3xl md:text-4xl font-bold text-white tracking-widest uppercase"
-        >
-          Modo <TextHighlight>Arcade</TextHighlight>
-        </h1>
-        <p class="text-neutral-400 text-sm md:text-base text-center max-w-xl">
-          Enfrente uma sequência de jogos clássicos em ritmo acelerado. Termine
-          todos no menor tempo possível para conquistar a melhor pontuação.
-        </p>
-      </div>
-
-      <div
-        class="absolute top-24 md:top-24 flex flex-col items-center gap-2 pointer-events-none"
-      >
-        <span class="text-xs font-mono tracking-[0.25em] text-neutral-500">
-          TEMPO
-        </span>
-        <div
-          class="px-6 py-2 rounded-md border border-emerald-500/60 bg-black/60 shadow-[0_0_30px_rgba(16,185,129,0.35)]"
-        >
-          <span class="text-3xl md:text-4xl font-bold text-emerald-400">
-            {{ timerController }}
+        <div class="flex flex-col items-end gap-1">
+          <span
+            class="text-[10px] font-mono tracking-[0.25em] text-neutral-300 uppercase"
+          >
+            Tempo Decorrido
           </span>
+          <div
+            class="flex items-baseline gap-2 px-4 py-1 rounded border border-emerald-500/30 bg-black/40"
+          >
+            <span
+              class="text-2xl md:text-3xl font-mono font-bold text-emerald-400"
+            >
+              {{ timerController }}
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Game Area -->
+      <div
+        class="flex-1 w-full flex justify-center items-center relative overflow-hidden"
+      >
+        <div
+          class="relative rounded-lg flex justify-center overflow-hidden items-center border border-neutral-800 bg-black/80 w-full h-full max-w-6xl max-h-[85vh] ring-1 ring-white/5"
+          :style="counter >= 8 ? 'border-color: transparent;' : ''"
+          v-if="counter <= 10"
+        >
+          <template v-if="!showModal && counter < 8">
+            <component
+              data-aos="fade-up"
+              :is="datas[counter][0].component"
+              @addCounter="addCounter"
+              @addScore="addScore"
+            />
+          </template>
         </div>
       </div>
 
@@ -200,63 +226,79 @@ export default {
         </div>
       </template>
 
-      <div
-        class="relative rounded-md flex justify-center overflow-hidden items-center border border-neutral-700/80 bg-gradient-to-br from-black via-neutral-950 to-emerald-950/40 shadow-[0_0_60px_rgba(0,0,0,0.75)] size-2/3 max-h-[67%]"
-        :style="
-          counter >= 8 ? 'border-color: transparent;' : 'border-color: #777'
-        "
-        v-if="counter <= 10"
-      >
-        <template v-if="!showModal && counter < 8">
-          <component
-            data-aos="fade-up"
-            :is="datas[counter][0].component"
-            @addCounter="addCounter"
-            @addScore="addScore"
-          />
-        </template>
-      </div>
-
       <template v-if="counter >= 8">
         <div
-          class="border border-emerald-500/60 bg-neutral-900/95 flex flex-col gap-6 pt-10 px-10 md:px-16 h-96 absolute rounded-md font-medium shadow-2xl"
+          class="absolute inset-0 z-50 bg-black/90 backdrop-blur-sm flex justify-center items-center"
           v-motion
-          :initial="{
-            opacity: 0,
-          }"
-          :enter="{
-            opacity: 1,
-            transition: {
-              duration: 400,
-              type: 'keyframes',
-              ease: 'easein,',
-            },
-          }"
+          :initial="{ opacity: 0 }"
+          :enter="{ opacity: 1, transition: { duration: 500 } }"
         >
-          <h3 class="text-3xl md:text-4xl text-center mb-2 text-white">
-            Missão concluída
-          </h3>
-          <div class="flex justify-between gap-6">
-            <div class="flex flex-col gap-1">
-              <p class="text-sm text-neutral-400">Seu tempo total</p>
-              <span class="text-white text-2xl md:text-3xl">{{
-                timerController
-              }}</span>
+          <div
+            class="relative flex flex-col gap-8 p-10 w-[500px] max-w-[90vw] rounded-xl border border-emerald-500/50 bg-neutral-900/95"
+            v-motion
+            :initial="{ y: 50, opacity: 0 }"
+            :enter="{
+              y: 0,
+              opacity: 1,
+              transition: { duration: 500, delay: 100 },
+            }"
+          >
+            <!-- Header -->
+            <div class="text-center space-y-2">
+              <h3
+                class="text-4xl font-bold text-white uppercase tracking-wider"
+              >
+                Missão Cumprida
+              </h3>
+              <div class="h-1 w-24 bg-emerald-500 mx-auto rounded-full"></div>
             </div>
-            <div class="flex flex-col gap-1 text-right">
-              <p class="text-sm text-neutral-400">Sua pontuação final</p>
-              <span class="text-emerald-400 text-2xl md:text-3xl">{{
-                formatScore
-              }}</span>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-2 gap-8 py-4">
+              <div
+                class="flex flex-col items-center gap-2 p-4 rounded-lg bg-white/5 border border-white/10"
+              >
+                <p
+                  class="text-xs font-mono tracking-widest text-neutral-400 uppercase"
+                >
+                  Tempo Total
+                </p>
+                <span class="text-3xl font-bold text-white font-mono">
+                  {{ timerController }}
+                </span>
+              </div>
+              <div
+                class="flex flex-col items-center gap-2 p-4 rounded-lg bg-emerald-900/10 border border-emerald-500/20"
+              >
+                <p
+                  class="text-xs font-mono tracking-widest text-emerald-400/80 uppercase"
+                >
+                  Pontuação
+                </p>
+                <span class="text-3xl font-bold text-emerald-400 font-mono">
+                  {{ formatScore }}
+                </span>
+              </div>
             </div>
+
+            <!-- Footer Message -->
+            <p
+              class="text-neutral-400 text-sm text-center leading-relaxed px-4"
+            >
+              Relatório enviado ao comando central. <br />
+              Sua performance foi registrada no ranking global.
+            </p>
+
+            <!-- Action -->
+            <router-link to="/" @click="startCounter" class="w-full">
+              <button
+                type="button"
+                class="w-full py-4 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-widest uppercase transition-all duration-300 hover:-translate-y-1 hover:tracking-[0.25em] active:scale-95 border border-transparent hover:border-emerald-400"
+              >
+                Retornar à Base
+              </button>
+            </router-link>
           </div>
-          <p class="text-neutral-400 text-sm text-center">
-            Sua pontuação foi enviada para o sistema. Continue treinando para
-            subir ainda mais no ranking global.
-          </p>
-          <router-link to="/" @click="startCounter" class="self-end mt-4">
-            <Button label="Voltar para o início" type="button" />
-          </router-link>
         </div>
       </template>
     </div>
