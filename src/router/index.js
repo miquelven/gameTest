@@ -14,7 +14,7 @@ const router = createRouter({
       name: "home",
       component: HomeView,
       meta: {
-        title: "GameTest",
+        title: "ChronoRun",
         requiresAuth: true,
         layout: "default",
       },

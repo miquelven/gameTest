@@ -20,20 +20,14 @@ export default {
 
 <template>
   <main
-    class="w-full min-h-[calc(100vh-80px)] bg-neutral-950 relative overflow-hidden"
+    class="w-full min-h-[calc(100vh-80px)] relative overflow-hidden pattern-grid"
   >
-    <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
-      <div
-        class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"
-      ></div>
-    </div>
-
     <Container class="relative z-10 pb-20 pt-10">
       <section class="text-center mb-16" data-aos="fade-up">
         <h1
           class="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight"
         >
-          Entre em contato com o <TextHighlight>GameTest</TextHighlight>
+          Entre em contato com o <TextHighlight>ChronoRun</TextHighlight>
         </h1>
         <p
           class="text-neutral-400 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed"
@@ -59,8 +53,8 @@ export default {
             jogadores.
           </p>
           <p class="text-neutral-400 text-base md:text-lg leading-relaxed">
-            Siga o GameTest nas principais redes e conecte-se com uma comunidade
-            apaixonada por competição saudável e tecnologia.
+            Siga o ChronoRun nas principais redes e conecte-se com uma
+            comunidade apaixonada por competição saudável e tecnologia.
           </p>
           <div
             class="flex flex-wrap gap-4 items-center mt-4"
@@ -85,7 +79,7 @@ export default {
               Quer colaborar com o projeto?
             </h2>
             <p class="text-neutral-300 text-base md:text-lg leading-relaxed">
-              O GameTest é um projeto em constante evolução. Se você tem ideias
+              O ChronoRun é um projeto em constante evolução. Se você tem ideias
               de novos modos, sugestões de UX, feedback técnico ou propostas de
               parceria, seu contato é muito bem-vindo.
             </p>

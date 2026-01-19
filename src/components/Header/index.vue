@@ -70,7 +70,7 @@ export default {
           <span
             class="ml-3 text-sm font-semibold tracking-[0.25em] uppercase text-emerald-400 max-md:hidden"
           >
-            GameTest
+            ChronoRun
           </span>
         </div>
       </router-link>

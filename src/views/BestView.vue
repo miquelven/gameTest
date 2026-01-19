@@ -33,14 +33,8 @@ export default {
 
 <template>
   <main
-    class="w-full min-h-[calc(100vh-80px)] bg-neutral-950 relative overflow-hidden"
+    class="w-full min-h-[calc(100vh-80px)] relative overflow-hidden pattern-grid"
   >
-    <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
-      <div
-        class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"
-      ></div>
-    </div>
-
     <Container class="relative z-10 pb-20 pt-10">
       <section class="mb-10 flex flex-col gap-4" data-aos="fade-up">
         <h1

@@ -264,17 +264,6 @@ export default {
 </template>
 
 <style scoped>
-.pattern-grid {
-  background-color: #020617;
-  background-image: radial-gradient(
-      circle at top,
-      rgba(34, 197, 94, 0.22),
-      transparent 55%
-    ),
-    radial-gradient(circle at bottom, rgba(16, 185, 129, 0.18), transparent 55%);
-  background-repeat: no-repeat;
-}
-
 /* 
   Minimal CSS override - Only adjusting text colors to ensure high contrast
   Leaving borders to Vuetify to avoid double-border issues

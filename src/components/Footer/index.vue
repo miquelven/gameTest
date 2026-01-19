@@ -53,11 +53,11 @@ export default {
       >
         <div class="text-center md:text-left space-y-2">
           <p class="text-xs uppercase tracking-[0.25em] text-emerald-400">
-            GameTest
+            ChronoRun
           </p>
           <p class="text-zinc-300 text-sm">
             <font-awesome-icon :icon="['fas', 'copyright']" />
-            {{ currentYear }} GameTest. Todos os direitos reservados.
+            {{ currentYear }} ChronoRun. Todos os direitos reservados.
           </p>
         </div>
         <div

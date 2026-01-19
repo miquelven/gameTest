@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full h-[calc(100vh-80px)] text-center flex flex-col justify-center"
+    class="w-full h-[calc(100vh-80px)] text-center flex flex-col justify-center pattern-grid"
   >
     <div class="m-auto w-80">
       <h3 class="text-4xl font-medium mb-20 max-sm:text-3xl">
@@ -90,7 +90,7 @@ export default {
         } catch (error) {
           console.error("Erro durante a alteração da senha:", error);
           this.toast.error(
-            "Erro interno. Por favor, tente novamente mais tarde."
+            "Erro interno. Por favor, tente novamente mais tarde.",
           );
         }
       }

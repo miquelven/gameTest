@@ -34,14 +34,7 @@ export default {
 </script>
 
 <template>
-  <main class="w-full min-h-screen bg-neutral-950 relative overflow-hidden">
-    <!-- Background Grid -->
-    <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
-      <div
-        class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"
-      ></div>
-    </div>
-
+  <main class="w-full min-h-screen relative overflow-hidden pattern-grid">
     <Container class="relative z-10 pb-20 pt-10">
       <!-- Header Section -->
       <section class="text-center mb-20" data-aos="fade-up">
@@ -123,8 +116,8 @@ export default {
             tentando bater seu próprio recorde no
             <span class="text-emerald-400">Simon</span> ou lutando pelo top 1 no
             <span class="text-emerald-400">Space Invaders</span>, cada tentativa
-            conta. O GameTest é um projeto open-source feito por gamers, para
-            gamers.
+            conta. O <strong class="text-white">ChronoRun</strong> é um projeto
+            open-source feito por gamers, para gamers.
           </p>
 
           <div class="flex justify-center gap-6 flex-wrap">
