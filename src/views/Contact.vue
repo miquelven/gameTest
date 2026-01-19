@@ -89,7 +89,6 @@ export default {
             </p>
             <div class="mt-6 text-sm text-neutral-500">
               <p>Tempo médio de resposta: até 2 dias úteis.</p>
-              <p>Fique à vontade para escrever em português ou inglês.</p>
             </div>
           </div>
         </div>
