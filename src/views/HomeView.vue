@@ -60,7 +60,6 @@ export default {
 
 <template>
   <main class="w-full min-h-screen bg-neutral-950 relative overflow-hidden">
-    <!-- Background Grid Effect -->
     <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
       <div
         class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"
@@ -71,10 +70,8 @@ export default {
     </div>
 
     <Container class="relative z-10 pb-20 !mt-60">
-      <!-- HERO SECTION -->
       <BannerHome />
 
-      <!-- STATS SECTION (Replacing Timer/Ranking areas) -->
       <section class="mt-40 mb-32">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div
@@ -107,7 +104,6 @@ export default {
         </div>
       </section>
 
-      <!-- GAMES GRID (Mission Select) -->
       <section class="mb-40">
         <div
           class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12"
@@ -151,20 +147,20 @@ export default {
         </div>
 
         <div
-          class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7 px-2 md:px-0"
+          class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 px-2 md:px-0"
         >
           <div
             v-for="(game, index) in games"
             :key="index"
-            class="group relative flex flex-col overflow-hidden rounded-md border border-neutral-800/80 bg-gradient-to-b from-neutral-900 to-neutral-950/80 hover:border-emerald-500/70 transition-all duration-300"
+            class="group relative flex flex-col h-full overflow-hidden rounded-md border border-neutral-800/80 bg-gradient-to-b from-neutral-900 to-neutral-950/80 hover:border-emerald-500/70 transition-all duration-300"
             data-aos="fade-up"
             :data-aos-delay="index * 120"
           >
-            <div class="relative h-40 sm:h-44 overflow-hidden">
+            <div class="relative h-44 md:h-52 overflow-hidden">
               <img
                 :src="game.img"
                 :alt="game.alt"
-                class="w-full h-full object-cover transition-transform duration-500"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -173,23 +169,25 @@ export default {
                 class="absolute bottom-3 left-4 flex items-center gap-2 text-[11px]"
               >
                 <span
-                  class="px-2 py-1 rounded-sm bg-black/70 text-emerald-400 font-semibold tracking-widest uppercase"
+                  class="px-2 py-1 rounded-md bg-black/70 text-emerald-400 font-semibold tracking-[0.25em] uppercase"
                 >
                   Missão {{ index + 1 }}
                 </span>
               </div>
             </div>
 
-            <div class="flex flex-1 flex-col justify-between p-5 gap-4">
-              <div class="space-y-2">
-                <h3 class="text-lg font-semibold text-white">
+            <div class="flex flex-1 flex-col justify-between p-6 gap-5">
+              <div class="space-y-3">
+                <h3 class="text-xl font-semibold text-white">
                   {{ game.name }}
                 </h3>
-                <p class="text-neutral-400 text-xs md:text-sm leading-relaxed">
+                <p class="text-neutral-400 text-sm leading-relaxed">
                   {{ game.tip }}
                 </p>
               </div>
-              <div class="flex items-center justify-between">
+              <div
+                class="flex items-center justify-between border-t border-neutral-800 pt-4 mt-2"
+              >
                 <p
                   class="text-[11px] uppercase tracking-[0.3em] text-neutral-500"
                 >
@@ -207,11 +205,9 @@ export default {
         </div>
       </section>
 
-      <!-- UPDATES / COMMUNITY (New Content) -->
       <section
         class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-32"
       >
-        <!-- Text Side -->
         <div data-aos="fade-right">
           <h3 class="text-emerald-500 font-bold tracking-widest text-sm mb-2">
             // SYSTEM_LOGS
@@ -240,7 +236,6 @@ export default {
           </div>
         </div>
 
-        <!-- CTA Side -->
         <div
           class="relative h-full min-h-[280px] rounded-md bg-neutral-900 border border-neutral-800 p-8 md:p-10 flex flex-col justify-center items-center text-center"
           data-aos="fade-left"

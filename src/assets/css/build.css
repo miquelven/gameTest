@@ -1200,6 +1200,10 @@ video {
   height: 2.25rem;
 }
 
+.h-44 {
+  height: 11rem;
+}
+
 .max-h-20 {
   max-height: 5rem;
 }
@@ -2432,6 +2436,10 @@ video {
 
 .pl-6 {
   padding-left: 1.5rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
 }
 
 .text-left {
@@ -3827,6 +3835,10 @@ video {
   .md\:size-12 {
     width: 3rem;
     height: 3rem;
+  }
+
+  .md\:h-52 {
+    height: 13rem;
   }
 
   .md\:grid-cols-3 {
