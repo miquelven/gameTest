@@ -37,6 +37,7 @@ import {
   faGamepad,
   faCode,
   faUsers,
+  faCrosshairs,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -73,6 +74,7 @@ library.add(
   faVuejs,
   faJs,
   faCss3Alt,
+  faCrosshairs,
 );
 
 import axios from "axios";
