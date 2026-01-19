@@ -33,7 +33,9 @@ export default {
       >
         Jogue clássicos reimaginados, desafie seus reflexos e memória e acumule
         pontos para entrar para a elite do
-        <TextHighlight> ChronoRun.</TextHighlight>
+        <TextHighlight>
+          <span class="font-bold">ChronoRun.</span></TextHighlight
+        >
       </p>
 
       <div

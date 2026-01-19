@@ -64,7 +64,7 @@ export default {
           <img
             :src="logoImg"
             alt="logo"
-            width="36"
+            width="40"
             class="max-lg:w-8 select-none"
           />
           <span
