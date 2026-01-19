@@ -39,7 +39,7 @@ export default {
       <!-- Header Section -->
       <section class="text-center mb-20" data-aos="fade-up">
         <h1 class="text-5xl md:text-7xl font-bold text-white mb-6">
-          SOBRE O <TextHighlight>PROJETO</TextHighlight>
+          SOBRE O <TextHighlight>CHRONORUN</TextHighlight>
         </h1>
         <p class="text-neutral-400 max-w-2xl mx-auto text-lg leading-relaxed">
           Mais do que uma plataforma de jogos. Um laboratório digital para
@@ -60,10 +60,10 @@ export default {
             </h3>
           </div>
           <p class="text-neutral-300 leading-loose text-lg">
-            O <strong class="text-white">GameTest</strong> nasceu de uma
+            O <strong class="text-white">ChronoRun</strong> nasceu de uma
             necessidade simples: criar um ambiente onde a habilidade pura é o
-            único diferencial. Sem pay-to-win, sem loot boxes. Apenas você, seus
-            reflexos e o código.
+            único diferencial. Sem pay-to-win, sem loot boxes. Apenas você e
+            seus reflexos.
           </p>
           <p class="text-neutral-300 leading-loose text-lg">
             Nossa plataforma foi desenhada para entusiastas de
@@ -105,11 +105,11 @@ export default {
       >
         <div class="max-w-4xl mx-auto">
           <font-awesome-icon
-            :icon="['fas', 'code']"
+            :icon="['fas', 'users']"
             class="text-5xl text-emerald-500 mb-8"
           />
           <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
-            Código. Competição. Comunidade.
+            Competição. Comunidade.
           </h2>
           <p class="text-neutral-300 text-lg leading-relaxed mb-10">
             Acreditamos que a competição saudável eleva o nível de todos. Seja
@@ -128,7 +128,7 @@ export default {
               />
             </router-link>
             <a
-              href="https://github.com/miqueiasbelfort/game_in_game"
+              href="https://github.com/miquelven/gameTest"
               target="_blank"
             >
               <button
