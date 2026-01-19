@@ -15,7 +15,7 @@ const router = createRouter({
       component: HomeView,
       meta: {
         title: "ChronoRun",
-        requiresAuth: true,
+        requiresAuth: false,
         layout: "default",
       },
     },
@@ -43,7 +43,7 @@ const router = createRouter({
       component: lazyLoad("Login"),
       meta: {
         title: "Login",
-        layout: "empty",
+        layout: "default",
       },
     },
     {
@@ -61,7 +61,7 @@ const router = createRouter({
       component: lazyLoad("Register"),
       meta: {
         title: "Registro",
-        layout: "empty",
+        layout: "default",
       },
     },
     {
@@ -70,7 +70,7 @@ const router = createRouter({
       component: lazyLoad("Auth"),
       meta: {
         title: "Trocar a senha",
-        layout: "empty",
+        layout: "default",
       },
     },
     {

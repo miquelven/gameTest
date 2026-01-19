@@ -277,7 +277,7 @@ export default {
               <router-link to="/gamesPage">
                 <Button label="JOGAR AGORA" class="font-bold" />
               </router-link>
-              <router-link to="/register">
+              <router-link to="/register" v-if="!$store.state.user">
                 <button
                   class="px-6 py-3 rounded-md border border-neutral-700 hover:bg-neutral-800/80 backdrop-blur-sm text-white font-semibold transition-colors"
                 >

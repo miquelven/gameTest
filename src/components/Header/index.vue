@@ -19,11 +19,18 @@ export default {
       showMenu: false,
     };
   },
+  computed: {
+    isUserLoggedIn() {
+      return !!this.$store.state.user;
+    },
+  },
   mounted() {
     this.toast = useToast();
 
     const nameUser = localStorage.getItem("name");
-    this.name = nameUser[0].toUpperCase() + nameUser.substring(1);
+    if (nameUser) {
+      this.name = nameUser[0].toUpperCase() + nameUser.substring(1);
+    }
   },
   methods: {
     async logout() {
@@ -85,6 +92,7 @@ export default {
       <Menu @logout="logout" />
 
       <div
+        v-if="isUserLoggedIn"
         class="text-lg text-zinc-300 flex flex-col items-end gap-1 max-lg:text-base pr-3 max-md:hidden"
       >
         <span class="text-[0.7rem] tracking-[0.2em] uppercase text-emerald-400">
@@ -112,6 +120,23 @@ export default {
             </v-list>
           </v-menu>
         </div>
+      </div>
+
+      <div v-else class="flex items-center gap-4 max-md:hidden pr-3">
+        <router-link to="/login">
+          <button
+            class="text-neutral-400 hover:text-white transition-colors text-xs uppercase tracking-widest font-semibold"
+          >
+            Login
+          </button>
+        </router-link>
+        <router-link to="/register">
+          <button
+            class="px-5 py-2 rounded bg-emerald-600 hover:bg-emerald-500 text-white text-xs uppercase tracking-widest font-bold transition-colors shadow-lg shadow-emerald-900/20 border border-transparent hover:border-emerald-400"
+          >
+            Cadastrar
+          </button>
+        </router-link>
       </div>
     </div>
   </header>

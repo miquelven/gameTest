@@ -90,10 +90,13 @@ export default {
 
       if (this.score < 0) this.score = 0;
 
+      // Only save score if user is logged in
+      if (!this.$store.state.user) {
+        return;
+      }
+
       try {
-        const userEmail = this.$store.state.user
-          ? this.$store.state.user.email
-          : null;
+        const userEmail = this.$store.state.user.email;
         await axios.post("/update-score", {
           email: userEmail,
           newScore: this.score,
@@ -219,8 +222,27 @@ export default {
             <p class="text-neutral-400 text-xs text-center">
               O contador será iniciado assim que você continuar.
             </p>
-            <div class="mt-2 flex justify-center">
-              <Button :click="startCounter" type="button" label="COMEÇAR" />
+            <div class="mt-2 flex justify-center w-full">
+              <template v-if="$store.state.user">
+                <Button :click="startCounter" type="button" label="COMEÇAR" />
+              </template>
+              <template v-else>
+                <div class="flex flex-col gap-3 w-full">
+                  <p
+                    class="text-red-400 text-xs text-center uppercase tracking-widest font-bold"
+                  >
+                    <font-awesome-icon :icon="['fas', 'lock']" class="mr-2" />
+                    Identificação Necessária
+                  </p>
+                  <router-link to="/login" class="w-full">
+                    <button
+                      class="w-full py-3 rounded bg-emerald-900/20 border border-emerald-500/30 hover:bg-emerald-500/20 text-emerald-400 font-bold tracking-wider uppercase transition-all duration-300 text-sm"
+                    >
+                      Fazer Login
+                    </button>
+                  </router-link>
+                </div>
+              </template>
             </div>
           </div>
         </div>
@@ -282,22 +304,62 @@ export default {
             </div>
 
             <!-- Footer Message -->
-            <p
-              class="text-neutral-400 text-sm text-center leading-relaxed px-4"
-            >
-              Relatório enviado ao comando central. <br />
-              Sua performance foi registrada no ranking global.
-            </p>
-
-            <!-- Action -->
-            <router-link to="/" @click="startCounter" class="w-full">
-              <button
-                type="button"
-                class="w-full py-4 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-widest uppercase transition-all duration-300 hover:-translate-y-1 hover:tracking-[0.25em] active:scale-95 border border-transparent hover:border-emerald-400"
+            <div v-if="$store.state.user" class="w-full flex flex-col gap-6">
+              <p
+                class="text-neutral-400 text-sm text-center leading-relaxed px-4"
               >
-                Retornar à Base
-              </button>
-            </router-link>
+                Relatório enviado ao comando central. <br />
+                Sua performance foi registrada no ranking global.
+              </p>
+
+              <!-- Action Logged In -->
+              <router-link to="/" class="w-full">
+                <button
+                  type="button"
+                  class="w-full py-4 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-widest uppercase transition-all duration-300 hover:-translate-y-1 hover:tracking-[0.25em] active:scale-95 border border-transparent hover:border-emerald-400"
+                >
+                  Retornar à Base
+                </button>
+              </router-link>
+            </div>
+
+            <div v-else class="w-full flex flex-col gap-4">
+              <p
+                class="text-neutral-400 text-sm text-center leading-relaxed px-4"
+              >
+                Identificação não detectada. <br />
+                <span class="text-emerald-400/80"
+                  >Faça login para registrar sua patente no ranking.</span
+                >
+              </p>
+
+              <div class="grid grid-cols-2 gap-3 w-full">
+                <router-link to="/login" class="w-full">
+                  <button
+                    type="button"
+                    class="w-full py-3 rounded bg-emerald-900/20 border border-emerald-500/30 hover:bg-emerald-500/20 text-emerald-400 font-bold tracking-wider uppercase transition-all duration-300 hover:-translate-y-1 text-xs md:text-sm"
+                  >
+                    Login
+                  </button>
+                </router-link>
+                <router-link to="/register" class="w-full">
+                  <button
+                    type="button"
+                    class="w-full py-3 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wider uppercase transition-all duration-300 hover:-translate-y-1 border border-transparent hover:border-emerald-400 text-xs md:text-sm"
+                  >
+                    Criar Conta
+                  </button>
+                </router-link>
+              </div>
+
+              <router-link to="/" class="w-full mt-2">
+                <button
+                  class="w-full text-center text-[10px] text-neutral-500 hover:text-neutral-300 uppercase tracking-[0.2em] cursor-pointer transition-colors"
+                >
+                  Retornar sem salvar
+                </button>
+              </router-link>
+            </div>
           </div>
         </div>
       </template>

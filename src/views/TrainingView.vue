@@ -182,11 +182,30 @@ export default {
             </p>
           </div>
 
-          <Button
-            :click="startGame"
-            label="INICIAR SIMULAÇÃO"
-            class="w-full max-w-xs mt-2"
-          />
+          <template v-if="$store.state.user">
+            <Button
+              :click="startGame"
+              label="INICIAR SIMULAÇÃO"
+              class="w-full max-w-xs mt-2"
+            />
+          </template>
+          <template v-else>
+            <div class="flex flex-col gap-3 w-full max-w-xs mt-2 items-center">
+              <p
+                class="text-red-400 text-xs text-center uppercase tracking-widest font-bold"
+              >
+                <font-awesome-icon :icon="['fas', 'lock']" class="mr-2" />
+                Acesso Restrito
+              </p>
+              <router-link to="/login" class="w-full">
+                <button
+                  class="w-full py-3 rounded bg-neutral-800 hover:bg-neutral-700 text-white font-bold tracking-widest uppercase border border-neutral-600 transition-colors text-xs"
+                >
+                  Fazer Login para Jogar
+                </button>
+              </router-link>
+            </div>
+          </template>
         </div>
       </div>
     </div>

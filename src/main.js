@@ -38,6 +38,7 @@ import {
   faCode,
   faUsers,
   faCrosshairs,
+  faLock,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -75,6 +76,7 @@ library.add(
   faJs,
   faCss3Alt,
   faCrosshairs,
+  faLock,
 );
 
 import axios from "axios";

@@ -257,6 +257,22 @@ export default {
               Crie uma conta
             </router-link>
           </div>
+
+          <!-- Guest Access Link -->
+          <div
+            class="mt-4 pt-4 border-t border-neutral-800 w-full text-center"
+          >
+            <router-link
+              to="/gamesPage"
+              class="text-xs text-neutral-400 hover:text-emerald-400 uppercase tracking-widest transition-colors flex items-center justify-center gap-2 group"
+            >
+              <span>Acessar como Convidado</span>
+              <font-awesome-icon
+                :icon="['fas', 'arrow-right']"
+                class="group-hover:translate-x-1 transition-transform"
+              />
+            </router-link>
+          </div>
         </div>
       </div>
     </div>

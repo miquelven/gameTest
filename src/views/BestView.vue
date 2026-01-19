@@ -82,7 +82,33 @@ export default {
           data-aos-delay="200"
         >
           <div>
-            <template v-if="loading">
+            <template v-if="!$store.state.user">
+              <div
+                class="h-64 flex flex-col items-center justify-center text-center gap-4"
+              >
+                <div
+                  class="w-16 h-16 rounded-full bg-neutral-800 flex items-center justify-center mb-2"
+                >
+                  <font-awesome-icon
+                    :icon="['fas', 'lock']"
+                    class="text-neutral-500 text-2xl"
+                  />
+                </div>
+                <h3 class="text-xl font-bold text-white">Acesso Restrito</h3>
+                <p class="text-neutral-400 text-sm max-w-sm">
+                  Você precisa estar logado para visualizar seu histórico de
+                  pontuações e acompanhar seu progresso.
+                </p>
+                <router-link to="/login" class="mt-2">
+                  <button
+                    class="px-6 py-2 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-bold uppercase tracking-wider text-sm transition-colors"
+                  >
+                    Fazer Login
+                  </button>
+                </router-link>
+              </div>
+            </template>
+            <template v-else-if="loading">
               <div class="flex justify-center items-center h-64">
                 <Loader />
               </div>
