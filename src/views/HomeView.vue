@@ -184,12 +184,13 @@ export default {
                 >
                   Pronto para iniciar
                 </p>
-                <button
+                <router-link
+                  :to="{ name: 'training', params: { id: index } }"
                   class="inline-flex items-center gap-2 text-emerald-400 text-xs font-semibold tracking-[0.25em] uppercase hover:text-emerald-300"
                 >
                   Iniciar missão
                   <font-awesome-icon :icon="['fas', 'arrow-right']" />
-                </button>
+                </router-link>
               </div>
             </div>
           </div>

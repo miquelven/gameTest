@@ -91,7 +91,15 @@ const router = createRouter({
         layout: "default",
       },
     },
-
+    {
+      path: "/training/:id",
+      name: "training",
+      component: lazyLoad("TrainingView"),
+      meta: {
+        title: "Treinamento",
+        layout: "empty",
+      },
+    },
     {
       path: "/gamesPage",
       name: "gamesPage",
