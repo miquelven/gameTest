@@ -36,9 +36,12 @@ export default {
     class="w-full min-h-[calc(100vh-80px)] relative overflow-hidden pattern-grid"
   >
     <Container class="relative z-10 pb-20 pt-10">
-      <section class="mb-10 flex flex-col gap-4" data-aos="fade-up">
+      <section
+        class="mb-10 flex flex-col gap-4 items-center text-center"
+        data-aos="fade-up"
+      >
         <h1
-          class="text-4xl md:text-5xl font-bold text-white leading-tight max-w-2xl"
+          class="text-4xl md:text-5xl font-bold text-white leading-tight max-w-3xl"
         >
           Suas <TextHighlight>melhores pontuações</TextHighlight> em destaque
         </h1>
@@ -96,17 +99,14 @@ export default {
                     {{ scores.length }} registros
                   </span>
                 </div>
-                <table class="w-full border-separate border-spacing-y-3">
-                  <tbody>
-                    <tr
-                      v-for="(score, index) in scores"
-                      :key="index"
-                      class="transition-all duration-300 hover:bg-white/5"
-                    >
-                      <BestInfoItem :score="score" :position="index + 1" />
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="space-y-3">
+                  <BestInfoItem
+                    v-for="(score, index) in scores"
+                    :key="index"
+                    :score="score"
+                    :position="index + 1"
+                  />
+                </div>
               </template>
               <template v-else>
                 <div
