@@ -87,6 +87,7 @@ import { MotionPlugin } from "@vueuse/motion";
 import Toast from "vue-toastification";
 
 import "vue-toastification/dist/index.css";
+import "./assets/css/toast-custom.css";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
@@ -108,13 +109,31 @@ const vueQueryPluginOptions = {
   },
 };
 
+const toastOptions = {
+  position: "top-right",
+  timeout: 4000,
+  closeOnClick: true,
+  pauseOnFocusLoss: true,
+  pauseOnHover: true,
+  draggable: true,
+  draggablePercent: 0.6,
+  showCloseButtonOnHover: false,
+  hideProgressBar: false,
+  closeButton: "button",
+  icon: true,
+  rtl: false,
+  transition: "Vue-Toastification__bounce",
+  maxToasts: 5,
+  newestOnTop: true,
+};
+
 const app = createApp(App);
 
 app
   .use(router)
   .use(store)
   .use(MotionPlugin)
-  .use(Toast)
+  .use(Toast, toastOptions)
   .use(vuetify)
   .use(VueQueryPlugin, vueQueryPluginOptions)
   .component("font-awesome-icon", FontAwesomeIcon)
