@@ -1,7 +1,7 @@
 <template>
   <div
     id="outer-circle"
-    class="bg-[#385a94] rounded-full h-[400px] w-[400px] absolute border-solid border-2 m-auto shadow-[´8_8_15_5_#888888]"
+    class="bg-[#385a94] rounded-full h-[400px] w-[400px] relative border-solid border-2 m-auto shadow-[8px_8px_15px_5px_#888888]"
   >
     <div
       ref="topLeft"
