@@ -27,7 +27,6 @@ export default {
   },
   methods: {
     async resetPassword() {
-      // Validate form first
       const { valid } = await this.$refs.form.validate();
 
       if (!valid) {
@@ -44,13 +43,12 @@ export default {
 
         if (response.data.success) {
           this.toast.success("Email de recuperação enviado com sucesso!");
-          // Optional: redirect to login after a delay
           setTimeout(() => {
             this.$router.push("/login");
           }, 3000);
         } else {
           this.toast.error(
-            response.data.message || "Não foi possível enviar o email."
+            response.data.message || "Não foi possível enviar o email.",
           );
         }
       } catch (error) {
@@ -72,7 +70,6 @@ export default {
       class="relative z-10 w-full max-w-md p-8 rounded-md border border-neutral-800 bg-[#171717] shadow-2xl transition-colors duration-300"
       data-aos="fade-up"
     >
-      <!-- Decorator lines for HUD look -->
       <div
         class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-600 to-transparent opacity-50"
       ></div>
@@ -80,7 +77,6 @@ export default {
         class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-900 to-transparent opacity-30"
       ></div>
 
-      <!-- Corner Accents -->
       <div
         class="absolute top-[-1px] left-[-1px] w-4 h-4 border-t-2 border-l-2 border-green-600 rounded-tl-lg transition-colors duration-300"
       ></div>
@@ -95,7 +91,6 @@ export default {
       ></div>
 
       <div class="flex justify-center items-center flex-col w-full">
-        <!-- Logo Area -->
         <div class="mb-8 flex flex-col items-center relative">
           <img :src="logoImg" alt="Game Logo" class="w-32 mb-4" />
           <h2 class="text-2xl font-bold text-white tracking-wider text-center">
@@ -112,7 +107,6 @@ export default {
           class="flex flex-col gap-5 w-full"
           @submit.prevent="resetPassword"
         >
-          <!-- Email Input -->
           <v-text-field
             label="Email cadastrado"
             v-model="email"
@@ -125,19 +119,6 @@ export default {
             class="gamer-input"
             placeholder="exemplo@email.com"
           >
-            <template v-slot:prepend-inner>
-              <font-awesome-icon
-                :icon="['fas', 'envelope']"
-                class="mr-2 opacity-80 transition-colors"
-                :class="
-                  !formValid &&
-                  hasInteracted &&
-                  (!email || emailRules[1](email) !== true)
-                    ? 'text-red-500'
-                    : 'text-green-500'
-                "
-              />
-            </template>
           </v-text-field>
 
           <div class="mt-2">
