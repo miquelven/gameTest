@@ -47,6 +47,15 @@ const router = createRouter({
       },
     },
     {
+      path: "/forgot-password",
+      name: "forgot-password",
+      component: lazyLoad("ForgotPassword"),
+      meta: {
+        title: "Recuperar Senha",
+        layout: "default",
+      },
+    },
+    {
       path: "/contact",
       name: "contact",
       component: lazyLoad("Contact"),

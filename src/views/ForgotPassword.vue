@@ -11,30 +11,22 @@ export default {
   data() {
     return {
       email: "",
-      password: "",
-      showPassword: false,
       loadingButton: false,
       toast: null,
       logoImg: logoImg,
       formValid: true,
-      hasInteracted: false, // Track if user has tried to submit or interacted deeply
+      hasInteracted: false,
     };
   },
   mounted() {
     this.toast = useToast();
-    if (localStorage.getItem("token")) localStorage.removeItem("token");
   },
   components: {
     TextHighlight,
     Button,
   },
-  computed: {
-    isPasswordInvalid() {
-      return this.passwordRules.some((rule) => rule(this.password) !== true);
-    },
-  },
   methods: {
-    async login() {
+    async resetPassword() {
       // Validate form first
       const { valid } = await this.$refs.form.validate();
 
@@ -46,33 +38,24 @@ export default {
 
       try {
         this.loadingButton = true;
-        const response = await axios.post("/login", {
+        const response = await axios.post("/reset-password", {
           email: this.email,
-          password: this.password,
         });
 
         if (response.data.success) {
-          localStorage.setItem("token", response.data.token);
-
-          // Try to get name from response, otherwise use email part or default
-          const userName =
-            response.data.name ||
-            response.data.user?.name ||
-            this.email.split("@")[0];
-
-          const user = {
-            name: userName,
-            email: this.email,
-          };
-          this.$store.commit("setUser", user);
-
-          localStorage.setItem("name", userName);
-          this.$router.push("/");
+          this.toast.success("Email de recuperação enviado com sucesso!");
+          // Optional: redirect to login after a delay
+          setTimeout(() => {
+            this.$router.push("/login");
+          }, 3000);
         } else {
-          this.toast.error("Erro ao logar. Verifique os campos");
+          this.toast.error(
+            response.data.message || "Não foi possível enviar o email."
+          );
         }
       } catch (error) {
-        this.toast.error("Informações inválidas");
+        console.error("Erro na recuperação de senha:", error);
+        this.toast.error("Erro ao tentar recuperar a senha. Tente novamente.");
       } finally {
         this.loadingButton = false;
       }
@@ -115,21 +98,23 @@ export default {
         <!-- Logo Area -->
         <div class="mb-8 flex flex-col items-center relative">
           <img :src="logoImg" alt="Game Logo" class="w-32 mb-4" />
-          <h2 class="text-2xl font-bold text-white tracking-wider">
-            BEM-VINDO
+          <h2 class="text-2xl font-bold text-white tracking-wider text-center">
+            RECUPERAR SENHA
           </h2>
-          <p class="text-neutral-400 text-sm mt-1">Faça login para continuar</p>
+          <p class="text-neutral-400 text-sm mt-1 text-center max-w-xs">
+            Digite seu email para receber um link de redefinição
+          </p>
         </div>
 
         <v-form
           ref="form"
           v-model="formValid"
           class="flex flex-col gap-5 w-full"
-          @submit.prevent="login"
+          @submit.prevent="resetPassword"
         >
           <!-- Email Input -->
           <v-text-field
-            label="Email"
+            label="Email cadastrado"
             v-model="email"
             :rules="emailRules"
             variant="outlined"
@@ -138,32 +123,19 @@ export default {
             density="comfortable"
             theme="dark"
             class="gamer-input"
+            placeholder="exemplo@email.com"
           >
-          </v-text-field>
-
-          <!-- Password Input -->
-          <v-text-field
-            label="Senha"
-            v-model="password"
-            :type="showPassword ? 'text' : 'password'"
-            :rules="passwordRules"
-            variant="outlined"
-            base-color="grey-darken-2"
-            color="green-accent-3"
-            density="comfortable"
-            theme="dark"
-            class="gamer-input"
-          >
-            <template v-slot:append-inner>
+            <template v-slot:prepend-inner>
               <font-awesome-icon
-                :icon="['fas', 'eye']"
-                class="cursor-pointer hover:text-green-400 transition-colors"
+                :icon="['fas', 'envelope']"
+                class="mr-2 opacity-80 transition-colors"
                 :class="
-                  password && isPasswordInvalid
+                  !formValid &&
+                  hasInteracted &&
+                  (!email || emailRules[1](email) !== true)
                     ? 'text-red-500'
                     : 'text-green-500'
                 "
-                @click="showPassword = !showPassword"
               />
             </template>
           </v-text-field>
@@ -172,7 +144,7 @@ export default {
             <Button
               :loadingProp="loadingButton"
               type="submit"
-              label="ENTRAR"
+              label="ENVIAR LINK"
               class="w-full font-bold tracking-widest"
             />
           </div>
@@ -180,35 +152,12 @@ export default {
 
         <div class="flex flex-col justify-center items-center mt-8 gap-3">
           <router-link
-            to="/forgot-password"
-            class="text-sm text-neutral-400 hover:text-green-400 transition-colors duration-200"
+            to="/login"
+            class="text-sm text-neutral-400 hover:text-green-400 transition-colors duration-200 flex items-center gap-2"
           >
-            Esqueceu sua senha?
+            <font-awesome-icon :icon="['fas', 'arrow-left']" />
+            Voltar para o login
           </router-link>
-
-          <div class="text-center text-sm text-neutral-500">
-            Não tem uma conta?
-            <router-link
-              to="/register"
-              class="text-green-500 font-semibold hover:text-green-400 hover:underline transition-colors ml-1"
-            >
-              Crie uma conta
-            </router-link>
-          </div>
-
-          <!-- Guest Access Link -->
-          <div class="mt-4 pt-4 border-t border-neutral-800 w-full text-center">
-            <router-link
-              to="/gamesPage"
-              class="text-xs text-neutral-400 hover:text-emerald-400 uppercase tracking-widest transition-colors flex items-center justify-center gap-2 group"
-            >
-              <span>Acessar como Convidado</span>
-              <font-awesome-icon
-                :icon="['fas', 'arrow-right']"
-                class="group-hover:translate-x-1 transition-transform"
-              />
-            </router-link>
-          </div>
         </div>
       </div>
     </div>
@@ -216,11 +165,6 @@ export default {
 </template>
 
 <style scoped>
-/* 
-  Minimal CSS override - Only adjusting text colors to ensure high contrast
-  Leaving borders to Vuetify to avoid double-border issues
-*/
-
 :deep(.v-label) {
   color: #a3a3a3 !important;
 }
