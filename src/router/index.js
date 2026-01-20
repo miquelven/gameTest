@@ -122,7 +122,13 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
-  document.title = `${to.meta.title}`;
+  const baseTitle = "Chronorun";
+  if (to.name === "home" || !to.meta.title) {
+    document.title = baseTitle;
+  } else {
+    document.title = `${baseTitle} - ${to.meta.title}`;
+  }
+
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     const token = localStorage.getItem("token");
 
