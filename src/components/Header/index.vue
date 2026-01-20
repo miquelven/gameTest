@@ -13,7 +13,6 @@ export default {
 
       toast: null,
 
-      name: "",
       showItem: false,
       header: null,
       showMenu: false,
@@ -23,14 +22,16 @@ export default {
     isUserLoggedIn() {
       return !!this.$store.state.user;
     },
+    name() {
+      const user = this.$store.state.user;
+      if (user && user.name) {
+        return user.name[0].toUpperCase() + user.name.substring(1);
+      }
+      return "";
+    },
   },
   mounted() {
     this.toast = useToast();
-
-    const nameUser = localStorage.getItem("name");
-    if (nameUser) {
-      this.name = nameUser[0].toUpperCase() + nameUser.substring(1);
-    }
   },
   methods: {
     async logout() {
@@ -44,6 +45,7 @@ export default {
           localStorage.removeItem("name");
           localStorage.removeItem("vuex");
 
+          this.$store.commit("setUser", null);
           this.$router.push("/login");
         } else {
           this.toast.error("Não foi possível fazer o logout");

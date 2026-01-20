@@ -56,6 +56,7 @@ export default {
 
           // Try to get name from response, otherwise use email part or default
           const userName =
+            response.data.username ||
             response.data.name ||
             response.data.user?.name ||
             this.email.split("@")[0];
