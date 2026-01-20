@@ -30,10 +30,9 @@ export default {
       gameId: null,
       gameInfo: null,
       gameComponent: null,
-      gameState: "briefing", // briefing, playing, finished
-      gameKey: 0, // Para forçar recriação do componente
+      gameState: "briefing",
+      gameKey: 0,
 
-      // Mapeamento de índice para componente (mesma ordem de gameListInfo)
       componentMap: [
         TicTacToe,
         Memory,
@@ -67,13 +66,12 @@ export default {
       this.gameState = "finished";
     },
     retryGame() {
-      this.gameKey++; // Força remontagem do componente
+      this.gameKey++;
       this.gameState = "playing";
     },
     exitTraining() {
       this.$router.push("/");
     },
-    // Handler para pontuação (apenas log ou ignorar, já que não salva)
     handleScore(score) {
       console.log("Pontuação no treino:", score);
     },
@@ -85,7 +83,6 @@ export default {
   <main
     class="w-full min-h-screen relative overflow-hidden flex items-center justify-center pattern-grid"
   >
-    <!-- Header Global de Navegação -->
     <header
       class="fixed top-0 left-0 w-full z-50 p-6 flex justify-between items-start pointer-events-none"
     >
@@ -112,7 +109,6 @@ export default {
         </div>
       </router-link>
 
-      <!-- Status (Apenas visível durante o jogo) -->
       <div
         v-if="gameState === 'playing'"
         class="pointer-events-auto hidden md:flex items-center gap-3 px-5 py-3 bg-neutral-900/50 border border-emerald-500/20 rounded-lg backdrop-blur-sm"
@@ -126,7 +122,6 @@ export default {
       </div>
     </header>
 
-    <!-- FASE 1: BRIEFING -->
     <div
       v-if="gameState === 'briefing'"
       class="relative z-10 max-w-2xl w-full p-6"
@@ -135,7 +130,6 @@ export default {
       <div
         class="bg-neutral-900/95 border border-emerald-500/30 rounded-xl p-8 shadow-2xl relative overflow-hidden"
       >
-        <!-- Efeito decorativo -->
         <div
           class="absolute top-0 left-0 w-full h-1 bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.5)]"
         ></div>
@@ -210,7 +204,6 @@ export default {
       </div>
     </div>
 
-    <!-- FASE 2: JOGO -->
     <div
       v-if="gameState === 'playing'"
       class="relative z-10 w-full h-full flex flex-col items-center justify-center p-4"
@@ -233,7 +226,6 @@ export default {
       </div>
     </div>
 
-    <!-- FASE 3: CONCLUSÃO -->
     <div
       v-if="gameState === 'finished'"
       class="absolute inset-0 z-50 bg-black/90 backdrop-blur-sm flex justify-center items-center"

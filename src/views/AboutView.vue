@@ -36,7 +36,6 @@ export default {
 <template>
   <main class="w-full min-h-screen relative overflow-hidden pattern-grid">
     <Container class="relative z-10 pb-20 pt-10">
-      <!-- Header Section -->
       <section class="text-center mb-20" data-aos="fade-up">
         <h1 class="text-5xl md:text-7xl font-bold text-white mb-6">
           SOBRE O <TextHighlight>CHRONORUN</TextHighlight>
@@ -48,7 +47,6 @@ export default {
         </p>
       </section>
 
-      <!-- Mission Briefing (Grid Layout) -->
       <section
         class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-32 items-center"
       >
@@ -98,7 +96,6 @@ export default {
         </div>
       </section>
 
-      <!-- Origin Story (Full Width) -->
       <section
         class="relative rounded-md bg-neutral-900 border border-neutral-800 p-10 md:p-16 mb-32 text-center"
         data-aos="fade-up"
@@ -127,10 +124,7 @@ export default {
                 class="font-bold tracking-widest"
               />
             </router-link>
-            <a
-              href="https://github.com/miquelven/gameTest"
-              target="_blank"
-            >
+            <a href="https://github.com/miquelven/gameTest" target="_blank">
               <button
                 class="px-8 py-3 rounded hover:bg-white/10 text-white border border-white/20 transition-colors font-semibold flex items-center gap-3"
               >
@@ -142,7 +136,6 @@ export default {
         </div>
       </section>
 
-      <!-- Tech Stack Footer -->
       <section
         class="text-center border-t border-neutral-800 pt-10"
         data-aos="fade-in"

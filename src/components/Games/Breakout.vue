@@ -89,13 +89,12 @@ export default {
 
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-      // player
       this.ctx.fillStyle = "#2bb478";
       this.ctx.fillRect(
         this.player.x,
         this.player.y,
         this.player.width,
-        this.player.height
+        this.player.height,
       );
 
       this.ball.x += this.ball.velocityX;
@@ -110,7 +109,6 @@ export default {
       this.ctx.stroke();
       this.ctx.shadowBlur = 0;
 
-      // bounce ball off walls
       if (this.ball.y <= 0) {
         this.ball.velocityY *= -1;
       } else if (

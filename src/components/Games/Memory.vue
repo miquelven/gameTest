@@ -19,7 +19,6 @@ export default {
     };
   },
   mounted() {
-    // montar a sequencia aleatoria
     const colors = ["orange", "red", "green", "purple", "pink", "blue"];
     for (let i = 0; i < 2; i++) {
       let controlSquareColor = [];
@@ -35,7 +34,6 @@ export default {
       }
     }
 
-    //mostrar 3s
     setTimeout(() => {
       this.show = false;
     }, 3000);
@@ -48,7 +46,6 @@ export default {
     async clickedSquare(square) {
       if (this.show || this.moves == 2 || this.firstSquareClicked == square)
         return;
-      // controle de squares virados para cima
       if (
         square.getAttribute("style") !== null &&
         square.getAttribute("style").length > 0
@@ -59,16 +56,14 @@ export default {
       this.moves++;
       square.setAttribute(
         "style",
-        `background: ${square.getAttribute("data-color")}`
+        `background: ${square.getAttribute("data-color")}`,
       );
-      // primeiro square clicado
       if (this.firstSquareClicked == null) {
         this.firstSquareClicked = square;
         this.firstColorSelected = square.getAttribute("data-color");
         return;
       }
 
-      // cores diferentes
       if (this.firstColorSelected !== square.getAttribute("data-color")) {
         setTimeout(() => {
           this.firstSquareClicked.removeAttribute("style");
@@ -79,13 +74,13 @@ export default {
         this.correct++;
         this.firstSquareClicked.setAttribute(
           "style",
-          `background: ${this.firstColorSelected}; transform: scale(1.10)`
+          `background: ${this.firstColorSelected}; transform: scale(1.10)`,
         );
         square.setAttribute(
           "style",
           `background: ${square.getAttribute(
-            "data-color"
-          )}; transform: scale(1.10)`
+            "data-color",
+          )}; transform: scale(1.10)`,
         );
         this.resetValues();
       }

@@ -31,7 +31,6 @@ export default {
     data-aos="fade-up"
     :data-aos-delay="position * 50"
   >
-    <!-- Rank Indicator -->
     <div class="flex items-center gap-4 relative z-10">
       <div
         class="flex items-center justify-center w-12 h-12 rounded-md border font-bold text-lg"
@@ -56,7 +55,6 @@ export default {
       </div>
     </div>
 
-    <!-- Visual Decoration -->
     <div class="relative z-10 flex items-center gap-4">
       <div
         v-if="position === 1"
@@ -71,7 +69,6 @@ export default {
       </div>
     </div>
 
-    <!-- Background Gradient for Top Ranks -->
     <div
       v-if="position === 1"
       class="absolute inset-0 bg-gradient-to-r from-yellow-400/5 via-transparent to-transparent pointer-events-none"

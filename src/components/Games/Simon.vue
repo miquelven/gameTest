@@ -232,7 +232,6 @@ export default {
 
       if (this.playerOrder.length == 7 && this.good) this.winGame();
 
-      // O JOGO ACABA
       if (!this.good) {
         this.counter.innerHTML = "Errado";
         this.flashColor();

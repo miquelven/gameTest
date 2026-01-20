@@ -90,7 +90,6 @@ export default {
 
       if (this.score < 0) this.score = 0;
 
-      // Only save score if user is logged in
       if (!this.$store.state.user) {
         return;
       }
@@ -129,7 +128,6 @@ export default {
     <div
       class="relative z-10 h-screen w-full flex flex-col p-4 md:p-8 max-sm:hidden"
     >
-      <!-- Compact Header HUD -->
       <header class="w-full flex justify-between items-end mb-6 shrink-0">
         <div class="flex flex-col gap-1">
           <router-link
@@ -169,7 +167,6 @@ export default {
         </div>
       </header>
 
-      <!-- Main Game Area -->
       <div
         class="flex-1 w-full flex justify-center items-center relative overflow-hidden"
       >
@@ -265,7 +262,6 @@ export default {
               transition: { duration: 500, delay: 100 },
             }"
           >
-            <!-- Header -->
             <div class="text-center space-y-2">
               <h3
                 class="text-4xl font-bold text-white uppercase tracking-wider"
@@ -275,7 +271,6 @@ export default {
               <div class="h-1 w-24 bg-emerald-500 mx-auto rounded-full"></div>
             </div>
 
-            <!-- Stats Grid -->
             <div class="grid grid-cols-2 gap-8 py-4">
               <div
                 class="flex flex-col items-center gap-2 p-4 rounded-lg bg-white/5 border border-white/10"
@@ -303,7 +298,6 @@ export default {
               </div>
             </div>
 
-            <!-- Footer Message -->
             <div v-if="$store.state.user" class="w-full flex flex-col gap-6">
               <p
                 class="text-neutral-400 text-sm text-center leading-relaxed px-4"
@@ -312,7 +306,6 @@ export default {
                 Sua performance foi registrada no ranking global.
               </p>
 
-              <!-- Action Logged In -->
               <router-link to="/" class="w-full">
                 <button
                   type="button"

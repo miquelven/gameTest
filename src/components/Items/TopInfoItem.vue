@@ -34,7 +34,6 @@ export default {
     data-aos="fade-up"
     :data-aos-delay="rank * 50"
   >
-    <!-- Rank and Player Info -->
     <div class="flex items-center gap-4 relative z-10">
       <div
         class="flex items-center justify-center w-12 h-12 rounded-md border font-bold text-lg shrink-0"
@@ -60,7 +59,6 @@ export default {
       </div>
     </div>
 
-    <!-- Score and Icon -->
     <div class="relative z-10 flex items-center gap-4 md:gap-8">
       <div class="flex flex-col items-end">
         <span
@@ -80,7 +78,6 @@ export default {
       </div>
     </div>
 
-    <!-- Background Gradient for Top Ranks -->
     <div
       v-if="rank === 1"
       class="absolute inset-0 bg-gradient-to-r from-yellow-400/5 via-transparent to-transparent pointer-events-none"

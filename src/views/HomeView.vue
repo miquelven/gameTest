@@ -229,7 +229,6 @@ export default {
           class="relative h-full min-h-[280px] rounded-md border border-neutral-800 flex flex-col justify-center items-center text-center overflow-hidden group"
           data-aos="fade-left"
         >
-          <!-- Decorator lines for HUD look -->
           <div
             class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-600 to-transparent opacity-50 z-20"
           ></div>
@@ -237,7 +236,6 @@ export default {
             class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-900 to-transparent opacity-30 z-20"
           ></div>
 
-          <!-- Corner Accents -->
           <div
             class="absolute top-[-1px] left-[-1px] w-4 h-4 border-t-2 border-l-2 border-green-600 rounded-tl-lg transition-colors duration-300 z-20"
           ></div>
@@ -251,7 +249,6 @@ export default {
             class="absolute bottom-[-1px] right-[-1px] w-4 h-4 border-b-2 border-r-2 border-green-600 rounded-br-lg transition-colors duration-300 z-20"
           ></div>
 
-          <!-- Video Background -->
           <video
             autoplay
             loop
@@ -262,10 +259,8 @@ export default {
             <source :src="gamesVideo" type="video/mp4" />
           </video>
 
-          <!-- Overlay -->
           <div class="absolute inset-0 bg-neutral-950/90"></div>
 
-          <!-- Content -->
           <div class="relative z-10 p-8 md:p-10 drop-shadow-md">
             <h3 class="text-2xl font-bold text-white mb-4">Junte-se à Elite</h3>
             <p class="text-neutral-300 mb-8 max-w-md mx-auto">

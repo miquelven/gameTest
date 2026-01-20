@@ -17,7 +17,7 @@ export default {
       toast: null,
       logoImg: logoImg,
       formValid: true,
-      hasInteracted: false, // Track if user has tried to submit or interacted deeply
+      hasInteracted: false,
     };
   },
   mounted() {
@@ -35,7 +35,6 @@ export default {
   },
   methods: {
     async login() {
-      // Validate form first
       const { valid } = await this.$refs.form.validate();
 
       if (!valid) {
@@ -54,7 +53,6 @@ export default {
         if (response.data.success) {
           localStorage.setItem("token", response.data.token);
 
-          // Try to get name from response, otherwise use email part or default
           const userName =
             response.data.username ||
             response.data.name ||
@@ -90,7 +88,6 @@ export default {
       class="relative z-10 w-full max-w-md p-8 rounded-md border border-neutral-800 bg-[#171717] shadow-2xl transition-colors duration-300"
       data-aos="fade-up"
     >
-      <!-- Decorator lines for HUD look -->
       <div
         class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-600 to-transparent opacity-50"
       ></div>
@@ -98,7 +95,6 @@ export default {
         class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-900 to-transparent opacity-30"
       ></div>
 
-      <!-- Corner Accents -->
       <div
         class="absolute top-[-1px] left-[-1px] w-4 h-4 border-t-2 border-l-2 border-green-600 rounded-tl-lg transition-colors duration-300"
       ></div>
@@ -113,7 +109,6 @@ export default {
       ></div>
 
       <div class="flex justify-center items-center flex-col w-full">
-        <!-- Logo Area -->
         <div class="mb-8 flex flex-col items-center relative">
           <img :src="logoImg" alt="Game Logo" class="w-32 mb-4" />
           <h2 class="text-2xl font-bold text-white tracking-wider">
@@ -128,7 +123,6 @@ export default {
           class="flex flex-col gap-5 w-full"
           @submit.prevent="login"
         >
-          <!-- Email Input -->
           <v-text-field
             label="Email"
             v-model="email"
@@ -142,7 +136,6 @@ export default {
           >
           </v-text-field>
 
-          <!-- Password Input -->
           <v-text-field
             label="Senha"
             v-model="password"
@@ -203,11 +196,6 @@ export default {
 </template>
 
 <style scoped>
-/* 
-  Minimal CSS override - Only adjusting text colors to ensure high contrast
-  Leaving borders to Vuetify to avoid double-border issues
-*/
-
 :deep(.v-label) {
   color: #a3a3a3 !important;
 }

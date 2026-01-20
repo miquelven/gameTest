@@ -149,22 +149,19 @@ export default {
     update() {
       if (this.bool) return;
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      // draw player
       this.ctx.drawImage(
         this.playerImgEl,
         this.player.x,
         this.player.y,
         this.player.width,
-        this.player.height
+        this.player.height,
       );
 
-      // draw enemies
       for (let i = 0; i < this.enemyArray.length; i++) {
         let currentEnemy = this.enemyArray[i];
         if (currentEnemy.alive) {
           currentEnemy.x += this.enemyVelocityX;
 
-          // detect wall
           if (
             currentEnemy.x + currentEnemy.width >= this.canvas.width ||
             currentEnemy.x <= 0
@@ -177,7 +174,6 @@ export default {
             }
           }
 
-          //detect collision of enemy in player
           if (this.bool) return;
           for (let a = 0; a < this.enemyArray.length; a++) {
             let enemy = this.enemyArray[a];
@@ -193,19 +189,17 @@ export default {
             currentEnemy.x,
             currentEnemy.y,
             currentEnemy.width,
-            currentEnemy.height
+            currentEnemy.height,
           );
         }
       }
 
-      // draw bullets
       for (let i = 0; i < this.bulletArray.length; i++) {
         let bullet = this.bulletArray[i];
         bullet.y += this.bulletVelocityY;
         this.ctx.fillStyle = "#2bb478";
         this.ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
 
-        // collision
         for (let a = 0; a < this.enemyArray.length; a++) {
           let enemy = this.enemyArray[a];
           if (
@@ -226,7 +220,6 @@ export default {
         }
       }
 
-      // clear bullets
       while (
         this.bulletArray.length > 0 &&
         (this.bulletArray[0].used || this.bulletArray[0].y < 0)
@@ -234,7 +227,6 @@ export default {
         this.bulletArray.shift();
       }
 
-      // draw score
       this.ctx.fillStyle = "#ddd";
       this.ctx.font = "20px sans-serif";
       this.ctx.fillText(this.score, this.canvas.width - 40, 30);

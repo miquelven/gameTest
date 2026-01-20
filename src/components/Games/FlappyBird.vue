@@ -82,7 +82,6 @@ export default {
       audio.play();
     },
     draw() {
-      // bird
       this.velocityY += this.gravity;
       this.bird.y = Math.max(this.bird.y, this.velocityY, 0);
       this.ctx.drawImage(
@@ -90,10 +89,9 @@ export default {
         this.bird.x,
         this.bird.y,
         this.bird.width,
-        this.bird.height
+        this.bird.height,
       );
 
-      // pipes
       for (let i = 0; i < this.pipeArray.length; i++) {
         let pipe = this.pipeArray[i];
         pipe.x += this.velocityX;
@@ -115,11 +113,9 @@ export default {
         }
       }
 
-      // clear pipes
       while (this.pipeArray.length > 0 && this.pipeArray[0].x < -this.pipeWidth)
         this.pipeArray.shift();
 
-      // score
       this.ctx.fillStyle = "#fff";
       this.ctx.font = "45px sans-serif";
       this.ctx.fillText(this.score, this.canvasWidth - 60, 65);
@@ -169,7 +165,6 @@ export default {
 
       this.draw();
 
-      // detect collision bird with ground
       if (this.bird.y > this.canvas.height) {
         this.gameOver = true;
         this.$emit("addScore", 4000);
