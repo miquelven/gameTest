@@ -85,15 +85,8 @@ export default {
       }
     },
     async setScore() {
-      this.stopCounter();
-
-      // Lógica de Pontuação Atualizada:
-      // Soma dos pontos dos jogos (já acumulado em this.score) + Bônus de Tempo
-      // Meta de tempo: 10 minutos (600 segundos)
-      // Bônus: 50 pontos por cada segundo economizado
-
       const totalSeconds = this.minutes * 60 + this.seconds;
-      const targetTime = 600; // 10 minutos
+      const targetTime = 180;
       const timeBonus = Math.max(0, (targetTime - totalSeconds) * 50);
 
       this.score += timeBonus;
