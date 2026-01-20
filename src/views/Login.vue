@@ -10,7 +10,6 @@ export default {
   mixins: [validateForm],
   data() {
     return {
-      name: "",
       email: "",
       password: "",
       showPassword: false,
@@ -55,13 +54,19 @@ export default {
         if (response.data.success) {
           localStorage.setItem("token", response.data.token);
 
+          // Try to get name from response, otherwise use email part or default
+          const userName =
+            response.data.name ||
+            response.data.user?.name ||
+            this.email.split("@")[0];
+
           const user = {
-            name: this.name,
+            name: userName,
             email: this.email,
           };
           this.$store.commit("setUser", user);
 
-          localStorage.setItem("name", this.name);
+          localStorage.setItem("name", userName);
           this.$router.push("/");
         } else {
           this.toast.error("Erro ao logar. Verifique os campos");
@@ -94,7 +99,7 @@ export default {
         } catch (error) {
           console.error(
             "Erro durante a solicitação de recuperação de senha:",
-            error
+            error,
           );
         }
       } else {
@@ -151,31 +156,6 @@ export default {
           class="flex flex-col gap-5 w-full"
           @submit.prevent="login"
         >
-          <!-- Nome Input -->
-          <v-text-field
-            v-model="name"
-            :rules="nameRules"
-            label="Nome de usuário"
-            variant="outlined"
-            base-color="grey-darken-2"
-            color="green-accent-3"
-            density="comfortable"
-            theme="dark"
-            class="gamer-input"
-          >
-            <template v-slot:prepend-inner>
-              <font-awesome-icon
-                :icon="['fas', 'user']"
-                class="mr-2 opacity-80 transition-colors"
-                :class="
-                  !formValid && hasInteracted && !name
-                    ? 'text-red-500'
-                    : 'text-green-500'
-                "
-              />
-            </template>
-          </v-text-field>
-
           <!-- Email Input -->
           <v-text-field
             label="Email"
@@ -259,9 +239,7 @@ export default {
           </div>
 
           <!-- Guest Access Link -->
-          <div
-            class="mt-4 pt-4 border-t border-neutral-800 w-full text-center"
-          >
+          <div class="mt-4 pt-4 border-t border-neutral-800 w-full text-center">
             <router-link
               to="/gamesPage"
               class="text-xs text-neutral-400 hover:text-emerald-400 uppercase tracking-widest transition-colors flex items-center justify-center gap-2 group"

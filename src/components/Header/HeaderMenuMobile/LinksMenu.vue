@@ -18,6 +18,7 @@ export default {
     v-for="(link, linkIndex) in dataLinks.links"
     :key="linkIndex"
     :to="link"
+    active-class="before:w-6/12 before:border-[#2bb478] font-medium"
     :class="
       isMobile
         ? `transition-all duration-300 w-full text-center py-4 hover:bg-white/10`
