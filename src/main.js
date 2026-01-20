@@ -88,6 +88,7 @@ import Toast from "vue-toastification";
 
 import "vue-toastification/dist/index.css";
 import "./assets/css/toast-custom.css";
+import vue3GoogleLogin from "vue3-google-login";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
@@ -133,6 +134,9 @@ app
   .use(router)
   .use(store)
   .use(MotionPlugin)
+  .use(vue3GoogleLogin, {
+    clientId: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+  })
   .use(Toast, toastOptions)
   .use(vuetify)
   .use(VueQueryPlugin, vueQueryPluginOptions)

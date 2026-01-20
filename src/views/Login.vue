@@ -5,6 +5,7 @@ import axios from "axios";
 import logoImg from "@/assets/images/logo.webp";
 import { useToast } from "vue-toastification";
 import TextHighlight from "./icons/TextHighlight.vue";
+import { googleTokenLogin, decodeCredential } from "vue3-google-login";
 
 export default {
   mixins: [validateForm],
@@ -74,6 +75,57 @@ export default {
         this.toast.error("Informações inválidas");
       } finally {
         this.loadingButton = false;
+      }
+    },
+    async handleGoogleLogin(response) {
+      if (response.credential) {
+        try {
+          const userData = decodeCredential(response.credential);
+
+          const res = await axios.post("/login/google", {
+            token: response.credential,
+          });
+
+          if (res.data.success) {
+            localStorage.setItem("token", res.data.token);
+
+            const userName =
+              userData.name ||
+              res.data.username ||
+              res.data.name ||
+              res.data.user?.name ||
+              "Google User";
+
+            // Prioriza o email do token do Google, pois é a fonte da verdade neste contexto
+            const userEmail =
+              userData.email || res.data.email || res.data.user?.email;
+
+            if (!userEmail) {
+              console.error(
+                "Email não encontrado nos dados do Google ou do Backend",
+              );
+              this.toast.error(
+                "Erro: Não foi possível obter seu email do Google.",
+              );
+              return;
+            }
+
+            const user = {
+              name: userName,
+              email: userEmail,
+            };
+            this.$store.commit("setUser", user);
+
+            localStorage.setItem("name", userName);
+            this.toast.success(`Bem-vindo, ${userName}!`);
+            this.$router.push("/");
+          } else {
+            this.toast.error("Erro ao logar com Google.");
+          }
+        } catch (error) {
+          console.error("Erro no login Google:", error);
+          this.toast.error("Falha ao autenticar com Google.");
+        }
       }
     },
   },
@@ -170,6 +222,16 @@ export default {
               class="w-full font-bold tracking-widest"
             />
           </div>
+
+          <div class="mt-4 flex flex-col items-center w-full">
+            <div class="flex items-center w-full mb-4">
+              <div class="flex-grow h-px bg-neutral-700"></div>
+              <span class="px-3 text-neutral-500 text-sm font-medium">OU</span>
+              <div class="flex-grow h-px bg-neutral-700"></div>
+            </div>
+
+            <GoogleLogin :callback="handleGoogleLogin" />
+          </div>
         </v-form>
 
         <div class="flex flex-col justify-center items-center mt-8 gap-3">
@@ -211,5 +273,15 @@ export default {
 
 :deep(input) {
   color: #e5e5e5 !important;
+}
+
+.google-btn {
+  transition: all 0.3s ease;
+}
+
+.google-btn:hover {
+  background-color: #db4437 !important;
+  color: white !important;
+  border-color: #db4437 !important;
 }
 </style>

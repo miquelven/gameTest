@@ -20,6 +20,17 @@ export default {
   mounted() {
     const { currentRoute } = useRouter();
     this.currentRoute = currentRoute;
+
+    const user = this.$store.state.user;
+    if (user && user.email === "google-login") {
+      console.warn(
+        "Detectado estado de usuário inconsistente. Forçando logout para correção.",
+      );
+      this.$store.commit("setUser", null);
+      localStorage.removeItem("token");
+      localStorage.removeItem("name");
+      window.location.reload();
+    }
   },
   computed: {
     layout() {
