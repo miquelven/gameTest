@@ -90,6 +90,7 @@ export default {
       }
     },
     async setScore() {
+      this.stopCounter();
       const totalSeconds = this.minutes * 60 + this.seconds;
       const targetTime = 180;
       const timeBonus = Math.max(0, (targetTime - totalSeconds) * 50);
@@ -108,6 +109,9 @@ export default {
           email: userEmail,
           newScore: this.score,
         });
+
+        this.queryClient.invalidateQueries({ queryKey: ["score-data"] });
+        this.queryClient.invalidateQueries({ queryKey: ["topscore-data"] });
       } catch (error) {
         console.error("Erro ao atualizar a pontuação:", error);
       }
@@ -125,6 +129,7 @@ export default {
   },
   unmounted() {
     this.pauseSound();
+    this.stopCounter();
   },
 };
 </script>
