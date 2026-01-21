@@ -1,6 +1,6 @@
 # ChronoRun <img src="src/assets/images/logo.webp" alt="ChronoRun Logo" width="25"/>
 
-![Preview](https://github.com/user-attachments/assets/779150be-51c3-4a1b-9105-310d5cd2383c)
+![Image](https://github.com/user-attachments/assets/099dccac-4ad7-4a70-bb25-683ca0267e4e)
 
 > Bem-vindo ao universo de desafios de jogos do **ChronoRun**, onde a diversão encontra a competição. Teste suas habilidades em diversos clássicos, otimize suas estratégias e alcance o topo do ranking!
 
