@@ -10,6 +10,7 @@ import SpaceInvaders from "@/components/Games/SpaceInvaders.vue";
 
 import Button from "@/views/icons/Button.vue";
 import TextHighlight from "@/views/icons/TextHighlight.vue";
+import { useQueryClient } from "@tanstack/vue-query";
 
 import axios from "axios";
 
@@ -19,6 +20,10 @@ export default {
   components: {
     Button,
     TextHighlight,
+  },
+  setup() {
+    const queryClient = useQueryClient();
+    return { queryClient };
   },
   data() {
     return {
