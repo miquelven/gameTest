@@ -249,7 +249,7 @@ export default {
         <div class="flex flex-col gap-3">
           <button
             @click="retryGame"
-            class="w-full py-3 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] hover:-translate-y-1"
+            class="w-full py-3 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-widest uppercase transition-all hover:-translate-y-1"
           >
             Repetir Exercício
           </button>
