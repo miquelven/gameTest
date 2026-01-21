@@ -134,7 +134,7 @@ export default {
         </router-link>
         <router-link to="/register">
           <button
-            class="px-5 py-2 rounded bg-emerald-600 hover:bg-emerald-500 text-white text-xs uppercase tracking-widest font-bold transition-colors shadow-lg shadow-emerald-900/20 border border-transparent hover:border-emerald-400"
+            class="px-5 py-2 rounded bg-emerald-800 hover:bg-emerald-700 text-white/90 text-xs uppercase tracking-widest font-bold transition-colors shadow-lg border border-transparent hover:border-emerald-400"
           >
             Cadastrar
           </button>
